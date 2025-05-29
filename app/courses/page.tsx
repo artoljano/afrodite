@@ -1,0 +1,625 @@
+"use client"
+
+import { useState } from "react"
+import Image from "next/image"
+import { motion } from "framer-motion"
+import {
+  Search,
+  ChevronRight,
+  X,
+  Filter,
+  Clock,
+  Users,
+  Award,
+  BookOpen,
+  Calendar,
+  Sparkles,
+  GraduationCap,
+  CheckCircle,
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import Link from "next/link"
+import { AnimatedButton } from "@/components/animated-button"
+import { useInView } from "react-intersection-observer"
+
+const courses = [
+  {
+    id: 1,
+    title: "Kurs Profesional për Makeup Artist",
+    category: "makeup",
+    duration: "3 muaj",
+    durationCategory: "3-mujore",
+    level: "Fillestar deri në të Avancuar",
+    image: "/placeholder.svg?height=300&width=400&text=Makeup+Course",
+    description:
+      "Mësoni teknikat e fundit të makeup nga profesionistët e industrisë. Kursi përfshin makeup për evenimente të ndryshme, makeup artistik, dhe teknika profesionale.",
+    featured: true,
+    startDate: "15 Qershor 2025",
+    price: "45,000 Lekë",
+    students: 24,
+  },
+  {
+    id: 2,
+    title: "Kurs Profesional për Manikyr & Pedikyr",
+    category: "nails",
+    duration: "6 muaj",
+    durationCategory: "6-mujore",
+    level: "Fillestar deri në të Mesëm",
+    image: "/placeholder.svg?height=300&width=400&text=Nails+Course",
+    description:
+      "Bëhuni specialist i kualifikuar në kujdesin e thonjve dhe trajtimeve estetike. Mësoni teknikat e manikyr, pedikyr, dhe aplikimin e thonjve artificialë.",
+    featured: false,
+    startDate: "1 Korrik 2025",
+    price: "50,000 Lekë",
+    students: 18,
+  },
+  {
+    id: 3,
+    title: "Kurs Profesional për Estetikë",
+    category: "esthetics",
+    duration: "9 muaj",
+    durationCategory: "9-mujore",
+    level: "Mesatar deri në të Avancuar",
+    image: "/placeholder.svg?height=300&width=400&text=Esthetics+Course",
+    description:
+      "Mësoni trajtimet më të avancuara të lëkurës dhe procedurat estetike. Kursi përfshin trajtime faciale, depilim, dhe teknika të tjera estetike.",
+    featured: true,
+    startDate: "10 Qershor 2025",
+    price: "65,000 Lekë",
+    students: 16,
+  },
+  {
+    id: 4,
+    title: "Kurs Profesional për Qerpikë & Vetulla",
+    category: "lashes",
+    duration: "3 muaj",
+    durationCategory: "3-mujore",
+    level: "Fillestar deri në të Mesëm",
+    image: "/placeholder.svg?height=300&width=400&text=Lashes+Course",
+    description:
+      "Specializohuni në aplikimin e qerpikëve artificialë dhe stilimin e vetullave. Mësoni teknikat e laminimit, extensioneve, dhe microblading.",
+    featured: false,
+    startDate: "20 Qershor 2025",
+    price: "40,000 Lekë",
+    students: 12,
+  },
+  {
+    id: 5,
+    title: "Kurs Profesional për Stilim Flokësh",
+    category: "hair",
+    duration: "6 muaj",
+    durationCategory: "6-mujore",
+    level: "Fillestar deri në të Avancuar",
+    image: "/placeholder.svg?height=300&width=400&text=Hair+Course",
+    description:
+      "Mësoni teknikat e stilimit të flokëve për evenimente të ndryshme. Kursi përfshin prerje, ngjyrosje, dhe stilime të ndryshme.",
+    featured: false,
+    startDate: "5 Korrik 2025",
+    price: "55,000 Lekë",
+    students: 20,
+  },
+  {
+    id: 6,
+    title: "Kurs Profesional për Masazh",
+    category: "massage",
+    duration: "9 muaj",
+    durationCategory: "9-mujore",
+    level: "Fillestar deri në të Mesëm",
+    image: "/placeholder.svg?height=300&width=400&text=Massage+Course",
+    description:
+      "Mësoni teknikat e masazhit relaksues dhe terapeutik. Kursi përfshin masazh suedez, masazh me gurë të nxehtë, dhe teknika të tjera.",
+    featured: false,
+    startDate: "15 Korrik 2025",
+    price: "60,000 Lekë",
+    students: 15,
+  },
+  {
+    id: 7,
+    title: "Kurs Profesional për Kozmetikë të Avancuar",
+    category: "esthetics",
+    duration: "2 vjet",
+    durationCategory: "2-vjecare",
+    level: "Avancuar",
+    image: "/placeholder.svg?height=300&width=400&text=Advanced+Cosmetics",
+    description:
+      "Program i plotë për kozmetikë të avancuar që përfshin të gjitha aspektet e bukurisë dhe estetikës. Kursi përfshin trajnime të specializuara dhe praktikë profesionale.",
+    featured: true,
+    startDate: "1 Shtator 2025",
+    price: "120,000 Lekë",
+    students: 10,
+  },
+  {
+    id: 8,
+    title: "Kurs Profesional për Ndihmës në Masazheri",
+    category: "massage",
+    duration: "3 muaj",
+    durationCategory: "3-mujore",
+    level: "Fillestar",
+    image: "/placeholder.svg?height=300&width=400&text=Massage+Assistant",
+    description:
+      "Mësoni bazat e masazhit dhe teknikat themelore për të ndihmuar masazherët profesionistë. Kursi përfshin anatomi bazë dhe teknika masazhi.",
+    featured: false,
+    startDate: "10 Qershor 2025",
+    price: "35,000 Lekë",
+    students: 14,
+  },
+]
+
+const categories = [
+  { id: "makeup", name: "Makeup", icon: <GraduationCap className="h-4 w-4" /> },
+  { id: "nails", name: "Manikyr & Pedikyr", icon: <Award className="h-4 w-4" /> },
+  { id: "esthetics", name: "Estetikë", icon: <Sparkles className="h-4 w-4" /> },
+  { id: "lashes", name: "Qerpikë & Vetulla", icon: <CheckCircle className="h-4 w-4" /> },
+  { id: "hair", name: "Stilim Flokësh", icon: <Users className="h-4 w-4" /> },
+  { id: "massage", name: "Masazh", icon: <BookOpen className="h-4 w-4" /> },
+]
+
+const durations = [
+  { id: "3-mujore", name: "3 Mujore" },
+  { id: "6-mujore", name: "6 Mujore" },
+  { id: "9-mujore", name: "9 Mujore" },
+  { id: "2-vjecare", name: "2 Vjeçare" },
+]
+
+export default function CoursesPage() {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [selectedDurations, setSelectedDurations] = useState<string[]>([])
+  const [searchQuery, setSearchQuery] = useState("")
+  const [sortBy, setSortBy] = useState<"default" | "price-asc" | "price-desc" | "date">("default")
+
+  const [heroRef, heroInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
+  const [coursesRef, coursesInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
+  const toggleCategory = (categoryId: string) => {
+    setSelectedCategories((prev) =>
+      prev.includes(categoryId) ? prev.filter((id) => id !== categoryId) : [...prev, categoryId],
+    )
+  }
+
+  const toggleDuration = (durationId: string) => {
+    setSelectedDurations((prev) =>
+      prev.includes(durationId) ? prev.filter((id) => id !== durationId) : [...prev, durationId],
+    )
+  }
+
+  const clearFilters = () => {
+    setSelectedCategories([])
+    setSelectedDurations([])
+    setSearchQuery("")
+    setSortBy("default")
+  }
+
+  const filteredCourses = courses.filter((course) => {
+    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(course.category)
+    const matchesDuration = selectedDurations.length === 0 || selectedDurations.includes(course.durationCategory)
+    const matchesSearch =
+      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchQuery.toLowerCase())
+    return matchesCategory && matchesDuration && matchesSearch
+  })
+
+  // Sort courses based on selected sort option
+  const sortedCourses = [...filteredCourses].sort((a, b) => {
+    if (sortBy === "price-asc") {
+      return Number.parseInt(a.price.replace(/[^0-9]/g, "")) - Number.parseInt(b.price.replace(/[^0-9]/g, ""))
+    } else if (sortBy === "price-desc") {
+      return Number.parseInt(b.price.replace(/[^0-9]/g, "")) - Number.parseInt(a.price.replace(/[^0-9]/g, ""))
+    } else if (sortBy === "date") {
+      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+    } else {
+      // Default sorting - featured courses first
+      return (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
+    }
+  })
+
+  const hasActiveFilters = selectedCategories.length > 0 || selectedDurations.length > 0 || searchQuery !== ""
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  }
+
+  return (
+    <div className="flex flex-col w-full">
+      {/* Hero Section */}
+      <section
+        ref={heroRef}
+        className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden"
+      >
+        {/* Background pattern */}
+        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+          <Image src="/wave-pattern.svg" alt="Decorative pattern" width={256} height={256} className="object-contain" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7 }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-6">
+              <Sparkles className="h-4 w-4 mr-2 text-purple-400" />
+              <span>Kurse të certifikuara ndërkombëtarisht</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-white mb-6">
+              Kurset Tona <span className="text-purple-400">Profesionale</span>
+            </h1>
+            <div className="h-1 w-24 bg-purple-500 mx-auto mb-8"></div>
+            <p className="text-lg text-gray-300 mb-8">
+              Zgjidhni nga kurset tona të shumta profesionale për të avancuar karrierën tuaj dhe për të fituar aftësi të
+              reja të kërkuara në tregun e punës.
+            </p>
+
+            {/* Search bar in hero */}
+            <div className="max-w-md mx-auto relative">
+              <Input
+                type="text"
+                placeholder="Kërko kurse..."
+                className="pl-10 py-6 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-gray-300 rounded-full"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300 h-5 w-5" />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+        >
+          <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center pt-2">
+            <motion.div
+              className="w-1.5 h-1.5 bg-white rounded-full"
+              animate={{ y: [0, 16, 0] }}
+              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+            />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Filters Section - Compact Version */}
+      <section className="sticky top-[80px] z-30 bg-white border-b shadow-sm">
+        <div className="container mx-auto px-4">
+          <div className="py-3">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              {/* Sort options moved inline with filters */}
+              <div className="flex items-center gap-2">
+                <h3 className="text-sm font-medium text-gray-900 flex items-center">
+                  <Filter className="h-3.5 w-3.5 mr-1 text-purple-600" />
+                  <span>Filtro:</span>
+                </h3>
+
+                {hasActiveFilters && (
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 h-7 px-2 py-0"
+                    onClick={clearFilters}
+                  >
+                    <X className="h-3.5 w-3.5 mr-1" />
+                    <span className="text-xs">Pastro</span>
+                  </Button>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-gray-500">Rendit:</span>
+                <select
+                  className="border border-gray-200 rounded-md text-xs p-1"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as any)}
+                >
+                  <option value="default">Të rekomanduara</option>
+                  <option value="price-asc">Çmimi: Ulët në të lartë</option>
+                  <option value="price-desc">Çmimi: Lartë në të ulët</option>
+                  <option value="date">Data e fillimit</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-4">
+              {/* Category Filters - Horizontal Layout */}
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-xs font-medium text-gray-500 mr-1">Kategori:</span>
+                {categories.map((category) => (
+                  <Button
+                    key={category.id}
+                    variant={selectedCategories.includes(category.id) ? "default" : "outline"}
+                    size="sm"
+                    className={`h-7 px-2 py-0 text-xs ${
+                      selectedCategories.includes(category.id)
+                        ? "bg-purple-600 hover:bg-purple-700 text-white"
+                        : "bg-white text-gray-800 border-gray-200 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-300"
+                    }`}
+                    onClick={() => toggleCategory(category.id)}
+                  >
+                    {category.icon}
+                    <span className="ml-1">{category.name}</span>
+                  </Button>
+                ))}
+              </div>
+
+              {/* Duration Filters - Horizontal Layout */}
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="text-xs font-medium text-gray-500 mr-1">Kohëzgjatje:</span>
+                {durations.map((duration) => (
+                  <Button
+                    key={duration.id}
+                    variant={selectedDurations.includes(duration.id) ? "default" : "outline"}
+                    size="sm"
+                    className={`h-7 px-2 py-0 text-xs ${
+                      selectedDurations.includes(duration.id)
+                        ? "bg-purple-600 hover:bg-purple-700 text-white"
+                        : "bg-white text-gray-800 border-gray-200 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-300"
+                    }`}
+                    onClick={() => toggleDuration(duration.id)}
+                  >
+                    {duration.name}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Courses Section */}
+      <section ref={coursesRef} className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          {sortedCourses.length > 0 ? (
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={coursesInView ? "visible" : "hidden"}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {sortedCourses.map((course) => (
+                <motion.div
+                  key={course.id}
+                  variants={itemVariants}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 group relative flex flex-col h-full"
+                >
+                  {/* Featured badge */}
+                  {course.featured && (
+                    <div className="absolute top-4 left-4 z-10 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      Kurs i Rekomanduar
+                    </div>
+                  )}
+
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={course.image || "/placeholder.svg"}
+                      alt={course.title}
+                      width={400}
+                      height={300}
+                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                    {/* Course info overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between items-center">
+                      <div className="flex items-center space-x-2 text-white text-sm">
+                        <Clock className="h-4 w-4 text-purple-300" />
+                        <span>{course.duration}</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-white text-sm">
+                        <Users className="h-4 w-4 text-purple-300" />
+                        <span>{course.students} studentë</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="mb-4">
+                      <div className="flex items-center mb-2 flex-wrap gap-2">
+                        <span className="text-xs font-medium bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
+                          {categories.find((c) => c.id === course.category)?.name}
+                        </span>
+                        <span className="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                          {course.level}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3 line-clamp-2">{course.title}</h3>
+                      <p className="text-gray-700 line-clamp-3 mb-4">{course.description}</p>
+                    </div>
+
+                    <div className="mt-auto pt-4 border-t border-gray-100">
+                      <div className="flex justify-between items-center mb-4">
+                        <div className="flex items-center text-sm text-gray-600">
+                          <Calendar className="h-4 w-4 mr-1 text-purple-600" />
+                          <span>Fillon: {course.startDate}</span>
+                        </div>
+                        <div className="font-bold text-gray-900">{course.price}</div>
+                      </div>
+
+                      <Link href={`/courses/${course.id}`}>
+                        <AnimatedButton className="w-full bg-black hover:bg-black text-white">
+                          Mëso më shumë
+                          <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </AnimatedButton>
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            <div className="text-center py-16 bg-white rounded-xl shadow-sm">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+                <Search className="h-8 w-8 text-gray-400" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Nuk u gjet asnjë kurs</h3>
+              <p className="text-gray-700 mb-6">Provoni të ndryshoni filtrat ose të kërkoni diçka tjetër.</p>
+              <Button variant="outline" onClick={clearFilters}>
+                Pastro filtrat
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Why Choose Our Courses Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
+                <span>Pse të zgjidhni kurset tona</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-6">
+                Përfitimet e <span className="text-purple-600">Kurseve Tona</span>
+              </h2>
+              <p className="text-gray-700 mb-8">
+                Kurset tona profesionale ofrojnë një sërë përfitimesh që ju ndihmojnë të arrini qëllimet tuaja
+                profesionale dhe të zhvilloni aftësitë tuaja në industrinë e bukurisë.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
+                    <Award className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Certifikim Ndërkombëtar</h3>
+                    <p className="text-gray-700">
+                      Të gjitha kurset tona ofrojnë certifikime të njohura ndërkombëtarisht që ju ndihmojnë të avanconi
+                      karrierën tuaj kudo në botë.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
+                    <Users className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Instruktorë Profesionistë</h3>
+                    <p className="text-gray-700">
+                      Mësoni nga instruktorë me përvojë ndërkombëtare që janë ekspertë në fushat e tyre dhe të
+                      përkushtuar ndaj suksesit tuaj.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
+                    <BookOpen className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Praktikë Intensive</h3>
+                    <p className="text-gray-700">
+                      Kurset tona përfshijnë praktikë intensive që ju lejon të aplikoni njohuritë tuaja në situata reale
+                      dhe të ndërtoni një portofol profesional.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/placeholder.svg?height=600&width=800&text=Course+Benefits"
+                  alt="Course Benefits"
+                  width={800}
+                  height={600}
+                  className="object-cover w-full"
+                />
+              </div>
+
+              {/* Stats overlay */}
+              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500 max-w-xs">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-gray-700">Studentë të diplomuar</div>
+                  <div className="text-2xl font-bold text-gray-900">500+</div>
+                </div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-gray-700">Kurse profesionale</div>
+                  <div className="text-2xl font-bold text-gray-900">20+</div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="text-gray-700">Vite eksperiencë</div>
+                  <div className="text-2xl font-bold text-gray-900">10+</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-br from-black via-purple-900 to-black relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+          <Image src="/wave-pattern.svg" alt="Decorative pattern" width={256} height={256} className="object-contain" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-4">
+              <Sparkles className="h-4 w-4 mr-2 text-purple-400" />
+              <span>Bëhu pjesë e suksesit</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-white mb-6">
+              Nuk jeni të sigurt cili kurs <span className="text-purple-400">është për ju?</span>
+            </h2>
+            <p className="text-lg text-gray-300 mb-8">
+              Na kontaktoni për një konsultim falas dhe do t'ju ndihmojmë të zgjidhni kursin që përshtatet më mirë me
+              qëllimet tuaja profesionale.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <AnimatedButton
+                  size="lg"
+                  variant="secondary"
+                  className="bg-purple-600 hover:bg-black text-white border border-purple-500/30"
+                >
+                  NA KONTAKTONI
+                </AnimatedButton>
+              </Link>
+              <Link href="/about">
+                <AnimatedButton
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white/20 border border-white/30"
+                >
+                  RRETH AKADEMISË
+                </AnimatedButton>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 opacity-10">
+          <Image src="/wave-pattern.svg" alt="Decorative pattern" width={256} height={256} className="object-contain" />
+        </div>
+      </section>
+    </div>
+  )
+}

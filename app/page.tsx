@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   ChevronRight,
   Award,
@@ -17,37 +17,37 @@ import {
   CheckCircle2,
   Sparkles,
   Quote,
-} from "lucide-react"
-import CourseCard from "@/components/course-card"
-import TestimonialSlider from "@/components/testimonial-slider"
-import { useInView } from "react-intersection-observer"
-import CountUpAnimation from "@/components/count-up-animation"
-import VideoBackground from "@/components/video-background"
-import RequestInfoButton from "@/components/request-info-button"
-import { AnimatedButton } from "@/components/animated-button"
-import PartnerLogosCarousel from "@/components/partner-logos-carousel"
-import Link from "next/link"
+} from "lucide-react";
+import CourseCard from "@/components/course-card";
+import TestimonialSlider from "@/components/testimonial-slider";
+import { useInView } from "react-intersection-observer";
+import CountUpAnimation from "@/components/count-up-animation";
+import VideoBackground from "@/components/video-background";
+import RequestInfoButton from "@/components/request-info-button";
+import { AnimatedButton } from "@/components/animated-button";
+import PartnerLogosCarousel from "@/components/partner-logos-carousel";
+import Link from "next/link";
 
 export default function Home() {
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   const [statsRef, statsInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   const [coursesRef, coursesInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   const [whyUsRef, whyUsInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   // Animation variants for staggered animations
   const containerVariants = {
@@ -58,7 +58,7 @@ export default function Home() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -67,20 +67,20 @@ export default function Home() {
       y: 0,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   const handleDownloadBrochure = () => {
     // In a real app, you might want to track this download event
-    console.log("Brochure download initiated")
+    console.log("Brochure download initiated");
 
     // Create a link to the PDF and trigger the download
-    const link = document.createElement("a")
-    link.href = "/course-brochure.pdf"
-    link.download = "Afrodite-Academy-Brochure.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+    const link = document.createElement("a");
+    link.href = "/course-brochure.pdf";
+    link.download = "Afrodite-Academy-Brochure.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="flex flex-col w-full">
@@ -110,12 +110,14 @@ export default function Home() {
                   className="h-1 bg-purple-500 mb-4"
                 />
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-white leading-tight">
-                  Kurse Profesionale <span className="text-purple-400">Ndërkombëtare</span>
+                  Kurse Profesionale{" "}
+                  <span className="text-purple-400">Ndërkombëtare</span>
                 </h1>
               </div>
               <p className="text-lg text-gray-300 max-w-lg">
-                Zbuloní mundësitë për të avancuar karrierën tuaj me kurset tona profesionale të njohura
-                ndërkombëtarisht. Ne ofrojmë mësim online dhe në zyrat tona fizike.
+                Zbuloní mundësitë për të avancuar karrierën tuaj me kurset tona
+                profesionale të njohura ndërkombëtarisht. Ne ofrojmë mësim
+                online dhe në zyrat tona fizike.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-4">
@@ -127,7 +129,11 @@ export default function Home() {
                   KURSE FIZIKE
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </AnimatedButton>
-                <AnimatedButton size="lg" variant="outline" className="border-white hover:bg-purple-500/20 text-white">
+                <AnimatedButton
+                  size="lg"
+                  variant="outline"
+                  className="border-white hover:bg-purple-500/20 text-white"
+                >
                   KONTAKTO TANI
                 </AnimatedButton>
               </div>
@@ -135,7 +141,10 @@ export default function Home() {
               <div className="flex items-center space-x-4 mt-8">
                 <div className="flex -space-x-2">
                   {[1, 2, 3].map((i) => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden">
+                    <div
+                      key={i}
+                      className="w-10 h-10 rounded-full border-2 border-white overflow-hidden"
+                    >
                       <Image
                         src={`/placeholder.svg?height=40&width=40&text=Student+${i}`}
                         alt={`Student ${i}`}
@@ -147,7 +156,8 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="text-sm text-gray-300">
-                  <span className="text-white font-semibold">500+</span> studentë të diplomuar
+                  <span className="text-white font-semibold">500+</span>{" "}
+                  studentë të diplomuar
                 </div>
               </div>
             </motion.div>
@@ -169,10 +179,18 @@ export default function Home() {
                 <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-4 border border-white/10">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-white font-medium">Kursi i ardhshëm fillon më:</p>
-                      <p className="text-purple-400 font-bold">15 Qershor 2023</p>
+                      <p className="text-white font-medium">
+                        Kursi i ardhshëm fillon më:
+                      </p>
+                      <p className="text-purple-400 font-bold">
+                        15 Qershor 2023
+                      </p>
                     </div>
-                    <AnimatedButton size="sm" variant="secondary" className="bg-purple-600 hover:bg-purple-700">
+                    <AnimatedButton
+                      size="sm"
+                      variant="secondary"
+                      className="bg-purple-600 hover:bg-purple-700"
+                    >
                       Regjistrohu
                     </AnimatedButton>
                   </div>
@@ -213,7 +231,9 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">Orare Fleksibël</h3>
-                <p className="text-sm text-gray-600">Kurse në mëngjes, pasdite dhe fundjavë</p>
+                <p className="text-sm text-gray-600">
+                  Kurse në mëngjes, pasdite dhe fundjavë
+                </p>
               </div>
             </div>
             <div className="bg-gray-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
@@ -221,8 +241,12 @@ export default function Home() {
                 <CheckCircle2 className="h-6 w-6 text-purple-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">Certifikim Ndërkombëtar</h3>
-                <p className="text-sm text-gray-600">Diploma të njohura në të gjithë botën</p>
+                <h3 className="font-semibold text-gray-900">
+                  Certifikim Ndërkombëtar
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Diploma të njohura në të gjithë botën
+                </p>
               </div>
             </div>
             <div className="bg-gray-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
@@ -230,8 +254,12 @@ export default function Home() {
                 <Users className="h-6 w-6 text-purple-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">Instruktorë Profesionistë</h3>
-                <p className="text-sm text-gray-600">Mësimdhënie nga ekspertë të industrisë</p>
+                <h3 className="font-semibold text-gray-900">
+                  Instruktorë Profesionistë
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Mësimdhënie nga ekspertë të industrisë
+                </p>
               </div>
             </div>
           </div>
@@ -241,7 +269,13 @@ export default function Home() {
       {/* Why Choose Us Section */}
       <section className="py-16 md:py-24 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-          <Image src="/wave-pattern.svg" alt="Decorative pattern" width={256} height={256} className="object-contain" />
+          <Image
+            src="/wave-pattern.svg"
+            alt="Decorative pattern"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -255,12 +289,13 @@ export default function Home() {
               <span>Pse të zgjidhni Afrodite Academy?</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
-              Eksperiencë Mësimore <span className="text-purple-600">e Pashoqe</span>
+              Eksperiencë Mësimore{" "}
+              <span className="text-purple-600">e Pashoqe</span>
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Ne ofrojmë një përvojë të plotë mësimore që kombinon teorinë me praktikën, duke ju përgatitur për një
-              karrierë të suksesshme.
+              Ne ofrojmë një përvojë të plotë mësimore që kombinon teorinë me
+              praktikën, duke ju përgatitur për një karrierë të suksesshme.
             </p>
           </motion.div>
 
@@ -288,8 +323,12 @@ export default function Home() {
                   </button>
                 </div>
                 <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-white font-medium">Shiko videon tonë prezantuese</p>
-                  <p className="text-gray-300 text-sm">Mëso më shumë për kurset dhe ambientet tona</p>
+                  <p className="text-white font-medium">
+                    Shiko videon tonë prezantuese
+                  </p>
+                  <p className="text-gray-300 text-sm">
+                    Mëso më shumë për kurset dhe ambientet tona
+                  </p>
                 </div>
               </div>
 
@@ -305,9 +344,12 @@ export default function Home() {
                   <Quote className="h-5 w-5 text-purple-600" />
                 </div>
                 <p className="text-gray-800 font-medium italic">
-                  "Afrodite Academy ndryshoi karrierën time. Tani punoj si makeup artist profesionist!"
+                  "Afrodite Academy ndryshoi karrierën time. Tani punoj si
+                  makeup artist profesionist!"
                 </p>
-                <p className="text-gray-600 text-sm mt-2">- Elisa, Makeup Artist</p>
+                <p className="text-gray-600 text-sm mt-2">
+                  - Elisa, Makeup Artist
+                </p>
               </motion.div>
             </motion.div>
 
@@ -331,8 +373,9 @@ export default function Home() {
                         Certifikime Ndërkombëtare
                       </h3>
                       <p className="text-gray-700">
-                        Kurset tona ofrojnë certifikime të njohura ndërkombëtarisht që ju ndihmojnë të avanconi
-                        karrierën tuaj kudo në botë.
+                        Kurset tona ofrojnë certifikime të njohura
+                        ndërkombëtarisht që ju ndihmojnë të avanconi karrierën
+                        tuaj kudo në botë.
                       </p>
                     </div>
                   </div>
@@ -351,8 +394,9 @@ export default function Home() {
                         Instruktorë Profesionistë
                       </h3>
                       <p className="text-gray-700">
-                        Mësoni nga instruktorë me përvojë ndërkombëtare që janë ekspertë në fushat e tyre dhe të
-                        përkushtuar ndaj suksesit tuaj.
+                        Mësoni nga instruktorë me përvojë ndërkombëtare që janë
+                        ekspertë në fushat e tyre dhe të përkushtuar ndaj
+                        suksesit tuaj.
                       </p>
                     </div>
                   </div>
@@ -371,8 +415,9 @@ export default function Home() {
                         Kurrikula Moderne
                       </h3>
                       <p className="text-gray-700">
-                        Kurset tona përditësohen vazhdimisht për të përfshirë teknikat dhe trendet më të fundit në
-                        industrinë e bukurisë.
+                        Kurset tona përditësohen vazhdimisht për të përfshirë
+                        teknikat dhe trendet më të fundit në industrinë e
+                        bukurisë.
                       </p>
                     </div>
                   </div>
@@ -391,8 +436,9 @@ export default function Home() {
                         Komunitet Mbështetës
                       </h3>
                       <p className="text-gray-700">
-                        Bëhuni pjesë e një komuniteti mbështetës profesionistësh dhe studentësh që ndajnë pasionin për
-                        bukurinë dhe estetikën.
+                        Bëhuni pjesë e një komuniteti mbështetës profesionistësh
+                        dhe studentësh që ndajnë pasionin për bukurinë dhe
+                        estetikën.
                       </p>
                     </div>
                   </div>
@@ -423,9 +469,12 @@ export default function Home() {
                   <div className="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                     <Clock className="h-6 w-6 text-purple-600" />
                   </div>
-                  <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3">Orare Fleksibël</h3>
+                  <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3">
+                    Orare Fleksibël
+                  </h3>
                   <p className="text-gray-700">
-                    Ofrojmë orare fleksibël për t'ju mundësuar të studioni ndërsa punoni ose keni angazhime të tjera.
+                    Ofrojmë orare fleksibël për t'ju mundësuar të studioni
+                    ndërsa punoni ose keni angazhime të tjera.
                   </p>
                   <Link
                     href="/about"
@@ -450,10 +499,12 @@ export default function Home() {
                   <div className="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                     <Briefcase className="h-6 w-6 text-purple-600" />
                   </div>
-                  <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3">Mundësi Punësimi</h3>
+                  <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3">
+                    Mundësi Punësimi
+                  </h3>
                   <p className="text-gray-700">
-                    Ndërtojmë partneritete me biznese në industri për t'ju ndihmuar të gjeni mundësi punësimi pas
-                    diplomimit.
+                    Ndërtojmë partneritete me biznese në industri për t'ju
+                    ndihmuar të gjeni mundësi punësimi pas diplomimit.
                   </p>
                   <Link
                     href="/about"
@@ -501,7 +552,8 @@ export default function Home() {
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Rezultatet tona flasin vetë. Shikoni arritjet tona ndër vite dhe besoni në cilësinë e kurseve tona.
+              Rezultatet tona flasin vetë. Shikoni arritjet tona ndër vite dhe
+              besoni në cilësinë e kurseve tona.
             </p>
           </motion.div>
 
@@ -659,7 +711,9 @@ export default function Home() {
             <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-4">
               <span>Partnerët tanë</span>
             </div>
-            <h3 className="text-2xl font-bold font-poppins text-white mb-2">Partnerët dhe Akreditimet Tona</h3>
+            <h3 className="text-2xl font-bold font-poppins text-white mb-2">
+              Partnerët dhe Akreditimet Tona
+            </h3>
             <div className="h-1 w-16 bg-purple-500 mx-auto"></div>
           </div>
         </div>
@@ -683,8 +737,9 @@ export default function Home() {
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Zgjidhni nga kurset tona të shumta profesionale për të avancuar karrierën tuaj dhe për të fituar aftësi të
-              reja të kërkuara në tregun e punës.
+              Zgjidhni nga kurset tona të shumta profesionale për të avancuar
+              karrierën tuaj dhe për të fituar aftësi të reja të kërkuara në
+              tregun e punës.
             </p>
           </motion.div>
 
@@ -758,7 +813,8 @@ export default function Home() {
               <span>Histori suksesi</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
-              Çfarë Thonë <span className="text-purple-600">Studentët Tanë</span>
+              Çfarë Thonë{" "}
+              <span className="text-purple-600">Studentët Tanë</span>
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
           </div>
@@ -771,7 +827,13 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-gradient-to-br from-black via-purple-900 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div>
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-          <Image src="/wave-pattern.svg" alt="Decorative pattern" width={256} height={256} className="object-contain" />
+          <Image
+            src="/wave-pattern.svg"
+            alt="Decorative pattern"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -779,11 +841,12 @@ export default function Home() {
               <span>Bëhu pjesë e suksesit</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-white mb-6">
-              Gati për të Filluar <span className="text-purple-400">Karrierën Tuaj të Re?</span>
+              Gati për të Filluar{" "}
+              <span className="text-purple-400">Karrierën Tuaj të Re?</span>
             </h2>
             <p className="text-lg text-gray-300 mb-8">
-              Regjistrohuni sot në kurset tona profesionale dhe bëhuni pjesë e komunitetit tonë të profesionistëve të
-              suksesshëm.
+              Regjistrohuni sot në kurset tona profesionale dhe bëhuni pjesë e
+              komunitetit tonë të profesionistëve të suksesshëm.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <AnimatedButton
@@ -806,27 +869,35 @@ export default function Home() {
 
             {/* Added FAQ accordion */}
             <div className="mt-16 text-left bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-white/10">
-              <h3 className="text-xl font-bold text-white mb-6 text-center">Pyetje të Shpeshta</h3>
+              <h3 className="text-xl font-bold text-white mb-6 text-center">
+                Pyetje të Shpeshta
+              </h3>
               <div className="space-y-4">
                 <div className="border-b border-white/10 pb-4">
                   <button className="flex justify-between items-center w-full text-left">
-                    <span className="text-white font-medium">Sa zgjat një kurs profesional?</span>
+                    <span className="text-white font-medium">
+                      Sa zgjat një kurs profesional?
+                    </span>
                     <ChevronRight className="h-5 w-5 text-purple-400 transform rotate-90" />
                   </button>
                   <div className="mt-2 text-gray-300 text-sm">
-                    Kurset tona profesionale zgjasin nga 1 deri në 6 muaj, në varësi të programit dhe nivelit të
-                    zgjedhur.
+                    Kurset tona profesionale zgjasin nga 1 deri në 6 muaj, në
+                    varësi të programit dhe nivelit të zgjedhur.
                   </div>
                 </div>
                 <div className="border-b border-white/10 pb-4">
                   <button className="flex justify-between items-center w-full text-left">
-                    <span className="text-white font-medium">A ofrohen kurse online?</span>
+                    <span className="text-white font-medium">
+                      A ofrohen kurse online?
+                    </span>
                     <ChevronRight className="h-5 w-5 text-purple-400" />
                   </button>
                 </div>
                 <div className="border-b border-white/10 pb-4">
                   <button className="flex justify-between items-center w-full text-left">
-                    <span className="text-white font-medium">Si mund të regjistrohem?</span>
+                    <span className="text-white font-medium">
+                      Si mund të regjistrohem?
+                    </span>
                     <ChevronRight className="h-5 w-5 text-purple-400" />
                   </button>
                 </div>
@@ -835,12 +906,18 @@ export default function Home() {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-64 h-64 opacity-10">
-          <Image src="/wave-pattern.svg" alt="Decorative pattern" width={256} height={256} className="object-contain" />
+          <Image
+            src="/wave-pattern.svg"
+            alt="Decorative pattern"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
         </div>
       </section>
 
       {/* Request Info Button */}
       <RequestInfoButton />
     </div>
-  )
+  );
 }

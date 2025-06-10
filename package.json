@@ -1,13 +1,20 @@
 {
+  "homepage": "https://artoljano.github.io/afrodite",
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predeploy": "npm run build",
+  
     "dev": "next dev",
     "build": "next build",
+  "export": "next export",
+  "deploy": "npm run build && npm run export && gh-pages -d out",
     "start": "next start",
     "lint": "next lint"
+    
   },
+  
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.4",

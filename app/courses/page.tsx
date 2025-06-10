@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   Search,
   ChevronRight,
@@ -16,211 +16,118 @@ import {
   Sparkles,
   GraduationCap,
   CheckCircle,
-} from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import Link from "next/link"
-import { AnimatedButton } from "@/components/animated-button"
-import { useInView } from "react-intersection-observer"
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import { AnimatedButton } from "@/components/animated-button";
+import { useInView } from "react-intersection-observer";
 
-const courses = [
-  {
-    id: 1,
-    title: "Kurs Profesional për Makeup Artist",
-    category: "makeup",
-    duration: "3 muaj",
-    durationCategory: "3-mujore",
-    level: "Fillestar deri në të Avancuar",
-    image: "/placeholder.svg?height=300&width=400&text=Makeup+Course",
-    description:
-      "Mësoni teknikat e fundit të makeup nga profesionistët e industrisë. Kursi përfshin makeup për evenimente të ndryshme, makeup artistik, dhe teknika profesionale.",
-    featured: true,
-    startDate: "15 Qershor 2025",
-    price: "45,000 Lekë",
-    students: 24,
-  },
-  {
-    id: 2,
-    title: "Kurs Profesional për Manikyr & Pedikyr",
-    category: "nails",
-    duration: "6 muaj",
-    durationCategory: "6-mujore",
-    level: "Fillestar deri në të Mesëm",
-    image: "/placeholder.svg?height=300&width=400&text=Nails+Course",
-    description:
-      "Bëhuni specialist i kualifikuar në kujdesin e thonjve dhe trajtimeve estetike. Mësoni teknikat e manikyr, pedikyr, dhe aplikimin e thonjve artificialë.",
-    featured: false,
-    startDate: "1 Korrik 2025",
-    price: "50,000 Lekë",
-    students: 18,
-  },
-  {
-    id: 3,
-    title: "Kurs Profesional për Estetikë",
-    category: "esthetics",
-    duration: "9 muaj",
-    durationCategory: "9-mujore",
-    level: "Mesatar deri në të Avancuar",
-    image: "/placeholder.svg?height=300&width=400&text=Esthetics+Course",
-    description:
-      "Mësoni trajtimet më të avancuara të lëkurës dhe procedurat estetike. Kursi përfshin trajtime faciale, depilim, dhe teknika të tjera estetike.",
-    featured: true,
-    startDate: "10 Qershor 2025",
-    price: "65,000 Lekë",
-    students: 16,
-  },
-  {
-    id: 4,
-    title: "Kurs Profesional për Qerpikë & Vetulla",
-    category: "lashes",
-    duration: "3 muaj",
-    durationCategory: "3-mujore",
-    level: "Fillestar deri në të Mesëm",
-    image: "/placeholder.svg?height=300&width=400&text=Lashes+Course",
-    description:
-      "Specializohuni në aplikimin e qerpikëve artificialë dhe stilimin e vetullave. Mësoni teknikat e laminimit, extensioneve, dhe microblading.",
-    featured: false,
-    startDate: "20 Qershor 2025",
-    price: "40,000 Lekë",
-    students: 12,
-  },
-  {
-    id: 5,
-    title: "Kurs Profesional për Stilim Flokësh",
-    category: "hair",
-    duration: "6 muaj",
-    durationCategory: "6-mujore",
-    level: "Fillestar deri në të Avancuar",
-    image: "/placeholder.svg?height=300&width=400&text=Hair+Course",
-    description:
-      "Mësoni teknikat e stilimit të flokëve për evenimente të ndryshme. Kursi përfshin prerje, ngjyrosje, dhe stilime të ndryshme.",
-    featured: false,
-    startDate: "5 Korrik 2025",
-    price: "55,000 Lekë",
-    students: 20,
-  },
-  {
-    id: 6,
-    title: "Kurs Profesional për Masazh",
-    category: "massage",
-    duration: "9 muaj",
-    durationCategory: "9-mujore",
-    level: "Fillestar deri në të Mesëm",
-    image: "/placeholder.svg?height=300&width=400&text=Massage+Course",
-    description:
-      "Mësoni teknikat e masazhit relaksues dhe terapeutik. Kursi përfshin masazh suedez, masazh me gurë të nxehtë, dhe teknika të tjera.",
-    featured: false,
-    startDate: "15 Korrik 2025",
-    price: "60,000 Lekë",
-    students: 15,
-  },
-  {
-    id: 7,
-    title: "Kurs Profesional për Kozmetikë të Avancuar",
-    category: "esthetics",
-    duration: "2 vjet",
-    durationCategory: "2-vjecare",
-    level: "Avancuar",
-    image: "/placeholder.svg?height=300&width=400&text=Advanced+Cosmetics",
-    description:
-      "Program i plotë për kozmetikë të avancuar që përfshin të gjitha aspektet e bukurisë dhe estetikës. Kursi përfshin trajnime të specializuara dhe praktikë profesionale.",
-    featured: true,
-    startDate: "1 Shtator 2025",
-    price: "120,000 Lekë",
-    students: 10,
-  },
-  {
-    id: 8,
-    title: "Kurs Profesional për Ndihmës në Masazheri",
-    category: "massage",
-    duration: "3 muaj",
-    durationCategory: "3-mujore",
-    level: "Fillestar",
-    image: "/placeholder.svg?height=300&width=400&text=Massage+Assistant",
-    description:
-      "Mësoni bazat e masazhit dhe teknikat themelore për të ndihmuar masazherët profesionistë. Kursi përfshin anatomi bazë dhe teknika masazhi.",
-    featured: false,
-    startDate: "10 Qershor 2025",
-    price: "35,000 Lekë",
-    students: 14,
-  },
-]
+// Import courses from data/courses.ts
+import { courses } from "@/data/courses";
 
 const categories = [
   { id: "makeup", name: "Makeup", icon: <GraduationCap className="h-4 w-4" /> },
-  { id: "nails", name: "Manikyr & Pedikyr", icon: <Award className="h-4 w-4" /> },
+  {
+    id: "nails",
+    name: "Manikyr & Pedikyr",
+    icon: <Award className="h-4 w-4" />,
+  },
   { id: "esthetics", name: "Estetikë", icon: <Sparkles className="h-4 w-4" /> },
-  { id: "lashes", name: "Qerpikë & Vetulla", icon: <CheckCircle className="h-4 w-4" /> },
+  {
+    id: "lashes",
+    name: "Qerpikë & Vetulla",
+    icon: <CheckCircle className="h-4 w-4" />,
+  },
   { id: "hair", name: "Stilim Flokësh", icon: <Users className="h-4 w-4" /> },
   { id: "massage", name: "Masazh", icon: <BookOpen className="h-4 w-4" /> },
-]
+];
 
 const durations = [
   { id: "3-mujore", name: "3 Mujore" },
   { id: "6-mujore", name: "6 Mujore" },
   { id: "9-mujore", name: "9 Mujore" },
   { id: "2-vjecare", name: "2 Vjeçare" },
-]
+];
 
 export default function CoursesPage() {
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  const [selectedDurations, setSelectedDurations] = useState<string[]>([])
-  const [searchQuery, setSearchQuery] = useState("")
-  const [sortBy, setSortBy] = useState<"default" | "price-asc" | "price-desc" | "date">("default")
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedDurations, setSelectedDurations] = useState<string[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState<
+    "default" | "price-asc" | "price-desc" | "date"
+  >("default");
 
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   const [coursesRef, coursesInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   const toggleCategory = (categoryId: string) => {
     setSelectedCategories((prev) =>
-      prev.includes(categoryId) ? prev.filter((id) => id !== categoryId) : [...prev, categoryId],
-    )
-  }
+      prev.includes(categoryId)
+        ? prev.filter((id) => id !== categoryId)
+        : [...prev, categoryId]
+    );
+  };
 
   const toggleDuration = (durationId: string) => {
     setSelectedDurations((prev) =>
-      prev.includes(durationId) ? prev.filter((id) => id !== durationId) : [...prev, durationId],
-    )
-  }
+      prev.includes(durationId)
+        ? prev.filter((id) => id !== durationId)
+        : [...prev, durationId]
+    );
+  };
 
   const clearFilters = () => {
-    setSelectedCategories([])
-    setSelectedDurations([])
-    setSearchQuery("")
-    setSortBy("default")
-  }
+    setSelectedCategories([]);
+    setSelectedDurations([]);
+    setSearchQuery("");
+    setSortBy("default");
+  };
 
   const filteredCourses = courses.filter((course) => {
-    const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(course.category)
-    const matchesDuration = selectedDurations.length === 0 || selectedDurations.includes(course.durationCategory)
+    const matchesCategory =
+      selectedCategories.length === 0 ||
+      selectedCategories.includes(course.category);
+    const matchesDuration =
+      selectedDurations.length === 0 ||
+      selectedDurations.includes(course.durationCategory);
     const matchesSearch =
       course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      course.description.toLowerCase().includes(searchQuery.toLowerCase())
-    return matchesCategory && matchesDuration && matchesSearch
-  })
+      course.description.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesDuration && matchesSearch;
+  });
 
   // Sort courses based on selected sort option
   const sortedCourses = [...filteredCourses].sort((a, b) => {
     if (sortBy === "price-asc") {
-      return Number.parseInt(a.price.replace(/[^0-9]/g, "")) - Number.parseInt(b.price.replace(/[^0-9]/g, ""))
+      return (
+        Number.parseInt(a.price.replace(/[^0-9]/g, "")) -
+        Number.parseInt(b.price.replace(/[^0-9]/g, ""))
+      );
     } else if (sortBy === "price-desc") {
-      return Number.parseInt(b.price.replace(/[^0-9]/g, "")) - Number.parseInt(a.price.replace(/[^0-9]/g, ""))
+      return (
+        Number.parseInt(b.price.replace(/[^0-9]/g, "")) -
+        Number.parseInt(a.price.replace(/[^0-9]/g, ""))
+      );
     } else if (sortBy === "date") {
-      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+      return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
     } else {
       // Default sorting - featured courses first
-      return (b.featured ? 1 : 0) - (a.featured ? 1 : 0)
+      return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
     }
-  })
+  });
 
-  const hasActiveFilters = selectedCategories.length > 0 || selectedDurations.length > 0 || searchQuery !== ""
+  const hasActiveFilters =
+    selectedCategories.length > 0 ||
+    selectedDurations.length > 0 ||
+    searchQuery !== "";
 
   // Animation variants
   const containerVariants = {
@@ -231,7 +138,7 @@ export default function CoursesPage() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -240,7 +147,7 @@ export default function CoursesPage() {
       y: 0,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   return (
     <div className="flex flex-col w-full">
@@ -250,9 +157,15 @@ export default function CoursesPage() {
         className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden"
       >
         {/* Background pattern */}
-        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div>
+        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5" />
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-          <Image src="/wave-pattern.svg" alt="Decorative pattern" width={256} height={256} className="object-contain" />
+          <Image
+            src="/wave-pattern.svg"
+            alt="Decorative pattern"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -269,10 +182,11 @@ export default function CoursesPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-white mb-6">
               Kurset Tona <span className="text-purple-400">Profesionale</span>
             </h1>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-8"></div>
+            <div className="h-1 w-24 bg-purple-500 mx-auto mb-8" />
             <p className="text-lg text-gray-300 mb-8">
-              Zgjidhni nga kurset tona të shumta profesionale për të avancuar karrierën tuaj dhe për të fituar aftësi të
-              reja të kërkuara në tregun e punës.
+              Zgjidhni nga kurset tona të shumta profesionale për të avancuar
+              karrierën tuaj dhe për të fituar aftësi të reja të kërkuara në
+              tregun e punës.
             </p>
 
             {/* Search bar in hero */}
@@ -348,11 +262,17 @@ export default function CoursesPage() {
             <div className="flex flex-wrap gap-4">
               {/* Category Filters - Horizontal Layout */}
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-xs font-medium text-gray-500 mr-1">Kategori:</span>
+                <span className="text-xs font-medium text-gray-500 mr-1">
+                  Kategori:
+                </span>
                 {categories.map((category) => (
                   <Button
                     key={category.id}
-                    variant={selectedCategories.includes(category.id) ? "default" : "outline"}
+                    variant={
+                      selectedCategories.includes(category.id)
+                        ? "default"
+                        : "outline"
+                    }
                     size="sm"
                     className={`h-7 px-2 py-0 text-xs ${
                       selectedCategories.includes(category.id)
@@ -369,11 +289,17 @@ export default function CoursesPage() {
 
               {/* Duration Filters - Horizontal Layout */}
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-xs font-medium text-gray-500 mr-1">Kohëzgjatje:</span>
+                <span className="text-xs font-medium text-gray-500 mr-1">
+                  Kohëzgjatje:
+                </span>
                 {durations.map((duration) => (
                   <Button
                     key={duration.id}
-                    variant={selectedDurations.includes(duration.id) ? "default" : "outline"}
+                    variant={
+                      selectedDurations.includes(duration.id)
+                        ? "default"
+                        : "outline"
+                    }
                     size="sm"
                     className={`h-7 px-2 py-0 text-xs ${
                       selectedDurations.includes(duration.id)
@@ -405,7 +331,7 @@ export default function CoursesPage() {
                 <motion.div
                   key={course.id}
                   variants={itemVariants}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 group relative flex flex-col h-full"
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 relative flex flex-col h-full"
                 >
                   {/* Featured badge */}
                   {course.featured && (
@@ -420,7 +346,7 @@ export default function CoursesPage() {
                       alt={course.title}
                       width={400}
                       height={300}
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 
@@ -441,14 +367,21 @@ export default function CoursesPage() {
                     <div className="mb-4">
                       <div className="flex items-center mb-2 flex-wrap gap-2">
                         <span className="text-xs font-medium bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
-                          {categories.find((c) => c.id === course.category)?.name}
+                          {
+                            categories.find((c) => c.id === course.category)
+                              ?.name
+                          }
                         </span>
                         <span className="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
                           {course.level}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3 line-clamp-2">{course.title}</h3>
-                      <p className="text-gray-700 line-clamp-3 mb-4">{course.description}</p>
+                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3 line-clamp-2">
+                        {course.title}
+                      </h3>
+                      <p className="text-gray-700 line-clamp-3 mb-4">
+                        {course.description}
+                      </p>
                     </div>
 
                     <div className="mt-auto pt-4 border-t border-gray-100">
@@ -457,13 +390,16 @@ export default function CoursesPage() {
                           <Calendar className="h-4 w-4 mr-1 text-purple-600" />
                           <span>Fillon: {course.startDate}</span>
                         </div>
-                        <div className="font-bold text-gray-900">{course.price}</div>
+                        <div className="font-bold text-gray-900">
+                          {course.price}
+                        </div>
                       </div>
 
                       <Link href={`/courses/${course.id}`}>
                         <AnimatedButton className="w-full bg-black hover:bg-black text-white">
                           Mëso më shumë
-                          <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          {/* Change from group-hover to hover */}
+                          <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
                         </AnimatedButton>
                       </Link>
                     </div>
@@ -476,8 +412,12 @@ export default function CoursesPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
                 <Search className="h-8 w-8 text-gray-400" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Nuk u gjet asnjë kurs</h3>
-              <p className="text-gray-700 mb-6">Provoni të ndryshoni filtrat ose të kërkoni diçka tjetër.</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Nuk u gjet asnjë kurs
+              </h3>
+              <p className="text-gray-700 mb-6">
+                Provoni të ndryshoni filtrat ose të kërkoni diçka tjetër.
+              </p>
               <Button variant="outline" onClick={clearFilters}>
                 Pastro filtrat
               </Button>
@@ -495,11 +435,13 @@ export default function CoursesPage() {
                 <span>Pse të zgjidhni kurset tona</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-6">
-                Përfitimet e <span className="text-purple-600">Kurseve Tona</span>
+                Përfitimet e{" "}
+                <span className="text-purple-600">Kurseve Tona</span>
               </h2>
               <p className="text-gray-700 mb-8">
-                Kurset tona profesionale ofrojnë një sërë përfitimesh që ju ndihmojnë të arrini qëllimet tuaja
-                profesionale dhe të zhvilloni aftësitë tuaja në industrinë e bukurisë.
+                Kurset tona profesionale ofrojnë një sërë përfitimesh që ju
+                ndihmojnë të arrini qëllimet tuaja profesionale dhe të zhvilloni
+                aftësitë tuaja në industrinë e bukurisë.
               </p>
 
               <div className="space-y-6">
@@ -508,10 +450,13 @@ export default function CoursesPage() {
                     <Award className="h-5 w-5 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Certifikim Ndërkombëtar</h3>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      Certifikim Ndërkombëtar
+                    </h3>
                     <p className="text-gray-700">
-                      Të gjitha kurset tona ofrojnë certifikime të njohura ndërkombëtarisht që ju ndihmojnë të avanconi
-                      karrierën tuaj kudo në botë.
+                      Të gjitha kurset tona ofrojnë certifikime të njohura
+                      ndërkombëtarisht që ju ndihmojnë të avanconi karrierën
+                      tuaj kudo në botë.
                     </p>
                   </div>
                 </div>
@@ -521,10 +466,13 @@ export default function CoursesPage() {
                     <Users className="h-5 w-5 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Instruktorë Profesionistë</h3>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      Instruktorë Profesionistë
+                    </h3>
                     <p className="text-gray-700">
-                      Mësoni nga instruktorë me përvojë ndërkombëtare që janë ekspertë në fushat e tyre dhe të
-                      përkushtuar ndaj suksesit tuaj.
+                      Mësoni nga instruktorë me përvojë ndërkombëtare që janë
+                      ekspertë në fushat e tyre dhe të përkushtuar ndaj suksesit
+                      tuaj.
                     </p>
                   </div>
                 </div>
@@ -534,10 +482,13 @@ export default function CoursesPage() {
                     <BookOpen className="h-5 w-5 text-purple-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Praktikë Intensive</h3>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      Praktikë Intensive
+                    </h3>
                     <p className="text-gray-700">
-                      Kurset tona përfshijnë praktikë intensive që ju lejon të aplikoni njohuritë tuaja në situata reale
-                      dhe të ndërtoni një portofol profesional.
+                      Kurset tona përfshijnë praktikë intensive që ju lejon të
+                      aplikoni njohuritë tuaja në situata reale dhe të ndërtoni
+                      një portofol profesional.
                     </p>
                   </div>
                 </div>
@@ -579,7 +530,13 @@ export default function CoursesPage() {
       <section className="py-16 bg-gradient-to-br from-black via-purple-900 to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div>
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-          <Image src="/wave-pattern.svg" alt="Decorative pattern" width={256} height={256} className="object-contain" />
+          <Image
+            src="/wave-pattern.svg"
+            alt="Decorative pattern"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -588,11 +545,13 @@ export default function CoursesPage() {
               <span>Bëhu pjesë e suksesit</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-white mb-6">
-              Nuk jeni të sigurt cili kurs <span className="text-purple-400">është për ju?</span>
+              Nuk jeni të sigurt cili kurs{" "}
+              <span className="text-purple-400">është për ju?</span>
             </h2>
             <p className="text-lg text-gray-300 mb-8">
-              Na kontaktoni për një konsultim falas dhe do t'ju ndihmojmë të zgjidhni kursin që përshtatet më mirë me
-              qëllimet tuaja profesionale.
+              Na kontaktoni për një konsultim falas dhe do t'ju ndihmojmë të
+              zgjidhni kursin që përshtatet më mirë me qëllimet tuaja
+              profesionale.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
@@ -617,9 +576,15 @@ export default function CoursesPage() {
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-64 h-64 opacity-10">
-          <Image src="/wave-pattern.svg" alt="Decorative pattern" width={256} height={256} className="object-contain" />
+          <Image
+            src="/wave-pattern.svg"
+            alt="Decorative pattern"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
         </div>
       </section>
     </div>
-  )
+  );
 }

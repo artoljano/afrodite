@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true, // Important for GitHub Pages compatibility
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -9,6 +11,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  
 }
 
 export default nextConfig

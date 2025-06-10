@@ -103,3 +103,13 @@ h6 {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
 }
+
+/* Optional if needed to hide scrollbars visually */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* global.css or tailwind.config.css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

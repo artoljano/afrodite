@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { ChevronRight, Check, Clock, Users, Award } from "lucide-react"
+import { ChevronRight, Check, Clock, Users, Award, Info } from "lucide-react"
 import { AnimatedButton } from "@/components/animated-button"
 
 interface CourseCardProps {
@@ -35,9 +35,9 @@ export default function CourseCard({
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay }}
+      onMouseLeave={() => setIsFlipped(false)}
       className="perspective-1000 h-[450px] w-full"
-      onHoverStart={() => setIsFlipped(true)}
-      onHoverEnd={() => setIsFlipped(false)}
+      style={{ perspective: 1000 }}
     >
       <motion.div
         className="relative w-full h-full transition-all duration-500"
@@ -49,20 +49,30 @@ export default function CourseCard({
         }}
         style={{ transformStyle: "preserve-3d" }}
       >
-        {/* Front of card */}
+        {/* ─── FRONT OF CARD ───────────────────────────────────────── */}
         <div
           className="absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col"
           style={{ backfaceVisibility: "hidden" }}
         >
-          <div className="relative h-48 overflow-hidden">
+          {/* 1) “Më shumë info” hint—top‐right, always visible */}
+          <div className="absolute top-4 right-4 z-10 flex items-center space-x-1 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded">
+            <Info className="h-4 w-4" />
+            <span onClick={() => setIsFlipped(true)}>Më shumë info</span>
+          </div>
+
+          {/* 2) IMAGE area triggers flip */}
+          <div
+            onMouseEnter={() => setIsFlipped(true)}
+            className="relative h-48 overflow-hidden cursor-pointer"
+          >
             <Image
               src={image || "/placeholder.svg"}
               alt={title}
               width={400}
               height={300}
-              className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+              className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
 
             {/* Course badges */}
             <div className="absolute top-4 left-4 bg-purple-600 text-white text-xs font-medium px-2 py-1 rounded-full">
@@ -82,12 +92,26 @@ export default function CourseCard({
             </div>
           </div>
 
+          {/* 3) TEXT CONTENT AREA */}
           <div className="p-6 flex flex-col flex-grow">
             <div className="flex-grow">
               <div className="flex items-start justify-between mb-2">
-                <h3 className="text-xl font-bold font-poppins text-gray-900">{title}</h3>
-                <div className="bg-purple-100 text-purple-700 text-sm font-medium px-2 py-1 rounded">€350</div>
+
+               <h3
+                  className="text-xl font-bold font-poppins text-gray-900 h-12 leading-6 overflow-hidden"
+                  /* 
+                    h-12 = 3rem total height, 
+                    leading-6 = 1.5rem per line → exactly 2 lines 
+                    overflow-hidden hides any extra text
+                  */
+                >
+                  {title}
+                </h3>
+                <div className="bg-purple-100 text-purple-700 text-sm font-medium px-2 py-1 rounded">
+                  €350
+                </div>
               </div>
+              {/* Description remains unchanged */}
               <p className="text-gray-700">{description}</p>
 
               {/* Course features */}
@@ -103,37 +127,34 @@ export default function CourseCard({
               </div>
             </div>
 
+            {/* 4) BUTTON AREA (no‐flip container preserved) */}
             <div className="mt-4 pt-4 border-t border-gray-100">
-              <div
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setIsFlipped(false) // Explicitly prevent flipping
-                }}
-                onMouseEnter={(e) => {
-                  e.stopPropagation()
-                  setIsFlipped(false) // Explicitly prevent flipping
-                }}
-                className="inline-block w-full"
-              >
+              <div className="inline-block w-full no-flip">
                 <AnimatedButton className="w-full bg-black hover:bg-purple-900 text-white">
                   Mëso më shumë
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
                 </AnimatedButton>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Back of card */}
+        {/* ─── BACK OF CARD ─────────────────────────────────────────── */}
         <div
           className="absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-gradient-to-br from-black to-purple-900 p-6 flex flex-col justify-center"
           style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
-          <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm text-white text-xs font-medium px-2 py-1 rounded-full">
+          {/* Clicking this flips back to front */}
+          <div
+            onClick={() => setIsFlipped(false)}
+            className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm text-white text-xs font-medium px-2 py-1 rounded-full cursor-pointer"
+          >
             Kthehu për më shumë
           </div>
 
-          <h3 className="text-xl font-bold font-poppins text-white mb-6 text-center">Çfarë do të mësoni</h3>
+          <h3 className="text-xl font-bold font-poppins text-white mb-6 text-center">
+            Çfarë do të mësoni
+          </h3>
           <ul className="space-y-4">
             {learningPoints.map((point, index) => (
               <li key={index} className="flex items-start">
@@ -157,7 +178,10 @@ export default function CourseCard({
               </div>
             </div>
 
-            <AnimatedButton variant="secondary" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+            <AnimatedButton
+              variant="secondary"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+            >
               Regjistrohu Tani
             </AnimatedButton>
           </div>

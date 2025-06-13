@@ -14,7 +14,7 @@ interface Params {
 }
 
 // This is now a “server component.” We look up `course` by `params.id` on the server.
-export default function CourseDetailPage({ params }: { params: Params }) {
+export default async function CourseDetailPage({ params }: { params: Params }) {
   const course = courses.find((c) => c.id.toString() === params.id);
 
   if (!course) {

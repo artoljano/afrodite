@@ -46,6 +46,7 @@ export interface Course {
   // New attributes:
   featured: boolean;
   students: number;
+  videoSrc?: string; // Optional video source for course preview
 }
 
 // —————————————————————————————————————————————————————————————
@@ -176,6 +177,7 @@ export const courses: Course[] = [
     ],
     featured: true,
     students: 24,
+    videoSrc: "/videos/fileTest.mp4", // Optional video source for course preview
   },
   {
     id: 2,

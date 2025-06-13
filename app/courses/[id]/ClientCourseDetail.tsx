@@ -43,8 +43,9 @@ export default function ClientCourseDetail({ course }: Props) {
     <div className="flex flex-col w-full">
       {/* ── Hero Section with Video Background ── */}
       <VideoBackground
+        videoSrc={course.videoSrc || "/placeholder-video.mp4"}
         overlayOpacity={0.85}
-        className="py-20 md:py-32 bg-gradient-to-r from-black to-purple-900"
+        className="min-h-[60vh] md:min-h-[70vh] py-20 md:py-32 bg-gradient-to-r from-black to-purple-900"
       >
         <motion.div
           style={{ opacity, scale }}

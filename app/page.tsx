@@ -17,16 +17,19 @@ import {
   CheckCircle2,
   Sparkles,
   Quote,
+  Video,
 } from "lucide-react";
 import CourseCard from "@/components/course-card";
 import TestimonialSlider from "@/components/testimonial-slider";
 import { useInView } from "react-intersection-observer";
 import CountUpAnimation from "@/components/count-up-animation";
 import VideoBackground from "@/components/video-background";
+import VideoModal from "@/components/video-modal";
 import RequestInfoButton from "@/components/request-info-button";
 import { AnimatedButton } from "@/components/animated-button";
 import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
+import { useRef, useState } from "react";
 
 export default function Home() {
   const [heroRef, heroInView] = useInView({
@@ -81,6 +84,9 @@ export default function Home() {
     link.click();
     document.body.removeChild(link);
   };
+
+  //Video Handler Section
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="flex flex-col w-full">
@@ -310,15 +316,18 @@ export default function Home() {
               {/* Video player with play button */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl group">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
-                <Image
-                  src="/placeholder.svg?height=600&width=600&text=Academy+Video"
-                  alt="Afrodite Academy Classroom"
+                <video
+                  src="/videos/fileTest.mp4"
                   width={800}
                   height={600}
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
                 />
+
                 <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <button className="w-16 h-16 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="w-16 h-16 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                  >
                     <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
                   </button>
                 </div>
@@ -330,6 +339,14 @@ export default function Home() {
                     Mëso më shumë për kurset dhe ambientet tona
                   </p>
                 </div>
+
+                {/* Modal component */}
+                <VideoModal
+                  isOpen={isModalOpen}
+                  onClose={() => setIsModalOpen(false)}
+                  videoSrc="/videos/fileTest.mp4"
+                  title="Video Prezantuese"
+                />
               </div>
 
               {/* Quote moved below the image */}

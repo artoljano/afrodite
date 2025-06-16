@@ -344,7 +344,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                 <video
-                  src="/videos/Intro.mp4"
+                  src="/videos/IntroNew.mp4"
                   width={800}
                   height={600}
                   className="object-fit group-hover:scale-105 transition-transform duration-700 mb-[10vh] cursor-pointer"
@@ -376,7 +376,7 @@ export default function Home() {
                 <VideoModal
                   isOpen={isModalOpen}
                   onClose={() => setIsModalOpen(false)}
-                  videoSrc="/videos/Intro.mp4"
+                  videoSrc="/videos/IntroNew.mp4"
                   title="Video Prezantuese"
                 />
               </div>

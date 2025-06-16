@@ -28,6 +28,8 @@ import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import { team, TeamMember } from "@/data/team";
+import { awards } from "@/data/awards";
 
 // Timeline events data
 const timelineEvents = [
@@ -69,53 +71,51 @@ const timelineEvents = [
 ];
 
 // Awards data
-const awards = [
-  {
-    id: 1,
-    title: "Çmimi i Ekselencës në Arsim",
-    organization: "Ministria e Arsimit",
-    year: "2022",
-    description:
-      "Për kontributin e jashtëzakonshëm në arsimin profesional në Shqipëri.",
-    image: "/placeholder.svg?height=200&width=200&text=Award+2022",
-    color: "purple",
-  },
-  {
-    id: 2,
-    title: "Akademia më e Mirë e Vitit",
-    organization: "Beauty Industry Association",
-    year: "2021",
-    description:
-      "Për standardet e larta të mësimdhënies dhe rezultatet e studentëve.",
-    image: "/placeholder.svg?height=200&width=200&text=Award+2021",
-    color: "gold",
-  },
-  {
-    id: 3,
-    title: "Çmimi i Inovacionit",
-    organization: "European Beauty Schools",
-    year: "2020",
-    description:
-      "Për metodat inovative të mësimdhënies dhe kurrikulën moderne.",
-    image: "/placeholder.svg?height=200&width=200&text=Award+2020",
-    color: "purple",
-  },
-  {
-    id: 4,
-    title: "Çmimi i Partneritetit",
-    organization: "International Beauty Council",
-    year: "2019",
-    description:
-      "Për krijimin e partneriteteve ndërkombëtare që përfitojnë studentët.",
-    image: "/placeholder.svg?height=200&width=200&text=Award+2019",
-    color: "gold",
-  },
-];
+// const awards = [
+//   {
+//     id: 1,
+//     title: "Çmimi i Ekselencës në Arsim",
+//     organization: "Ministria e Arsimit",
+//     year: "2022",
+//     description:
+//       "Për kontributin e jashtëzakonshëm në arsimin profesional në Shqipëri.",
+//     image: "/placeholder.svg?height=200&width=200&text=Award+2022",
+//     color: "purple",
+//   },
+//   {
+//     id: 2,
+//     title: "Akademia më e Mirë e Vitit",
+//     organization: "Beauty Industry Association",
+//     year: "2021",
+//     description:
+//       "Për standardet e larta të mësimdhënies dhe rezultatet e studentëve.",
+//     image: "/placeholder.svg?height=200&width=200&text=Award+2021",
+//     color: "gold",
+//   },
+//   {
+//     id: 3,
+//     title: "Çmimi i Inovacionit",
+//     organization: "European Beauty Schools",
+//     year: "2020",
+//     description:
+//       "Për metodat inovative të mësimdhënies dhe kurrikulën moderne.",
+//     image: "/placeholder.svg?height=200&width=200&text=Award+2020",
+//     color: "purple",
+//   },
+//   {
+//     id: 4,
+//     title: "Çmimi i Partneritetit",
+//     organization: "International Beauty Council",
+//     year: "2019",
+//     description:
+//       "Për krijimin e partneriteteve ndërkombëtare që përfitojnë studentët.",
+//     image: "/placeholder.svg?height=200&width=200&text=Award+2019",
+//     color: "gold",
+//   },
+// ];
 
 export default function AboutPage() {
-  const [modalId, setModalId] = useState<
-    "aferdita" | "michele" | "vicenzo" | "florinda" | null
-  >(null);
+  const [modalId, setModalId] = useState<string | null>(null);
 
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
@@ -390,26 +390,28 @@ export default function AboutPage() {
               <div className="relative pl-8 border-l-2 border-purple-200">
                 <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-purple-500"></div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Fillimi i Udhëtimit
+                  Eksperiencë
                 </h3>
                 <p className="text-gray-700">
-                  Krijuar në vitin 2013, Akademia Afrodite ka evoluar nga një
-                  ide e thjeshtë në institucionin kryesor të trajnimit
-                  profesional në Shqipëri. Udhëtimi ynë ka qenë i mbushur me
-                  momente kyçe që kanë formësuar identitetin dhe misionin tonë.
+                  Me një karrierë prej mbi 20 vitesh eksperiencë në Itali, në
+                  sektorin e bukurisë, estetikës dhe menaxhimit akademik,
+                  Aferdita Ferracaku ka ndërtuar një profil të fortë si
+                  drejtuese teknike dhe trajnere profesionale në qendra
+                  prestigjioze europiane.
                 </p>
               </div>
 
               <div className="relative pl-8 border-l-2 border-purple-200">
                 <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-purple-500"></div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  Rritja dhe Zhvillimi
+                  Zhvillim
                 </h3>
                 <p className="text-gray-700">
-                  Nën udhëheqjen e Aferditës, akademia është rritur vazhdimisht,
-                  duke shtuar kurse të reja, duke zgjeruar ambientet dhe duke
-                  krijuar partneritete ndërkombëtare që kanë sjellë praktikat më
-                  të mira globale në Shqipëri.
+                  E rikthyer në Shqipëri, themeloi Afrodite Italian Wellness
+                  Academy, një institucion model për trajnimin dhe certifikimin
+                  profesional në estetike, parukeri, make-up, masazh dhe kujdes
+                  shëndetësor, duke sjellë standardet europiane në formimin
+                  shqiptar.
                 </p>
               </div>
 
@@ -417,9 +419,10 @@ export default function AboutPage() {
                 <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-purple-500"></div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Sot</h3>
                 <p className="text-gray-700">
-                  Sot, Akademia Afrodite është një emër i respektuar në
-                  industrinë e bukurisë dhe estetikës, me qindra studentë të
-                  diplomuar që punojnë në Shqipëri dhe jashtë vendit.
+                  Në rolin e saj si administratore dhe pedagoge, ajo drejton
+                  akademinë me vizion modern, duke krijuar mundësi reale për
+                  punësim dhe zhvillim për brezin e ri të profesionistëve në
+                  Shqipëri dhe jashtë saj.
                 </p>
               </div>
 
@@ -558,262 +561,87 @@ export default function AboutPage() {
 
       {/* Team Section - Redesigned */}
       <section className="py-16 md:py-24 bg-gray-50">
-        <div ref={teamRef} className="container mx-auto px-4">
+        <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
-              <span>Ekipi ynë</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
-              Ekipi Ynë <span className="text-purple-600">Profesional</span>
-            </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-700">
-              Njihuni me ekipin tonë të përkushtuar të profesionistëve që janë
-              të pasionuar për të ndarë njohuritë dhe ekspertizën e tyre.
-            </p>
+            {/* … your header stays the same … */}
           </div>
 
           {/* Grid of team cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* ── Team Member 1: Aferdita Ferracaku ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={teamInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="group"
-            >
-              <div className="relative overflow-hidden rounded-t-xl">
-                <Image
-                  src="/placeholder.svg?height=400&width=300&text=Aferdita"
-                  alt="Aferdita Ferracaku"
-                  width={300}
-                  height={400}
-                  className="object-cover w-full h-80 group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* Social media icons */}
-                <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                  <Mail className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Linkedin className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Instagram className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Facebook className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
+            {team.map((member, idx) => (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="group"
+              >
+                {/* Photo (with placeholder fallback) */}
+                <div className="relative overflow-hidden rounded-t-xl h-56 md:h-80">
+                  <Image
+                    src={member.photo || "/placeholder.svg"}
+                    alt={member.name}
+                    fill
+                    className="
+              object-cover object-center
+              transition-transform duration-500
+              md:group-hover:scale-105
+            "
+                  />
                 </div>
-              </div>
 
-              <div className="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-gray-100">
-                <h3 className="text-xl font-bold font-poppins text-gray-900 mb-1">
-                  Aferdita Ferracaku
-                </h3>
-                <p className="text-purple-600 mb-1 font-medium">
-                  Themeluese & Drejtore
-                </p>
-                <p className="text-gray-500 text-sm mb-4">22 vjet përvojë</p>
+                {/* Card body */}
+                <div className="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-gray-100">
+                  {/* Title clamped to 3 lines */}
+                  <h3
+                    className="
+              text-xl font-bold font-poppins text-gray-900 mb-1
+              line-clamp-3
+            "
+                  >
+                    {member.name}
+                  </h3>
 
-                {/* Short bio (two‐line clamp) */}
-                <p className="text-gray-700 text-sm h-[4.5rem] leading-6 overflow-hidden">
-                  Me mbi 22 vjet përvojë në industrinë e bukurisë dhe trajnime
-                  ndërkombëtare në Itali.
-                </p>
+                  <p
+                    className="
+      text-purple-600 mb-1 font-medium line-clamp-3 h-[4.5rem] overflow-hidden"
+                  >
+                    {member.role}
+                  </p>
+                  <p className="text-gray-500 text-sm mb-4">
+                    {member.experience}
+                  </p>
 
-                {/* “Shiko më shumë” button */}
-                <button
-                  onClick={() => setModalId("aferdita")}
-                  className="mt-2 text-purple-600 hover:text-purple-800 text-sm font-medium"
-                >
-                  Shiko më shumë
-                </button>
+                  {/* Bio clamped to 2 lines */}
+                  <p
+                    className="
+              text-gray-700 text-sm mb-4
+              line-clamp-2
+            "
+                  >
+                    {member.bio}
+                  </p>
 
-                {/* Contact info */}
-                <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-600">
-                  <div className="flex items-center">
-                    <Mail className="h-4 w-4 mr-1 text-purple-600" />
-                    <span>aferdita@afrodite.al</span>
+                  <button
+                    onClick={() => setModalId(member.id)}
+                    className="mt-2 text-purple-600 hover:text-purple-800 text-sm font-medium"
+                  >
+                    Shiko më shumë
+                  </button>
+
+                  <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-600">
+                    <div className="flex items-center">
+                      <Mail className="h-4 w-4 mr-1 text-purple-600" />
+                      <span>{member.email}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-
-            {/* ── Team Member 2: Michele Rossi ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={teamInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="group"
-            >
-              <div className="relative overflow-hidden rounded-t-xl">
-                <Image
-                  src="/placeholder.svg?height=400&width=300&text=Michele"
-                  alt="Michele Rossi"
-                  width={300}
-                  height={400}
-                  className="object-cover w-full h-80 group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* Social media icons */}
-                <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                  <Mail className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Linkedin className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Instagram className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Facebook className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-gray-100">
-                <h3 className="text-xl font-bold font-poppins text-gray-900 mb-1">
-                  Michele Rossi
-                </h3>
-                <p className="text-purple-600 mb-1 font-medium">
-                  Instruktor Makeup
-                </p>
-                <p className="text-gray-500 text-sm mb-4">12 vjet përvojë</p>
-
-                {/* Short bio */}
-                <p className="text-gray-700 text-sm h-[4.5rem] leading-6 overflow-hidden">
-                  Makeup artist me përvojë ndërkombëtare në evenimente të modës
-                  dhe televizion.
-                </p>
-
-                {/* “Shiko më shumë” button */}
-                <button
-                  onClick={() => setModalId("michele")}
-                  className="mt-2 text-purple-600 hover:text-purple-800 text-sm font-medium"
-                >
-                  Shiko më shumë
-                </button>
-
-                {/* Contact info */}
-                <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-600">
-                  <div className="flex items-center">
-                    <Mail className="h-4 w-4 mr-1 text-purple-600" />
-                    <span>michele@afrodite.al</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* ── Team Member 3: Vicenzo Bianchi ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={teamInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="group"
-            >
-              <div className="relative overflow-hidden rounded-t-xl">
-                <Image
-                  src="/placeholder.svg?height=400&width=300&text=Vicenzo"
-                  alt="Vicenzo Bianchi"
-                  width={300}
-                  height={400}
-                  className="object-cover w-full h-80 group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* Social media icons */}
-                <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                  <Mail className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Linkedin className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Instagram className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Facebook className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-gray-100">
-                <h3 className="text-xl font-bold font-poppins text-gray-900 mb-1">
-                  Vicenzo Bianchi
-                </h3>
-                <p className="text-purple-600 mb-1 font-medium">
-                  Instruktor Estetike
-                </p>
-                <p className="text-gray-500 text-sm mb-4">15 vjet përvojë</p>
-
-                {/* Short bio */}
-                <p className="text-gray-700 text-sm h-[4.5rem] leading-6 overflow-hidden">
-                  Specialist në trajtime estetike të avancuara me 15 vjet
-                  përvojë në spa luksoze.
-                </p>
-
-                {/* “Shiko më shumë” button */}
-                <button
-                  onClick={() => setModalId("vicenzo")}
-                  className="mt-2 text-purple-600 hover:text-purple-800 text-sm font-medium"
-                >
-                  Shiko më shumë
-                </button>
-
-                {/* Contact info */}
-                <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-600">
-                  <div className="flex items-center">
-                    <Mail className="h-4 w-4 mr-1 text-purple-600" />
-                    <span>vicenzo@afrodite.al</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* ── Team Member 4: Florinda Krasniqi ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={teamInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="group"
-            >
-              <div className="relative overflow-hidden rounded-t-xl">
-                <Image
-                  src="/placeholder.svg?height=400&width=300&text=Florinda"
-                  alt="Florinda Krasniqi"
-                  width={300}
-                  height={400}
-                  className="object-cover w-full h-80 group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                {/* Social media icons */}
-                <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                  <Mail className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Linkedin className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Instagram className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                  <Facebook className="h-5 w-5 text-white hover:text-purple-300 cursor-pointer" />
-                </div>
-              </div>
-
-              <div className="bg-white p-6 rounded-b-xl shadow-sm border border-t-0 border-gray-100">
-                <h3 className="text-xl font-bold font-poppins text-gray-900 mb-1">
-                  Florinda Krasniqi
-                </h3>
-                <p className="text-purple-600 mb-1 font-medium">
-                  Instruktore Manikyr & Pedikyr
-                </p>
-                <p className="text-gray-500 text-sm mb-4">10 vjet përvojë</p>
-
-                {/* Short bio */}
-                <p className="text-gray-700 text-sm h-[4.5rem] leading-6 overflow-hidden">
-                  Eksperte në dizajn thonjsh dhe teknika të avancuara të manikyr
-                  dhe pedikyr.
-                </p>
-
-                {/* “Shiko më shumë” button */}
-                <button
-                  onClick={() => setModalId("florinda")}
-                  className="mt-2 text-purple-600 hover:text-purple-800 text-sm font-medium"
-                >
-                  Shiko më shumë
-                </button>
-
-                {/* Contact info */}
-                <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-600">
-                  <div className="flex items-center">
-                    <Mail className="h-4 w-4 mr-1 text-purple-600" />
-                    <span>florinda@afrodite.al</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            ))}
           </div>
 
-          {/* Join Our Team Button */}
+          {/* Join our team CTA */}
           <div className="text-center mt-12">
             <Link href="/contact">
               <AnimatedButton className="bg-black hover:bg-black text-white">
@@ -824,180 +652,51 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* ── Modals Section ── */}
-        {modalId === "aferdita" && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6">
-            <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden">
-              {/* Close button */}
-              <button
-                onClick={() => setModalId(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-700"
-              >
-                ✕
-              </button>
+        {/* Modals */}
+        {team.map((member) =>
+          modalId === member.id ? (
+            <div
+              key={member.id}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6"
+            >
+              <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden">
+                {/* Close */}
 
-              {/* Modal image */}
-              <Image
-                src="/placeholder.svg?height=400&width=300&text=Aferdita"
-                alt="Aferdita Ferracaku"
-                width={300}
-                height={400}
-                className="object-cover w-full h-56"
-              />
-
-              <div className="p-6">
-                <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-1">
-                  Aferdita Ferracaku
-                </h3>
-                <p className="text-purple-600 mb-1 font-medium">
-                  Themeluese & Drejtore
-                </p>
-                <p className="text-gray-500 text-sm mb-4">22 vjet përvojë</p>
-                <p className="text-gray-700 mb-4">
-                  Aferdita Ferracaku është diplomuar në Itali në fushën e
-                  teknologjive estetike dhe ka punuar si trajnuese në akademi
-                  prestigjioze në Milano. Me mbi 22 vjet përvojë ndërkombëtare,
-                  ajo sjell praktikat më të përparuara brenda Afrodite
-                  Academy—nga trajnimet e makeup artistëve deri te procedurat më
-                  të sofistikuara të lazer-it estetik.
-                </p>
-                <div className="flex items-center text-sm text-gray-600">
-                  <Mail className="h-4 w-4 mr-1 text-purple-600" />
-                  <span>aferdita@afrodite.al</span>
+                {/* —————— IMAGE (fixed taller height) —————— */}
+                <div className="w-full relative h-[50vh] overflow-hidden">
+                  <Image
+                    src={member.photo || "/placeholder.svg"}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <button
+                  onClick={() => setModalId(null)}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 z-10"
+                >
+                  ✕
+                </button>
+                {/* —————— BODY —————— */}
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-1">
+                    {member.name}
+                  </h3>
+                  <p className="text-purple-600 mb-1 font-medium">
+                    {member.role}
+                  </p>
+                  <p className="text-gray-500 text-sm mb-4">
+                    {member.experience}
+                  </p>
+                  <p className="text-gray-700 mb-4">{member.bio}</p>
+                  <div className="flex items-center text-sm text-gray-600">
+                    <Mail className="h-4 w-4 mr-1 text-purple-600" />
+                    <span>{member.email}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-
-        {modalId === "michele" && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6">
-            <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden">
-              {/* Close button */}
-              <button
-                onClick={() => setModalId(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-700"
-              >
-                ✕
-              </button>
-
-              {/* Modal image */}
-              <Image
-                src="/placeholder.svg?height=400&width=300&text=Michele"
-                alt="Michele Rossi"
-                width={300}
-                height={400}
-                className="object-cover w-full h-56"
-              />
-
-              <div className="p-6">
-                <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-1">
-                  Michele Rossi
-                </h3>
-                <p className="text-purple-600 mb-1 font-medium">
-                  Instruktor Makeup
-                </p>
-                <p className="text-gray-500 text-sm mb-4">12 vjet përvojë</p>
-                <p className="text-gray-700 mb-4">
-                  Michele Rossi ka punuar si makeup artist drejtues në shfaqjet
-                  më prestigjioze të modës në Milano dhe Romë, me klientë VIP
-                  dhe revista kryesore. Ai sjell këtu teknikat e fundit të
-                  konturimit, stilet editorial, dhe truket e tij profesionale të
-                  airbrush-it, të cilat i mëson në secilin modul të kursit.
-                </p>
-                <div className="flex items-center text-sm text-gray-600">
-                  <Mail className="h-4 w-4 mr-1 text-purple-600" />
-                  <span>michele@afrodite.al</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {modalId === "vicenzo" && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6">
-            <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden">
-              {/* Close button */}
-              <button
-                onClick={() => setModalId(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-700"
-              >
-                ✕
-              </button>
-
-              {/* Modal image */}
-              <Image
-                src="/placeholder.svg?height=400&width=300&text=Vicenzo"
-                alt="Vicenzo Bianchi"
-                width={300}
-                height={400}
-                className="object-cover w-full h-56"
-              />
-
-              <div className="p-6">
-                <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-1">
-                  Vicenzo Bianchi
-                </h3>
-                <p className="text-purple-600 mb-1 font-medium">
-                  Instruktor Estetike
-                </p>
-                <p className="text-gray-500 text-sm mb-4">15 vjet përvojë</p>
-                <p className="text-gray-700 mb-4">
-                  Vicenzo Bianchi specializohet në teknikat më të fundit të
-                  trajtimeve me ultratinguj dhe radiofrekuencë për rinovimin e
-                  lëkurës, si dhe në protokollet anti‐ageing që përdoren në
-                  klinikat më elitare të Romës dhe Parisit.
-                </p>
-                <div className="flex items-center text-sm text-gray-600">
-                  <Mail className="h-4 w-4 mr-1 text-purple-600" />
-                  <span>vicenzo@afrodite.al</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {modalId === "florinda" && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6">
-            <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden">
-              {/* Close button */}
-              <button
-                onClick={() => setModalId(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-700"
-              >
-                ✕
-              </button>
-
-              {/* Modal image */}
-              <Image
-                src="/placeholder.svg?height=400&width=300&text=Florinda"
-                alt="Florinda Krasniqi"
-                width={300}
-                height={400}
-                className="object-cover w-full h-56"
-              />
-
-              <div className="p-6">
-                <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-1">
-                  Florinda Krasniqi
-                </h3>
-                <p className="text-purple-600 mb-1 font-medium">
-                  Instruktore Manikyr & Pedikyr
-                </p>
-                <p className="text-gray-500 text-sm mb-4">10 vjet përvojë</p>
-                <p className="text-gray-700 mb-4">
-                  Florinda Krasniqi ka udhëhequr laboratorin e manikyr‐pedikyr
-                  në Milano për 10 vite, ku fitoi eksperiencë në teknikat e
-                  akrilik-ut, gel‐lakut dhe nail‐art‐it 3D. Ajo sjell këtu
-                  trendet më të fundit të nail art për studentët tanë në Tiranë.
-                </p>
-                <div className="flex items-center text-sm text-gray-600">
-                  <Mail className="h-4 w-4 mr-1 text-purple-600" />
-                  <span>florinda@afrodite.al</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          ) : null
         )}
       </section>
 
@@ -1080,170 +779,69 @@ export default function AboutPage() {
 
       {/* Awards & Certifications Section - Completely Redesigned */}
       <section className="py-16 md:py-24 bg-gray-50 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-          <Image
-            src="/wave-pattern.svg"
-            alt="Decorative pattern"
-            width={256}
-            height={256}
-            className="object-contain"
-          />
-        </div>
+        {/* header, container etc. */}
 
-        <div
-          ref={certificationsRef}
-          className="container mx-auto px-4 relative z-10"
-        >
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
-              <span>Çmimet dhe certifikimet</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
-              Çmimet dhe{" "}
-              <span className="text-purple-600">Certifikimet Tona</span>
-            </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-700">
-              Certifikimet dhe çmimet tona janë të njohura ndërkombëtarisht dhe
-              dëshmojnë cilësinë e lartë të shërbimeve tona arsimore.
-            </p>
-          </div>
+        {/* central line */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-px bg-purple-200 hidden md:block" />
 
-          {/* Awards Timeline */}
-          <div className="relative mb-24">
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-purple-200 hidden md:block"></div>
-
-            <div className="space-y-16 relative">
-              {awards.map((award, index) => (
-                <motion.div
-                  key={award.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={certificationsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`flex flex-col ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  } items-center gap-8`}
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="space-y-16">
+            {awards.map((award, idx) => (
+              <div
+                key={award.id}
+                className={`flex flex-col items-center md:items-stretch md:flex-row ${
+                  idx % 2 === 0 ? "" : "md:flex-row-reverse"
+                } relative`}
+              >
+                {/* text side */}
+                <div
+                  className={`md:w-1/2 p-6 ${
+                    idx % 2 === 0
+                      ? "md:pr-16 text-center md:text-right"
+                      : "md:pl-16 text-center md:text-left"
+                  }`}
                 >
-                  {/* Year marker */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-white border-4 border-purple-500 hidden md:block"></div>
-
-                  {/* Award card */}
                   <div
-                    className={`md:w-1/2 ${
-                      index % 2 === 0
-                        ? "md:text-right md:pr-16"
-                        : "md:text-left md:pl-16"
+                    className={`inline-flex items-center px-3 py-1 rounded-full text-white text-sm mb-3 ${
+                      award.color === "purple"
+                        ? "bg-purple-600"
+                        : "bg-amber-500"
                     }`}
                   >
-                    <div
-                      className={`inline-flex items-center px-3 py-1 rounded-full text-white text-sm mb-3 ${
-                        award.color === "purple"
-                          ? "bg-purple-600"
-                          : "bg-amber-500"
-                      }`}
-                    >
-                      <Calendar className="h-3 w-3 mr-1" />
-                      <span>{award.year}</span>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {award.title}
-                    </h3>
-                    <p className="text-purple-600 font-medium mb-3">
-                      {award.organization}
-                    </p>
-                    <p className="text-gray-700">{award.description}</p>
+                    <Calendar className="h-4 w-4 mr-1" />
+                    <span>{award.year}</span>
                   </div>
+                  <h3 className="text-xl font-bold mb-1">{award.title}</h3>
+                  <p className="text-purple-600 font-medium mb-2">
+                    {award.organization}
+                  </p>
+                  <p className="text-gray-700">{award.description}</p>
+                </div>
 
-                  {/* Award image/trophy */}
-                  <div className="md:w-1/2 flex justify-center">
-                    <div
-                      className={`w-32 h-32 rounded-full flex items-center justify-center ${
-                        award.color === "purple"
-                          ? "bg-purple-100"
-                          : "bg-amber-100"
-                      }`}
-                    >
-                      <Trophy
-                        className={`h-16 w-16 ${
-                          award.color === "purple"
-                            ? "text-purple-600"
-                            : "text-amber-500"
-                        }`}
-                      />
-                    </div>
+                {/* image/icon side */}
+                <div className="md:w-1/2 flex justify-center p-6">
+                  <div
+                    className={`w-32 h-32 rounded-full flex items-center justify-center ${
+                      award.color === "purple"
+                        ? "bg-purple-100"
+                        : "bg-amber-100"
+                    }`}
+                  >
+                    <Image
+                      src={award.imageSrc}
+                      alt={award.title}
+                      width={64}
+                      height={64}
+                      className="object-contain"
+                    />
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+
+                {/* center “dot” marker */}
+                <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-purple-500 rounded-full hidden md:block" />
+              </div>
+            ))}
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={certificationsInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
-            >
-              <div className="bg-purple-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-purple-200 transition-colors duration-300">
-                <Award className="h-8 w-8 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" />
-              </div>
-              <h3 className="text-xl font-bold font-poppins text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300">
-                Certifikim Ndërkombëtar
-              </h3>
-              <p className="text-gray-700">
-                Të gjitha certifikatat tona janë të njohura ndërkombëtarisht dhe
-                të akredituara nga organizata prestigjioze në industrinë e
-                bukurisë.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={certificationsInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
-            >
-              <div className="bg-purple-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-purple-200 transition-colors duration-300">
-                <GraduationCap className="h-8 w-8 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" />
-              </div>
-              <h3 className="text-xl font-bold font-poppins text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300">
-                Diploma të Specializuara
-              </h3>
-              <p className="text-gray-700">
-                Ofrojmë diploma të specializuara në fusha të ndryshme të
-                bukurisë dhe estetikës, të cilat janë të vlefshme në tregun e
-                punës.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={certificationsInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.7 }}
-              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
-            >
-              <div className="bg-purple-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-purple-200 transition-colors duration-300">
-                <Globe className="h-8 w-8 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" />
-              </div>
-              <h3 className="text-xl font-bold font-poppins text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300">
-                Njohje Globale
-              </h3>
-              <p className="text-gray-700">
-                Certifikatat tona janë të njohura në mbi 30 vende të botës, duke
-                ju dhënë mundësinë për të punuar kudo.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 w-64 h-64 opacity-10">
-          <Image
-            src="/wave-pattern.svg"
-            alt="Decorative pattern"
-            width={256}
-            height={256}
-            className="object-contain"
-          />
         </div>
       </section>
 

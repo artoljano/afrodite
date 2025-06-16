@@ -62,11 +62,17 @@ const categories = [
     name: "Trajtimet e Fytyrës",
     icon: <User className="h-4 w-4" />,
   },
+  {
+    id: "pajisje",
+    name: "Pajisje & Trajtimet",
+    icon: <Eye className="h-4 w-4" />,
+  },
 ];
 
 const durations = [
   { id: "150-orë", name: "150 orë" },
   { id: "360-orë", name: "360 orë" },
+  { id: "intensiv", name: "Intensive " },
 ];
 
 export default function CoursesPage() {

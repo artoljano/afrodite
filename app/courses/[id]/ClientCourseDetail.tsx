@@ -112,7 +112,7 @@ export default function ClientCourseDetail({ course }: Props) {
                       width={800}
                       height={600}
                       className="
-      w-full h-full max-h-[600px]
+      w-full h-full max-h-[700px]
       object-cover
       transform              
       transition-transform duration-700

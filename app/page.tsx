@@ -332,7 +332,7 @@ export default function Home() {
         overflow-hidden 
         shadow-xl 
         group
-
+        cursor-pointer
         /* heights: 200px on xs, 300px on sm, 400px on md+, 60vh on xl+ */
         h-[400px] 
         sm:h-[90vh] 

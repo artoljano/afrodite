@@ -1,4 +1,4 @@
-// data/Questions.ts
+// data/questions.ts
 export interface Question {
   question: string;
   answer: string;

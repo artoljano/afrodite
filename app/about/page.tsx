@@ -27,6 +27,7 @@ import EnhancedTimeline from "@/components/enhanced-timeline";
 import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 
 // Timeline events data
 const timelineEvents = [
@@ -151,15 +152,44 @@ export default function AboutPage() {
     threshold: 0.1,
   });
 
+  const AlumniCarousel = dynamic(() => import("@/components/alumni-carousel"), {
+    ssr: false,
+  });
+
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <VideoBackground
-        className="py-20 md:py-32 bg-gradient-to-r from-black to-purple-900"
-        showControls={true}
-      >
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
+      <section className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden">
+        {/* Background pattern */}
+        <div
+          className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"
+          aria-hidden="true"
+        />
+        <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+          <Image
+            src="/wave-pattern.svg"
+            alt=""
+            width={256}
+            height={256}
+            className="object-contain"
+          />
+        </div>
+
+        <VideoBackground
+          showControls
+          className="relative z-10 pointer-events-none"
+        >
+          {/* empty, we only need its background + controls */}
+        </VideoBackground>
+
+        <div className="container mx-auto px-4 relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-center max-w-3xl mx-auto"
+          >
             <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-6">
               <Sparkles className="h-4 w-4 mr-2 text-purple-400" />
               <span>Njihuni me historinë tonë</span>
@@ -167,32 +197,29 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-white mb-6">
               Rreth <span className="text-purple-400">Afrodite Academy</span>
             </h1>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-8"></div>
+            <div className="h-1 w-24 bg-purple-500 mx-auto mb-8" />
             <p className="text-lg text-gray-300 mb-8">
               Akademia kryesore për kurse profesionale në Shqipëri, me një
               histori të pasur dhe një vizion për të ardhmen.
             </p>
-
-            {/* Scroll indicator */}
-            <motion.div
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
-            >
-              <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center pt-2">
-                <motion.div
-                  className="w-1.5 h-1.5 bg-white rounded-full"
-                  animate={{ y: [0, 16, 0] }}
-                  transition={{
-                    repeat: Number.POSITIVE_INFINITY,
-                    duration: 1.5,
-                  }}
-                />
-              </div>
-            </motion.div>
-          </div>
+          </motion.div>
         </div>
-      </VideoBackground>
+
+        {/* Scroll indicator fixed at bottom of this section */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        >
+          <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center pt-2">
+            <motion.div
+              className="w-1.5 h-1.5 bg-white rounded-full"
+              animate={{ y: [0, 16, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
+            />
+          </div>
+        </motion.div>
+      </section>
 
       {/* Main Intro Section */}
       <section className="py-16 md:py-24 bg-white">

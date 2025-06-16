@@ -31,7 +31,7 @@ import { AnimatedButton } from "@/components/animated-button";
 import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { QUESTIONS } from "@/data/Questions";
+import { QUESTIONS } from "@/data/questions";
 import { courses } from "@/data/courses";
 
 export default function Home() {

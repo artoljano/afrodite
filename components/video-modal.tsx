@@ -1,90 +1,117 @@
-"use client"
-import { useEffect, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { X } from "lucide-react"
+// components/VideoModal.tsx
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 
 interface VideoModalProps {
-  isOpen: boolean
-  onClose: () => void
-  videoSrc: string
-  title: string
+  isOpen: boolean;
+  onClose(): void;
+  videoSrc: string;
+  title: string;
 }
 
-export default function VideoModal({ isOpen, onClose, videoSrc, title }: VideoModalProps) {
-  const videoRef = useRef<HTMLVideoElement>(null)
+export default function VideoModal({
+  isOpen,
+  onClose,
+  videoSrc,
+  title,
+}: VideoModalProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [mounted, setMounted] = useState(false);
 
-  // Handle ESC key press
+  // we only render portal on client
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        onClose()
-      }
-    }
+    setMounted(true);
+  }, []);
 
+  // ESC key + lock scroll
+  useEffect(() => {
+    const handle = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     if (isOpen) {
-      document.addEventListener("keydown", handleKeyDown)
-      document.body.style.overflow = "hidden" // Prevent scrolling when modal is open
+      document.body.style.overflow = "hidden";
+      document.addEventListener("keydown", handle);
     }
-
     return () => {
-      document.removeEventListener("keydown", handleKeyDown)
-      document.body.style.overflow = "auto" // Restore scrolling when modal is closed
-    }
-  }, [isOpen, onClose])
+      document.body.style.overflow = "auto";
+      document.removeEventListener("keydown", handle);
+    };
+  }, [isOpen, onClose]);
 
-  // Play/pause video when modal opens/closes
+  // auto play / pause
   useEffect(() => {
-    if (isOpen && videoRef.current) {
-      videoRef.current.play()
-    } else if (videoRef.current) {
-      videoRef.current.pause()
-    }
-  }, [isOpen])
+    if (isOpen) videoRef.current?.play();
+    else videoRef.current?.pause();
+  }, [isOpen]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
+        // ============ backdrop ============
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
           onClick={onClose}
+          style={{ zIndex: 9999 }}
+          className="
+            fixed inset-0
+            flex items-start justify-center
+            pt-20 px-4 pb-4
+            bg-black/70 backdrop-blur-sm
+          "
         >
+          {/* ========== modal card ========== */}
           <motion.div
+            onClick={(e) => e.stopPropagation()}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="bg-black relative rounded-xl overflow-hidden w-full max-w-4xl max-h-[80vh]"
-            onClick={(e) => e.stopPropagation()}
+            className="
+              relative
+              bg-black rounded-xl overflow-hidden
+              aspect-[9/16] w-full max-w-sm
+            "
           >
+            {/* close */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 bg-black/50 text-white p-2 rounded-full hover:bg-black/80 transition-colors"
               aria-label="Close video"
+              className="
+                absolute top-2 right-2 z-10
+                bg-black/50 text-white p-2 rounded-full
+                hover:bg-black/80 transition-colors
+              "
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             </button>
 
-            <div className="aspect-video relative">
-              <video
-                ref={videoRef}
-                src={videoSrc}
-                controls
-                className="w-full h-full object-cover"
-                autoPlay
-                playsInline
-              />
-            </div>
+            {/* video */}
+            <video
+              ref={videoRef}
+              src={videoSrc}
+              controls
+              className="w-full h-full object-cover"
+              autoPlay
+              playsInline
+            />
 
-            <div className="p-4 bg-black text-white">
-              <h3 className="text-xl font-bold">{title}</h3>
+            {/* title bar */}
+            <div className="absolute bottom-0 w-full bg-black/70 p-2 text-center">
+              <h3 className="text-sm font-medium text-white truncate">
+                {title}
+              </h3>
             </div>
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
-  )
+    </AnimatePresence>,
+    document.body
+  );
 }

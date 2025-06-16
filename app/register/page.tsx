@@ -1,45 +1,61 @@
-// app/register/page.tsx
 "use client";
 
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { courses } from "@/data/courses";
 import { AnimatedButton } from "@/components/animated-button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function RegisterPage() {
+  // Grab ?courseId= from the URL
+  const searchParams = useSearchParams();
+  const courseIdParam = searchParams.get("courseId");
+  // Parse it or fall back to the first course
+  const initialCourseId = courseIdParam
+    ? parseInt(courseIdParam, 10) || courses[0]?.id
+    : courses[0]?.id;
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
-    selectedCourseId: courses.length > 0 ? courses[0].id : 0,
+    selectedCourseId: initialCourseId,
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (
+  // If the URL param changes, update the select
+  useEffect(() => {
+    if (courseIdParam) {
+      const id = parseInt(courseIdParam, 10);
+      if (!isNaN(id)) {
+        setFormData((f) => ({ ...f, selectedCourseId: id }));
+      }
+    }
+  }, [courseIdParam]);
+
+  function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  ) {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: name === "selectedCourseId" ? parseInt(value, 10) : value,
     }));
-  };
+  }
 
-  const handleSubmit = (e: FormEvent) => {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     console.log("Registration data:", formData);
     setSubmitted(true);
-  };
+  }
 
   return (
     <div className="relative bg-gradient-to-br from-black via-purple-900 to-black min-h-screen pb-16">
-      {/* Decorative overlay at top */}
       <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-10 pointer-events-none" />
 
       <div className="container mx-auto px-4 pt-24 relative z-10">
-        {/* Back to Courses */}
         <div className="mb-6">
           <Link
             href="/courses"
@@ -50,7 +66,6 @@ export default function RegisterPage() {
           </Link>
         </div>
 
-        {/* If submitted, show thank-you panel */}
         {submitted ? (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -73,7 +88,6 @@ export default function RegisterPage() {
           </motion.div>
         ) : (
           <>
-            {/* Header & Subtitle */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -93,7 +107,6 @@ export default function RegisterPage() {
               </p>
             </motion.div>
 
-            {/* Form Section */}
             <AnimatePresence>
               <motion.div
                 key="form-container"
@@ -195,7 +208,7 @@ export default function RegisterPage() {
                     <select
                       name="selectedCourseId"
                       id="selectedCourseId"
-                      value={formData.selectedCourseId}
+                      value={String(formData.selectedCourseId)}
                       onChange={handleChange}
                       required
                       className="w-full border border-gray-600 bg-black/50 text-white rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
@@ -203,16 +216,17 @@ export default function RegisterPage() {
                       {courses.map((course) => (
                         <option
                           key={course.id}
-                          value={course.id}
+                          value={String(course.id)}
                           className="bg-black text-white"
                         >
-                          {course.title} • {course.duration} • {course.price}
+                          {course.title}{" "}
+                          {/* • {course.duration} • {course.price} */}
                         </option>
                       ))}
                     </select>
                   </motion.div>
 
-                  {/* Submit Button */}
+                  {/* Submit */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -231,7 +245,7 @@ export default function RegisterPage() {
                   </motion.div>
                 </form>
 
-                {/* FAQ Accordion (optional) */}
+                {/* FAQ Accordion */}
                 <div className="mt-12 text-left p-6 bg-black/40 backdrop-blur-sm rounded-xl border border-white/10">
                   <h3 className="text-xl font-bold text-white mb-6 text-center">
                     Pyetje të Shpeshta

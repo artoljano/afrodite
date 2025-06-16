@@ -16,6 +16,11 @@ import {
   Sparkles,
   GraduationCap,
   CheckCircle,
+  Scissors,
+  Eye,
+  Feather,
+  ClipboardList,
+  User,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -42,13 +47,26 @@ const categories = [
   },
   { id: "hair", name: "Stilim Flokësh", icon: <Users className="h-4 w-4" /> },
   { id: "massage", name: "Masazh", icon: <BookOpen className="h-4 w-4" /> },
+
+  // —————————————— missing ones ——————————————
+  { id: "barber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
+  { id: "brows", name: "Vetulla", icon: <Eye className="h-4 w-4" /> },
+  { id: "pmu", name: "PMU", icon: <Feather className="h-4 w-4" /> },
+  {
+    id: "smp",
+    name: "Scalp Micropigmentation",
+    icon: <ClipboardList className="h-4 w-4" />,
+  },
+  {
+    id: "facials",
+    name: "Trajtimet e Fytyrës",
+    icon: <User className="h-4 w-4" />,
+  },
 ];
 
 const durations = [
-  { id: "3-mujore", name: "3 Mujore" },
-  { id: "6-mujore", name: "6 Mujore" },
-  { id: "9-mujore", name: "9 Mujore" },
-  { id: "2-vjecare", name: "2 Vjeçare" },
+  { id: "150-orë", name: "150 orë" },
+  { id: "360-orë", name: "360 orë" },
 ];
 
 export default function CoursesPage() {
@@ -386,20 +404,13 @@ export default function CoursesPage() {
                     </div>
 
                     <div className="mt-auto pt-4 border-t border-gray-100">
-                      <div className="flex justify-between items-center mb-4">
-                        <div className="flex items-center text-sm text-gray-600">
-                          <Calendar className="h-4 w-4 mr-1 text-purple-600" />
-                          <span>Fillon: {course.startDate}</span>
-                        </div>
-                        <div className="font-bold text-gray-900">
-                          {course.price}
-                        </div>
+                      <div className="flex items-center text-sm text-gray-600 mb-4">
+                        <Calendar className="h-4 w-4 mr-1 text-purple-600" />
+                        <span>{course.schedule}</span>
                       </div>
-
                       <Link href={`/courses/${course.id}`}>
                         <AnimatedButton className="w-full bg-black hover:bg-black text-white">
                           Mëso më shumë
-                          {/* Change from group-hover to hover */}
                           <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
                         </AnimatedButton>
                       </Link>

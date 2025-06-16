@@ -42,11 +42,16 @@ export interface Course {
   materials: string[];
   testimonials: Testimonial[];
   faqs: FAQ[];
-
-  // New attributes:
   featured: boolean;
   students: number;
-  videoSrc?: string; // Optional video source for course preview
+  videoSrc?: string;
+
+  // ← NEW!
+  media: {
+    type: "image" | "video";
+    src: string;
+    alt?: string;
+  }[];
 }
 
 // —————————————————————————————————————————————————————————————
@@ -187,6 +192,12 @@ export const courses: Course[] = [
     ],
     featured: true,
     students: 16,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
    {
     id: 4,
@@ -280,7 +291,14 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/videos/Berber-media.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
+    videoSrc: "/videos/Kurs-berber.mp4",
   },
   {
     id: 5,
@@ -401,7 +419,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/videos/Berber-media.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 6,
@@ -629,6 +653,12 @@ export const courses: Course[] = [
     ],
     featured: false,
     students: 20,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 7,
@@ -751,7 +781,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 8,
@@ -878,7 +914,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
 {
     id: 9,
@@ -1001,7 +1043,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 10,
@@ -1132,7 +1180,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 11,
@@ -1238,7 +1292,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 12,
@@ -1357,7 +1417,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 13,
@@ -1444,7 +1510,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 14,
@@ -1545,7 +1617,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 15,
@@ -1628,7 +1706,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 16,
@@ -1730,7 +1814,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
     {
     id: 17,
@@ -1844,7 +1934,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 18,
@@ -1967,7 +2063,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 19,
@@ -2074,7 +2176,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 20,
@@ -2189,7 +2297,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
 {
     id: 21,
@@ -2298,7 +2412,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 22,
@@ -2415,7 +2535,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 23,
@@ -2515,7 +2641,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 24,
@@ -2619,7 +2751,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 25,
@@ -2734,7 +2872,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 26,
@@ -2860,7 +3004,13 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   },
   {
     id: 27,
@@ -3009,6 +3159,12 @@ export const courses: Course[] = [
       }
     ],
     featured: false,
-    students: 0
+    students: 0,
+    media: [
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+1", alt: "Advanced barber course image 1" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+2", alt: "Advanced barber course image 2" },
+      { type: "video", src: "/placeholder-video.mp4", alt: "Advanced barber overview video" },
+      { type: "image", src: "/placeholder.svg?height=600&width=800&text=Barber+Adv+3", alt: "Advanced barber course image 3" },
+    ],
   }
 ];

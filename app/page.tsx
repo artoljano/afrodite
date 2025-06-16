@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import {
   ChevronRight,
@@ -18,6 +18,7 @@ import {
   Sparkles,
   Quote,
   Video,
+  Play,
 } from "lucide-react";
 import CourseCard from "@/components/course-card";
 import TestimonialSlider from "@/components/testimonial-slider";
@@ -30,6 +31,8 @@ import { AnimatedButton } from "@/components/animated-button";
 import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { QUESTIONS } from "@/data/Questions";
+import { courses } from "@/data/courses";
 
 export default function Home() {
   const [heroRef, heroInView] = useInView({
@@ -51,6 +54,9 @@ export default function Home() {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   // Animation variants for staggered animations
   const containerVariants = {
@@ -88,13 +94,18 @@ export default function Home() {
   //Video Handler Section
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const featured = courses.filter((c) => c.featured);
+  const others = courses.filter((c) => !c.featured);
+  const selection = [...featured, ...others].slice(0, 3);
+
   return (
     <div className="flex flex-col w-full">
-      {/* Hero Section with Video Background */}
-      <VideoBackground
-        overlayOpacity={0.85}
-        className="min-h-screen flex items-center py-32 md:py-0 bg-gradient-to-r from-black to-purple-900"
-      >
+      <section className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden">
+        {/* Hero Section with Video Background */}
+        {/* <VideoBackground
+          overlayOpacity={0.85}
+          className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden"
+        > */}
         <div className="container px-4 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -137,8 +148,8 @@ export default function Home() {
                 </AnimatedButton>
                 <AnimatedButton
                   size="lg"
-                  variant="outline"
-                  className="border-white hover:bg-purple-500/20 text-white"
+                  variant="secondary"
+                  className="bg-purple-600 hover:bg-purple-700"
                 >
                   KONTAKTO TANI
                 </AnimatedButton>
@@ -225,8 +236,8 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-      </VideoBackground>
-
+        {/* </VideoBackground> */}
+      </section>
       {/* Quick Info Section - NEW */}
       <section className="py-8 bg-white relative z-10">
         <div className="container mx-auto px-4">
@@ -336,16 +347,21 @@ export default function Home() {
                   src="/videos/Intro.mp4"
                   width={800}
                   height={600}
-                  className="object-fit group-hover:scale-105 transition-transform duration-700 mb-[10vh]"
+                  className="object-fit group-hover:scale-105 transition-transform duration-700 mb-[10vh] cursor-pointer"
                 />
 
-                <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <button
+                <div className="absolute inset-0 flex items-center justify-center z-20 ">
+                  {/* <button
                     onClick={() => setIsModalOpen(true)}
-                    className="w-16 h-16 bg-purple-600 hover:bg-purple-700 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                    className="w-16 h-16 flex items-center justify-center group-hover:scale-110"
                   >
-                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-white border-b-[10px] border-b-transparent ml-1"></div>
-                  </button>
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center"> */}
+                  <Play
+                    onClick={() => setIsModalOpen(true)}
+                    className="h-12 w-12 text-purple-500"
+                  />
+                  {/* </div>
+                  </button> */}
                 </div>
                 <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <p className="text-white font-medium">
@@ -777,45 +793,14 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <CourseCard
-              title="Kurs Profesional për Makeup Artist"
-              description="Mësoni teknikat e fundit të makeup nga profesionistët e industrisë."
-              image="/placeholder.svg?height=300&width=400&text=Makeup+Course"
-              delay={0.1}
-              inView={coursesInView}
-              learningPoints={[
-                "Teknika profesionale të makeup për evenimente",
-                "Makeup artistik dhe special effects",
-                "Përdorimi i produkteve profesionale",
-                "Krijimi i portofolit personal",
-              ]}
-            />
-            <CourseCard
-              title="Kurs Profesional për Manikyr & Pedikyr"
-              description="Bëhuni specialist i kualifikuar në kujdesin e thonjve dhe trajtimeve estetike."
-              image="/placeholder.svg?height=300&width=400&text=Nails+Course"
-              delay={0.2}
-              inView={coursesInView}
-              learningPoints={[
-                "Teknika të avancuara të manikyr dhe pedikyr",
-                "Aplikimi i thonjve artificialë",
-                "Dizajne dhe dekorime artistike",
-                "Kujdesi dhe trajtimi i problemeve të thonjve",
-              ]}
-            />
-            <CourseCard
-              title="Kurs Profesional për Estetikë"
-              description="Mësoni trajtimet më të avancuara të lëkurës dhe procedurat estetike."
-              image="/placeholder.svg?height=300&width=400&text=Esthetics+Course"
-              delay={0.3}
-              inView={coursesInView}
-              learningPoints={[
-                "Trajtime profesionale të fytyrës",
-                "Teknika të depilimit dhe epilimit",
-                "Trajtime anti-aging dhe hidratimi",
-                "Përdorimi i aparaturave moderne estetike",
-              ]}
-            />
+            {selection.map((c, i) => (
+              <CourseCard
+                key={c.id}
+                course={c}
+                delay={(i + 1) * 0.1}
+                inView={coursesInView}
+              />
+            ))}
           </div>
 
           <motion.div
@@ -892,8 +877,8 @@ export default function Home() {
               <Link href="/contact">
                 <AnimatedButton
                   size="lg"
-                  variant="outline"
-                  className="bg-purple-600 text-white hover:bg-purple-700 border border-purple-500/30"
+                  variant="secondary"
+                  className="bg-purple-600 hover:bg-purple-700"
                 >
                   NA KONTAKTONI
                 </AnimatedButton>
@@ -905,35 +890,45 @@ export default function Home() {
               <h3 className="text-xl font-bold text-white mb-6 text-center">
                 Pyetje të Shpeshta
               </h3>
+
               <div className="space-y-4">
-                <div className="border-b border-white/10 pb-4">
-                  <button className="flex justify-between items-center w-full text-left">
-                    <span className="text-white font-medium">
-                      Sa zgjat një kurs profesional?
-                    </span>
-                    <ChevronRight className="h-5 w-5 text-purple-400 transform rotate-90" />
-                  </button>
-                  <div className="mt-2 text-gray-300 text-sm">
-                    Kurset tona profesionale zgjasin nga 1 deri në 6 muaj, në
-                    varësi të programit dhe nivelit të zgjedhur.
+                {QUESTIONS.map((faq, idx) => (
+                  <div key={idx} className="border-b border-white/10 pb-4">
+                    <button
+                      onClick={() => toggle(idx)}
+                      className="flex justify-between items-center w-full text-left"
+                    >
+                      <span className="text-white font-medium">
+                        {faq.question}
+                      </span>
+                      <ChevronRight
+                        className={`h-5 w-5 text-purple-400 transform transition-transform duration-200 ${
+                          openIndex === idx ? "rotate-90" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {/* AnimatePresence will handle mounting/unmounting animation */}
+                    <AnimatePresence initial={false}>
+                      {openIndex === idx && (
+                        <motion.div
+                          key="content"
+                          initial="collapsed"
+                          animate="open"
+                          exit="collapsed"
+                          variants={{
+                            open: { height: "auto", opacity: 1, marginTop: 8 },
+                            collapsed: { height: 0, opacity: 0, marginTop: 0 },
+                          }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden text-gray-300 text-sm"
+                        >
+                          <div className="py-2">{faq.answer}</div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
-                </div>
-                <div className="border-b border-white/10 pb-4">
-                  <button className="flex justify-between items-center w-full text-left">
-                    <span className="text-white font-medium">
-                      A ofrohen kurse online?
-                    </span>
-                    <ChevronRight className="h-5 w-5 text-purple-400" />
-                  </button>
-                </div>
-                <div className="border-b border-white/10 pb-4">
-                  <button className="flex justify-between items-center w-full text-left">
-                    <span className="text-white font-medium">
-                      Si mund të regjistrohem?
-                    </span>
-                    <ChevronRight className="h-5 w-5 text-purple-400" />
-                  </button>
-                </div>
+                ))}
               </div>
             </div>
           </div>

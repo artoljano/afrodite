@@ -17,6 +17,7 @@ import {
   GraduationCap,
   CheckCircle,
 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
@@ -439,9 +440,9 @@ export default function CoursesPage() {
                 <span className="text-purple-600">Kurseve Tona</span>
               </h2>
               <p className="text-gray-700 mb-8">
-                Kurset tona profesionale ofrojnë një sërë përfitimesh që ju
-                ndihmojnë të arrini qëllimet tuaja profesionale dhe të zhvilloni
-                aftësitë tuaja në industrinë e bukurisë.
+                Në Afrodite Academy, çdo kurs është konceptuar për t’ju pajisur
+                me njohuritë dhe aftësitë më të përparuara në industrinë e
+                bukurisë, duke hapur rrugën drejt suksesit tuaj profesional.
               </p>
 
               <div className="space-y-6">
@@ -454,9 +455,9 @@ export default function CoursesPage() {
                       Certifikim Ndërkombëtar
                     </h3>
                     <p className="text-gray-700">
-                      Të gjitha kurset tona ofrojnë certifikime të njohura
-                      ndërkombëtarisht që ju ndihmojnë të avanconi karrierën
-                      tuaj kudo në botë.
+                      Të gjithë studentët marrin certifikata të akredituara
+                      ndërkombëtarisht nga Afrodite Academy, që ju mundësojnë të
+                      konkurroni dhe të punësoni kudo në botë.
                     </p>
                   </div>
                 </div>
@@ -467,12 +468,13 @@ export default function CoursesPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
-                      Instruktorë Profesionistë
+                      Mentorë me eksperiencë ndërkombëtare
                     </h3>
                     <p className="text-gray-700">
-                      Mësoni nga instruktorë me përvojë ndërkombëtare që janë
-                      ekspertë në fushat e tyre dhe të përkushtuar ndaj suksesit
-                      tuaj.
+                      Instruktorët tanë janë profesionistë të njohur
+                      ndërkombëtarisht, që sjellin përvojën e tyre praktike në
+                      çdo seancë dhe ju udhëheqin hap pas hapi drejt
+                      ekspertizës.
                     </p>
                   </div>
                 </div>
@@ -483,12 +485,47 @@ export default function CoursesPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
-                      Praktikë Intensive
+                      Praktikë e fokusuar në rezultate
                     </h3>
                     <p className="text-gray-700">
-                      Kurset tona përfshijnë praktikë intensive që ju lejon të
-                      aplikoni njohuritë tuaja në situata reale dhe të ndërtoni
-                      një portofol profesional.
+                      Në Afrodite Academy, pjesa praktike zë pjesën më të madhe
+                      të programit: ju punoni me pajisje dhe produkte premium,
+                      zhvilloni raste studimi reale dhe ndërtoni portofolin tuaj
+                      profesional nën mbikëqyrjen e mentorëve.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
+                    <Calendar className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      Networking dhe mundësi karriere
+                    </h3>
+                    <p className="text-gray-700">
+                      Si pjesë e komunitetit Afrodite Academy, keni akses në
+                      evente ekskluzive rrjetëzimi, bashkëpunime me qendra
+                      estetike dhe mundësi praktike drejtëpërdrejt nga partnerët
+                      tanë të industrisë.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
+                    <GraduationCap className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                      Mbështetje paskursore
+                    </h3>
+                    <p className="text-gray-700">
+                      Edhe pas përfundimit të kursit, Afrodite Academy ju ofron
+                      workshop-e shtesë, seminare dhe akses në grupin tonë
+                      profesional për t’ju ndihmuar të qëndroni gjithmonë në
+                      majë të trendeve.
                     </p>
                   </div>
                 </div>

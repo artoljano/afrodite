@@ -1,36 +1,46 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Phone, Mail, Menu, X, Facebook, Instagram, Linkedin, ChevronDown, Search } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
-import { cn } from "@/lib/utils"
-import { usePathname } from "next/navigation"
-import { AnimatedButton } from "@/components/animated-button"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  Phone,
+  Mail,
+  Menu,
+  X,
+  Facebook,
+  Instagram,
+  Linkedin,
+  ChevronDown,
+  Search,
+} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
+import { AnimatedButton } from "@/components/animated-button";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close mobile menu when changing routes
   useEffect(() => {
-    setMobileMenuOpen(false)
-  }, [pathname])
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className="w-full fixed top-0 left-0 z-50">
@@ -88,7 +98,12 @@ export default function Header() {
       </div>
 
       {/* Main Navigation */}
-      <div className={cn("bg-white transition-all duration-300", isScrolled ? "shadow-md" : "shadow-sm")}>
+      <div
+        className={cn(
+          "bg-white transition-all duration-300",
+          isScrolled ? "shadow-md" : "shadow-sm"
+        )}
+      >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -101,7 +116,9 @@ export default function Header() {
                 className="transition-all duration-300"
               />
               <div className="hidden sm:block">
-                <h1 className="text-base font-bold text-navy-900 leading-tight">Afrodite Academy</h1>
+                <h1 className="text-base font-bold text-navy-900 leading-tight">
+                  Afrodite Academy
+                </h1>
               </div>
             </Link>
 
@@ -118,7 +135,9 @@ export default function Header() {
                   href={item.path}
                   className={cn(
                     "relative px-5 py-2 mx-1 text-sm font-medium group flex items-center",
-                    pathname === item.path ? "text-purple-600" : "text-gray-700 hover:text-purple-600",
+                    pathname === item.path
+                      ? "text-purple-600"
+                      : "text-gray-700 hover:text-purple-600"
                   )}
                 >
                   <span className="relative z-10">{item.name}</span>
@@ -128,7 +147,7 @@ export default function Header() {
                   <span
                     className={cn(
                       "absolute bottom-0 left-0 h-0.5 bg-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300",
-                      pathname === item.path && "scale-x-100",
+                      pathname === item.path && "scale-x-100"
                     )}
                   />
                 </Link>
@@ -146,7 +165,11 @@ export default function Header() {
               </button>
 
               {/* CTA Button */}
-              <AnimatedButton size="sm" variant="secondary" className="hidden md:flex">
+              <AnimatedButton
+                size="sm"
+                variant="secondary"
+                className="hidden md:flex"
+              >
                 Regjistrohu Tani
               </AnimatedButton>
 
@@ -156,7 +179,11 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               >
-                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {mobileMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
               </button>
             </div>
           </div>
@@ -188,7 +215,7 @@ export default function Header() {
                       "font-medium transition-colors py-2 px-4 rounded-lg flex items-center justify-between text-sm",
                       pathname === item.path
                         ? "bg-purple-100 text-purple-700"
-                        : "text-black hover:bg-purple-50 hover:text-purple-700",
+                        : "text-black hover:bg-purple-50 hover:text-purple-700"
                     )}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -251,7 +278,11 @@ export default function Header() {
               </div>
 
               <div className="mt-6">
-                <AnimatedButton variant="secondary" className="w-full" onClick={() => setMobileMenuOpen(false)}>
+                <AnimatedButton
+                  variant="secondary"
+                  className="w-full"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   Regjistrohu Tani
                 </AnimatedButton>
               </div>
@@ -260,5 +291,5 @@ export default function Header() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }

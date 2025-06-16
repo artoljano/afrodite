@@ -314,13 +314,29 @@ export default function Home() {
               className="relative"
             >
               {/* Video player with play button */}
-              <div className="relative rounded-2xl overflow-hidden shadow-xl group">
+              <div
+                className="
+        relative 
+        rounded-2xl 
+        overflow-hidden 
+        shadow-xl 
+        group
+
+        /* heights: 200px on xs, 300px on sm, 400px on md+, 60vh on xl+ */
+        h-[400px] 
+        sm:h-[90vh] 
+        md:h-[90vh] 
+        xl:h-[90vh]
+        
+        w-full
+      "
+              >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                 <video
-                  src="/videos/fileTest.mp4"
+                  src="/videos/Intro.MOV"
                   width={800}
                   height={600}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
+                  className="object-fit group-hover:scale-105 transition-transform duration-700 mb-[10vh]"
                 />
 
                 <div className="absolute inset-0 flex items-center justify-center z-20">
@@ -344,7 +360,7 @@ export default function Home() {
                 <VideoModal
                   isOpen={isModalOpen}
                   onClose={() => setIsModalOpen(false)}
-                  videoSrc="/videos/fileTest.mp4"
+                  videoSrc="/videos/Intro.MOV"
                   title="Video Prezantuese"
                 />
               </div>

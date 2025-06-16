@@ -269,11 +269,13 @@ export default function AboutPage() {
                   Njohuri të Reja
                 </h3>
                 <p className="text-gray-700">
-                  Akademia Italiane e Mirëqenies Afrodite ofron njohuri të reja
-                  në çdo fazë të karrierës tuaj. Teknikat, produktet dhe idetë
-                  më të fundit ndihmonjë për të përmbushur nevojat e sotme
-                  profesionale dhe për të prezantuar zhvillimet e fundit në
-                  tendencat globale.
+                  Në Afrodite Academy (A.I.W.A), ne përkushtohemi t’ju ofrojmë
+                  dije të përditësuara në çdo stad të karrierës suaj
+                  profesionale. Përmes moduleve tona praktike, teknikat më të
+                  avancuara, produktet inovative dhe strategjitë më të fundit të
+                  industrisë ju pajisin për të përmbushur kërkesat e tregut dhe
+                  për të qëndruar përpara në zhvillimet globale të bukurisë dhe
+                  mirëqenies.
                 </p>
               </div>
 
@@ -283,11 +285,13 @@ export default function AboutPage() {
                   Qëllimi Ynë
                 </h3>
                 <p className="text-gray-700">
-                  Qëllimi ynë është që çdo student të arrijë suksesin e
-                  dëshiruar dhe të rrithëhet në Akademinë Italiane të Mirëqenies
-                  Afrodite për trajnime të vazhdueshme profesionale (kurse
-                  intensive, masterklasa, aktivitete dhe seminare të ndryshme,
-                  sipas specializimit të tyre).
+                  Në Afrodite Academy synojmë që çdo kursant të realizojë
+                  potencialin e tij dhe të fitojë aftësitë e nevojshme për t’u
+                  bërë profesionist i vlerësuar në industrinë e bukurisë. Përmes
+                  programeve tona të specializuara—kurse intensive, masterklasa
+                  me ekspertë italianë, seminare praktike dhe aktivitete të
+                  përvitshme—ne përgatitim çdo student për trajnime të avancuara
+                  dhe për mundësi të vazhdueshme zhvillimi profesional.
                 </p>
               </div>
             </motion.div>

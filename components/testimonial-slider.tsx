@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, Quote, Play, Star } from "lucide-react"
-import VideoModal from "./video-modal"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote, Play, Star } from "lucide-react";
+import VideoModal from "./video-modal";
 
 const testimonials = [
   {
@@ -41,50 +41,50 @@ const testimonials = [
     rating: 4,
     location: "Vlorë",
   },
-]
+];
 
 export default function TestimonialSlider() {
-  const [current, setCurrent] = useState(0)
-  const [autoplay, setAutoplay] = useState(true)
-  const [videoModalOpen, setVideoModalOpen] = useState(false)
+  const [current, setCurrent] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+  const [videoModalOpen, setVideoModalOpen] = useState(false);
 
   const next = () => {
-    setCurrent((current + 1) % testimonials.length)
-  }
+    setCurrent((current + 1) % testimonials.length);
+  };
 
   const prev = () => {
-    setCurrent((current - 1 + testimonials.length) % testimonials.length)
-  }
+    setCurrent((current - 1 + testimonials.length) % testimonials.length);
+  };
 
   useEffect(() => {
-    if (!autoplay) return
+    if (!autoplay) return;
 
-    const interval = setInterval(next, 5000)
-    return () => clearInterval(interval)
-  }, [current, autoplay])
+    const interval = setInterval(next, 5000);
+    return () => clearInterval(interval);
+  }, [current, autoplay]);
 
   // When video modal opens, pause autoplay
   useEffect(() => {
     if (videoModalOpen) {
-      setAutoplay(false)
+      setAutoplay(false);
     }
-  }, [videoModalOpen])
+  }, [videoModalOpen]);
 
   // Add keyboard navigation and ARIA attributes for accessibility
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
-        prev()
+        prev();
       } else if (e.key === "ArrowRight") {
-        next()
+        next();
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [])
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
-  const currentTestimonial = testimonials[current]
+  const currentTestimonial = testimonials[current];
 
   return (
     <div className="relative max-w-4xl mx-auto">
@@ -125,7 +125,9 @@ export default function TestimonialSlider() {
               <div className="md:w-1/3 flex flex-col items-center text-center">
                 <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-purple-100 mb-4">
                   <Image
-                    src={`/placeholder.svg?height=96&width=96&text=Student+${current + 1}`}
+                    src={`/placeholder.svg?height=96&width=96&text=Student+${
+                      current + 1
+                    }`}
                     alt={currentTestimonial.name}
                     width={96}
                     height={96}
@@ -145,17 +147,25 @@ export default function TestimonialSlider() {
                     </button>
                   )}
                 </div>
-                <h4 className="text-lg font-bold font-poppins text-gray-900">{currentTestimonial.name}</h4>
+                <h4 className="text-lg font-bold font-poppins text-gray-900">
+                  {currentTestimonial.name}
+                </h4>
                 <p className="text-gray-600 mb-2">{currentTestimonial.role}</p>
                 <div className="flex items-center justify-center">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
-                      className={`h-4 w-4 ${i < currentTestimonial.rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300"}`}
+                      className={`h-4 w-4 ${
+                        i < currentTestimonial.rating
+                          ? "text-yellow-500 fill-yellow-500"
+                          : "text-gray-300"
+                      }`}
                     />
                   ))}
                 </div>
-                <p className="text-sm text-gray-500 mt-2">{currentTestimonial.location}</p>
+                <p className="text-sm text-gray-500 mt-2">
+                  {currentTestimonial.location}
+                </p>
               </div>
 
               <div className="md:w-2/3">
@@ -165,7 +175,9 @@ export default function TestimonialSlider() {
                 </p>
 
                 <div className="flex items-center justify-between mt-8">
-                  <div className="text-sm text-gray-500">Student i diplomuar, {new Date().getFullYear() - 1}</div>
+                  <div className="text-sm text-gray-500">
+                    Student i diplomuar, {new Date().getFullYear() - 1}
+                  </div>
 
                   {currentTestimonial.hasVideo && (
                     <button
@@ -182,7 +194,8 @@ export default function TestimonialSlider() {
           </motion.div>
         </AnimatePresence>
         <div className="sr-only" aria-live="polite">
-          Showing testimonial from {currentTestimonial.name}, {currentTestimonial.role}
+          Showing testimonial from {currentTestimonial.name},{" "}
+          {currentTestimonial.role}
         </div>
       </div>
 
@@ -206,7 +219,9 @@ export default function TestimonialSlider() {
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${index === current ? "bg-purple-600" : "bg-gray-200"}`}
+            className={`w-3 h-3 rounded-full transition-colors ${
+              index === current ? "bg-purple-600" : "bg-gray-200"
+            }`}
             aria-label={`Go to testimonial ${index + 1}`}
           />
         ))}
@@ -216,9 +231,9 @@ export default function TestimonialSlider() {
       <VideoModal
         isOpen={videoModalOpen}
         onClose={() => setVideoModalOpen(false)}
-        videoSrc={currentTestimonial.hasVideo ? currentTestimonial.videoSrc : ""}
-        title={`${currentTestimonial.name} - Historia e Suksesit`}
+        videoSrc={currentTestimonial.videoSrc}
+        title={`${currentTestimonial.name} – Historia e Suksesit`}
       />
     </div>
-  )
+  );
 }

@@ -578,7 +578,7 @@ export default function AboutPage() {
                 className="group"
               >
                 {/* Photo (with placeholder fallback) */}
-                <div className="relative overflow-hidden rounded-t-xl h-56 md:h-80">
+                <div className="relative overflow-hidden rounded-t-xl h-[400px] md:h-80">
                   <Image
                     src={member.photo || "/placeholder.svg"}
                     alt={member.name}

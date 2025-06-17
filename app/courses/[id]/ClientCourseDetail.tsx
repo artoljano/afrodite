@@ -395,7 +395,163 @@ export default function ClientCourseDetail({ course }: Props) {
       )}
 
       {/* ── Testimonials Section ── */}
-      <section className="py-16 bg-white">{/* … rest unchanged … */}</section>
+      {course.testimonials?.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold font-poppins text-navy-900 mb-4">
+                Çfarë Thonë Studentët Tanë
+              </h2>
+              <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {course.testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  className="bg-navy-50 p-6 rounded-xl shadow-md"
+                >
+                  <div className="flex items-center mb-4">
+                    <div className="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-purple-500">
+                      <Image
+                        src={testimonial.image || "/placeholder.svg"}
+                        alt={testimonial.name}
+                        width={100}
+                        height={100}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-navy-900">
+                        {testimonial.name}
+                      </h4>
+                      <p className="text-navy-600">{testimonial.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-navy-700 italic">"{testimonial.text}"</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── CTA Section ── */}
+      <section className="py-16 bg-gradient-to-br from-black via-purple-900 to-black relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+          <Image
+            src="/wave-pattern.svg"
+            alt="Pattern"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-white mb-6">
+              Gati për të Filluar Karrierën Tuaj të Re?
+            </h2>
+            <p className="text-lg text-navy-100 mb-8">
+              Regjistrohuni sot në kursin tonë profesional dhe bëhuni pjesë e
+              komunitetit tonë të suksesshëm.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <AnimatedButton
+                size="lg"
+                variant="secondary"
+                className="text-white"
+              >
+                REGJISTROHU TANI
+              </AnimatedButton>
+              <Link href="/contact">
+                <AnimatedButton
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white/20"
+                  showFill={false}
+                >
+                  NA KONTAKTONI
+                </AnimatedButton>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 opacity-10">
+          <Image
+            src="/wave-pattern.svg"
+            alt="Pattern"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
+        </div>
+      </section>
+
+      {/* ── Related Courses Section ── */}
+      {courses
+        .filter((c) => c.id !== course.id && c.category === course.category)
+        .slice(0, 3).length > 0 && (
+        <section className="py-16 bg-purple-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold font-poppins text-navy-900 mb-4">
+                Kurse të Ngjashme
+              </h2>
+              <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {courses
+                .filter(
+                  (c) => c.id !== course.id && c.category === course.category
+                )
+                .slice(0, 3)
+                .map((relatedCourse, index) => (
+                  <motion.div
+                    key={relatedCourse.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
+                  >
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={relatedCourse.image || "/placeholder.svg"}
+                        alt={relatedCourse.title}
+                        width={400}
+                        height={300}
+                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-4 right-4 bg-black text-white text-xs font-medium px-3 py-1 rounded-full">
+                        {relatedCourse.duration}
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold font-poppins text-navy-900 mb-3 line-clamp-2">
+                        {relatedCourse.title}
+                      </h3>
+                      <p className="text-navy-700 mb-6 line-clamp-3">
+                        {relatedCourse.description}
+                      </p>
+                      <Link href={`/courses/${relatedCourse.id}`}>
+                        <AnimatedButton className="w-full">
+                          Mëso më shumë
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </AnimatedButton>
+                      </Link>
+                    </div>
+                  </motion.div>
+                ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── CTA, Related, RequestInfo … rest unchanged … */}
       <RequestInfoButton />

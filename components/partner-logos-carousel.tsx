@@ -38,14 +38,12 @@ export default function PartnerLogosCarousel({
 
   const allPartners = [...partners, ...partners];
 
-  // Determine scrollable width
   useEffect(() => {
     if (scrollRef.current) {
       setScrollWidth(scrollRef.current.scrollWidth / 2);
     }
   }, []);
 
-  // Update scroll speed based on interaction state
   const updateSpeed = () => {
     if (activePartner) {
       speed.current = 0;
@@ -59,12 +57,10 @@ export default function PartnerLogosCarousel({
     }
   };
 
-  // React to state changes
   useEffect(() => {
     updateSpeed();
   }, [activePartner, isHoveringContainer]);
 
-  // Animate scroll
   useAnimationFrame((t, delta) => {
     if (frozen.current) return;
 
@@ -79,7 +75,6 @@ export default function PartnerLogosCarousel({
     }
   });
 
-  // Handle mouse scroll detection to disable hover-triggered modal
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolling(true);
@@ -124,20 +119,18 @@ export default function PartnerLogosCarousel({
   }, [activePartner]);
 
   return (
-    <div
-      className={`overflow-hidden relative ${className}`}
-      onMouseEnter={() => {
-        setIsHoveringContainer(true);
-        updateSpeed();
-      }}
-      onMouseLeave={() => {
-        setIsHoveringContainer(false);
-        updateSpeed();
-      }}
-    >
+    <div className={`overflow-hidden relative ${className}`}>
       <div
         ref={scrollRef}
         className="flex items-center overflow-x-auto touch-pan-x scroll-smooth scrollbar-none"
+        onMouseEnter={() => {
+          setIsHoveringContainer(true);
+          updateSpeed();
+        }}
+        onMouseLeave={() => {
+          setIsHoveringContainer(false);
+          updateSpeed();
+        }}
       >
         <motion.div className="flex items-center space-x-8 py-6" style={{ x }}>
           {allPartners.map((partner, index) => (

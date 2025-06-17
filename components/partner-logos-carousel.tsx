@@ -94,6 +94,35 @@ export default function PartnerLogosCarousel({
     };
   }, []);
 
+  useEffect(() => {
+    if (activePartner) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activePartner]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActivePartner(null);
+        setIsHoveringContainer(false);
+      }
+    };
+
+    if (activePartner) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activePartner]);
+
   return (
     <div
       className={`overflow-hidden relative ${className}`}

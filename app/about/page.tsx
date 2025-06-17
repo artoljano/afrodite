@@ -564,7 +564,17 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            {/* … your header stays the same … */}
+            <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
+              <span>Ekipi ynë</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
+              Ekipi Ynë <span className="text-purple-600">Profesional</span>
+            </h2>
+            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
+            <p className="text-lg text-gray-700">
+              Njihuni me ekipin tonë të përkushtuar të profesionistëve që janë
+              të pasionuar për të ndarë njohuritë dhe ekspertizën e tyre.
+            </p>
           </div>
 
           {/* Grid of team cards */}

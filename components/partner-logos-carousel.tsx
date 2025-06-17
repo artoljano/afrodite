@@ -29,10 +29,12 @@ export default function PartnerLogosCarousel({
   const x = useMotionValue(0);
   const speed = useRef(100);
   const frozen = useRef(false);
+  const scrollTimer = useRef<NodeJS.Timeout | null>(null);
 
   const [scrollWidth, setScrollWidth] = useState(0);
   const [isHoveringContainer, setIsHoveringContainer] = useState(false);
   const [activePartner, setActivePartner] = useState<Partner | null>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const allPartners = [...partners, ...partners];
 
@@ -77,6 +79,21 @@ export default function PartnerLogosCarousel({
     }
   });
 
+  // Handle mouse scroll detection to disable hover-triggered modal
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(true);
+      if (scrollTimer.current) clearTimeout(scrollTimer.current);
+      scrollTimer.current = setTimeout(() => setIsScrolling(false), 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimer.current) clearTimeout(scrollTimer.current);
+    };
+  }, []);
+
   return (
     <div
       className={`overflow-hidden relative ${className}`}
@@ -89,29 +106,36 @@ export default function PartnerLogosCarousel({
         updateSpeed();
       }}
     >
-      <div ref={scrollRef} className="flex items-center">
+      <div
+        ref={scrollRef}
+        className="flex items-center overflow-x-auto touch-pan-x scroll-smooth scrollbar-none"
+      >
         <motion.div className="flex items-center space-x-8 py-6" style={{ x }}>
           {allPartners.map((partner, index) => (
             <div
               key={`${partner.emri}-${index}`}
               className="relative"
               onMouseEnter={() => {
-                setActivePartner(partner);
-                updateSpeed();
-              }}
-              onClick={() => {
-                setActivePartner(partner);
-                updateSpeed();
+                if (!isScrolling) {
+                  setActivePartner(partner);
+                  updateSpeed();
+                }
               }}
             >
               <div className="bg-white rounded-lg px-6 py-4 shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center min-w-[180px] h-24 cursor-pointer">
-                <Image
-                  src={partner.logoImg}
-                  alt={partner.emri}
-                  width={partner.width || 160}
-                  height={partner.height || 80}
-                  className="max-h-16 object-contain"
-                />
+                {partner.logoImg ? (
+                  <Image
+                    src={partner.logoImg}
+                    alt={partner.emri}
+                    width={partner.width || 160}
+                    height={partner.height || 80}
+                    className="max-h-16 object-contain"
+                  />
+                ) : (
+                  <div className="w-[160px] h-[80px] bg-gray-100 rounded flex items-center justify-center text-xs text-gray-400">
+                    Pa logo
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -133,29 +157,28 @@ export default function PartnerLogosCarousel({
               className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
               <button
                 onClick={() => {
                   setActivePartner(null);
-                  setIsHoveringContainer(false); // force reset
+                  setIsHoveringContainer(false);
                 }}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 z-10 text-2xl"
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10 text-2xl"
               >
                 &times;
               </button>
 
               {/* Image */}
-              <div className="w-full relative h-[50vh] overflow-hidden">
+              <div className="relative w-full h-[50vh] md:h-[65vh] overflow-hidden">
                 <Image
                   src={activePartner.cardPicture}
                   alt={activePartner.emri}
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                 />
               </div>
 
               {/* Text Content */}
-              <div className="p-6 min-h-[200px] flex flex-col justify-between">
+              <div className="p-6 h-[200px] overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded">
                 <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-1">
                   {activePartner.emri}
                 </h3>

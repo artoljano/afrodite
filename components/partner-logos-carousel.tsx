@@ -1,121 +1,172 @@
-"use client"
-import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import {
+  motion,
+  useAnimationFrame,
+  useMotionValue,
+  AnimatePresence,
+} from "framer-motion";
+import { partners } from "@/data/partners";
 
 interface Partner {
-  name: string
-  logo: string
-  width?: number
-  height?: number
+  emri: string;
+  logoImg: string;
+  cardPicture: string;
+  pershkrimi: string;
+  width?: number;
+  height?: number;
 }
-
-const partners: Partner[] = [
-  { name: "Western Balkan", logo: "/placeholder.svg?height=80&width=160&text=Western+Balkan", width: 160, height: 80 },
-  { name: "OMC", logo: "/placeholder.svg?height=80&width=160&text=OMC+Logo", width: 160, height: 80 },
-  { name: "Beauty Academy", logo: "/placeholder.svg?height=80&width=160&text=Beauty+Academy", width: 160, height: 80 },
-  { name: "Pro Makeup", logo: "/placeholder.svg?height=80&width=160&text=Pro+Makeup", width: 160, height: 80 },
-  { name: "Nail Art Association", logo: "/placeholder.svg?height=80&width=160&text=Nail+Art", width: 160, height: 80 },
-  {
-    name: "International Beauty",
-    logo: "/placeholder.svg?height=80&width=160&text=Int+Beauty",
-    width: 160,
-    height: 80,
-  },
-  {
-    name: "European Cosmetology",
-    logo: "/placeholder.svg?height=80&width=160&text=EU+Cosmetology",
-    width: 160,
-    height: 80,
-  },
-  {
-    name: "Aesthetic Guild",
-    logo: "/placeholder.svg?height=80&width=160&text=Aesthetic+Guild",
-    width: 160,
-    height: 80,
-  },
-]
 
 interface PartnerLogosCarouselProps {
-  className?: string
+  className?: string;
 }
 
-export default function PartnerLogosCarousel({ className = "" }: PartnerLogosCarouselProps) {
-  const [isPaused, setIsPaused] = useState(false)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [scrollWidth, setScrollWidth] = useState(0)
+export default function PartnerLogosCarousel({
+  className = "",
+}: PartnerLogosCarouselProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const speed = useRef(100);
+  const frozen = useRef(false);
 
-  // Duplicate the partners array to create a seamless loop
-  const allPartners = [...partners, ...partners]
+  const [scrollWidth, setScrollWidth] = useState(0);
+  const [isHoveringContainer, setIsHoveringContainer] = useState(false);
+  const [activePartner, setActivePartner] = useState<Partner | null>(null);
 
+  const allPartners = [...partners, ...partners];
+
+  // Determine scrollable width
   useEffect(() => {
     if (scrollRef.current) {
-      setScrollWidth(scrollRef.current.scrollWidth / 2)
+      setScrollWidth(scrollRef.current.scrollWidth / 2);
     }
-  }, [])
+  }, []);
 
-  // Add keyboard navigation for accessibility
+  // Update scroll speed based on interaction state
+  const updateSpeed = () => {
+    if (activePartner) {
+      speed.current = 0;
+      frozen.current = true;
+    } else if (isHoveringContainer) {
+      speed.current = 20;
+      frozen.current = false;
+    } else {
+      speed.current = 100;
+      frozen.current = false;
+    }
+  };
+
+  // React to state changes
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") {
-        // Simulate scrolling left
-        if (scrollRef.current) {
-          scrollRef.current.scrollLeft -= 200
-        }
-      } else if (e.key === "ArrowRight") {
-        // Simulate scrolling right
-        if (scrollRef.current) {
-          scrollRef.current.scrollLeft += 200
-        }
-      }
-    }
+    updateSpeed();
+  }, [activePartner, isHoveringContainer]);
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [])
+  // Animate scroll
+  useAnimationFrame((t, delta) => {
+    if (frozen.current) return;
+
+    const moveBy = (speed.current * delta) / 1000;
+    const current = x.get();
+    const next = current - moveBy;
+
+    if (Math.abs(next) >= scrollWidth) {
+      x.set(0);
+    } else {
+      x.set(next);
+    }
+  });
 
   return (
     <div
       className={`overflow-hidden relative ${className}`}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      role="region"
-      aria-label="Partner logos carousel"
-      tabIndex={0}
+      onMouseEnter={() => {
+        setIsHoveringContainer(true);
+        updateSpeed();
+      }}
+      onMouseLeave={() => {
+        setIsHoveringContainer(false);
+        updateSpeed();
+      }}
     >
       <div ref={scrollRef} className="flex items-center">
-        <motion.div
-          className="flex items-center space-x-8 py-6"
-          animate={isPaused ? { x: 0 } : { x: -scrollWidth }}
-          transition={
-            isPaused
-              ? { duration: 0 }
-              : {
-                  x: {
-                    duration: 25,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                    repeatType: "loop",
-                  },
-                }
-          }
-        >
+        <motion.div className="flex items-center space-x-8 py-6" style={{ x }}>
           {allPartners.map((partner, index) => (
             <div
-              key={`${partner.name}-${index}`}
-              className="bg-white rounded-lg px-6 py-4 shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center min-w-[180px] h-24"
+              key={`${partner.emri}-${index}`}
+              className="relative"
+              onMouseEnter={() => {
+                setActivePartner(partner);
+                updateSpeed();
+              }}
+              onClick={() => {
+                setActivePartner(partner);
+                updateSpeed();
+              }}
             >
-              <Image
-                src={partner.logo || "/placeholder.svg"}
-                alt={partner.name}
-                width={partner.width || 160}
-                height={partner.height || 80}
-                className="max-h-16 object-contain"
-              />
+              <div className="bg-white rounded-lg px-6 py-4 shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center min-w-[180px] h-24 cursor-pointer">
+                <Image
+                  src={partner.logoImg}
+                  alt={partner.emri}
+                  width={partner.width || 160}
+                  height={partner.height || 80}
+                  className="max-h-16 object-contain"
+                />
+              </div>
             </div>
           ))}
         </motion.div>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {activePartner && (
+          <motion.div
+            key="modal"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6"
+          >
+            <div
+              className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => {
+                  setActivePartner(null);
+                  setIsHoveringContainer(false); // force reset
+                }}
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 z-10 text-2xl"
+              >
+                &times;
+              </button>
+
+              {/* Image */}
+              <div className="w-full relative h-[50vh] overflow-hidden">
+                <Image
+                  src={activePartner.cardPicture}
+                  alt={activePartner.emri}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Text Content */}
+              <div className="p-6 min-h-[200px] flex flex-col justify-between">
+                <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-1">
+                  {activePartner.emri}
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  {activePartner.pershkrimi}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
-  )
+  );
 }

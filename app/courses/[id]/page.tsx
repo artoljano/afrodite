@@ -1,28 +1,29 @@
-// app/courses/[id]/page.tsx
 import { courses, type Course } from "@/data/courses";
 import ClientCourseDetail from "./ClientCourseDetail";
 import { notFound } from "next/navigation";
 
-interface Params {
+type Params = {
   id: string;
-}
+};
 
-// Tell Next.js which dynamic routes to pre-render:
-export async function generateStaticParams(): Promise<Params[]> {
+// ✅ Pre-render all course pages statically
+export async function generateStaticParams(): Promise<{ id: string }[]> {
   return courses.map((course) => ({
     id: course.id.toString(),
   }));
 }
 
-// Disable any on-demand fallback (so we're purely static):
+// ✅ Fully static (no fallback at runtime)
 export const dynamicParams = false;
 
-export default function CourseDetailPage({ params }: { params: Params }) {
+// ✅ Fix: async + destructure inside the function to avoid Next.js console error
+export default async function CourseDetailPage(props: { params: Params }) {
+  const { params } = props;
+
   const course = courses.find((c) => c.id.toString() === params.id);
 
   if (!course) {
-    // will render app/not-found.tsx or the default 404
-    notFound();
+    notFound(); // Triggers 404 or not-found.tsx
   }
 
   return <ClientCourseDetail course={course as Course} />;

@@ -28,7 +28,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { AnimatedButton } from "@/components/animated-button";
 import { useInView } from "react-intersection-observer";
-
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 // Import courses from data/courses.ts
 import { courses } from "@/data/courses";
 
@@ -42,7 +43,7 @@ const categories = [
   { id: "esthetics", name: "Estetikë", icon: <Sparkles className="h-4 w-4" /> },
   {
     id: "lashes",
-    name: "Qerpikë & Vetulla",
+    name: "Qerpikë",
     icon: <CheckCircle className="h-4 w-4" />,
   },
   { id: "hair", name: "Stilim Flokësh", icon: <Users className="h-4 w-4" /> },
@@ -92,6 +93,20 @@ export default function CoursesPage() {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams.get("category");
+
+  useEffect(() => {
+    if (initialCategory && categories.some((c) => c.id === initialCategory)) {
+      setSelectedCategories([initialCategory]);
+    }
+  }, [initialCategory]);
+
+  useEffect(() => {
+    const categoriesFromUrl = searchParams.getAll("category");
+    setSelectedCategories(categoriesFromUrl);
+  }, [searchParams]); // ✅ only runs when URL search params change
 
   const toggleCategory = (categoryId: string) => {
     setSelectedCategories((prev) =>
@@ -269,7 +284,8 @@ export default function CoursesPage() {
                 )}
               </div>
 
-              <div className="flex items-center gap-2">
+              {/* Sort - Filters */}
+              {/* <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-500">Rendit:</span>
                 <select
                   className="border border-gray-200 rounded-md text-xs p-1"
@@ -281,7 +297,7 @@ export default function CoursesPage() {
                   <option value="price-desc">Çmimi: Lartë në të ulët</option>
                   <option value="date">Data e fillimit</option>
                 </select>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex flex-wrap gap-4">

@@ -8,6 +8,7 @@ import { AnimatedButton } from "@/components/animated-button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle, XCircle, Loader2 } from "lucide-react";
+import { QUESTIONS } from "@/data/questions";
 
 export default function ClientRegisterForm() {
   // Grab ?courseId= from the URL
@@ -28,6 +29,10 @@ export default function ClientRegisterForm() {
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
+
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   // If the URL param changes, update the select
   useEffect(() => {
@@ -289,39 +294,49 @@ export default function ClientRegisterForm() {
           </form>
 
           {/* FAQ Accordion */}
-          <div className="mt-12 text-left p-6 bg-black/40 backdrop-blur-sm rounded-xl border border-white/10">
+          <div className="mt-16 text-left bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-white/10">
             <h3 className="text-xl font-bold text-white mb-6 text-center">
               Pyetje të Shpeshta
             </h3>
+
             <div className="space-y-4">
-              <div className="border-b border-white/10 pb-4">
-                <button className="flex justify-between items-center w-full text-left">
-                  <span className="text-white font-medium">
-                    Sa zgjat një kurs profesional?
-                  </span>
-                  <ChevronRight className="h-5 w-5 text-purple-400 transform rotate-90" />
-                </button>
-                <div className="mt-2 text-gray-300 text-sm">
-                  Kurset tona profesionale zgjasin nga 1 deri në 6 muaj, në
-                  varësi të programit dhe nivelit të zgjedhur.
+              {QUESTIONS.map((faq, idx) => (
+                <div key={idx} className="border-b border-white/10 pb-4">
+                  <button
+                    onClick={() => toggle(idx)}
+                    className="flex justify-between items-center w-full text-left"
+                  >
+                    <span className="text-white font-medium">
+                      {faq.question}
+                    </span>
+                    <ChevronRight
+                      className={`h-5 w-5 text-purple-400 transform transition-transform duration-200 ${
+                        openIndex === idx ? "rotate-90" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {/* AnimatePresence will handle mounting/unmounting animation */}
+                  <AnimatePresence initial={false}>
+                    {openIndex === idx && (
+                      <motion.div
+                        key="content"
+                        initial="collapsed"
+                        animate="open"
+                        exit="collapsed"
+                        variants={{
+                          open: { height: "auto", opacity: 1, marginTop: 8 },
+                          collapsed: { height: 0, opacity: 0, marginTop: 0 },
+                        }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden text-gray-300 text-sm"
+                      >
+                        <div className="py-2">{faq.answer}</div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              </div>
-              <div className="border-b border-white/10 pb-4">
-                <button className="flex justify-between items-center w-full text-left">
-                  <span className="text-white font-medium">
-                    A ofrohen kurse online?
-                  </span>
-                  <ChevronRight className="h-5 w-5 text-purple-400" />
-                </button>
-              </div>
-              <div className="border-b border-white/10 pb-4">
-                <button className="flex justify-between items-center w-full text-left">
-                  <span className="text-white font-medium">
-                    Si mund të regjistrohem?
-                  </span>
-                  <ChevronRight className="h-5 w-5 text-purple-400" />
-                </button>
-              </div>
+              ))}
             </div>
           </div>
         </motion.div>

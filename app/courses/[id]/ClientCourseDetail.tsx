@@ -137,7 +137,7 @@ export default function ClientCourseDetail({ course }: Props) {
                     alt={course.title}
                     width={800}
                     height={600}
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-full max-h-[700px]"
                   />
                 </div>
               )}

@@ -3320,7 +3320,7 @@ export const courses: Course[] = [
 
   {
     id: 32,
-    title: "Epilim me Lazer & Fizika e Lazerit",
+    title: "Depilim me Lazer & Fizika e Lazerit",
     category: "pajisje",
     duration: "Intensiv",
     durationCategory: "intensiv",
@@ -3330,9 +3330,9 @@ export const courses: Course[] = [
     schedule: "Intensive (me orar fleksibël)",
     image: "/pajisje/lazer.jpg",
     description:
-      "Kurs i plotë mbi teorinë dhe praktikën e epilimit me lazer.",
+      "Kurs i plotë mbi teorinë dhe praktikën e depilimit me lazer.",
     longDescription:
-      "Prej fizikes së lazerit dhe parametrave të dritës, te siguria, protokollet e trajtimit dhe etika profesionale—ky kurs përgatit specialistë epilimi.",
+      "Prej fizikes së lazerit dhe parametrave të dritës, te siguria, protokollet e trajtimit dhe etika profesionale—ky kurs përgatit specialistë depilimi.",
     instructors: [],
     curriculum: [
       { title: "Fizika e Lazerit", lessons: ["Parimet e konvertimit të energjisë në dritë koherente", "Parametrat: gjatësi vale & pulse"] },
@@ -3346,8 +3346,8 @@ export const courses: Course[] = [
       { title: "Etika & Ligjshmëria", lessons: ["Rregulloret kombëtare", "Etika e konsultimit dhe marrëdhënies me klientin"] },
       { title: "Certifikim Përfundimtar", lessons: ["Provimi teorik & demonstrimi praktik"] },
     ],
-    benefits: ["Aftësi epilimi me lazer të sigurt", "Certifikim profesional lazer"],
-    materials: ["Laser epilimi", "Pajisje mbrojtëse"],
+    benefits: ["Aftësi depilimi me lazer të sigurt", "Certifikim profesional lazer"],
+    materials: ["Laser depilimi", "Pajisje mbrojtëse"],
     testimonials: [],
     faqs: [],
     featured: false,

@@ -338,7 +338,6 @@ export default function AboutPage() {
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
           </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             {/* Left Column - Image */}
             <motion.div
@@ -437,7 +436,7 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
-          {/* Horizontal Timeline */}
+          {/* Horizontal Timeline
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={historyInView ? { opacity: 1, y: 0 } : {}}
@@ -448,19 +447,20 @@ export default function AboutPage() {
               Momentet Kyçe
             </h3>
             <EnhancedTimeline events={timelineEvents} />
-          </motion.div>
-
-          {/* Alumni Carousel */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={historyInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            className="mt-16"
-          >
-            <AlumniCarousel />
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
+
+      {/* Team Section */}
+      {/* Alumni Carousel */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={historyInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, delay: 0.6 }}
+        className="mt-16"
+      >
+        <AlumniCarousel />
+      </motion.div>
 
       {/* Values Section */}
       <section className="py-16 md:py-24 bg-white">

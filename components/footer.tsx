@@ -1,6 +1,14 @@
-import Link from "next/link"
-import Image from "next/image"
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, ChevronRight } from "lucide-react"
+import Link from "next/link";
+import Image from "next/image";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Linkedin,
+  ChevronRight,
+} from "lucide-react";
 
 export default function Footer() {
   return (
@@ -19,8 +27,9 @@ export default function Footer() {
               />
             </div>
             <p className="text-navy-100 mb-6">
-              Afrodite Academy është një institucion i specializuar në ofrimin e kurseve profesionale ndërkombëtare në
-              fushën e bukurisë dhe estetikës.
+              Afrodite Academy është një institucion i specializuar në ofrimin e
+              kurseve profesionale ndërkombëtare në fushën e bukurisë dhe
+              estetikës.
             </p>
             <div className="flex space-x-4">
               <Link
@@ -83,15 +92,6 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/gallery"
-                  className="text-navy-100 hover:text-purple-500 transition-colors flex items-center group"
-                >
-                  <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                  Galeria
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/contact"
                   className="text-navy-100 hover:text-purple-500 transition-colors flex items-center group"
                 >
@@ -111,7 +111,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/courses/makeup"
+                  href="/courses?category=makeup"
                   className="text-navy-100 hover:text-purple-500 transition-colors flex items-center group"
                 >
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
@@ -120,7 +120,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/courses/nails"
+                  href="/courses?category=nails"
                   className="text-navy-100 hover:text-purple-500 transition-colors flex items-center group"
                 >
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
@@ -129,7 +129,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/courses/esthetics"
+                  href="/courses?category=esthetics"
                   className="text-navy-100 hover:text-purple-500 transition-colors flex items-center group"
                 >
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
@@ -138,7 +138,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/courses/lashes"
+                  href="/courses?category=lashes&category=brows"
                   className="text-navy-100 hover:text-purple-500 transition-colors flex items-center group"
                 >
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
@@ -147,11 +147,20 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/courses/hair"
+                  href="/courses?category=barber&category=hair"
                   className="text-navy-100 hover:text-purple-500 transition-colors flex items-center group"
                 >
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
                   Stilim Flokësh
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/courses?category=pajisje"
+                  className="text-navy-100 hover:text-purple-500 transition-colors flex items-center group"
+                >
+                  <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
+                  Pajisje & Trajtimet
                 </Link>
               </li>
             </ul>
@@ -166,11 +175,16 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 text-gold-500 mt-1 flex-shrink-0" />
-                <span className="text-navy-100">Rruga "Tom Plezha", Ura e Re, Tiranë, Shqipëri</span>
+                <span className="text-navy-100">
+                  Rruga "Tom Plezha", Ura e Re, Tiranë, Shqipëri
+                </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-gold-500 flex-shrink-0" />
-                <Link href="tel:+35569204353" className="text-navy-100 hover:text-gold-500 transition-colors">
+                <Link
+                  href="tel:+35569204353"
+                  className="text-navy-100 hover:text-gold-500 transition-colors"
+                >
                   +355 69 204 3535
                 </Link>
               </li>
@@ -188,9 +202,12 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-purple-900/30 pt-8 text-center text-gray-300">
-          <p>&copy; {new Date().getFullYear()} Afrodite Academy. Të gjitha të drejtat e rezervuara.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Afrodite Academy. Të gjitha të
+            drejtat e rezervuara.
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

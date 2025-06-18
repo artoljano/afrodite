@@ -7,6 +7,7 @@ import { courses } from "@/data/courses";
 import { AnimatedButton } from "@/components/animated-button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Send, CheckCircle, XCircle, Loader2 } from "lucide-react";
 
 export default function ClientRegisterForm() {
   // Grab ?courseId= from the URL
@@ -24,6 +25,9 @@ export default function ClientRegisterForm() {
     selectedCourseId: initialCourseId,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   // If the URL param changes, update the select
   useEffect(() => {
@@ -45,11 +49,45 @@ export default function ClientRegisterForm() {
     }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Registration data:", formData);
-    setSubmitted(true);
-  }
+    setStatus("sending");
+
+    try {
+      const selectedCourse = courses.find(
+        (c) => c.id === formData.selectedCourseId
+      );
+
+      const formWithCourseTitle = {
+        ...formData,
+        selectedCourseTitle: selectedCourse ? selectedCourse.title : "Unknown",
+      };
+
+      const res = await fetch("http://localhost:5000/api/register-course", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formWithCourseTitle),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setSubmitted(true);
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+    }
+  };
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      const timeout = setTimeout(() => setStatus("idle"), 4000);
+      return () => clearTimeout(timeout);
+    }
+  }, [status]);
 
   return submitted ? (
     <motion.div
@@ -222,9 +260,30 @@ export default function ClientRegisterForm() {
                 type="submit"
                 size="lg"
                 variant="default"
+                disabled={status === "sending"}
                 className="w-full bg-black hover:bg-black text-white border border-purple-500/30 transform hover:scale-[1.02] transition"
               >
-                Dërgo Regjistrimin
+                <div className="flex items-center justify-center gap-x-3">
+                  {status === "sending" && (
+                    <Loader2 className="animate-spin w-5 h-5" />
+                  )}
+                  {status === "success" && (
+                    <CheckCircle className="text-green-400 w-5 h-5" />
+                  )}
+                  {status === "error" && (
+                    <XCircle className="text-red-500 w-5 h-5" />
+                  )}
+                  {status === "idle"}
+                  <span>
+                    {status === "sending"
+                      ? "Duke dërguar..."
+                      : status === "success"
+                      ? "U dërgua me sukses"
+                      : status === "error"
+                      ? "Dështoi dërgimi"
+                      : "Dërgo Regjistrimin"}
+                  </span>
+                </div>
               </AnimatedButton>
             </motion.div>
           </form>

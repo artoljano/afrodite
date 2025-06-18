@@ -37,7 +37,7 @@ export const awards: Award[] = [
     organization: "Qendra Sociale Edel",
     description: "",
     color: "amber",
-    imageSrc: "/images/awards/edel.png",
+    imageSrc: "/awards/qendra-edel.png",
   },
   {
     id: "stilist-italian",
@@ -46,7 +46,7 @@ export const awards: Award[] = [
     organization: "Stilist Italian",
     description: "",
     color: "amber",
-    imageSrc: "/images/awards/stilist-italian.png",
+    imageSrc: "/awards/stilisti-italian.png",
   },
   {
     id: "omc-life-2022",
@@ -55,7 +55,7 @@ export const awards: Award[] = [
     organization: "Global OMC",
     description: "Parukeri dhe Berber – Çmimi Global 2022",
     color: "purple",
-    imageSrc: "/images/awards/omc-life.png",
+    imageSrc: "/awards/omc-logo.png",
   },
   {
     id: "grate-vleresojne",
@@ -64,7 +64,7 @@ export const awards: Award[] = [
     organization: "Lëvizja “Gratë frymëzojnë vlerë”",
     description: "",
     color: "purple",
-    imageSrc: "/images/awards/grate-frymezojne.png",
+    imageSrc: "/awards/levizja-grate.png",
   },
   {
     id: "infinit-akademia",
@@ -73,7 +73,7 @@ export const awards: Award[] = [
     organization: "Infinit Academy, Kosove",
     description: "",
     color: "purple",
-    imageSrc: "/images/awards/infinit.png",
+    imageSrc: "/awards/infinit-kosove.png",
   },
   {
     id: "vmf-federata",
@@ -82,7 +82,7 @@ export const awards: Award[] = [
     organization: "VMF – Federata Botërore e Masazhit",
     description: "",
     color: "purple",
-    imageSrc: "/images/awards/vmf.png",
+    imageSrc: "/awards/vmf-logo.png",
   },
   {
     id: "shen-tereza",
@@ -91,7 +91,7 @@ export const awards: Award[] = [
     organization: "Shqiptarja e gjithë botës",
     description: "",
     color: "purple",
-    imageSrc: "/images/awards/shen-tereza.png",
+    imageSrc: "/awards/shen-tereza.png",
   },
   {
     id: "ambassador-pea",
@@ -100,6 +100,6 @@ export const awards: Award[] = [
     organization: "Universal Peace Federation",
     description: "",
     color: "purple",
-    imageSrc: "/images/awards/pea.png",
+    imageSrc: "/awards/pea-logo.png",
   },
 ]

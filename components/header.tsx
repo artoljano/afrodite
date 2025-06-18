@@ -156,14 +156,6 @@ export default function Header() {
 
             {/* Right Section */}
             <div className="flex items-center space-x-3">
-              {/* Search Button */}
-              <button
-                className="p-2 text-gray-600 hover:text-purple-600 transition-colors hidden md:flex"
-                aria-label="Search"
-              >
-                <Search className="h-4 w-4" />
-              </button>
-
               {/* CTA Button */}
               <AnimatedButton
                 size="sm"

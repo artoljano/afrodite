@@ -683,7 +683,7 @@ export default function AboutPage() {
                 </div>
                 <button
                   onClick={() => setModalId(null)}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 z-10"
+                  className="absolute top-4 right-4 text-black-400 hover:text-purple-500 z-10"
                 >
                   ✕
                 </button>
@@ -840,8 +840,8 @@ export default function AboutPage() {
                     <Image
                       src={award.imageSrc}
                       alt={award.title}
-                      width={64}
-                      height={64}
+                      width={120}
+                      height={120}
                       className="object-contain"
                     />
                   </div>

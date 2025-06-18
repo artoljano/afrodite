@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Phone,
@@ -22,6 +22,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { AnimatedButton } from "@/components/animated-button";
 import VideoBackground from "@/components/video-background";
+import { CheckCircle, XCircle, Loader2 } from "lucide-react";
 
 // Define the address data
 const addresses = [
@@ -85,6 +86,9 @@ export default function ContactPage() {
     interest: "general",
   });
   const [selectedAddress, setSelectedAddress] = useState(addresses[0]);
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -97,19 +101,42 @@ export default function ContactPage() {
     setFormState((p) => ({ ...p, interest: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formState);
-    setFormState({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-      interest: "general",
-    });
-    alert("Mesazhi juaj u dërgua me sukses!");
+    setStatus("sending");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormState({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          interest: "",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
   };
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      const timeout = setTimeout(() => setStatus("idle"), 4000);
+      return () => clearTimeout(timeout);
+    }
+  }, [status]);
 
   const handleAddressSelect = (addr: (typeof addresses)[0]) => {
     setSelectedAddress(addr);
@@ -447,11 +474,34 @@ export default function ContactPage() {
 
                 <AnimatedButton
                   type="submit"
-                  variant="secondary"
-                  className="w-full flex justify-center items-center"
+                  disabled={status === "sending"}
+                  className={`w-full flex justify-center items-center ${
+                    status === "sending"
+                      ? "opacity-70 cursor-not-allowed"
+                      : "hover:bg-purple-700"
+                  }`}
                 >
-                  <Send className="mr-2 h-4 w-4" />
-                  Dërgo Mesazhin
+                  <div className="flex items-center gap-x-3">
+                    {status === "sending" && (
+                      <Loader2 className="animate-spin w-5 h-5" />
+                    )}
+                    {status === "success" && (
+                      <CheckCircle className="text-green-400 w-5 h-5" />
+                    )}
+                    {status === "error" && (
+                      <XCircle className="text-red-500 w-5 h-5" />
+                    )}
+                    {status === "idle" && <Send className="w-5 h-5" />}
+                    <span>
+                      {status === "sending"
+                        ? "Duke dërguar..."
+                        : status === "success"
+                        ? "U dërgua me sukses"
+                        : status === "error"
+                        ? "Dështoi dërgimi"
+                        : "Dërgo Mesazhin"}
+                    </span>
+                  </div>
                 </AnimatedButton>
               </form>
             </div>

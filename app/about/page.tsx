@@ -789,12 +789,36 @@ export default function AboutPage() {
 
       {/* Awards & Certifications Section - Completely Redesigned */}
       <section className="py-16 md:py-24 bg-gray-50 relative overflow-hidden">
-        {/* header, container etc. */}
+        <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+          <Image
+            src="/wave-pattern.svg"
+            alt="Decorative pattern"
+            width={256}
+            height={256}
+            className="object-contain"
+          />
+        </div>
+
+        {/* <div ref={certificationsRef} className="container mx-auto px-4 relative z-10"> */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
+            <span>Çmimet dhe certifikimet</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
+            Çmimet dhe{" "}
+            <span className="text-purple-600">Certifikimet Tona</span>
+          </h2>
+          <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
+          <p className="text-lg text-gray-700">
+            Certifikimet dhe çmimet tona janë të njohura ndërkombëtarisht dhe
+            dëshmojnë cilësinë e lartë të shërbimeve tona arsimore.
+          </p>
+        </div>
 
         {/* central line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-px bg-purple-200 hidden md:block" />
 
         <div className="container mx-auto px-4 relative z-10">
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-px bg-purple-200 hidden md:block" />
           <div className="space-y-16">
             {awards.map((award, idx) => (
               <div

@@ -184,7 +184,7 @@ export default function PartnerLogosCarousel({
                   setActivePartner(null);
                   setIsHoveringContainer(false);
                 }}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10 text-2xl"
+                className="absolute top-4 right-4 text-black-500 hover:text-purple-500 z-10 text-2xl"
               >
                 &times;
               </button>

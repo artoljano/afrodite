@@ -307,7 +307,7 @@ export default function Home() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
               Eksperiencë Mësimore{" "}
-              <span className="text-purple-600">e Pashoqe</span>
+              <span className="text-purple-600">e Jashtëzakonshme</span>
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">

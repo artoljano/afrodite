@@ -42,7 +42,7 @@ export const partners: Partner[] = [
   {
     emri: "Luiza Hair",
     industria: "Parukeri",
-    pershkrimi: "",
+    pershkrimi: "Pronare e sallonit LUIZA HAIR AND MAKEUP në Tiranë, e certifikuar Mjeshtre për parukeri dhe estetikë. Instruktore për kurset e Parukerisë dhe Makeup në akademinë tonë.",
     cardPicture: "/team/luiza.jpg",
     logoImg: "/partners/luiza-hair.jpg",
   },
@@ -170,8 +170,8 @@ export const partners: Partner[] = [
     emri: "Starform Scuola Professionale",
     industria: "Shkollë Profesionale",
     pershkrimi: "Shkollë profesionale në Itali, lider në fushën e formimit, me më shumë se 25 vjet eksperiencë jo vetëm në sektorin e estetikës dhe bukurisë, por edhe në sektorë të tjerë si ai socio-sanitar, ushqimor dhe teknik të llojeve të ndryshme. Afrodite Academy dhe Starform punojnë ngushtë me studentët, duke ofruar një eksperiencë të personalizuar që i përshtatet nevojave dhe objektivave të tyre. Në këtë mënyrë, ne mund të zhvillojmë aftësitë dhe kompetencat më të mira, duke ofruar një praktikë konkrete dhe të prekshme, që përgatit për tregun e punës edhe jashtë territorit shqiptar.",
-    cardPicture: "",
-    logoImg: "",
+    cardPicture: "/partners/starform-logo.png",
+    logoImg: "/partners/starform-logo.png",
   },
   {
   emri: "Daljani Magic Barbers Shkoder",
@@ -186,8 +186,8 @@ export const partners: Partner[] = [
   industria: "Organizatë Profesionale",
   pershkrimi:
     "FIAM është një nga organizatat kryesore në Itali që përfaqëson dhe mbështet profesionistët e parukierisë dhe berberisë. Me një histori të gjatë dhe angazhim të palodhur për promovimin e cilësisë, inovacionit dhe zhvillimit profesional në këtë sektor, FIAM luan një rol kyç në ngritjen e standardeve të industrisë. Bashkëpunimi me FIAM sjell mundësi të shkëlqyera për shkëmbim eksperiencash, trajnime të avancuara dhe akses në rrjete profesionale ndërkombëtare, duke kontribuar në zhvillimin e mëtejshëm të profesionistëve shqiptarë dhe forcimin e lidhjeve midis komuniteteve të berberëve dhe parukierëve në Shqipëri dhe Itali.",
-  cardPicture: "",
-  logoImg: "",
+  cardPicture: "/partners/fiam-logo.jpeg",
+  logoImg: "/partners/fiam-logo.jpeg",
 },
 {
   emri: "Beauty By Eni MUA",

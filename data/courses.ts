@@ -932,7 +932,7 @@ export const courses: Course[] = [
     price: "70,000 Lekë",
     startDate: "1 Shtator 2025",
     schedule: "E Martë, E Enjte (16:00 - 19:00)",
-    image: "/placeholder.svg?height=600&width=800&text=Brows+150h",
+    image: "/courses/pmu-vetullat.jpg",
     description: "Kurs bazik 150-orësh për PMU, microblading dhe nanoblading në vetulla.",
     longDescription: "Ky modul 150-orësh për vetulla përfshin historikun e teknikave PMU, higjenën, analizën anatomike, përdorimin e mjeteve, pigmentet, procedurat teknike të microblading dhe nanoblading, dhe këshilla për para dhe pas trajtimit.",
     instructors: [
@@ -1061,7 +1061,7 @@ export const courses: Course[] = [
     price: "140,000 Lekë",
     startDate: "1 Shtator 2025",
     schedule: "E Martë, E Enjte, E Shtunë (10:00 - 14:00)",
-    image: "/placeholder.svg?height=600&width=800&text=Brows+360h",
+    image: "/courses/pmu-vetullat.jpg",
     description: "Kurs i avancuar 360-orësh për PMU, microblading, nanoblading dhe teknika estetike të vetullave.",
     longDescription: "Ky program 360-orësh mbulon historikun, anatominë e lëkurës dhe vetullës, higjenën profesionale, mjetet dhe pigmentet e avancuara, teknikat artistike, nanoblading profesional, vlerësimin estetik, korrigjimet, praktikën intensive dhe vlerësimin përfundimtar.",
     instructors: [
@@ -1198,7 +1198,7 @@ export const courses: Course[] = [
     price: "80,000 Lekë",
     startDate: "1 Tetor 2025",
     schedule: "E Hënë, E Mërkurë (17:00 - 20:00)",
-    image: "/placeholder.svg?height=600&width=800&text=Lip+Pigmentation+150h",
+    image: "/courses/pmu-buza.jpg",
     description: "Kurs bazik 150-orësh për pigmentimin profesional të buzëve me PMU.",
     longDescription: "Ky modul 150-orësh ju mëson historikun dhe teknikat bazë të pigmentimit të buzëve me PMU, duke përfshirë anatominë e buzëve, përdorimin e mjeteve, pigmentet, procedurat hap pas hapi dhe kujdesin post-trajtim.",
     instructors: [
@@ -1310,7 +1310,7 @@ export const courses: Course[] = [
     price: "160,000 Lekë",
     startDate: "1 Tetor 2025",
     schedule: "E Martë, E Enjte, E Shtunë (10:00 - 14:00)",
-    image: "/placeholder.svg?height=600&width=800&text=Lip+Pigmentation+360h",
+    image: "/courses/pmu-buza.jpg",
     description: "Program i avancuar 360-orësh për teknika të avancuara të PMU buzëve, korrigjime dhe trajtime pas-zgjidhje.",
     longDescription: "Ky kurs i avancuar mbulon historikun e PMU buzëve, anatominë e thelluar, mjetet e avancuara, teknikat klasifikimit (Lip Blush, Contouring, Full Lips) dhe praktikë intensive me modele dhe latex.",
     instructors: [
@@ -1435,7 +1435,7 @@ export const courses: Course[] = [
     price: "75,000 Lekë",
     startDate: "1 Nëntor 2025",
     schedule: "E Hënë, E Mërkurë (17:00 - 20:00)",
-    image: "/placeholder.svg?height=600&width=800&text=Eyeliner+150h",
+    image: "/courses/pmu-eyeliner.jpg",
     description: "Modul bazik 150-orësh për aplikimin klasik të penelit permanent në sy.",
     longDescription: "Ky modul 150-orësh për PMU Eyeliner mbulon historikun, anatomia e syrit, instrumentet bazë, teknikat klasike të aplikimit, dhe kujdesin pas procedurës.",
     instructors: [
@@ -1528,7 +1528,7 @@ export const courses: Course[] = [
     price: "150,000 Lekë",
     startDate: "1 Nëntor 2025",
     schedule: "E Martë, E Enjte, E Shtunë (10:00 - 14:00)",
-    image: "/placeholder.svg?height=600&width=800&text=Eyeliner+360h",
+    image: "/courses/pmu-eyeliner.jpg",
     description: "Program i avancuar 360-orësh për teknikat e plota të PMU eyeliner-it.",
     longDescription: "Kurs i plotë 360-orësh që mbulon historikun, klasifikimin e teknikave, përshtatjen sipas formës së syrit, produkte të rekomanduara, gabimet e zakonshme dhe praktikat e pas-trajtimit.",
     instructors: [
@@ -2081,7 +2081,7 @@ export const courses: Course[] = [
     price: "35,000 Lekë",
     startDate: "1 Tetor 2025",
     schedule: "E Martë, E Enjte (17:00 - 20:00)",
-    image: "/placeholder.svg?height=600&width=800&text=Lashes+150h",
+    image: "/courses/qerpik-klasik-kurs-baze.jpg",
     description:
       "Ky kurs 150-orësh ofron bazat dhe teknikat klasike për aplikimin profesional të qerpikëve artificial.",
     longDescription:
@@ -2194,7 +2194,7 @@ export const courses: Course[] = [
     price: "70,000 Lekë",
     startDate: "1 Tetor 2025",
     schedule: "E Hënë, E Mërkurë, E Premte (09:00 - 13:00)",
-    image: "/placeholder.svg?height=600&width=800&text=Lashes+360h",
+    image: "/courses/qerpik-volume-avancuar.jpg",
     description:
       "Program 360-orësh për teknika të avancuara, profilizim sipas formës së syrit dhe personalizim efektesh lash.",
     longDescription:

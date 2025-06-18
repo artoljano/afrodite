@@ -19,7 +19,7 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <Image
-                src="/placeholder.svg?height=80&width=80&text=Logo"
+                src="/images/afrodite-logo.png"
                 alt="Afrodite Academy Logo"
                 width={80}
                 height={80}

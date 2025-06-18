@@ -67,7 +67,7 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
               src={course.image || "/placeholder.svg"}
               alt={course.title}
               width={400}
-              height={300}
+              height={400}
               className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />

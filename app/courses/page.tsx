@@ -381,12 +381,12 @@ export default function CoursesPage() {
                     </div>
                   )}
 
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-[14rem] overflow-hidden">
                     <Image
                       src={course.image || "/placeholder.svg"}
                       alt={course.title}
                       width={400}
-                      height={300}
+                      height={400}
                       className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -636,8 +636,8 @@ export default function CoursesPage() {
               <Link href="/about">
                 <AnimatedButton
                   size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/20 border border-white/30"
+                  variant="default"
+                  className="bg-black hover:bg-black text-white border border-purple-500/30"
                 >
                   RRETH AKADEMISË
                 </AnimatedButton>

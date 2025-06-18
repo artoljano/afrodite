@@ -103,8 +103,9 @@ export default function Home() {
       <section className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden">
         {/* Hero Section with Video Background */}
         {/* <VideoBackground
+          videoSrc="/videos/IntroNew.mp4"
           overlayOpacity={0.85}
-          className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden"
+          className="min-h-[60vh] md:min-h-[70vh] py-20 md:py-32 bg-gradient-to-r from-black to-purple-900"
         > */}
         <div className="container px-4 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -196,11 +197,11 @@ export default function Home() {
                 <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-4 border border-white/10">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-white font-medium">
-                        Kursi i ardhshëm fillon më:
+                      <p className="font-medium">
+                        <Calendar className="h-4 w-4 mr-1 text-purple-600" />
                       </p>
                       <p className="text-purple-400 font-bold">
-                        15 Qershor 2023
+                        E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)
                       </p>
                     </div>
                     <AnimatedButton
@@ -507,7 +508,7 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="h-full">
                   <Image
-                    src="/placeholder.svg?height=600&width=600&text=Flexible+Learning"
+                    src="/images/orare-fleksibel.jpg"
                     alt="Flexible Learning"
                     width={400}
                     height={400}
@@ -565,7 +566,7 @@ export default function Home() {
                 </div>
                 <div className="order-1 md:order-2 h-full">
                   <Image
-                    src="/placeholder.svg?height=600&width=600&text=Career+Opportunities"
+                    src="/images/mundesi-pune.jpg"
                     alt="Career Opportunities"
                     width={400}
                     height={400}
@@ -743,8 +744,8 @@ export default function Home() {
             <AnimatedButton
               onClick={handleDownloadBrochure}
               size="lg"
-              variant="outline"
-              className="bg-purple-600 text-white hover:bg-purple-700 border border-purple-500/30 group"
+              variant="secondary"
+              className="bg-purple-600 hover:bg-purple-700 "
             >
               <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
               SHKARTO BROSHURËN E KURSEVE
@@ -812,8 +813,8 @@ export default function Home() {
             <Link href="/courses">
               <AnimatedButton
                 size="lg"
-                variant="default"
-                className="bg-black hover:bg-black text-white border border-purple-500/30"
+                variant="secondary"
+                className="bg-purple-600 hover:bg-purple-700"
               >
                 SHIKO TË GJITHA KURSET
                 <ChevronRight className="ml-2 h-4 w-4" />

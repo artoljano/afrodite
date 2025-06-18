@@ -349,11 +349,11 @@ export default function AboutPage() {
               <div className="rounded-lg overflow-hidden shadow-xl">
                 <div className="relative">
                   <Image
-                    src="/placeholder.svg?height=600&width=800&text=Founder+Photo"
+                    src="/images/aferdita.jpeg"
                     alt="Aferdita Ferracaku - Founder"
                     width={800}
                     height={600}
-                    className="object-cover w-full"
+                    className="object-cover w-full max-h-[800px] rounded-xl"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 
@@ -640,12 +640,12 @@ export default function AboutPage() {
                     Shiko më shumë
                   </button>
 
-                  <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-600">
+                  {/* <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-sm text-gray-600">
                     <div className="flex items-center">
                       <Mail className="h-4 w-4 mr-1 text-purple-600" />
                       <span>{member.email}</span>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </motion.div>
             ))}

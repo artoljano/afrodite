@@ -19,7 +19,7 @@ export const awards: Award[] = [
     description:
       "Titulli Mjeshtër për zotërimin e njohurive dhe aftësive të nevojshme për ushtrimin e pavarur të profesionit.",
     color: "purple",
-    imageSrc: "/images/awards/master-zejtarise.png",
+    imageSrc: "/awards/dhoma-zytarise.png",
   },
   {
     id: "royal-mua-judge",

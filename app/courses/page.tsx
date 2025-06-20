@@ -22,6 +22,18 @@ import {
   ClipboardList,
   User,
 } from "lucide-react";
+import {
+  Headphones,
+  PenTool,
+  HeartHandshake,
+  Droplet,
+  Hammer,
+  ShoppingBag,
+  Heart,
+  MapPin,
+  Globe,
+  Briefcase,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -42,32 +54,75 @@ const categories = [
   },
   { id: "esthetics", name: "Estetikë", icon: <Sparkles className="h-4 w-4" /> },
   {
-    id: "lashes",
-    name: "Qerpikë",
-    icon: <CheckCircle className="h-4 w-4" />,
-  },
-  { id: "hair", name: "Stilim Flokësh", icon: <Users className="h-4 w-4" /> },
-  { id: "massage", name: "Masazh", icon: <BookOpen className="h-4 w-4" /> },
-
-  // —————————————— missing ones ——————————————
-  { id: "barber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
-  { id: "brows", name: "Vetulla", icon: <Eye className="h-4 w-4" /> },
-  { id: "pmu", name: "PMU", icon: <Feather className="h-4 w-4" /> },
-  {
-    id: "smp",
-    name: "Scalp Micropigmentation",
-    icon: <ClipboardList className="h-4 w-4" />,
-  },
-  {
     id: "facials",
     name: "Trajtimet e Fytyrës",
     icon: <User className="h-4 w-4" />,
   },
+  { id: "brows", name: "Vetulla", icon: <Eye className="h-4 w-4" /> },
   {
-    id: "pajisje",
-    name: "Pajisje & Trajtimet",
-    icon: <Eye className="h-4 w-4" />,
+    id: "lashes",
+    name: "Zgjatimi i Qerpikëve",
+    icon: <CheckCircle className="h-4 w-4" />,
   },
+  { id: "hair", name: "Stilim Flokësh", icon: <Users className="h-4 w-4" /> },
+  { id: "barber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
+  { id: "massage", name: "Masazh", icon: <BookOpen className="h-4 w-4" /> },
+  {
+    id: "therapy",
+    name: "Terapitë Estetike",
+    icon: <Heart className="h-4 w-4" />,
+  },
+  {
+    id: "reception",
+    name: "Recepsion",
+    icon: <Headphones className="h-4 w-4" />,
+  },
+  {
+    id: "tour-guide",
+    name: "Udhërrëfyes Turistik",
+    icon: <MapPin className="h-4 w-4" />,
+  },
+  {
+    id: "tourism",
+    name: "Operator Turistik",
+    icon: <Globe className="h-4 w-4" />,
+  },
+  {
+    id: "travel-agent",
+    name: "Agjent Udhëtimesh",
+    icon: <Briefcase className="h-4 w-4" />,
+  },
+  {
+    id: "craft",
+    name: "Veshje Artizanale",
+    icon: <Hammer className="h-4 w-4" />,
+  },
+  {
+    id: "industrial",
+    name: "Modeliste Industriale",
+    icon: <ShoppingBag className="h-4 w-4" />,
+  },
+  {
+    id: "fashion",
+    name: "Fashion Design",
+    icon: <ShoppingBag className="h-4 w-4" />,
+  },
+  {
+    id: "cleaning",
+    name: "Pastrim Profesional",
+    icon: <Droplet className="h-4 w-4" />,
+  },
+  {
+    id: "caregiver",
+    name: "Kujdestar",
+    icon: <HeartHandshake className="h-4 w-4" />,
+  },
+  {
+    id: "pmu",
+    name: "Makeup Permanent",
+    icon: <Feather className="h-4 w-4" />,
+  },
+  { id: "tattoo", name: "Tattoo Art", icon: <PenTool className="h-4 w-4" /> },
 ];
 
 const durations = [
@@ -388,6 +443,11 @@ export default function CoursesPage() {
                       width={400}
                       height={400}
                       className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
+                      style={
+                        course.noCustomCrop
+                          ? undefined
+                          : { objectPosition: "center 30%" }
+                      }
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 

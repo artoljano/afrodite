@@ -138,6 +138,7 @@ export default function CoursesPage() {
   const [sortBy, setSortBy] = useState<
     "default" | "price-asc" | "price-desc" | "date"
   >("default");
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
@@ -315,96 +316,77 @@ export default function CoursesPage() {
       </section>
 
       {/* Filters Section - Compact Version */}
-      <section className="sticky top-[80px] z-30 bg-white border-b shadow-sm">
+      <section className="sticky top-[96px] z-30 bg-white border-b shadow-sm">
         <div className="container mx-auto px-4">
           <div className="py-3">
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-              {/* Sort options moved inline with filters */}
-              <div className="flex items-center gap-2">
-                <h3 className="text-sm font-medium text-gray-900 flex items-center">
-                  <Filter className="h-3.5 w-3.5 mr-1 text-purple-600" />
-                  <span>Filtro:</span>
-                </h3>
-
-                {hasActiveFilters && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="text-purple-600 hover:text-purple-800 hover:bg-purple-50 h-7 px-2 py-0"
-                    onClick={clearFilters}
-                  >
-                    <X className="h-3.5 w-3.5 mr-1" />
-                    <span className="text-xs">Pastro</span>
-                  </Button>
-                )}
-              </div>
-
-              {/* Sort - Filters */}
-              {/* <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-500">Rendit:</span>
-                <select
-                  className="border border-gray-200 rounded-md text-xs p-1"
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
-                >
-                  <option value="default">Të rekomanduara</option>
-                  <option value="price-asc">Çmimi: Ulët në të lartë</option>
-                  <option value="price-desc">Çmimi: Lartë në të ulët</option>
-                  <option value="date">Data e fillimit</option>
-                </select>
-              </div> */}
+            {/* headline + mobile toggle */}
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-medium text-gray-900 flex items-center">
+                <Filter className="h-4 w-4 mr-1 text-purple-600" />
+                <span>Filtro</span>
+              </h3>
+              {/* only on small screens */}
+              <Button
+                variant="outline"
+                size="sm"
+                className="md:hidden"
+                onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
+              >
+                {mobileFiltersOpen ? "Mbyll Filtrat" : "Filtrat"}
+              </Button>
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              {/* Category Filters - Horizontal Layout */}
-              <div className="flex flex-wrap items-center gap-1.5">
+            {/* actual filters: hidden on mobile unless toggled, always visible on md+ */}
+            <div
+              className={`
+                transition-all
+                ${
+                  mobileFiltersOpen
+                    ? "max-h-[500px]"
+                    : "max-h-0 overflow-hidden"
+                }
+                md:max-h-full md:overflow-visible md:flex md:flex-wrap md:gap-4
+              `}
+            >
+              {/* Category Filters */}
+              <div className="flex flex-wrap items-center gap-1.5 mb-3 md:mb-0">
                 <span className="text-xs font-medium text-gray-500 mr-1">
                   Kategori:
                 </span>
-                {categories.map((category) => (
+                {categories.map((cat) => (
                   <Button
-                    key={category.id}
+                    key={cat.id}
+                    size="sm"
                     variant={
-                      selectedCategories.includes(category.id)
+                      selectedCategories.includes(cat.id)
                         ? "default"
                         : "outline"
                     }
-                    size="sm"
-                    className={`h-7 px-2 py-0 text-xs ${
-                      selectedCategories.includes(category.id)
-                        ? "bg-purple-600 hover:bg-purple-700 text-white"
-                        : "bg-white text-gray-800 border-gray-200 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-300"
-                    }`}
-                    onClick={() => toggleCategory(category.id)}
+                    className="h-7 px-2 py-0 text-xs"
+                    onClick={() => toggleCategory(cat.id)}
                   >
-                    {category.icon}
-                    <span className="ml-1">{category.name}</span>
+                    {cat.icon}
+                    <span className="ml-1">{cat.name}</span>
                   </Button>
                 ))}
               </div>
 
-              {/* Duration Filters - Horizontal Layout */}
+              {/* Duration Filters */}
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-xs font-medium text-gray-500 mr-1">
                   Kohëzgjatje:
                 </span>
-                {durations.map((duration) => (
+                {durations.map((d) => (
                   <Button
-                    key={duration.id}
-                    variant={
-                      selectedDurations.includes(duration.id)
-                        ? "default"
-                        : "outline"
-                    }
+                    key={d.id}
                     size="sm"
-                    className={`h-7 px-2 py-0 text-xs ${
-                      selectedDurations.includes(duration.id)
-                        ? "bg-purple-600 hover:bg-purple-700 text-white"
-                        : "bg-white text-gray-800 border-gray-200 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-300"
-                    }`}
-                    onClick={() => toggleDuration(duration.id)}
+                    variant={
+                      selectedDurations.includes(d.id) ? "default" : "outline"
+                    }
+                    className="h-7 px-2 py-0 text-xs"
+                    onClick={() => toggleDuration(d.id)}
                   >
-                    {duration.name}
+                    {d.name}
                   </Button>
                 ))}
               </div>

@@ -613,7 +613,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Shtune (08:00 - 14:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Berber+1800h",
+  image: "/courses/berber-1800.jpg", noCustomCrop: true,
   description:
     "Themeloni aftësitë e berberit nga teknikave bazë të prerjeve deri te trajtimet estetike të skalpit.",
   longDescription:
@@ -696,7 +696,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (09:00 - 15:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Berber+900h",
+ image: "/courses/berber-900.jpg", noCustomCrop: true,
   description:
     "Njihuni me bazat e barbering-ut: nga historia dhe higjiena deri te prerjet klasike dhe ngjyrosja.",
   longDescription:
@@ -763,7 +763,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Martë - E Shtunë (10:00 - 14:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Berber+600h",
+  image: "/courses/berber-600.jpg", noCustomCrop: true,
   description:
     "Mësoni teknikat bazë të barbering-ut: higjiena, prerjet fillestare dhe kujdesi për flokët.",
   longDescription:
@@ -826,7 +826,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (10:00 - 14:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Berber+300h",
+  image: "/courses/berber-300.jpg",
   description:
     "Njihuni me bazat e profesionit të berberit: historia, higjiena, prerjet fillestare dhe trajtimet estetike të skalpit.",
   longDescription:
@@ -901,7 +901,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Shtune (09:00 - 16:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Estetike+2100h",
+  image: "/courses/estetike-2100.jpg",
   description:
     "Program i plotë 2100-orësh në estetikë: nga etika profesionale dhe higjiena te teknikat e avancuara estetike dhe spa.",
   longDescription:
@@ -984,7 +984,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (09:30 - 15:30)",
-  image: "/placeholder.svg?height=600&width=800&text=Estetike+1500h",
+   image: "/courses/estetike-1500.jpg",
   description:
     "Kurs 1500-orësh në estetikë me fokus në trajtimet faciale, masazhet, makeup permanent dhe teknikat spa.",
   longDescription:
@@ -1059,7 +1059,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (09:00 - 15:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Estetike+900h",
+   image: "/courses/estetike-900.jpg", noCustomCrop: true,
   description:
     "Program 900-orësh në estetikë, duke mbuluar etika, trajtime faciale, masazhe dhe teknika spa fillestare.",
   longDescription:
@@ -1133,7 +1133,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (10:00 - 14:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Estetike+600h",
+   image: "/courses/estetike-600.jpg",
   description:
     "Kurs 600-orësh në estetikë, fokus në etika, komunikim, terminologji anatomike dhe trajtime bazë facial & spa.",
   longDescription:
@@ -1200,7 +1200,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (11:00 - 14:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Estetike+300h",
+   image: "/courses/estetike-300.jpg", noCustomCrop: true,
   description:
     "Kurs 300-orësh në estetikë bazike: etika, trajtime facial, masazhe fillestare dhe spa.",
   longDescription:
@@ -1465,7 +1465,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (09:00 - 17:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Hair+2100h",
+  image: "/courses/parukeri-2100.jpg",
   description:
     "Trajnim i plotë 2100-orësh në parukeri, nga higjiena bazë deri te teknikat e avancuara të prerjes, stilimit dhe ngjyrosjes.",
   longDescription:
@@ -1540,7 +1540,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (10:00 - 16:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Hair+900h",
+  image: "/courses/parukeri-900.jpg",
   description:
     "Program 900-orësh për të avancuar në prerje, stilim dhe ngjyrosje parukerie.",
   longDescription:
@@ -1595,7 +1595,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (10:00 - 14:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Hair+600h",
+ image: "/courses/parukeri-600.jpg",
   description:
     "Kurs 600-orësh për të fituar aftësi të mesme në prerje, stilim dhe ngjyrosje.",
   longDescription:
@@ -1642,7 +1642,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (12:00 - 15:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Hair+300h",
+ image: "/courses/parukeri-300.jpg",
   description:
     "Kurs hyrës 300-orësh në parukeri, për të mësuar bazat e prerjes dhe stilimit.",
   longDescription:
@@ -1694,7 +1694,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Shtune (09:00 - 18:00)",
-  image: "/courses/tatuator.jpg",
+  image: "/courses/tatuator.jpg", noCustomCrop: true,
   description:
     "Program 2100-orësh në artin e tatuazhit, nga historia dhe etika deri te teknikat profesionale të aplikimit dhe pastrimit.",
   longDescription:
@@ -1945,7 +1945,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Shtune (09:00 - 18:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Makeup+1200h",
+  image: "/courses/makeup-1200.jpg",
   description:
     "Program 1200-orësh që mbulon nga etika dhe historia e make-up-it, tek teknikat profesionale, grimi special e portofoli online.",
   longDescription:
@@ -2099,7 +2099,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (10:00 - 17:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Makeup+600h",
+  image: "/courses/makeup-600.jpg", noCustomCrop:true,
   description:
     "Kurs 600-orësh për bazat e make-up-it: nga higjiena e lëkurës tek teknikat kryesore të aplikimit.",
   longDescription:
@@ -2188,7 +2188,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Shtune (09:00 - 17:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Maniky+1500h",
+  image: "/courses/nails-2000.jpg",
   description:
     "Kurs 1500-orësh që mbulon manikyre, pedikyre, Nail Art të avancuar dhe trajtime SPA për duar e këmbë.",
   longDescription:
@@ -2304,7 +2304,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (10:00 - 16:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Maniky+400h",
+  image: "/courses/nails-500.png",
   description:
     "Kurs 400-orësh për bazat e manikyrit, pedikyrit dhe Nail Art teknikë fillestare.",
   longDescription:
@@ -2367,7 +2367,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Martë & E Enjte (11:00 - 15:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Maniky+150h",
+  image: "/courses/pedikyr-1.jpg", noCustomCrop: true,
   description:
     "Kurs hyrës 150-orësh për teknikën bazë të manikyrit, pedikyrit dhe Nail Art fillestare.",
   longDescription:
@@ -2427,7 +2427,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Shtune (08:00 - 18:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Masazhe+2500h",
+  image: "/courses/kurs-masazh.jpg",
   description:
     "Kurs i plotë 2500-orësh që mbulon të gjitha llojet kryesore të masazhit, nga relaksues dhe klasik, te terapeutik, anticeluliti, refleksologjia e plantare, aromaterapia dhe teknikat orientale.",
   longDescription:
@@ -2543,7 +2543,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Martë & E Enjte (14:00 - 18:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Masazh+150h",
+  image: "/courses/masazh-klasik.jpg",
   description:
     "Kurs 150-orësh që mbulon masazhin klasik suedez, relaksues, aromaterapi dhe teknikat bazë orientale (Shiatsu, Thai, reflexology).",
   longDescription:
@@ -2602,7 +2602,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Mërkurë & E Premte (09:00 - 13:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Masazh+Terapeutik+150h",
+  image: "/courses/masazh-anticelulit.jpg",
   description:
     "Kurs 150-orësh fokusuar në masazhet terapeutike, kurative, anticelulit dhe refleksologjinë plantare.",
   longDescription:
@@ -2716,7 +2716,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Martë - E Shtune (10:00 - 16:00)",
-  image: "/placeholder.svg?height=600&width=800&text=PMU+600h",
+  image: "/courses/makeup-permanent.jpg",
   description:
     "Kurs i plotë 600-orësh në teknikat e makeup-it permanent për fytyrë, vetulla, sy dhe buzë, duke përfshirë edhe areolat dhe skalpin.",
   longDescription:
@@ -3108,7 +3108,7 @@ export const courses: Course[] = [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Premte (09:00 - 16:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Modelist+600h",
+  image: "/courses/fashion-industriale.jpg",
   description:
     "Kurs 600-orësh në teknologjinë e prerjes dhe gradimin industrial të modeleve.",
   longDescription:

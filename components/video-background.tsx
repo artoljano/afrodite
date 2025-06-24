@@ -29,7 +29,7 @@ export default function VideoBackground({
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 1; // Slightly slower playback for a more elegant look
+      videoRef.current.playbackRate = 0.8; // Slightly slower playback for a more elegant look
     }
   }, []);
 
@@ -118,7 +118,7 @@ export default function VideoBackground({
       ></div>
 
       {/* Video controls */}
-      {showControls && (
+      {/* {showControls && (
         <div
           className={`absolute bottom-4 right-4 z-20 flex flex-col items-end space-y-2 transition-opacity duration-300 ${
             showControlsState ? "opacity-100" : "opacity-0"
@@ -158,7 +158,7 @@ export default function VideoBackground({
             ></div>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Content */}
       <div className="relative z-10">{children}</div>

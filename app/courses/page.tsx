@@ -46,7 +46,7 @@ import { useEffect } from "react";
 import { courses } from "@/data/courses";
 
 const categories = [
-  { id: "makeup", name: "Makeup", icon: <GraduationCap className="h-4 w-4" /> },
+  { id: "makeup", name: "Makeup", icon: <Feather className="h-4 w-4" /> },
   {
     id: "nails",
     name: "Manikyr & Pedikyr",
@@ -58,50 +58,50 @@ const categories = [
     name: "Trajtimet e Fytyrës",
     icon: <User className="h-4 w-4" />,
   },
-  { id: "brows", name: "Vetulla", icon: <Eye className="h-4 w-4" /> },
+  // { id: "brows", name: "Vetulla", icon: <Eye className="h-4 w-4" /> },
   {
     id: "lashes",
     name: "Zgjatimi i Qerpikëve",
     icon: <CheckCircle className="h-4 w-4" />,
   },
-  { id: "hair", name: "Stilim Flokësh", icon: <Users className="h-4 w-4" /> },
-  { id: "barber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
+  { id: "hair", name: "Parukeri", icon: <Users className="h-4 w-4" /> },
+  // { id: "barber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
   { id: "massage", name: "Masazh", icon: <BookOpen className="h-4 w-4" /> },
   {
     id: "therapy",
     name: "Terapitë Estetike",
     icon: <Heart className="h-4 w-4" />,
   },
-  {
-    id: "reception",
-    name: "Recepsion",
-    icon: <Headphones className="h-4 w-4" />,
-  },
-  {
-    id: "tour-guide",
-    name: "Udhërrëfyes Turistik",
-    icon: <MapPin className="h-4 w-4" />,
-  },
+  // {
+  //   id: "reception",
+  //   name: "Recepsion",
+  //   icon: <Headphones className="h-4 w-4" />,
+  // },
+  // {
+  //   id: "tour-guide",
+  //   name: "Udhërrëfyes Turistik",
+  //   icon: <MapPin className="h-4 w-4" />,
+  // },
   {
     id: "tourism",
-    name: "Operator Turistik",
+    name: "Shërbime Turistike",
     icon: <Globe className="h-4 w-4" />,
   },
-  {
-    id: "travel-agent",
-    name: "Agjent Udhëtimesh",
-    icon: <Briefcase className="h-4 w-4" />,
-  },
-  {
-    id: "craft",
-    name: "Veshje Artizanale",
-    icon: <Hammer className="h-4 w-4" />,
-  },
-  {
-    id: "industrial",
-    name: "Modeliste Industriale",
-    icon: <ShoppingBag className="h-4 w-4" />,
-  },
+  // {
+  //   id: "travel-agent",
+  //   name: "Agjent Udhëtimesh",
+  //   icon: <Briefcase className="h-4 w-4" />,
+  // },
+  // {
+  //   id: "craft",
+  //   name: "Veshje Artizanale",
+  //   icon: <Hammer className="h-4 w-4" />,
+  // },
+  // {
+  //   id: "industrial",
+  //   name: "Modeliste Industriale",
+  //   icon: <ShoppingBag className="h-4 w-4" />,
+  // },
   {
     id: "fashion",
     name: "Fashion Design",
@@ -117,18 +117,26 @@ const categories = [
     name: "Kujdestar",
     icon: <HeartHandshake className="h-4 w-4" />,
   },
-  {
-    id: "pmu",
-    name: "Makeup Permanent",
-    icon: <Feather className="h-4 w-4" />,
-  },
+
   { id: "tattoo", name: "Tattoo Art", icon: <PenTool className="h-4 w-4" /> },
 ];
 
 const durations = [
+  { id: "50-orë", name: "50 orë" },
   { id: "150-orë", name: "150 orë" },
+  { id: "200-orë", name: "200 orë" },
+  { id: "300-orë", name: "300 orë" },
   { id: "360-orë", name: "360 orë" },
-  { id: "intensiv", name: "Intensive " },
+  { id: "400-orë", name: "400 orë" },
+  { id: "560-orë", name: "560 orë" },
+  { id: "600-orë", name: "600 orë" },
+  { id: "900-orë", name: "900 orë" },
+  { id: "1000-orë", name: "1000 orë" },
+  { id: "1200-orë", name: "1200 orë" },
+  { id: "1500-orë", name: "1500 orë" },
+  { id: "1800-orë", name: "1800 orë" },
+  { id: "2100-orë", name: "2100 orë" },
+  { id: "2500-orë", name: "2500 orë" },
 ];
 
 export default function CoursesPage() {

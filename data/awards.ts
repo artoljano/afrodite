@@ -28,7 +28,7 @@ export const awards: Award[] = [
     organization: "Royal MUA Competition",
     description: "Anëtar i jurisë në garën Royal MUA Competition.",
     color: "purple",
-    imageSrc: "/images/awards/royal-mua.png",
+    imageSrc: "/awards/fiam-awards.png",
   },
   {
     id: "edel-mirenjohjeje",

@@ -195,7 +195,7 @@ export const partners: Partner[] = [
   pershkrimi:
     "Sallon grimi dhe stilimi flokësh, i njohur në Shqipëri, me një klientelë të bollshme. Si eksperte në make-up me gati 15 vite experience dhe e certifikuar në Itali dhe në Gjermani, ajo ofron jo vetëm mundësinë për studentët e Afrodite Academy të marrin pjesë në seminare dhe kurse intensive, por edhe mundësinë e integrimit të asistuar në tregun e punës.",
   cardPicture: "/team/eni.jpg",
-  logoImg: "",
+  logoImg: "/team/eni.jpg",
 },
 
 //no info

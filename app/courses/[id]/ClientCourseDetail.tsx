@@ -1,10 +1,10 @@
 // File: /app/courses/[id]/ClientCourseDetail.tsx
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import {
   Clock,
   Calendar,
@@ -13,6 +13,18 @@ import {
   GraduationCap,
   ArrowRight,
   Play,
+  ChevronRight,
+  ShoppingBag,
+  Droplet,
+  HeartHandshake,
+  Globe,
+  Heart,
+  BookOpen,
+  Users,
+  User,
+  Sparkles,
+  Feather,
+  PenTool,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -33,6 +45,22 @@ interface Props {
   course: Course;
 }
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      when: "beforeChildren",
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export default function ClientCourseDetail({ course }: Props) {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -44,13 +72,100 @@ export default function ClientCourseDetail({ course }: Props) {
     alt?: string;
   } | null>(null);
 
+  const coursesRef = useRef<HTMLDivElement>(null);
+
+  const categories = [
+    { id: "makeup", name: "Makeup", icon: <Feather className="h-4 w-4" /> },
+    {
+      id: "nails",
+      name: "Manikyr & Pedikyr",
+      icon: <Award className="h-4 w-4" />,
+    },
+    {
+      id: "esthetics",
+      name: "Estetikë",
+      icon: <Sparkles className="h-4 w-4" />,
+    },
+    {
+      id: "facials",
+      name: "Trajtimet e Fytyrës",
+      icon: <User className="h-4 w-4" />,
+    },
+    // { id: "brows", name: "Vetulla", icon: <Eye className="h-4 w-4" /> },
+    {
+      id: "lashes",
+      name: "Zgjatimi i Qerpikëve",
+      icon: <CheckCircle className="h-4 w-4" />,
+    },
+    { id: "hair", name: "Parukeri", icon: <Users className="h-4 w-4" /> },
+    // { id: "barber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
+    { id: "massage", name: "Masazh", icon: <BookOpen className="h-4 w-4" /> },
+    {
+      id: "therapy",
+      name: "Terapitë Estetike",
+      icon: <Heart className="h-4 w-4" />,
+    },
+    // {
+    //   id: "reception",
+    //   name: "Recepsion",
+    //   icon: <Headphones className="h-4 w-4" />,
+    // },
+    // {
+    //   id: "tour-guide",
+    //   name: "Udhërrëfyes Turistik",
+    //   icon: <MapPin className="h-4 w-4" />,
+    // },
+    {
+      id: "tourism",
+      name: "Shërbime Turistike",
+      icon: <Globe className="h-4 w-4" />,
+    },
+    // {
+    //   id: "travel-agent",
+    //   name: "Agjent Udhëtimesh",
+    //   icon: <Briefcase className="h-4 w-4" />,
+    // },
+    // {
+    //   id: "craft",
+    //   name: "Veshje Artizanale",
+    //   icon: <Hammer className="h-4 w-4" />,
+    // },
+    // {
+    //   id: "industrial",
+    //   name: "Modeliste Industriale",
+    //   icon: <ShoppingBag className="h-4 w-4" />,
+    // },
+    {
+      id: "fashion",
+      name: "Fashion Design",
+      icon: <ShoppingBag className="h-4 w-4" />,
+    },
+    {
+      id: "cleaning",
+      name: "Pastrim Profesional",
+      icon: <Droplet className="h-4 w-4" />,
+    },
+    {
+      id: "caregiver",
+      name: "Kujdestar",
+      icon: <HeartHandshake className="h-4 w-4" />,
+    },
+
+    { id: "tattoo", name: "Tattoo Art", icon: <PenTool className="h-4 w-4" /> },
+  ];
+
+  // inside ClientCourseDetail, before the JSX return
+  const relatedCourses = courses
+    .filter((c) => c.id !== course.id && c.category === course.category)
+    .slice(0, 3);
+
   return (
     <div className="flex flex-col w-full">
       {/* ── Hero Section with Video Background ── */}
       <VideoBackground
         videoSrc={course.videoSrc || "/placeholder-video.mp4"}
         overlayOpacity={0.85}
-        className="min-h-[60vh] md:min-h-[70vh] py-20 md:py-32 bg-gradient-to-r from-black to-purple-900"
+        className="min-h-[60vh] md:h-[75vh] py-20 md:py-32 bg-gradient-to-r from-black to-purple-900"
       >
         <motion.div
           style={{ opacity, scale }}
@@ -101,14 +216,14 @@ export default function ClientCourseDetail({ course }: Props) {
               transition={{ duration: 0.7 }}
               className="relative"
             >
-              {course.videoSrc ? (
+              {/* {course.videoSrc ? (
                 <>
                   <div
                     onClick={() => setIsModalOpen(true)}
                     className="group rounded-xl overflow-hidden shadow-xl cursor-pointer relative"
                   >
                     <video
-                      src={course.videoSrc || "/placeholder.svg"}
+                      src={course.image || "/placeholder.svg"}
                       width={800}
                       height={600}
                       className="
@@ -130,17 +245,17 @@ export default function ClientCourseDetail({ course }: Props) {
                     title={course.title}
                   />
                 </>
-              ) : (
-                <div className="rounded-xl overflow-hidden shadow-xl">
-                  <Image
-                    src={course.image || "/placeholder.svg"}
-                    alt={course.title}
-                    width={800}
-                    height={600}
-                    className="object-cover w-full h-full h-[700px]"
-                  />
-                </div>
-              )}
+              ) : ( */}
+              <div className="rounded-xl overflow-hidden shadow-xl">
+                <Image
+                  src={course.image || "/placeholder.svg"}
+                  alt={course.title}
+                  width={800}
+                  height={600}
+                  className="object-cover w-full  h-[700px]"
+                />
+              </div>
+              {/* )} */}
             </motion.div>
 
             <motion.div
@@ -493,62 +608,99 @@ export default function ClientCourseDetail({ course }: Props) {
       </section>
 
       {/* ── Related Courses Section ── */}
-      {courses
-        .filter((c) => c.id !== course.id && c.category === course.category)
-        .slice(0, 3).length > 0 && (
-        <section className="py-16 bg-purple-50">
+      {relatedCourses.length > 0 && (
+        <section className="py-16 bg-purple-50" ref={coursesRef}>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold font-poppins text-navy-900 mb-4">
+              Kurse të Ngjashme
+            </h2>
+            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6" />
+          </div>
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold font-poppins text-navy-900 mb-4">
-                Kurse të Ngjashme
-              </h2>
-              <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
-            </div>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {relatedCourses.map((rc, i) => (
+                <motion.div
+                  key={rc.id}
+                  variants={itemVariants}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 relative flex flex-col h-full"
+                >
+                  {/* Featured badge */}
+                  {rc.featured && (
+                    <div className="absolute top-4 left-4 z-10 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      Kurs i Rekomanduar
+                    </div>
+                  )}
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {courses
-                .filter(
-                  (c) => c.id !== course.id && c.category === course.category
-                )
-                .slice(0, 3)
-                .map((relatedCourse, index) => (
-                  <motion.div
-                    key={relatedCourse.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
-                  >
-                    <div className="relative h-48 overflow-hidden">
-                      <Image
-                        src={relatedCourse.image || "/placeholder.svg"}
-                        alt={relatedCourse.title}
-                        width={400}
-                        height={300}
-                        className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-4 right-4 bg-black text-white text-xs font-medium px-3 py-1 rounded-full">
-                        {relatedCourse.duration}
+                  {/* Image with optional custom-crop */}
+                  <div className="relative h-[14rem] overflow-hidden">
+                    <Image
+                      src={rc.image || "/placeholder.svg"}
+                      alt={rc.title}
+                      width={400}
+                      height={400}
+                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
+                      style={
+                        rc.customcrop
+                          ? { objectPosition: rc.customcrop }
+                          : undefined
+                      }
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between items-center">
+                      <div className="flex items-center space-x-2 text-white text-sm">
+                        <Clock className="h-4 w-4 text-purple-300" />
+                        <span>{rc.duration}</span>
+                      </div>
+                      <div className="flex items-center space-x-2 text-white text-sm">
+                        <Users className="h-4 w-4 text-purple-300" />
+                        <span>{rc.students} studentë</span>
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold font-poppins text-navy-900 mb-3 line-clamp-2">
-                        {relatedCourse.title}
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="mb-4">
+                      <div className="flex items-center mb-2 flex-wrap gap-2">
+                        <span className="text-xs font-medium bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
+                          {
+                            categories.find((cat) => cat.id === rc.category)
+                              ?.name
+                          }
+                        </span>
+                        <span className="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                          {rc.level}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3 line-clamp-2">
+                        {rc.title}
                       </h3>
-                      <p className="text-navy-700 mb-6 line-clamp-3">
-                        {relatedCourse.description}
+                      <p className="text-gray-700 line-clamp-3 mb-4">
+                        {rc.description}
                       </p>
-                      <Link href={`/courses/${relatedCourse.id}`}>
-                        <AnimatedButton className="w-full">
+                    </div>
+
+                    <div className="mt-auto pt-4 border-t border-gray-100">
+                      <div className="flex items-center text-sm text-gray-600 mb-4">
+                        <Calendar className="h-4 w-4 mr-1 text-purple-600" />
+                        <span>{rc.schedule}</span>
+                      </div>
+                      <Link href={`/courses/${rc.id}`}>
+                        <AnimatedButton className="w-full bg-black hover:bg-black text-white">
                           Mëso më shumë
-                          <ArrowRight className="ml-2 h-4 w-4" />
+                          <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
                         </AnimatedButton>
                       </Link>
                     </div>
-                  </motion.div>
-                ))}
-            </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
       )}

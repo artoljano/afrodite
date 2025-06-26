@@ -91,7 +91,7 @@ export const awards: Award[] = [
     organization: "Shqiptarja e gjithë botës",
     description: "",
     color: "purple",
-    imageSrc: "/awards/shen-tereza.png",
+    imageSrc: "/awards/nene-tereza.png",
   },
   {
     id: "ambassador-pea",

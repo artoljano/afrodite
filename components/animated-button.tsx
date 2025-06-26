@@ -8,8 +8,33 @@ import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
 // 1. We include `rounded-xl` here in the base CVA so the button itself is rounded:
+// const buttonVariants = cva(
+//   "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group",
+//   {
+//     variants: {
+//       variant: {
+//         default: "bg-black text-white hover:bg-black",
+//         secondary: "bg-purple-600 text-white hover:bg-black",
+//         outline:
+//           "border border-input bg-transparent text-current hover:bg-purple-600/10",
+//         ghost: "hover:bg-accent hover:text-accent-foreground",
+//         link: "text-primary underline-offset-4 hover:underline",
+//       },
+//       size: {
+//         default: "h-10 px-4 py-2",
+//         sm: "h-9 rounded-xl px-3",
+//         lg: "h-12 rounded-xl px-6 text-base",
+//       },
+//     },
+//     defaultVariants: {
+//       variant: "default",
+//       size: "default",
+//     },
+//   }
+// );
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group",
+  // 1) Added w-full sm:w-auto to force full-width on mobile, auto on larger screens
+  "inline-flex w-full sm:w-auto items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group",
   {
     variants: {
       variant: {
@@ -28,7 +53,7 @@ const buttonVariants = cva(
     },
     defaultVariants: {
       variant: "default",
-      size: "default",
+      size: "lg",
     },
   }
 );

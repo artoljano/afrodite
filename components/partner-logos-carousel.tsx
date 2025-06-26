@@ -144,17 +144,18 @@ export default function PartnerLogosCarousel({
                 }
               }}
             >
-              <div className="bg-white rounded-lg px-6 py-4 shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center min-w-[180px] h-24 cursor-pointer">
+              <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center min-w-[180px] h-24 cursor-pointer overflow-hidden">
                 {partner.logoImg ? (
-                  <Image
-                    src={partner.logoImg}
-                    alt={partner.emri}
-                    width={partner.width || 160}
-                    height={partner.height || 80}
-                    className="max-h-16 object-contain"
-                  />
+                  <div className="relative w-full h-full p-4">
+                    <Image
+                      src={partner.logoImg}
+                      alt={partner.emri}
+                      fill
+                      style={{ objectFit: "contain", objectPosition: "center" }}
+                    />
+                  </div>
                 ) : (
-                  <div className="w-[160px] h-[80px] bg-gray-100 rounded flex items-center justify-center text-xs text-gray-400">
+                  <div className="w-full h-full bg-gray-100 rounded flex items-center justify-center text-xs text-gray-400">
                     Pa logo
                   </div>
                 )}
@@ -189,14 +190,16 @@ export default function PartnerLogosCarousel({
                 &times;
               </button>
 
-              {/* Image */}
-              <div className="relative w-full h-[50vh] md:h-[65vh] overflow-hidden">
-                <Image
-                  src={activePartner.cardPicture}
-                  alt={activePartner.emri}
-                  fill
-                  className="object-cover object-center"
-                />
+              {/* Image (logo or card) */}
+              <div className="flex items-center justify-center bg-gray-100 p-4 w-full h-[50vh] md:h-[65vh]">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={activePartner.cardPicture}
+                    alt={activePartner.emri}
+                    fill
+                    style={{ objectFit: "contain", objectPosition: "center" }}
+                  />
+                </div>
               </div>
 
               {/* Text Content */}

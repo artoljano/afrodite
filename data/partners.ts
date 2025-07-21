@@ -21,15 +21,15 @@ export const partners: Partner[] = [
     emri: "Alternativ Pro",
     industria: "Konsulencë",
     pershkrimi: "Alternativ Pro është një agjenci konsulence që specializohet në zhvillimin strategjik të bizneseve, menaxhimin e projekteve dhe optimizimin e proceseve, duke ofruar zgjidhje të personalizuara për rritje dhe përmirësim të performancës.",
-    cardPicture: "",
-    logoImg: "/partners/alternativ-pro-logo.jpeg",
+    cardPicture: "/partners/alternative-pro.jpg",
+    logoImg: "/partners/alternative-pro.jpg",
   },
 
   {
     emri: "CAT Albania",
     industria: "Organizatë Profesionale",
     pershkrimi: "",
-    cardPicture: "",
+    cardPicture: "/partners/CAT.jpg",
     logoImg: "/partners/CAT.jpg",
   },
   //   {
@@ -39,13 +39,13 @@ export const partners: Partner[] = [
   //   cardPicture: "/partners/levizja-grate.png",
   //   logoImg: "/partners/levizja-grate.png",
   // },
-  {
-    emri: "Luiza Hair",
-    industria: "Parukeri",
-    pershkrimi: "Pronare e sallonit LUIZA HAIR AND MAKEUP në Tiranë, e certifikuar Mjeshtre për parukeri dhe estetikë. Instruktore për kurset e Parukerisë dhe Makeup në akademinë tonë.",
-    cardPicture: "/team/luiza.jpg",
-    logoImg: "/partners/luiza-hair.jpg",
-  },
+  // {
+  //   emri: "Luiza Hair",
+  //   industria: "Parukeri",
+  //   pershkrimi: "Pronare e sallonit LUIZA HAIR AND MAKEUP në Tiranë, e certifikuar Mjeshtre për parukeri dhe estetikë. Instruktore për kurset e Parukerisë dhe Makeup në akademinë tonë.",
+  //   cardPicture: "/team/luiza.jpg",
+  //   logoImg: "/partners/luiza-hair.jpg",
+  // },
     {
     emri: "Mumi",
     industria: "Sallon Bukurie",
@@ -62,29 +62,29 @@ export const partners: Partner[] = [
 },
 
   //Descriptions and images provided
-  {
-  emri: "Arts Hair Sallon for man Artan Markaj",
-  industria: "Berberi",
-  pershkrimi:
-    "Artan Markaj është një berber i certifikuar nga City & Guilds of London Institute, me diplomë në Level 2 Certificate in Barbering (UK, 2018). Gjatë formimit të tij profesional në Mbretërinë e Bashkuar, ai ka përvetësuar aftësi të avancuara në stilimin e flokëve për meshkuj, kujdesin e kokës, masazhin e skalpit dhe trajtimet për mjekrën dhe fytyrën. Pas rikthimit në Shqipëri, në vitin 2019 hapi sallonin e tij të parë në Lezhë, ndërsa në vitin 2025 zgjeroi aktivitetin me hapjen e “Art’s Hair Sallo” në zonën e Astirit në Tiranë. Sot, ai menaxhon me sukses të dy sallonet, duke ofruar shërbime të personalizuara dhe ndjekur vazhdimisht trendet më të fundit në berberi.",
-  cardPicture: "",
-  logoImg: "/partners/arts-hair-sallon.jpg",
-},
- {
-  emri: "CMC CAT Albania",
-  industria: "Berberi & Estetikë",
-  pershkrimi:
-    "President i CMC CAT Albania | Berber me famë ndërkombëtare\nAzem Sheshi, me origjinë nga Kalushi dhe rezident në Verona, Itali, është një ndër emrat më të njohur në botën e berberëve profesionistë. Me një karrierë që nisi në moshën 16-vjeçare, sot ai njihet për stilimet unike, teknikën e tij të veçantë dhe mjeshtërinë e pakrahasueshme. Është fitues i dhjetëra çmimeve kombëtare e ndërkombëtare, trajner dhe gjyqtar në konkurse prestigjioze në mbarë botën. Ka dhënë kontribut të çmuar në formimin e brezi të ri të profesionistëve në Shqipëri dhe ka përfaqësuar vendin në emisione televizive dhe ngjarje ndërkombëtare. Sot, si President i CMC CAT Albania, Azemi përfaqëson Shqipërinë në garat globale të bukurisë dhe stilimit, duke hapur rrugë të reja për profesionistët shqiptarë në skenën ndërkombëtare.\n\nMottoja e tij: “Pasion dhe punë.”\nJanë dy fjalët që përmbledhin rrugëtimin dhe filozofinë e tij të suksesit.",
- cardPicture: "",
-    logoImg: "/partners/CAT.jpg",
-},
+//   {
+//   emri: "Arts Hair Sallon for man Artan Markaj",
+//   industria: "Berberi",
+//   pershkrimi:
+//     "Artan Markaj është një berber i certifikuar nga City & Guilds of London Institute, me diplomë në Level 2 Certificate in Barbering (UK, 2018). Gjatë formimit të tij profesional në Mbretërinë e Bashkuar, ai ka përvetësuar aftësi të avancuara në stilimin e flokëve për meshkuj, kujdesin e kokës, masazhin e skalpit dhe trajtimet për mjekrën dhe fytyrën. Pas rikthimit në Shqipëri, në vitin 2019 hapi sallonin e tij të parë në Lezhë, ndërsa në vitin 2025 zgjeroi aktivitetin me hapjen e “Art’s Hair Sallo” në zonën e Astirit në Tiranë. Sot, ai menaxhon me sukses të dy sallonet, duke ofruar shërbime të personalizuara dhe ndjekur vazhdimisht trendet më të fundit në berberi.",
+//   cardPicture: "",
+//   logoImg: "/partners/arts-hair-sallon.jpg",
+// },
+//  {
+//   emri: "CMC CAT Albania",
+//   industria: "Berberi & Estetikë",
+//   pershkrimi:
+//     "President i CMC CAT Albania | Berber me famë ndërkombëtare\nAzem Sheshi, me origjinë nga Kalushi dhe rezident në Verona, Itali, është një ndër emrat më të njohur në botën e berberëve profesionistë. Me një karrierë që nisi në moshën 16-vjeçare, sot ai njihet për stilimet unike, teknikën e tij të veçantë dhe mjeshtërinë e pakrahasueshme. Është fitues i dhjetëra çmimeve kombëtare e ndërkombëtare, trajner dhe gjyqtar në konkurse prestigjioze në mbarë botën. Ka dhënë kontribut të çmuar në formimin e brezi të ri të profesionistëve në Shqipëri dhe ka përfaqësuar vendin në emisione televizive dhe ngjarje ndërkombëtare. Sot, si President i CMC CAT Albania, Azemi përfaqëson Shqipërinë në garat globale të bukurisë dhe stilimit, duke hapur rrugë të reja për profesionistët shqiptarë në skenën ndërkombëtare.\n\nMottoja e tij: “Pasion dhe punë.”\nJanë dy fjalët që përmbledhin rrugëtimin dhe filozofinë e tij të suksesit.",
+//  cardPicture: "",
+//     logoImg: "/partners/CAT.jpg",
+// },
 
   {
-    emri: "Dhoma Kombëtare e Zyrtarëve",
+    emri: "Dhoma Kombëtare e Zejtarisë",
     industria: "Organizatë Profesionale",
     pershkrimi: "Dhoma Kombëtare e Zyrtarëve në Shqipëri është një organizatë profesionale që përfaqëson punonjësit zyrtarë të administratës publike në vend. Kjo dhomë ka si qëllim promovimin e interesave profesionale, sociale dhe ekonomike të zyrtarëve, si dhe forcimin e etikës dhe standardeve profesionale në shërbimin publik. Dhoma Kombëtare e Zyrtarëve po zgjeron horizontet e saj duke synuar certifikimin e" +
     "profesionistëve të nivelit të lartë, bazuar në standardet më të avancuara evropiane. Kjo nismë profesionistëve të nivelit të lartë, bazuar në standardet më të avancuara evropiane. Kjo nismë ka për qëllim të përmirësojë cilësinë dhe profesionalizmin e shërbimit publik në Shqipëri, duke ofruar njohje të vlefshme dhe të njohura ndërkombëtarisht për ekspertët në administratë dhe sektorë të tjerë profesionalë.",
-    cardPicture: "",
+    cardPicture: "/partners/dhkz-card.jpeg",
     logoImg: "/partners/dhoma-zytarise.png",
   },
 {
@@ -92,7 +92,7 @@ export const partners: Partner[] = [
   industria: "Universitet",
   pershkrimi:
     "Fortis Balkan University and Wellness është një institucion i njohur në rajonin ballkanik, i përkushtuar ndaj ofrimit të edukimit cilësor dhe promovimit të mirëqenies fizike dhe mendore. Me programe të avancuara akademike dhe qasje inovative në fushën e shëndetit dhe wellness-it, Fortis Balkan synon të formojë profesionistë të kualifikuar dhe të përgatitur për sfidat e sotme globale.\n\nBashkëpunimi me Fortis Balkan University and Wellness sjell mundësi të shumta për zhvillim profesional, shkëmbim njohurish dhe promovim të standardeve më të larta në arsim dhe shëndetësi në rajonin tonë.",
-  cardPicture: "",
+  cardPicture:  "/partners/gruppo-fortis.png",
   logoImg: "/partners/gruppo-fortis.png",
 },
 {
@@ -103,20 +103,20 @@ export const partners: Partner[] = [
   cardPicture: "/partners/barber-kosova-card.jpg",
   logoImg: "/partners/xheti-kosove.jpg",
 },
-  {
-    emri: "MIHI Hair and Beauty",
-    industria: "Parruxheri & Estetikë",
-    pershkrimi: "Mjedis i ri dhe modern, që ofron mundësinë për studentët e diplomuar në Afrodite Academy të gjejnë mundësi punësimi në territorin italian, duke favorizuar integrimin e tyre në qendra të specializuara dhe të nivelit të lartë në fushën e estetikës dhe parruxherisë. Ky proces i mundëson atyre të mësojnë nga profesionistët më të mirë dhe të zhvillohen në liderë të këtij sektori.",
-    cardPicture: "",
-    logoImg: "/partners/mihi-milano.jpeg",
-  },
+  // {
+  //   emri: "MIHI Hair and Beauty",
+  //   industria: "Parruxheri & Estetikë",
+  //   pershkrimi: "Mjedis i ri dhe modern, që ofron mundësinë për studentët e diplomuar në Afrodite Academy të gjejnë mundësi punësimi në territorin italian, duke favorizuar integrimin e tyre në qendra të specializuara dhe të nivelit të lartë në fushën e estetikës dhe parruxherisë. Ky proces i mundëson atyre të mësojnë nga profesionistët më të mirë dhe të zhvillohen në liderë të këtij sektori.",
+  //   cardPicture: "",
+  //   logoImg: "/partners/mihi-milano.jpeg",
+  // },
   
   {
   emri: "UET University",
   industria: "Turizëm & Mikpritje",
   pershkrimi:
     "Shkollë profesionale italiane, e krijuar në vitin 1993, lider në sektorin e turizmit dhe mikpritjes, që formon profesionistë të vërtetë, të gatshëm të shfaqen në tregun e punës. Ajo nuk merret vetëm me formim profesional, por ofron mundësi për diplomë të nivelit të tretë (Bachelor). Në bashkëpunim me Afrodite Academy, ofron mundësinë për të studiuar jashtë vendit dhe për t'u trajnuar nga profesionistë italianë gjatë kursit. Në përputhje me realitetet e pranishme në territorin italian, ofron mundësi punësimi dhe ndihmon studentët e certifikuar nga shkolla, si në Itali ashtu edhe në Shqipëri, për të gjetur një vend pune të qëndrueshëm.",
-  cardPicture: "",
+  cardPicture:"/partners/uet-logo.jpeg",
   logoImg: "/partners/uet-logo.jpeg",
 },
   {
@@ -125,7 +125,7 @@ export const partners: Partner[] = [
     "Qendër estetike e specializuar në PMU (tatuazh të eyebrows, buzëve dhe eyeliner), extension qerpikësh, laminim, rikonstruksion dhe dekorim thonjsh, pedikyr dhe shërbime të tjera, përfshirë parruxherinë.",
   pershkrimi:
     "Violeta, për më shumë se 10 vjet, bën pjesë në botën e bukurisë, duke garantuar një rezultat të sigurt si në shërbimin ndaj klientëve, ashtu edhe si instruktore për kurset që ofron në bashkëpunim me Afrodite Academy.",
-  cardPicture: "",
+  cardPicture:"/partners/logo-violeta.jpg",
   logoImg: "/partners/logo-violeta.jpg",
 },
   {
@@ -133,24 +133,24 @@ export const partners: Partner[] = [
   industria: "Klinikë estetike e avancuar dhe e nivelit të lartë.",
   pershkrimi:
     "Shërbimet që ofrohen janë të shumta: Epilim me Laser, Trajtim i Akneve, Heqje e Nishaneve, Heqje e Tatuazheve, Mezoterapi, Dermapen, Filler, Injektim PRP, Trajtim me Plexer, Urologji, Ozonoterapi, Kardiologji, Gjinekologji, Transplant Flokësh. Secili prej këtyre shërbimeve kryhet me profesionalizëm dhe kujdes maksimal. Bashkëpunimi midis Afrodite Academy dhe Ray-Med ka për qëllim të prezantojë studentët tanë të estetikës me botën e estetikës së avancuar, duke i shoqëruar hap pas hapi, në mënyrë që ata të zhvillojnë aftësi të forta dhe të përditësuara vazhdimisht me zhvillimin e teknologjive të reja.",
-  cardPicture: "",
+  cardPicture: "/partners/logo-raymed.png",
   logoImg: "/partners/logo-raymed.png",
 },
 
-  {
-  emri: "Beauty Sallon Mira",
-  industria: "Estetikë & Parukeri",
-  pershkrimi:
-    "Me një karrierë të konsoliduar prej 9 vitesh në fushën e estetikës dhe parukerisë, ajo është themeluesja e Beauty Sallon Mira në zonën e Astirit. E diplomuar në një shkollë dyvjeçare për estetikë dhe parukeri, ajo ka specializim të thelluar në trajtimet për kujdesin e flokëve, duke kombinuar teknikë profesionale me përkushtim dhe pasion për bukurinë natyrale.",
-  cardPicture: "",
-  logoImg: "/partners/mira-beauty.jpg",
-},
+//   {
+//   emri: "Beauty Sallon Mira",
+//   industria: "Estetikë & Parukeri",
+//   pershkrimi:
+//     "Me një karrierë të konsoliduar prej 9 vitesh në fushën e estetikës dhe parukerisë, ajo është themeluesja e Beauty Sallon Mira në zonën e Astirit. E diplomuar në një shkollë dyvjeçare për estetikë dhe parukeri, ajo ka specializim të thelluar në trajtimet për kujdesin e flokëve, duke kombinuar teknikë profesionale me përkushtim dhe pasion për bukurinë natyrale.",
+//   cardPicture: "",
+//   logoImg: "/partners/mira-beauty.jpg",
+// },
   {
   emri: "Orane Institute of Beauty and Wellness",
   industria: "Institut Ndërkombëtar",
   pershkrimi:
     "Orane Institute of Beauty and Wellness ofron ekspozim të pakrahasueshëm përmes bashkëpunimeve me ekspertë ndërkombëtarë të industrisë së bukurisë. Në të kaluarën, emra të mëdhenj dhe ikonë të sektorit si Farrukh Shamuratov, Ojas Rajani dhe Ashley Ferns kanë bashkëpunuar me institutet për të trajnuar studentët.\n\nDepartamenti i Vendosjes siguron pozicione pune për studentët pranë markave prestigjioze si Kaya Skin Clinic, Lotus Herbal dhe L’Oréal. Gjithashtu, studentët kanë mundësi të zhvillojnë karrierën brenda akademive të Orane, duke përfituar mbështetje të plotë për vendosjen profesionale.",
-  cardPicture: "",
+  cardPicture: "/partners/orane-logo.webp",
   logoImg: "/partners/orane-logo.webp",
 },
   {
@@ -170,7 +170,7 @@ export const partners: Partner[] = [
     emri: "Starform Scuola Professionale",
     industria: "Shkollë Profesionale",
     pershkrimi: "Shkollë profesionale në Itali, lider në fushën e formimit, me më shumë se 25 vjet eksperiencë jo vetëm në sektorin e estetikës dhe bukurisë, por edhe në sektorë të tjerë si ai socio-sanitar, ushqimor dhe teknik të llojeve të ndryshme. Afrodite Academy dhe Starform punojnë ngushtë me studentët, duke ofruar një eksperiencë të personalizuar që i përshtatet nevojave dhe objektivave të tyre. Në këtë mënyrë, ne mund të zhvillojmë aftësitë dhe kompetencat më të mira, duke ofruar një praktikë konkrete dhe të prekshme, që përgatit për tregun e punës edhe jashtë territorit shqiptar.",
-    cardPicture: "",
+    cardPicture: "/partners/starform-logo.png",
     logoImg: "/partners/starform-logo.png",
   },
   {
@@ -178,15 +178,15 @@ export const partners: Partner[] = [
   industria: "Berber",
   pershkrimi:
     "Me një karrierë të gjatë 7 vjeçare dhe të suksesshme në Shkodër, ai është pronari i sallonit të njohur Magic Barbers. Falë talentit dhe përkushtimit të tij, ka gjetur në Afrodite Academy ambientin ideal për të zhvilluar dhe përcjellë pasionin e tij për mësimdhënien në fushën e berberisë. Ai sjell në akademi eksperiencën praktike dhe dijen profesionale, duke frymëzuar brezat e rinj të profesionistëve.",
-  cardPicture: "",
-  logoImg: "",
+  cardPicture: "/partners/daljani.jpg",
+  logoImg: "/partners/daljani.jpg",
 },
 {
   emri: "FIAM Associazione Parrucchieri e Barbieri",
   industria: "Organizatë Profesionale",
   pershkrimi:
     "FIAM është një nga organizatat kryesore në Itali që përfaqëson dhe mbështet profesionistët e parukierisë dhe berberisë. Me një histori të gjatë dhe angazhim të palodhur për promovimin e cilësisë, inovacionit dhe zhvillimit profesional në këtë sektor, FIAM luan një rol kyç në ngritjen e standardeve të industrisë. Bashkëpunimi me FIAM sjell mundësi të shkëlqyera për shkëmbim eksperiencash, trajnime të avancuara dhe akses në rrjete profesionale ndërkombëtare, duke kontribuar në zhvillimin e mëtejshëm të profesionistëve shqiptarë dhe forcimin e lidhjeve midis komuniteteve të berberëve dhe parukierëve në Shqipëri dhe Itali.",
-  cardPicture: "",
+  cardPicture: "/partners/fiam-logo.jpeg",
   logoImg: "/partners/fiam-logo.jpeg",
 },
 {
@@ -194,7 +194,7 @@ export const partners: Partner[] = [
   industria: "M.U.A & Hair Stylist",
   pershkrimi:
     "Sallon grimi dhe stilimi flokësh, i njohur në Shqipëri, me një klientelë të bollshme. Si eksperte në make-up me gati 15 vite experience dhe e certifikuar në Itali dhe në Gjermani, ajo ofron jo vetëm mundësinë për studentët e Afrodite Academy të marrin pjesë në seminare dhe kurse intensive, por edhe mundësinë e integrimit të asistuar në tregun e punës.",
-  cardPicture: "",
+  cardPicture: "/team/eni.jpg",
   logoImg: "/team/eni.jpg",
 },
 
@@ -203,7 +203,7 @@ export const partners: Partner[] = [
   emri: "TNT Produkte Parukeri",
   industria: "Produkte për Parukeri",
   pershkrimi: "TNT Produkte Parukeri ofron një gamë të gjerë produktesh profesionale për trajtimin dhe stilimin e flokëve—nga bojërat dhe trajtimet rigjeneruese, te aksesorët më të fundit—duke mbështetur salonet dhe profesionistët e bukurisë me cilësi premium.",
-  cardPicture: "",
+  cardPicture:"/partners/tnt-cosmetics.png",
   logoImg: "/partners/tnt-cosmetics.png",
 },
 
@@ -211,22 +211,22 @@ export const partners: Partner[] = [
   emri: "Concept P, Produkte Parukeri",
   industria: "Distribuim Produkte Parukerie",
   pershkrimi: "Concept P është një kompani gjermane e specializuar në distribuimin e produkteve premium për kujdesin e flokëve. Linjat e tyre përfshijnë shampo, kondicionerë dhe trajtime profesionale, të përdorura nga sallonet më të njohura të Europës.",
-  cardPicture: "",
+  cardPicture: "/partners/concept-p.png",
   logoImg: "/partners/concept-p.png",
 },
 {
   emri: "Prime Hair Extension Exclusiv",
   industria: "Extension Flokësh",
   pershkrimi: "Prime Hair Extension Exclusiv ofron shtesa floku premium me materiale të zgjedhura me kujdes (natyrale dhe teknike), për rezultate natyrale me volum maksimal, që mund të stilohen lehtë dhe qëndrojnë gjatë.",
-  cardPicture: "",
+  cardPicture:  "/partners/prime-extension.jpg",
   logoImg: "/partners/prime-extension.jpg",
 },
-{
-  emri: "Arte Graphic Design printing",
-  industria: "Dizajn Grafik & Printim",
-  pershkrimi: "",
-  cardPicture: "",
-  logoImg: "",
-},
+// {
+//   emri: "Arte Graphic Design",
+//   industria: "Dizajn Grafik & Printim",
+//   pershkrimi: "",
+//   cardPicture: "",
+//   logoImg: "",
+// },
 
 ];

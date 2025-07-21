@@ -19,15 +19,15 @@ export const team: TeamMember[] = [
       "Me 30 vite përvojë si në Itali ashtu edhe në Shqipëri, ajo nderon vendin tonë me një formim të suksesshëm dhe rezultate të prekshme.",
     photo: "/team/aferdita.jpg",
   },
-  {
-    id: "luiza",
-    name: "Luiza Nebiaj",
-    role: "Parukiere dhe estetiste profesioniste, instruktore",
-    experience: "14 vite përvojë",
-    bio:
-      "Pronare e sallonit LUIZA HAIR AND MAKEUP në Tiranë, e certifikuar Mjeshtre për parukeri dhe estetikë. Instruktore për kurset e Parukerisë dhe Makeup në akademinë tonë.",
-    photo: "/team/luiza.jpg",
-  },
+  // {
+  //   id: "luiza",
+  //   name: "Luiza Nebiaj",
+  //   role: "Parukiere dhe estetiste profesioniste, instruktore",
+  //   experience: "14 vite përvojë",
+  //   bio:
+  //     "Pronare e sallonit LUIZA HAIR AND MAKEUP në Tiranë, e certifikuar Mjeshtre për parukeri dhe estetikë. Instruktore për kurset e Parukerisë dhe Makeup në akademinë tonë.",
+  //   photo: "/team/luiza.jpg",
+  // },
   {
     id: "remina",
     name: "Remina Muci",

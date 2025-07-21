@@ -37,18 +37,20 @@ export interface Course {
   noCustomCrop?: boolean; // ← NEW! Indicates if the image should not be cropped
   description: string;
   longDescription: string;
-  instructors: Instructor[];
-  curriculum: CurriculumModule[];
-  benefits: string[];
-  materials: string[];
-  testimonials: Testimonial[];
-  faqs: FAQ[];
+  instructors?: Instructor[];
+  curriculum?: CurriculumModule[];
+  benefits?: string[];
+  materials?: string[];
+  testimonials?: Testimonial[];
+  faqs?: FAQ[];
   featured: boolean;
   students: number;
   videoSrc?: string;
+  enrolled?: number;
+  link?: string;
 
   // ← NEW!
-  media: {
+  media?: {
     type: "image" | "video";
     src: string;
     alt?: string;
@@ -69,7 +71,7 @@ export const courses: Course[] = [
   level: "Fillestar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (08:00 - 14:00)",
+  schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/babysitter.jpg",
   videoSrc: "/videos/babysitter-video.mp4",
   description:
@@ -155,7 +157,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (08:00 - 14:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/kujdestar-per-mosha-te-tret.jpg",
   videoSrc: "/videos/caregiver-video.mp4",
   description:
@@ -234,7 +236,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 15:00)",
+ schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/operatore-turistik.jpg",
   videoSrc: "/videos/tourist-operator.mp4",
   description:
@@ -316,8 +318,8 @@ export const courses: Course[] = [
   durationCategory: "1500 orë",
   level: "Mesatar",
   price: "",
-  startDate: "",
-  schedule: "E Hënë - E Shtunë (09:00 - 16:00)",
+  startDate: "",schedule: "E Hënë - E Shtunë (09:00 - 16:00)",
+  
   image: "/courses/kujdestare-mosha-te-tret-dhe-femije.jpg",
   description:
     "Merrni aftësitë për kujdesin psiko-social dhe fizik të të moshuarve dhe fëmijëve në banesë dhe institucion.",
@@ -410,7 +412,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Martë - E Premte (09:00 - 16:00)",
+ schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/udherrefim-turistik.jpg", noCustomCrop: true,
   videoSrc: "/videos/tour-guide.mp4",
   description:
@@ -478,8 +480,9 @@ export const courses: Course[] = [
   level: "Bazik",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (08:00 - 14:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/sherbim-pastrimi.jpg",
+  videoSrc:"",
   description:
     "Mësoni teknikat e dezinfektimit, sterilizimit dhe pastrimit të brendshëm e të jashtëm të hapësirave.",
   longDescription:
@@ -541,7 +544,7 @@ export const courses: Course[] = [
   level: "Fillestar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 15:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/receptionist.jpg",
   videoSrc: "/videos/reception-video.mp4",
   description:
@@ -617,7 +620,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Shtune (08:00 - 14:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/berber-1800.jpg", noCustomCrop: true,
   videoSrc: "/videos/Kurs-berber.mp4",
   description:
@@ -701,7 +704,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 15:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
  image: "/courses/berber-900.jpg", noCustomCrop: true,
  videoSrc: "/videos/Kurs-berber.mp4",
   description:
@@ -769,7 +772,7 @@ export const courses: Course[] = [
   level: "Fillestar",
   price: "",
   startDate: "",
-  schedule: "E Martë - E Shtunë (10:00 - 14:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/berber-600.jpg", noCustomCrop: true,
   videoSrc: "/videos/Kurs-berber.mp4",
   description:
@@ -833,7 +836,7 @@ export const courses: Course[] = [
   level: "Fillestar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (10:00 - 14:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   videoSrc: "/videos/Kurs-berber.mp4",
   image: "/courses/berber-300.jpg",
   description:
@@ -909,7 +912,7 @@ export const courses: Course[] = [
   level: "Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Shtune (09:00 - 16:00)",
+  schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/estetike-2100.jpg",
   videoSrc: "/videos/estetike-video.mp4",
   description:
@@ -993,7 +996,7 @@ export const courses: Course[] = [
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:30 - 15:30)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
    image: "/courses/estetike-1500.jpg",
    videoSrc: "/videos/estetike-video.mp4",
   description:
@@ -1069,7 +1072,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 15:00)",
+  schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
    image: "/courses/estetike-900.jpg", noCustomCrop: true,
    videoSrc: "/videos/estetike-video.mp4",
   description:
@@ -1144,7 +1147,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (10:00 - 14:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
    image: "/courses/estetike-600.jpg",
    videoSrc: "/videos/estetike-video.mp4",
   description:
@@ -1212,7 +1215,7 @@ export const courses: Course[] = [
   level: "Fillestar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (11:00 - 14:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
    image: "/courses/estetike-300.jpg", noCustomCrop: true,
    videoSrc: "/videos/estetike-video.mp4",
   description:
@@ -1280,7 +1283,7 @@ export const courses: Course[] = [
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Shtune (10:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/qerpik-volume-avancuar.jpg",  noCustomCrop: true,
   videoSrc: "/videos/lashes-video-2.mp4",
   description:
@@ -1352,7 +1355,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (14:00 - 17:00)",
+  schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/qerpik-klasik-kurs-baze.jpg", noCustomCrop: true,
   videoSrc:"/videos/lashes-video.mp4",
   description:
@@ -1404,7 +1407,7 @@ export const courses: Course[] = [
   level: "Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Martë - E Premte (09:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/pajisje/hidrofacial.jpg", noCustomCrop: true,
   description:
     "Trajnim profesional në përdorimin e sistemit Hydrofacial 15-in-1 për trajtime të avancuara të lëkurës.",
@@ -1480,8 +1483,8 @@ export const courses: Course[] = [
   level: "Fillestar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 17:00)",
-  image: "/courses/parukeri-2100.jpg",
+  schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
+  image: "/courses/parukeri-2100.jpeg",
   videoSrc: "/videos/parukeri-video.mp4",
   description:
     "Trajnim i plotë 2100-orësh në parukeri, nga higjiena bazë deri te teknikat e avancuara të prerjes, stilimit dhe ngjyrosjes.",
@@ -1556,7 +1559,7 @@ export const courses: Course[] = [
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (10:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/parukeri-900.jpg",
     videoSrc: "/videos/parukeri-video.mp4",
   description:
@@ -1612,8 +1615,8 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (10:00 - 14:00)",
- image: "/courses/parukeri-600.jpg",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
+ image: "/courses/parukeri-600.jpeg",
    videoSrc: "/videos/parukeri-video.mp4",
   description:
     "Kurs 600-orësh për të fituar aftësi të mesme në prerje, stilim dhe ngjyrosje.",
@@ -1660,7 +1663,7 @@ export const courses: Course[] = [
   level: "Fillestar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (12:00 - 15:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
  image: "/courses/parukeri-300.jpg",
    videoSrc: "/videos/parukeri-video.mp4",
   description:
@@ -1713,7 +1716,7 @@ export const courses: Course[] = [
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Shtune (09:00 - 18:00)",
+ schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/tatuator.jpg", noCustomCrop: true,
   videoSrc: "/videos/tattoo-video.mp4",
   description:
@@ -1797,7 +1800,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (10:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/hixhama-3.jpg",
   videoSrc: "/videos/hixhama-video.mp4",
   description:
@@ -1863,7 +1866,7 @@ export const courses: Course[] = [
   level: "Fillestar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (11:00 - 15:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/hixhama-2.jpg",
   videoSrc: "/videos/hixhama-video.mp4",
   description:
@@ -1919,7 +1922,7 @@ export const courses: Course[] = [
   level: "Fillestar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (12:00 - 14:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/hixhama-1.jpg",
   videoSrc: "/videos/hixhama-video.mp4",
   description:
@@ -1968,7 +1971,7 @@ export const courses: Course[] = [
   level: "Fillestar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Shtune (09:00 - 18:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/makeup-1200.jpg",
   videoSrc: "/videos/makeup-video.mp4",
   description:
@@ -2123,7 +2126,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (10:00 - 17:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/makeup-600.jpg", noCustomCrop:true,
   videoSrc: "/videos/makeup-video.mp4",
   description:
@@ -2213,7 +2216,7 @@ export const courses: Course[] = [
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Shtune (09:00 - 17:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/nails-2000.jpg",
   videoSrc: "/videos/nails-video-1.mp4",
   description:
@@ -2330,7 +2333,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (10:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/nails-500.png",
   videoSrc: "/videos/nails-video.mp4",
   description:
@@ -2394,7 +2397,7 @@ export const courses: Course[] = [
   level: "Fillestar",
   price: "",
   startDate: "",
-  schedule: "E Martë & E Enjte (11:00 - 15:00)",
+ schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/pedikyr-1.jpg", noCustomCrop: true,
   videoSrc: "/videos/nails-video.mp4",
   description:
@@ -2455,7 +2458,7 @@ export const courses: Course[] = [
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Shtune (08:00 - 18:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/kurs-masazh.jpg",
   videoSrc: "/videos/masazh-video.mp4",
   description:
@@ -2572,7 +2575,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Martë & E Enjte (14:00 - 18:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/masazh-klasik.jpg",
   videoSrc: "/videos/masazh-video.mp4",
   description:
@@ -2632,7 +2635,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Mërkurë & E Premte (09:00 - 13:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/masazh-anticelulit.jpg",
   videoSrc: "/videos/masazh-video.mp4",
   description:
@@ -2693,8 +2696,8 @@ export const courses: Course[] = [
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Shtune (09:00 - 17:00)",
-  image: "/placeholder.svg?height=600&width=800&text=Facial+600h",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
+  image: "/courses/estetike-600.jpg",
   description:
     "Kurs 600-orësh për trajtimet profesioniste estetike të fytyrës, nga diagnostikimi te teknikat bazë dhe të avancuara.",
   longDescription:
@@ -2747,7 +2750,7 @@ export const courses: Course[] = [
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Martë - E Shtune (10:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/makeup-permanent.jpg",
   videoSrc: "/videos/permanent-video.mp4",
   description:
@@ -2803,7 +2806,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë & E Mërkurë (12:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/pmu-vetullat.jpg",
    videoSrc: "/videos/permanent-video.mp4",
   description:
@@ -2848,7 +2851,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Martë & E Enjte (12:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/pmu-eyeliner.jpg",
  videoSrc: "/videos/permanent-video.mp4",
    noCustomCrop: true,
@@ -2894,7 +2897,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Mërkurë & E Premte (12:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/pmu-buza.jpg",
    videoSrc: "/videos/permanent-video.mp4",
   description:
@@ -2939,7 +2942,7 @@ export const courses: Course[] = [
   level: "Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 17:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/fashon-design-2.jpg", noCustomCrop: true,
   videoSrc: "/videos/fashion-video.mp4",
   description:
@@ -3004,7 +3007,7 @@ export const courses: Course[] = [
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 17:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/fashon-design.jpg", noCustomCrop: true,
   videoSrc: "/videos/fashion-video.mp4",
   description:
@@ -3055,7 +3058,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/fashon-design-2.jpg", noCustomCrop: true,
   videoSrc: "/videos/fashion-video.mp4",
   description:
@@ -3102,7 +3105,7 @@ export const courses: Course[] = [
   level: "Fillestar – Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (10:00 - 15:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/fashon-design-3.jpg",
   videoSrc: "/videos/fashion-video.mp4",
   description:
@@ -3147,7 +3150,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/fashion-industriale.jpg",
   videoSrc: "/videos/fashion-industrial-video.mp4",
   description:
@@ -3192,7 +3195,7 @@ export const courses: Course[] = [
   level: "Mesatar",
   price: "",
   startDate: "",
-  schedule: "E Hënë - E Premte (09:00 - 16:00)",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/fashion-tradicionale.jpg",
   description:
     "Kurs 600-orësh për veshje artizanale: nga traditat folklorike te koleksionet moderne me frymëzim kulturor.",
@@ -3549,6 +3552,516 @@ export const courses: Course[] = [
         "alt": "Termokoperta 150h"
       }
     ]
+  },
+  {
+    id: 77,
+    title: "Kurs i Menaxhimit të Hotelit",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-hotel-managment.png",
+    description:
+      "Ky kurs specializues është i përshtatur për diplomuarit që kërkojnë përgatitje të duhur për aspektet operative të industrisë së hotelerisë.",
+    longDescription:
+      "Rekomandohet për ata që nuk kanë përvojë të konsiderueshme në sektor dhe dëshirojnë të zotërojnë aspektet teorike dhe praktike të kursit për t'u futur me sukses në industrinë e hotelerisë dhe mikpritjes. Karakteristikat operative të departamenteve hotelierike, duke përfshirë front office, administratën, ushqim & pije, organizimin e konferencave dhe marketingun, analizohen në detaje për të ofruar një pasqyrë gjithëpërfshirëse të sistemit hotelier.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/hotelmanagement/",
+  },
+  {
+    id: 54,
+    title: "Kurs për Menaxher Junior të Front Office",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-front-office.jpg",
+    description:
+      "Trajnoni profesionistin që kujdeset për kontaktin e parë me mysafirët, si në telefon ashtu edhe gjatë mbërritjes në hotel, duke zbatuar procedurat e rezervimit, check-in dhe check-out.",
+    longDescription:
+      "Ky profesionist ndihmon mysafirët gjatë qëndrimit të tyre, regjistron konsumin e tyre dhe siguron që cilësia e shërbimit hotelier të përmbushë vazhdimisht standardet e vendosura. Metodologjia bazohet në know-how: përmes shembujve konkretë, simulimeve dhe ushtrimeve ofrohen mjetet praktike për vendosje të suksesshme në punë. Materialet mësimore përbëhen nga përpunime të përgatitura posaçërisht.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/front-office-junior-manager/",
+  },
+  {
+    id: 55,
+    title: "Kurs për Menaxher të Ushqimit & Pijeve",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-food.jpg",
+    description:
+      "Kursi synon trajnimin e profesionistit përgjegjës për menaxhimin e furnizimit me ushqim, monitorimin e cilësisë së prodhimit dhe shpërndarjes, vendosjen e buxheteve dhe kontrollin e kostove, si dhe aspektet organizative të planifikimit dhe ekzekutimit të banketeve, kokteleve mirëseardhëse, bufeve ose refreshimeve.",
+    longDescription:
+      "Ofron mjetet teorike dhe aftësitë praktike për ndjekje të suksesshme të kësaj karriere. Ushqimi & Pijet është sektori që trajton të gjitha shërbimet e kateringut, si ato të restoranteve të hoteleve, ashtu edhe ngjarjet rastësore.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/fbm/",
+  },
+  {
+    id: 56,
+    title: "Maitre Global & Menaxher Shërbimesh Ristorative",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-non-hotel-managment.jpg",
+    description:
+      "AMIRA ACADEMY lindi nga nevoja për të zhvilluar burime njerëzore me kualifikim të lartë për sektorët e mikpritjes dhe restaurimit, pas kërkesave të shumta kombëtare dhe ndërkombëtare.",
+    longDescription:
+      "Nevoja për kurse trajnimi dhe rifreskimi në teknikat e mikpritjes, mikpritje ndërkombëtare dhe zhvillim profesional për Maitre d', tani Menaxher i Vërtetë i Shijes, dikton programet trajnuese në përputhje me nevojat në ndryshim të një sektori motor të industrisë së mikpritjes. Të bëhesh Maitre d' kërkon aftësi kulinarie, kulturë menaxhimi mikpritjeje dhe njohuri të zonës lokale, duke e bërë Maitre d' Ambasador të Shijes për mysafirët më kërkues.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/corsomaitre/",
+  },
+  {
+    id: 57,
+    title: "Kurs për Pastrues në Hotel",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-housekeeper.jpg",
+    description:
+      "Kursi i Trajnimit të Avancuar për Pastrues në Hotel synohet për ata që dëshirojnë të thellojnë njohuritë dhe aftësitë specifike në këtë departament, duke fituar vetëdijen profesionale të nevojshme.",
+    longDescription: "",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/housekeeper/",
+  },
+  {
+    id: 58,
+    title: "Kurs Profesional për Barmene",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-bartender.jpg",
+    description:
+      "UET – European University School for Tourism, në bashkëpunim me ABS Sicilia Professional Bartending Association, prezanton Kursin Profesional për Barmene.",
+    longDescription:
+      "Ky kurs do t'ju mundësojë të fitoni Certifikatën Profesionale të Bartenderit, pas provimit përfundimtar që verifikon përmbajtjet e mësuara. Program 48-orësh nga ABS Professional dhe praktika 3–6 mujore në ambiente prestigjioze në Itali dhe jashtë saj.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/corsobartender/",
+  },
+  {
+    id: 59,
+    title:
+      "Kurs për Marketing & Menaxhim të Bizneseve Jo-Hotelier",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-extra-hotel.jpg",
+    description:
+      "Bëhuni ekspert në Marketing & Menaxhim për Bizneset Jo-Hotelier me kursin tonë online: fitoni aftësi strategjike në menaxhimin dhe promovimin e B&B-ve, agroturizmit dhe shtëpive mikpritëse.",
+    longDescription:
+      "Regjistrohuni tani dhe filloni të rritni biznesin tuaj të mikpritjes nga komoditeti i shtëpisë!",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/extraalberghiero/",
+  },
+  {
+    id: 60,
+    title: "Kurs Menaxhimi i Wellness & Spa",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-spa-managment.jpg",
+    description:
+      "Kursi Menaxhimi i Wellness & Spa u krijua për të trajnuar menaxherët që dinë si të menaxhojnë dhe promovojnë qendrat e mirëqenies, fermat e bukurisë, spa-t, qendrat termale dhe strukturat e tjera në tregun e mirëqenies.",
+    longDescription:
+      "Shëndeti përmes ujit dhe gëzimet e vogla. Kursi ofrohet online.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link:
+      "https://uetitalia.it/product/welleness-and-spa-management-online/",
+  },
+  {
+    id: 61,
+    title:
+      "Kurs për Projektues Udhëtimesh Eksperienciale",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-experimental-travel.jpg",
+    description:
+      "Kursi ofron trajnim specifik për sektorin e agjencive turistike dhe operatorëve turistikë, me fokus te produktet eksperienciale.",
+    longDescription:
+      "Të gjitha aspektet operative të projektuesit të udhëtimeve ilustrohen dhe analizohen, duke mundësuar fitimin e aftësive të aplikueshme menjëherë në tregun e punës. Studentët mësojnë të krijojnë itinerare të personalizuara për klientë individualë ose grupe me fokus te eksperiencat unike.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/travelexp/",
+  },
+  {
+    id: 62,
+    title:
+      "Kurs Përgatitor për Provimin e Udhërrëfyesit Turistik",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-guide.png",
+    description:
+      "Kursi ynë Përgatitor për Provimin e Udhërrëfyesit Turistik është dizajnuar për t'ju ofruar aftësitë dhe njohuritë për të kaluar provimin dhe për të nisur një karrierë sfiduese në turizëm.",
+    longDescription:
+      "Programi 100-orësh përgatit studentët për provimin e licencimit të udhërrëfyesit turistik në nivel lokal, kombëtar dhe ndërkombëtar. Ai zhvillon aftësitë e nevojshme për testet me shkrim dhe gojëzore sipas Thirrjes për Aplikime.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/guidaturistica/",
+  },
+  {
+    id: 63,
+    title: "Kurs për Udhërrëfyes Turistik",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-tourist-guide.jpg",
+    description:
+      "Kurs trajnimi i specializuar për përgatitjen e provimit të kualifikimit si Udhërrëfyes Turistik.",
+    longDescription: "",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/accompagnatoreturistico/",
+  },
+  {
+    id: 64,
+    title: "Kurs për Planifikues Dasmash & Eventesh Lokale",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-weding.png",
+    description:
+      "Kursi ofron trajnim specifik në industrinë e dasmave dhe planifikimin e ngjarjeve lokale në përgjithësi.",
+    longDescription:
+      "Të gjitha aspektet operative të planifikuesit profesional ilustrohen dhe analizohen: nga analiza e kërkesës, buxhetimi, planifikimi deri te menaxhimi në vend të ngjarjes.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/weddingplanner/",
+  },
+  {
+    id: 65,
+    title: "Kurs për Menaxher Ngjarjesh Made in Italy",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-made-in-italy.png",
+    description:
+      "Kursi Made in Italy Events Manager është për ata që dëshirojnë të specializohen në konceptimin, planifikimin dhe menaxhimin e ngjarjeve që përfaqësojnë ekselencën italiane në botë.",
+    longDescription:
+      "Nga planifikimi i dasmave dhe ceremoni, deri te ngjarjet kulturore, korporative dhe promovuese, kursi ofron mjetet për krijimin e përvojave autentike të rrënjosura në traditat lokale. Pjesëmarrësit fitojnë aftësitë teknike dhe menaxheriale për të dizajnuar ngjarje unike, duke nxjerrë në pah stilin Made in Italy.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/accompagnatoreturistico/",
+  },
+  {
+    id: 66,
+    title: "Kurs Amadeus",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-amadeus.jpg",
+    description:
+      "Mësoni të përdorni softuerin e rezervimeve Amadeus me kursin tonë online: fitoni aftësi praktike, menaxhoni rezervimet me efikasitet dhe përgatituni për një karrierë në industrinë e udhëtimeve.",
+    longDescription:
+      "Regjistrohuni tani dhe zotëroni Amadeus nga komoditeti i shtëpisë!",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/software-amadeus/",
+  },
+  {
+    id: 67,
+    title: "Kurs Opera Cloud",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-opera-cloud.jpg",
+    description:
+      "Kurs i avancuar për përdorimin e softuerit Oracle Fidelio Opera, një nga më të rëndësishmit dhe të përhapurit në menaxhimin e rezervimeve hotelierike.",
+    longDescription: "",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/oraclefidelioopera/",
+  },
+  {
+    id: 68,
+    title:
+      "Master Ekzekutiv i Shkurtër në Inteligjencë Artificiale & Shkencë të të Dhënave për Turizëm",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-short-master-ai.png",
+    description:
+      "ESM synon t'u ofrojë pjesëmarrësve njohuritë e nevojshme për të përdorur teknologjitë e Inteligjencës Artificiale dhe Shkencës së të Dhënave në sektorin e turizmit.",
+    longDescription:
+      "Zgjat 100 orë dhe është plotësisht ON DEMAND. Ligjëratat fokusohen në aplikimet në mikpritje, marketing turistik, planifikim udhëtimesh dhe menaxhim burimesh, ndërsa studentët mësojnë të përdorin të dhënat për strategji efektive biznesi.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/inteligenzaartificiale/",
+  },
+  {
+    id: 69,
+    title: "Kurs Marketingu Web & Media Sociale për Turizëm",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-web-marketing.jpeg",
+    description:
+      "Trajnim i specializuar për menaxhimin e marketingut web, komunikimit online, marketingut në mediat sociale dhe menaxhimit të komunitetit për sektorin e turizmit.",
+    longDescription: "",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/webmarketingsocialmedia/",
+  },
+  {
+    id: 70,
+    title: "Master Ekzekutiv në Marketing Dixhital për Turizëm",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-executive-master-digital-marketing.png",
+    description:
+      "Master Ekzekutiv në Marketing Dixhital për Turizëm ofron mundësi të jashtëzakonshme për të zotëruar mjetet kryesore të marketingut online dhe komunikimit: strategjitë web, mediat sociale dhe reputacionin e markës.",
+    longDescription: "",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/masterdigitalmarketing/",
+  },
+  {
+    id: 71,
+    title: "Master në Menaxhimin e Hotelerisë",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-master-hospitality.png",
+    description:
+      "Master në Menaxhimin e Hotelerisë (Menaxhimi i Strukturave Turistike & Hotelerike) synon të sigurojë mjetet e nevojshme për menaxhim, planifikim & organizim të situatave komplekse menaxheriale.",
+    longDescription:
+      "Njohuria e teknikave të menaxhimit të çdo departamenti dhe vizioni të përgjithshëm lejon koordinimin & planifikimin e aktiviteteve të ndryshme, duke krijuar mundësi për sukses & rritje profesionale brenda strukturave kombëtare & ndërkombëtare.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/hospitalitymanagement/",
+  },
+  {
+    id: 72,
+    title: "Master në Menaxhimin e Ushqimit & Verës",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-master-food-wine.png",
+    description:
+      "Master në Menaxhimin e Ushqimit & Verës (Drejtori i Kompanive të Shërbimit të Ushqimit & Verës) ofron mundësi për vendosje menaxheriale në industrinë e verës, ushqimit & eventeve në zinxhirët më prestigjiozë hotelierike.",
+    longDescription:
+      "Programi modular lejon zotërimin gradual të përmbajtjes trajnuese. Secili modul mbulon temat në detaje, me objektiva profesionale & vendosje të certifikuar në kompani.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/foodwine/",
+  },
+  {
+    id: 73,
+    title:
+      "Bachelor në Ndërmjetësim Gjuhësor & Menaxhimin e Turizmit",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-master-linguistic.png",
+    description:
+      "Program bachelor për diplomuarit e rinj që kërkojnë trajnim të specializuar në turizëm. Industria e turizmit është strategjike për BE-në, veçanërisht për Italinë që mban 40% të trashëgimisë kulturore botërore.",
+    longDescription:
+      "Italia është destinacion natyral turistik. Programi mund të ndiqet në prezencë ose online. Kurrikula, me lëndë teorike & specifike turizmi & gjuhësh, synon të formojë profesionistë të përgatitur për tregun e turizmit.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/laureatriennale/",
+  },
+  {
+    id: 74,
+    title: "Master në Menaxhimin e Udhëtimeve",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-master-travel-managment.png",
+    description:
+      "Master në Menaxhimin e Udhëtimeve (Agjencitë Turistike & Tour Operator) përgatit studentët për provimet për Drejtues Teknik të një agjencie turistike.",
+    longDescription:
+      "Trajnon profesionistë me aftësi menaxheriale për planifikimin e ofertave turistike, menaxhimin e rezervimeve & organizimin e ngjarjeve të ndryshme. Mbulon të gjitha aspektet e zinxhirit turistik nga krijimi i paketës deri te negociatat e shitjeve.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/travelmanagement/",
+  },
+  {
+    id: 75,
+    title:
+      "Master në Turizmin Eksperiencial për Menaxhimin e Projekteve",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-master-experimental-toursim.png",
+    description:
+      "Programi synon t'u ofrojë njohuri & aftësi për analizimin e organizimit & konkurrencës së destinacioneve turistike, duke përfshirë aspektet teknike të fushës.",
+    longDescription:
+      "Studentët mësojnë të analizojnë zonën lokale & konkurrencën, dhe të zhvillojnë projekte turizmi, duke vlerësuar fizibilitetin e destinacionit. Më pas krijojnë, organizojnë & promovojnë produkte profesionale për tregun online & offline.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/turismoesperienziale/",
+  },
+  {
+    id: 76,
+    title: "MBA – Master në Administrim Biznesi",
+    category: "UET Italia",
+    duration: "",
+    durationCategory: "",
+    level: "",
+    price: "",
+    startDate: "",
+    schedule: "",
+    image: "/uet-courses/uet-mba.jpg",
+    description:
+      "MBA (Global Hospitality & Tourism) është për diplomuarit që duan të avan­cojnë studimet, të bëhen sipërmarrës në mikpritje, të ndryshojnë industri apo të marrin role më të larta në organizata globale.",
+    longDescription:
+      "MBA fokusohet në zgjidhjen e problemeve, analizën e të dhënave, vendimmarrje, planifikim strategjik & zhvillim lidershipi. Përfshin ligjërata, seminare & tutoriale mbi marketing, financë, investime, R&D, sjellje organizative, me internship & projekt capstone.",
+    testimonials: [],
+    faqs: [],
+    featured: false,
+    students: 0,
+    link: "https://uetitalia.it/product/mba-master-of-business-administration/",
   }
-]
+];
+
+
+
+
 

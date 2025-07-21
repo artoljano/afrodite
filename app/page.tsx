@@ -179,7 +179,18 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
-            <motion.div
+
+            <div className="absolute inset-0 bg-[url('/videos/testimonials/diploma.mp4')] bg-cover bg-center opacity-5" />
+            <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+              <Image
+                src="/wave-pattern.svg"
+                alt="Decorative pattern"
+                width={256}
+                height={256}
+                className="object-contain"
+              />
+            </div>
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={heroInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.7, delay: 0.3 }}
@@ -229,12 +240,12 @@ export default function Home() {
                 />
               </motion.div>
 
-              {/* Floating badge */}
+              
               <div className="absolute -top-5 -right-5 md:top-5 md:right-0 bg-black text-white px-4 py-2 rounded-full shadow-lg z-20 flex items-center border border-purple-500/30">
                 <Star className="h-5 w-5 text-yellow-500 mr-2" />
                 <span className="font-medium">Certifikim OMC</span>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
         {/* </VideoBackground> */}

@@ -17,12 +17,10 @@ interface CourseCardProps {
 export default function CourseCard({ course, delay, inView }: CourseCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
 
-  // Duration in hours, fallback to whatever string the course provides
-  const durationDisplay = course.durationHours
-    ? `${course.durationHours}h`
+  const durationDisplay = course.duration
+    ? `${course.duration}`
     : course.duration || "";
 
-  // Use the course’s benefit list (or empty array) and cap at 4
   const benefits = course.benefits || [];
   const topBenefits = benefits.slice(0, 4);
 
@@ -45,12 +43,14 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
         }}
         style={{ transformStyle: "preserve-3d" }}
       >
-        {/* ─── FRONT OF CARD ─────────────────────────────────────────── */}
+        {/* FRONT SIDE */}
         <div
-          className="absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col"
-          style={{ backfaceVisibility: "hidden" }}
+          className="absolute inset-0 rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col"
+          style={{
+            backfaceVisibility: "hidden",
+            pointerEvents: isFlipped ? "none" : "auto",
+          }}
         >
-          {/* “More info” hint */}
           <div className="absolute top-4 right-4 z-10 flex items-center space-x-1 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded">
             <Info className="h-4 w-4" />
             <span className="cursor-pointer" onClick={() => setIsFlipped(true)}>
@@ -58,7 +58,6 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
             </span>
           </div>
 
-          {/* IMAGE AREA (always 12rem tall) */}
           <div
             onMouseEnter={() => setIsFlipped(true)}
             className="relative h-48 overflow-hidden cursor-pointer"
@@ -71,15 +70,11 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
               className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-
-            {/* Optional “featured” badge */}
             {course.featured && (
               <div className="absolute top-4 left-4 bg-purple-600 text-white text-xs font-medium px-2 py-1 rounded-full">
                 Kurs i Certifikuar
               </div>
             )}
-
-            {/* Duration & enrolled */}
             <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-white text-sm">
               <div className="flex items-center space-x-1">
                 <Clock className="h-4 w-4" />
@@ -92,8 +87,7 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
             </div>
           </div>
 
-          {/* TEXT CONTENT (clamped) */}
-          <div className="p-6 flex flex-col flex-grow">
+          <div className="p-6 flex flex-col flex-grow items-stretch">
             <h3 className="text-xl font-bold font-poppins text-gray-900 h-12 leading-6 overflow-hidden">
               {course.title}
             </h3>
@@ -101,7 +95,11 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
               {course.description}
             </p>
             <div className="mt-4">
-              <AnimatedButton className="w-full bg-black hover:bg-purple-900 text-white">
+              <AnimatedButton
+                size="default"
+                variant="default"
+                className="w-full block px-6 py-2 bg-black hover:bg-black text-white"
+              >
                 Mëso më shumë
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
               </AnimatedButton>
@@ -109,19 +107,16 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
           </div>
         </div>
 
-        {/* ─── BACK OF CARD ─────────────────────────────────────────── */}
+        {/* BACK SIDE */}
         <div
-          className="absolute inset-0 backface-hidden rounded-xl overflow-hidden bg-gradient-to-br from-black to-purple-900 p-6 flex flex-col justify-center"
+          className="absolute inset-0 rounded-xl overflow-hidden bg-gradient-to-br from-black to-purple-900 p-6 flex flex-col justify-center"
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
+            pointerEvents: isFlipped ? "auto" : "none",
           }}
         >
-          {/* Flip‐back button */}
-          <div
-            onClick={() => setIsFlipped(false)}
-            className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm text-white text-xs font-medium px-2 py-1 rounded-full cursor-pointer"
-          >
+          <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm text-white text-xs font-medium px-2 py-1 rounded-full cursor-pointer">
             Kthehu për më shumë
           </div>
 
@@ -141,8 +136,9 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
 
           <div className="mt-6">
             <AnimatedButton
+              size="default"
               variant="secondary"
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+              className="w-full block px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white"
             >
               Regjistrohu Tani
             </AnimatedButton>

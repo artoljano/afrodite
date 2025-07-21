@@ -40,7 +40,7 @@ const addresses = [
     },
     embedUrl:
       "https://www.google.com/maps?ll=41.328786,19.782922&z=19&t=m&hl=en-US&gl=US&mapclient=embed&q=Afrodite+Academy&output=embed",
-    buildingImage: "/placeholder.svg?height=600&width=800&text=Tirana+Building",
+    buildingImage: "/contact/contact-tirane.jpg",
   },
   {
     id: 2,
@@ -55,7 +55,7 @@ const addresses = [
     },
     embedUrl:
       "https://maps.google.com/maps?q=41.3186617,19.4475765&z=19&output=embed",
-    buildingImage: "/placeholder.svg?height=600&width=800&text=Durres+Building",
+    buildingImage: "/contact/contact-durres.jpg",
   },
   {
     id: 3,

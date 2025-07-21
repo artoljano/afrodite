@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, Briefcase, Calendar } from "lucide-react"
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, Briefcase, Calendar } from "lucide-react";
 
 interface AlumniProfile {
-  id: number
-  name: string
-  graduationYear: string
-  profession: string
-  testimonial: string
-  image: string
+  id: number;
+  name: string;
+  graduationYear: string;
+  profession: string;
+  testimonial: string;
+  image: string;
 }
 
 const alumni: AlumniProfile[] = [
@@ -60,74 +60,79 @@ const alumni: AlumniProfile[] = [
       "Afrodite Academy më mësoi jo vetëm aspektin teknik, por edhe menaxhimin e biznesit dhe komunikimin me klientët.",
     image: "/placeholder.svg?height=100&width=100&text=Teuta",
   },
-]
+];
 
 export default function AlumniCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [prevIndex, setPrevIndex] = useState(0)
-  const [direction, setDirection] = useState<"left" | "right">("right")
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [containerHeight, setContainerHeight] = useState(200)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(0);
+  const [direction, setDirection] = useState<"left" | "right">("right");
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerHeight, setContainerHeight] = useState(200);
 
   // Show 3 alumni at a time on desktop, 1 on mobile
-  const displayCount = typeof window !== "undefined" && window.innerWidth >= 768 ? 3 : 1
+  const displayCount =
+    typeof window !== "undefined" && window.innerWidth >= 768 ? 3 : 1;
 
   const nextSlide = () => {
-    setPrevIndex(currentIndex)
-    setDirection("right")
-    setCurrentIndex((prevIndex) => (prevIndex + displayCount >= alumni.length ? 0 : prevIndex + 1))
-  }
+    setPrevIndex(currentIndex);
+    setDirection("right");
+    setCurrentIndex((prevIndex) =>
+      prevIndex + displayCount >= alumni.length ? 0 : prevIndex + 1
+    );
+  };
 
   const prevSlide = () => {
-    setPrevIndex(currentIndex)
-    setDirection("left")
-    setCurrentIndex((prevIndex) => (prevIndex <= 0 ? alumni.length - displayCount : prevIndex - 1))
-  }
+    setPrevIndex(currentIndex);
+    setDirection("left");
+    setCurrentIndex((prevIndex) =>
+      prevIndex <= 0 ? alumni.length - displayCount : prevIndex - 1
+    );
+  };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000)
-    return () => clearInterval(interval)
-  }, [currentIndex])
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
   // Add keyboard navigation for accessibility
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
-        prevSlide()
+        prevSlide();
       } else if (e.key === "ArrowRight") {
-        nextSlide()
+        nextSlide();
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleKeyDown)
-    return () => window.removeEventListener("keydown", handleKeyDown)
-  }, [currentIndex])
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentIndex]);
 
   // Update container height when content changes
   useEffect(() => {
     if (containerRef.current) {
       const updateHeight = () => {
         if (containerRef.current) {
-          const height = containerRef.current.scrollHeight
-          setContainerHeight(height)
+          const height = containerRef.current.scrollHeight;
+          setContainerHeight(height);
         }
-      }
+      };
 
       // Update after a short delay to ensure content is rendered
-      const timer = setTimeout(updateHeight, 100)
-      return () => clearTimeout(timer)
+      const timer = setTimeout(updateHeight, 100);
+      return () => clearTimeout(timer);
     }
-  }, [currentIndex])
+  }, [currentIndex]);
 
   // Get visible alumni based on current index and display count
   const getVisibleAlumni = () => {
-    const visibleAlumni = []
+    const visibleAlumni = [];
     for (let i = 0; i < displayCount; i++) {
-      const index = (currentIndex + i) % alumni.length
-      visibleAlumni.push(alumni[index])
+      const index = (currentIndex + i) % alumni.length;
+      visibleAlumni.push(alumni[index]);
     }
-    return visibleAlumni
-  }
+    return visibleAlumni;
+  };
 
   const variants = {
     enter: (direction: "left" | "right") => ({
@@ -144,19 +149,24 @@ export default function AlumniCarousel() {
       position: "absolute",
       width: "100%",
     }),
-  }
+  };
 
   return (
     <div className="relative w-full py-8">
-      <h3 className="text-2xl font-bold font-poppins text-navy-900 mb-8 text-center">Histori Suksesi nga Alumni</h3>
+      <h3 className="text-2xl font-bold font-poppins text-navy-900 mb-8 text-center">
+        Histori Suksesi nga Alumni
+      </h3>
 
-      <div className="relative overflow-hidden" style={{ height: containerHeight, transition: "height 0.3s ease" }}>
+      <div
+        className="relative overflow-hidden"
+        style={{ height: containerHeight, transition: "height 0.3s ease" }}
+      >
         <AnimatePresence custom={direction} initial={false}>
           <motion.div
             key={currentIndex}
             ref={containerRef}
             custom={direction}
-            variants={variants}
+            // variants={variants}
             initial="enter"
             animate="center"
             exit="exit"
@@ -190,14 +200,17 @@ export default function AlumniCarousel() {
                     </div>
                   </div>
                 </div>
-                <p className="text-navy-700 italic text-sm">"{alumnus.testimonial}"</p>
+                <p className="text-navy-700 italic text-sm">
+                  "{alumnus.testimonial}"
+                </p>
               </div>
             ))}
           </motion.div>
         </AnimatePresence>
         <div className="sr-only" aria-live="polite">
-          Showing alumni profile of {getVisibleAlumni()[0]?.name}, graduated in {getVisibleAlumni()[0]?.graduationYear},
-          now working as {getVisibleAlumni()[0]?.profession}
+          Showing alumni profile of {getVisibleAlumni()[0]?.name}, graduated in{" "}
+          {getVisibleAlumni()[0]?.graduationYear}, now working as{" "}
+          {getVisibleAlumni()[0]?.profession}
         </div>
       </div>
 
@@ -226,18 +239,18 @@ export default function AlumniCarousel() {
               <button
                 key={index}
                 onClick={() => {
-                  setPrevIndex(currentIndex)
-                  setDirection(index > currentIndex ? "right" : "left")
-                  setCurrentIndex(index)
+                  setPrevIndex(currentIndex);
+                  setDirection(index > currentIndex ? "right" : "left");
+                  setCurrentIndex(index);
                 }}
                 className={`w-2 h-2 rounded-full transition-colors ${
                   index === currentIndex ? "bg-purple-500" : "bg-navy-200"
                 }`}
                 aria-label={`Go to alumni slide ${index + 1}`}
               />
-            ),
+            )
         )}
       </div>
     </div>
-  )
+  );
 }

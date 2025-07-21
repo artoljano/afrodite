@@ -691,7 +691,11 @@ export default function ClientCourseDetail({ course }: Props) {
                         <span>{rc.schedule}</span>
                       </div>
                       <Link href={`/courses/${rc.id}`}>
-                        <AnimatedButton className="w-full bg-black hover:bg-black text-white">
+                        <AnimatedButton
+                          size="default"
+                          variant="default"
+                          className="w-full block px-6 py-2 bg-black hover:bg-black text-white"
+                        >
                           Mëso më shumë
                           <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
                         </AnimatedButton>

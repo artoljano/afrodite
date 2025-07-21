@@ -26,93 +26,14 @@ import AlumniCarousel from "@/components/alumni-carousel";
 import EnhancedTimeline from "@/components/enhanced-timeline";
 import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { team, TeamMember } from "@/data/team";
 import { awards } from "@/data/awards";
-
-// Timeline events data
-const timelineEvents = [
-  {
-    year: "2013",
-    title: "Themelimi i Akademisë",
-    description:
-      "Themelimi i Akademisë Afrodite në Tiranë me kurset e para të makeup dhe estetikës.",
-    image: "/placeholder.svg?height=200&width=300&text=Founding+2013",
-  },
-  {
-    year: "2015",
-    title: "Zgjerimi i Kurseve",
-    description:
-      "Zgjerimi i kurseve me manikyr, pedikyr dhe trajtime estetike të avancuara.",
-    image: "/placeholder.svg?height=200&width=300&text=Expansion+2015",
-  },
-  {
-    year: "2018",
-    title: "Partneritete Ndërkombëtare",
-    description:
-      "Fillimi i partneriteteve ndërkombëtare me akademi prestigjioze në Itali dhe Evropë.",
-    image: "/placeholder.svg?height=200&width=300&text=Partnerships+2018",
-  },
-  {
-    year: "2020",
-    title: "Qendra e Re",
-    description:
-      "Hapja e qendrës së re moderne me pajisje të teknologjisë së fundit dhe 100 studentë të punësuar brenda 3 muajve.",
-    image: "/placeholder.svg?height=200&width=300&text=New+Center+2020",
-  },
-  {
-    year: "Sot",
-    title: "Lider në Industri",
-    description:
-      "Akademia Afrodite vazhdon të jetë lider në fushën e arsimit profesional në Shqipëri me mbi 500 studentë të diplomuar.",
-    image: "/placeholder.svg?height=200&width=300&text=Today",
-  },
-];
-
-// Awards data
-// const awards = [
-//   {
-//     id: 1,
-//     title: "Çmimi i Ekselencës në Arsim",
-//     organization: "Ministria e Arsimit",
-//     year: "2022",
-//     description:
-//       "Për kontributin e jashtëzakonshëm në arsimin profesional në Shqipëri.",
-//     image: "/placeholder.svg?height=200&width=200&text=Award+2022",
-//     color: "purple",
-//   },
-//   {
-//     id: 2,
-//     title: "Akademia më e Mirë e Vitit",
-//     organization: "Beauty Industry Association",
-//     year: "2021",
-//     description:
-//       "Për standardet e larta të mësimdhënies dhe rezultatet e studentëve.",
-//     image: "/placeholder.svg?height=200&width=200&text=Award+2021",
-//     color: "gold",
-//   },
-//   {
-//     id: 3,
-//     title: "Çmimi i Inovacionit",
-//     organization: "European Beauty Schools",
-//     year: "2020",
-//     description:
-//       "Për metodat inovative të mësimdhënies dhe kurrikulën moderne.",
-//     image: "/placeholder.svg?height=200&width=200&text=Award+2020",
-//     color: "purple",
-//   },
-//   {
-//     id: 4,
-//     title: "Çmimi i Partneritetit",
-//     organization: "International Beauty Council",
-//     year: "2019",
-//     description:
-//       "Për krijimin e partneriteteve ndërkombëtare që përfitojnë studentët.",
-//     image: "/placeholder.svg?height=200&width=200&text=Award+2019",
-//     color: "gold",
-//   },
-// ];
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import VideoModal from "@/components/video-modal";
+import { useVideoThumbnail } from "@/components/useVideoThumbnail";
 
 export default function AboutPage() {
   const [modalId, setModalId] = useState<string | null>(null);
@@ -155,6 +76,103 @@ export default function AboutPage() {
   const AlumniCarousel = dynamic(() => import("@/components/alumni-carousel"), {
     ssr: false,
   });
+  const autoplay = useMemo(
+    () =>
+      Autoplay({
+        delay: 1500, // fast initial speed: 1.5s
+        stopOnInteraction: true, // pause on drag/swipe
+        stopOnMouseEnter: false, // we’ll control pause on hover ourselves
+      }),
+    []
+  );
+
+  // 2️⃣ Initialize Embla with loop + autoplay
+  const [emblaRef] = useEmblaCarousel({ loop: true, skipSnaps: false }, [
+    autoplay,
+  ]);
+
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const paused = useRef(false);
+  const speed = useRef(1.5); // px per frame (fast initial)
+
+  // State holds current video modal info, or null
+  const [modalVideo, setModalVideo] = useState<{
+    videoSrc: string;
+    titlets: string;
+  } | null>(null);
+
+  const slides: Array<{
+    type: "image" | "video";
+    src: string;
+    thumbnail?: string;
+    alt?: string;
+    title: string;
+    caption: string;
+  }> = [
+    {
+      type: "image",
+      src: "/facilities/ambient-1.jpeg",
+      alt: "Klasë Mësimore",
+      title: "Klasa Mësimore",
+      caption: "Klasa moderne të pajisura me teknologjinë më të fundit",
+    },
+    {
+      type: "video",
+      src: "/facilities/ambient-1.mp4",
+      // thumbnail: "/facilities/ambient-1.mp4",
+      title: "Tur Virtual Video",
+      caption: "Pamje nga ambientet tona në video",
+    },
+    {
+      type: "image",
+      src: "/facilities/ambient-2.jpeg",
+      alt: "Laborator Estetike",
+      title: "Laborator Estetike",
+      caption: "Laborator i pajisur me aparatura moderne estetike",
+    },
+    {
+      type: "image",
+      src: "/facilities/ambient-3.jpeg",
+      alt: "Klasë Mësimore",
+      title: "Klasa Mësimore",
+      caption: "Klasa moderne të pajisura me teknologjinë më të fundit",
+    },
+    {
+      type: "image",
+      src: "/facilities/ambient-4.jpeg",
+      alt: "Klasë Mësimore",
+      title: "Klasa Mësimore",
+      caption: "Klasa moderne të pajisura me teknologjinë më të fundit",
+    },
+  ];
+
+  const thumbs = slides.map((s) =>
+    s.type === "video" ? useVideoThumbnail(s.src, 1) : null
+  );
+
+  // duplicate for seamless loop
+  const loopSlides = [...slides, ...slides];
+
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    let rafId: number;
+
+    const step = () => {
+      // only auto-scroll when not paused and no modal open
+      if (!paused.current && !modalVideo) {
+        el.scrollLeft += speed.current;
+        const half = el.scrollWidth / 2;
+        if (el.scrollLeft >= half) {
+          el.scrollLeft -= half;
+        }
+      }
+      rafId = requestAnimationFrame(step);
+    };
+
+    step();
+    return () => cancelAnimationFrame(rafId);
+  }, [modalVideo]);
 
   return (
     <div className="flex flex-col w-full">
@@ -699,10 +717,10 @@ export default function AboutPage() {
                     {member.experience}
                   </p>
                   <p className="text-gray-700 mb-4">{member.bio}</p>
-                  <div className="flex items-center text-sm text-gray-600">
+                  {/* <div className="flex items-center text-sm text-gray-600">
                     <Mail className="h-4 w-4 mr-1 text-purple-600" />
                     <span>{member.email}</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -880,126 +898,146 @@ export default function AboutPage() {
       </section>
 
       {/* Facilities Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
-              <span>Ambientet tona</span>
+      <>
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-4">
+            {/* Header */}
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
+                <span>Ambientet tona</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
+                Ambientet <span className="text-purple-600">Tona</span>
+              </h2>
+              <div className="h-1 w-24 bg-purple-500 mx-auto mb-6" />
+              <p className="text-lg text-gray-700">
+                Akademia jonë ofron ambiente moderne dhe të pajisura me
+                teknologjinë më të fundit për një përvojë mësimore optimale.
+              </p>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
-              Ambientet <span className="text-purple-600">Tona</span>
-            </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-700">
-              Akademia jonë ofron ambiente moderne dhe të pajisura me
-              teknologjinë më të fundit për një përvojë mësimore optimale.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="rounded-xl overflow-hidden shadow-md group relative"
+            {/* Continuous carousel */}
+            <div
+              className="overflow-x-auto whitespace-nowrap scrollbar-hide mb-12"
+              ref={sliderRef}
+              onMouseEnter={() => {
+                speed.current = 0.5;
+                paused.current = false;
+              }}
+              onMouseLeave={() => {
+                speed.current = 1.5;
+                paused.current = false;
+              }}
+              onTouchStart={() => {
+                paused.current = true;
+              }}
+              onTouchMove={() => {
+                paused.current = true;
+              }}
+              onTouchEnd={() => {
+                paused.current = false;
+              }}
             >
-              <div className="relative h-64">
-                <Image
-                  src="/placeholder.svg?height=400&width=600&text=Classroom"
-                  alt="Klasë Mësimore"
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-6 text-white">
-                    <h3 className="text-xl font-bold">Klasa Mësimore</h3>
-                    <p className="text-sm text-gray-300 mt-2">
-                      Klasa moderne të pajisura me teknologjinë më të fundit
-                    </p>
+              {loopSlides.map((slide, idx) => {
+                // grab the thumbnail for this slide (loopSlides = slides.concat(slides))
+                const thumb = thumbs[idx % slides.length];
+
+                return (
+                  <div
+                    key={idx}
+                    className="inline-block shrink-0 rounded-xl overflow-hidden shadow-md relative mx-3 w-[80vw] sm:w-96 md:w-[28rem] lg:w-[32rem]"
+                  >
+                    {slide.type === "image" ? (
+                      <Image
+                        src={slide.src}
+                        alt={slide.alt || slide.title}
+                        width={600}
+                        height={400}
+                        className="
+            object-cover w-full
+            h-64              
+            md:h-80           
+            lg:h-96           
+          "
+                      />
+                    ) : (
+                      <>
+                        <Image
+                          src={thumb || slide.thumbnail!}
+                          alt={slide.title}
+                          width={600}
+                          height={400}
+                          className="
+              object-cover w-full
+              h-64               
+              md:h-80           
+              lg:h-96            
+            "
+                        />
+                        <button
+                          className="absolute inset-0 flex items-center justify-center bg-black/50"
+                          onClick={() =>
+                            setModalVideo({
+                              videoSrc: slide.src,
+                              titlets: slide.title,
+                            })
+                          }
+                        >
+                          <svg
+                            className="h-12 w-12 text-white"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </button>
+                      </>
+                    )}
+
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                      <h3 className="text-xl font-bold text-white">
+                        {slide.title}
+                      </h3>
+                      <p className="text-sm text-gray-300 mt-1">
+                        {slide.caption}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </div>
+                );
+              })}
+            </div>
 
-              {/* Floating badge */}
-              <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-purple-700 text-sm font-medium">
-                Klasa Mësimore
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="rounded-xl overflow-hidden shadow-md group relative"
-            >
-              <div className="relative h-64">
-                <Image
-                  src="/placeholder.svg?height=400&width=600&text=Makeup+Studio"
-                  alt="Studio Makeup"
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-6 text-white">
-                    <h3 className="text-xl font-bold">Studio Makeup</h3>
-                    <p className="text-sm text-gray-300 mt-2">
-                      Studio profesionale për praktikën e makeup
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-purple-700 text-sm font-medium">
-                Studio Makeup
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="rounded-xl overflow-hidden shadow-md group relative"
-            >
-              <div className="relative h-64">
-                <Image
-                  src="/placeholder.svg?height=400&width=600&text=Esthetics+Lab"
-                  alt="Laborator Estetike"
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-6 text-white">
-                    <h3 className="text-xl font-bold">Laborator Estetike</h3>
-                    <p className="text-sm text-gray-300 mt-2">
-                      Laborator i pajisur me aparatura moderne estetike
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating badge */}
-              <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-purple-700 text-sm font-medium">
-                Laborator Estetike
-              </div>
-            </motion.div>
+            {/* Virtual Tour Button */}
+            <div className="text-center">
+              <AnimatedButton className="bg-black hover:bg-black text-white">
+                Bëj një tur virtual
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </AnimatedButton>
+            </div>
           </div>
+        </section>
 
-          {/* Virtual Tour Button */}
-          <div className="text-center mt-12">
-            <AnimatedButton className="bg-black hover:bg-black text-white">
-              Bëj një tur virtual
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </AnimatedButton>
-          </div>
-        </div>
-      </section>
+        {/* Video Modal */}
+        {modalVideo && (
+          <VideoModal
+            isOpen={true}
+            title={modalVideo.titlets}
+            videoSrc={modalVideo.videoSrc}
+            onClose={() => setModalVideo(null)}
+          />
+        )}
+
+        {/* hide scrollbar */}
+        <style jsx>{`
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}</style>
+      </>
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-black via-purple-900 to-black relative overflow-hidden">

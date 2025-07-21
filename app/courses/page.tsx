@@ -119,24 +119,29 @@ const categories = [
   },
 
   { id: "tattoo", name: "Tattoo Art", icon: <PenTool className="h-4 w-4" /> },
+  {
+    id: "UET Italia",
+    name: "UET Italia",
+    icon: <GraduationCap className="h-4 w-4" />,
+  },
 ];
 
 const durations = [
-  { id: "50-orë", name: "50 orë" },
-  { id: "150-orë", name: "150 orë" },
-  { id: "200-orë", name: "200 orë" },
-  { id: "300-orë", name: "300 orë" },
-  { id: "360-orë", name: "360 orë" },
-  { id: "400-orë", name: "400 orë" },
-  { id: "560-orë", name: "560 orë" },
-  { id: "600-orë", name: "600 orë" },
-  { id: "900-orë", name: "900 orë" },
-  { id: "1000-orë", name: "1000 orë" },
-  { id: "1200-orë", name: "1200 orë" },
-  { id: "1500-orë", name: "1500 orë" },
-  { id: "1800-orë", name: "1800 orë" },
-  { id: "2100-orë", name: "2100 orë" },
-  { id: "2500-orë", name: "2500 orë" },
+  { id: "50 orë", name: "50 orë" },
+  { id: "150 orë", name: "150 orë" },
+  { id: "200 orë", name: "200 orë" },
+  { id: "300 orë", name: "300 orë" },
+  { id: "360 orë", name: "360 orë" },
+  { id: "400 orë", name: "400 orë" },
+  { id: "560 orë", name: "560 orë" },
+  { id: "600 orë", name: "600 orë" },
+  { id: "900 orë", name: "900 orë" },
+  { id: "1000 orë", name: "1000 orë" },
+  { id: "1200 orë", name: "1200 orë" },
+  { id: "1500 orë", name: "1500 orë" },
+  { id: "1800 orë", name: "1800 orë" },
+  { id: "2100 orë", name: "2100 orë" },
+  { id: "2500 orë", name: "2500 orë" },
 ];
 
 export default function CoursesPage() {
@@ -261,7 +266,7 @@ export default function CoursesPage() {
         className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden"
       >
         {/* Background pattern */}
-        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5" />
+        <div className="absolute inset-0 bg-[url('/videos/testimonials/diploma.mp4')] bg-cover bg-center opacity-5" />
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
           <Image
             src="/wave-pattern.svg"
@@ -370,7 +375,14 @@ export default function CoursesPage() {
                         ? "default"
                         : "outline"
                     }
-                    className="h-7 px-2 py-0 text-xs"
+                    className={`
+        h-7 px-2 py-0 text-xs
+        ${
+          cat.id === "UET Italia" && !selectedCategories.includes(cat.id)
+            ? "bg-[#FF7F00]"
+            : ""
+        }
+      `}
                     onClick={() => toggleCategory(cat.id)}
                   >
                     {cat.icon}
@@ -480,8 +492,18 @@ export default function CoursesPage() {
                         <Calendar className="h-4 w-4 mr-1 text-purple-600" />
                         <span>{course.schedule}</span>
                       </div>
-                      <Link href={`/courses/${course.id}`}>
-                        <AnimatedButton className="w-full bg-black hover:bg-black text-white">
+                      <Link
+                        href={
+                          course.category === "UET Italia" && course.link
+                            ? course.link
+                            : `/courses/${course.id}`
+                        }
+                      >
+                        <AnimatedButton
+                          size="default"
+                          variant="default"
+                          className="w-full block px-6 py-2 bg-black hover:bg-black text-white"
+                        >
                           Mëso më shumë
                           <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
                         </AnimatedButton>

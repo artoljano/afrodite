@@ -28,3 +28,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ignore all new .mp4 files
+*.mp4
+# ignore all new .mov files
+*.mov

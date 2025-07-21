@@ -338,7 +338,7 @@ export default function ClientCourseDetail({ course }: Props) {
                 Çfarë do të mësoni
               </h3>
               <Accordion type="single" collapsible className="w-full">
-                {course.curriculum.map((mod, i) => (
+                {course.curriculum?.map((mod, i) => (
                   <AccordionItem key={i} value={`mod-${i}`}>
                     <AccordionTrigger className="text-lg font-medium">
                       {mod.title}
@@ -371,7 +371,7 @@ export default function ClientCourseDetail({ course }: Props) {
             >
               <h3 className="text-2xl font-bold mb-6">Instruktorët Tanë</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {course.instructors.map((instr, i) => (
+                {course.instructors?.map((instr, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
@@ -409,7 +409,7 @@ export default function ClientCourseDetail({ course }: Props) {
                     Përfitimet e Kursit
                   </h3>
                   <ul className="space-y-4">
-                    {course.benefits.map((b, i) => (
+                    {course.benefits?.map((b, i) => (
                       <motion.li
                         key={i}
                         initial={{ opacity: 0, x: -20 }}
@@ -428,7 +428,7 @@ export default function ClientCourseDetail({ course }: Props) {
                     Materialet e Përfshira
                   </h3>
                   <ul className="space-y-4">
-                    {course.materials.map((m, i) => (
+                    {course.materials?.map((m, i) => (
                       <motion.li
                         key={i}
                         initial={{ opacity: 0, x: -20 }}
@@ -452,7 +452,7 @@ export default function ClientCourseDetail({ course }: Props) {
             >
               <h3 className="text-2xl font-bold mb-6">Media</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {course.media.map((item, i) =>
+                {course.media?.map((item, i) =>
                   item.type === "image" ? (
                     <motion.div
                       key={i}
@@ -521,7 +521,7 @@ export default function ClientCourseDetail({ course }: Props) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {course.testimonials.map((testimonial, index) => (
+              {course.testimonials?.map((testimonial, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
@@ -623,7 +623,7 @@ export default function ClientCourseDetail({ course }: Props) {
               animate="visible"
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {relatedCourses.map((rc, i) => (
+              {relatedCourses?.map((rc, i) => (
                 <motion.div
                   key={rc.id}
                   variants={itemVariants}

@@ -19,6 +19,7 @@ import {
   Facebook,
   Calendar,
   Sparkles,
+  MapPin,
 } from "lucide-react";
 import { AnimatedButton } from "@/components/animated-button";
 import VideoBackground from "@/components/video-background";
@@ -34,6 +35,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import VideoModal from "@/components/video-modal";
 import { useVideoThumbnail } from "@/components/useVideoThumbnail";
+import TestimonialSlider from "@/components/testimonial-slider";
 
 export default function AboutPage() {
   const [modalId, setModalId] = useState<string | null>(null);
@@ -470,15 +472,23 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      {/* Alumni Carousel */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={historyInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.7, delay: 0.6 }}
-        className="mt-16"
-      >
-        <AlumniCarousel />
-      </motion.div>
+      {/* Testimonials */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
+              <span>Histori suksesi</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
+              Çfarë Thonë{" "}
+              <span className="text-purple-600">Studentët Tanë</span>
+            </h2>
+            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
+          </div>
+
+          <TestimonialSlider />
+        </div>
+      </section>
 
       {/* Values Section */}
       <section className="py-16 md:py-24 bg-white">
@@ -624,9 +634,9 @@ export default function AboutPage() {
                   {/* Title clamped to 3 lines */}
                   <h3
                     className="
-              text-xl font-bold font-poppins text-gray-900 mb-1
-              line-clamp-3
-            "
+                                text-xl font-bold font-poppins text-gray-900 mb-1
+                                line-clamp-3
+                               "
                   >
                     {member.name}
                   </h3>
@@ -637,10 +647,14 @@ export default function AboutPage() {
                   >
                     {member.role}
                   </p>
-                  <p className="text-gray-500 text-sm mb-4">
-                    {member.experience}
-                  </p>
 
+                  <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
+                    <span>{member.experience}</span>
+                    <div className="flex items-center text-gray-600">
+                      <MapPin className="h-4 w-4 mr-1 text-purple-600" />
+                      <span>{member.location}</span>
+                    </div>
+                  </div>
                   {/* Bio clamped to 2 lines */}
                   <p
                     className="
@@ -713,9 +727,13 @@ export default function AboutPage() {
                   <p className="text-purple-600 mb-1 font-medium">
                     {member.role}
                   </p>
-                  <p className="text-gray-500 text-sm mb-4">
-                    {member.experience}
-                  </p>
+                  <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
+                    <span>{member.experience}</span>
+                    <div className="flex items-center text-gray-600">
+                      <MapPin className="h-4 w-4 mr-1 text-purple-600" />
+                      <span>{member.location}</span>
+                    </div>
+                  </div>
                   <p className="text-gray-700 mb-4">{member.bio}</p>
                   {/* <div className="flex items-center text-sm text-gray-600">
                     <Mail className="h-4 w-4 mr-1 text-purple-600" />
@@ -1008,12 +1026,12 @@ export default function AboutPage() {
             </div>
 
             {/* Virtual Tour Button */}
-            <div className="text-center">
+            {/* <div className="text-center">
               <AnimatedButton className="bg-black hover:bg-black text-white">
                 Bëj një tur virtual
                 <ChevronRight className="ml-2 h-4 w-4" />
               </AnimatedButton>
-            </div>
+            </div> */}
           </div>
         </section>
 

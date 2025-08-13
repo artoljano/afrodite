@@ -21,6 +21,7 @@ import {
   Feather,
   ClipboardList,
   User,
+  Play,
 } from "lucide-react";
 import {
   Headphones,
@@ -44,6 +45,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 // Import courses from data/courses.ts
 import { courses } from "@/data/courses";
+import VideoModal from "@/components/video-modal";
 
 const categories = [
   { id: "makeup", name: "Makeup", icon: <Feather className="h-4 w-4" /> },
@@ -257,6 +259,8 @@ export default function CoursesPage() {
       transition: { duration: 0.5 },
     },
   };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="flex flex-col w-full">
@@ -637,18 +641,34 @@ export default function CoursesPage() {
               </div>
             </div>
 
+            {/* Right column with video preview and modal */}
             <div className="relative">
-              <div className="rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src="/placeholder.svg?height=600&width=800&text=Course+Benefits"
-                  alt="Course Benefits"
+              <div
+                className="
+      relative 
+      rounded-xl 
+      overflow-hidden 
+      shadow-lg 
+      group 
+      h-[300px] 
+      sm:h-[400px] 
+      md:h-[500px] 
+      xl:h-[60vh] 
+      w-full"
+              >
+                <video
+                  src="/videos/course-benefits.mp4"
                   width={800}
                   height={600}
-                  className="object-cover w-full"
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"
+                  muted
+                  playsInline
+                  loop
+                  autoPlay
                 />
               </div>
 
-              {/* Stats overlay */}
+              {/* Stats box stays the same */}
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500 max-w-xs">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-gray-700">Studentë të diplomuar</div>

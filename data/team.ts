@@ -7,6 +7,7 @@ export interface TeamMember {
   experience: string
   bio: string
   photo: string
+  location?: string
 }
 
 export const team: TeamMember[] = [
@@ -18,16 +19,8 @@ export const team: TeamMember[] = [
     bio:
       "Me 30 vite përvojë si në Itali ashtu edhe në Shqipëri, ajo nderon vendin tonë me një formim të suksesshëm dhe rezultate të prekshme.",
     photo: "/team/aferdita.jpg",
+    location: "Tiranë",
   },
-  // {
-  //   id: "luiza",
-  //   name: "Luiza Nebiaj",
-  //   role: "Parukiere dhe estetiste profesioniste, instruktore",
-  //   experience: "14 vite përvojë",
-  //   bio:
-  //     "Pronare e sallonit LUIZA HAIR AND MAKEUP në Tiranë, e certifikuar Mjeshtre për parukeri dhe estetikë. Instruktore për kurset e Parukerisë dhe Makeup në akademinë tonë.",
-  //   photo: "/team/luiza.jpg",
-  // },
   {
     id: "remina",
     name: "Remina Muci",
@@ -36,6 +29,7 @@ export const team: TeamMember[] = [
     bio:
       "Stiliste e përkushtuar dhe instruktore e modës me një sy të mprehtë për detajet dhe kreativitet të dalluar. Me përvojë në zhvillimin e koleksioneve moderne dhe udhëheqjen e studentëve drejt shprehjes së stilit të tyre unik, ajo sjell një energji pozitive dhe inspiruese.",
     photo: "/team/remina.jpg",
+    location: "Tiranë",
   },
   {
     id: "dorina",
@@ -45,6 +39,7 @@ export const team: TeamMember[] = [
     bio:
       "Estetiste e diplomuar me një shkollë dyvjeçare, e specializuar në trajtimet e fytyrës dhe masazhe. Përgjegjëse për menaxhimin e salloneve të bukurisë të lidhura me shkollën.",
     photo: "/team/Dorina.jpeg",
+    location: "Tiranë",
   },
   {
     id: "sara",
@@ -54,6 +49,7 @@ export const team: TeamMember[] = [
     bio:
       "Estetiste e diplomuar në Itali, e specializuar në Nails Care. Ofron kurse estetike dhe Nail Art, dhe menaxhon marketingun e akademisë dhe salloneve tona.",
     photo: "/team/sara.jpg",
+    location: "Tiranë",
   },
   {
     id: "ermela",
@@ -63,6 +59,7 @@ export const team: TeamMember[] = [
     bio:
       "Zhvillon projektet e lidhura me akademinë dhe rrjetet e komunikimit me entitetet brenda dhe jashtë vendit me të cilat bashkëpunon akademia.",
     photo: "/team/ermela.jpeg",
+    location: "Tiranë",
   },
   {
     id: "elsa",
@@ -72,6 +69,7 @@ export const team: TeamMember[] = [
     bio:
       "Instruktore me fokus në trajnimet dhe kurset për kujdesin profesional të të moshuarve.",
     photo: "/team/elsa.jpg",
+    location: "Tiranë",
   },
   {
     id: "florinda-gjeloshi",
@@ -81,6 +79,7 @@ export const team: TeamMember[] = [
     bio:
       "Dora e djathtë e Aferditës në degën e Shkodrës, e certifikuar Mjeshtre. Menaxhon organizimin e studentëve dhe aktivitetet shkollore.",
     photo: "/team/florinda.png",
+    location: "Tiranë",
   },
   {
     id: "vincenzo",
@@ -90,6 +89,7 @@ export const team: TeamMember[] = [
     bio:
       "Lider në sektorin e formimit, përdor teknika universale dhe bashkëkohore në trajnimin e studentëve.",
     photo: "/team/vincenzo.png",
+    location: "Tiranë",
   },
   {
     id: "fjoralba",
@@ -99,6 +99,7 @@ export const team: TeamMember[] = [
     bio:
       "Instruktore në kurset intensive të nail & lash extension në degën e Shkodrës.",
     photo: "/team/Fjoralba.jpg",
+    location: "Tiranë",
   },
   {
     id: "michele-marciano",
@@ -107,6 +108,7 @@ export const team: TeamMember[] = [
     experience: "16 vite përvojë",
     bio: "—",
     photo: "/team/Michele.png",
+    location: "Tiranë",
   },
   {
     id: "sindrit",
@@ -116,6 +118,7 @@ export const team: TeamMember[] = [
     bio:
       "Menaxhon fushën ekonomike të akademisë dhe komunikimin me shoqatat ku jemi anëtarë.",
     photo: "/team/sindrit.jpg",
+    location: "Tiranë",
   },
   {
     id: "erjona",
@@ -125,6 +128,7 @@ export const team: TeamMember[] = [
     bio:
       "Menaxhon shërbimet ndaj klientëve në sallonet tona të bukurisë që bashkëpunojnë me shkollën.",
     photo: "/team/Erjona.jpg",
+    location: "Tiranë",
   },
   {
     id: "erisa",
@@ -134,6 +138,7 @@ export const team: TeamMember[] = [
     bio:
       "Make up artist e re, e apasionuar pas bukurisë. Ofron kurse të specializuara makeup në akademi.",
     photo: "/team/Erisa.jpg",
+    location: "Tiranë",
   },
   {
     id: "sonila",
@@ -143,6 +148,7 @@ export const team: TeamMember[] = [
     bio:
       "Bashkëpronare e salloneve të bukurisë ku zhvillohen praktikat, e specializuar në epilim lazer dhe makeup.",
     photo: "/team/soni.jpg",
+    location: "Tiranë",
   },
   {
     id: "aljenda",
@@ -152,6 +158,7 @@ export const team: TeamMember[] = [
     bio:
       "Menaxhon një nga sallonet tona dhe asiston drejtoreshën e akademisë në vendlindje.",
     photo: "/team/aljenda.jpg",
+    location: "Tiranë",
   },
   {
     id: "jutbina",
@@ -161,6 +168,7 @@ export const team: TeamMember[] = [
     bio:
       "Kujdeset për shërbimet ndaj klientëve në sallonin e fshatit të lindjes së drejtoreshës sonë.",
     photo: "/team/jutbina.jpg",
+    location: "Tiranë",
   },
   {
     id: "albana",
@@ -170,5 +178,7 @@ export const team: TeamMember[] = [
     bio:
       "Dora e djathtë në komunikim dhe krijimin e kontakteve për degën e Shkodrës.",
     photo: "/team/albana.jpg",
+    location: "Tiranë",
   },
 ]
+

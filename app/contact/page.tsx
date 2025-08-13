@@ -71,8 +71,7 @@ const addresses = [
     },
     embedUrl:
       "https://maps.google.com/maps?q=42.070424,19.516161&z=19&output=embed",
-    buildingImage:
-      "/placeholder.svg?height=600&width=800&text=Shkoder+Building",
+    buildingImage: "/contact/contact-shkoder.jpg",
   },
 ];
 

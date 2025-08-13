@@ -164,7 +164,7 @@ export default function ClientCourseDetail({ course }: Props) {
       {/* ── Hero Section with Video Background ── */}
       <VideoBackground
         videoSrc={course.videoSrc || "/placeholder-video.mp4"}
-        overlayOpacity={0.85}
+        overlayOpacity={0.6}
         className="min-h-[60vh] md:h-[75vh] py-20 md:py-32 bg-gradient-to-r from-black to-purple-900"
       >
         <motion.div
@@ -578,17 +578,16 @@ export default function ClientCourseDetail({ course }: Props) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <AnimatedButton
                 size="lg"
-                variant="secondary"
-                className="text-white"
+                variant="default"
+                className="bg-black hover:bg-black text-white border border-purple-500/30"
               >
                 REGJISTROHU TANI
               </AnimatedButton>
               <Link href="/contact">
                 <AnimatedButton
                   size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white/20"
-                  showFill={false}
+                  variant="secondary"
+                  className="bg-purple-600 hover:bg-purple-700"
                 >
                   NA KONTAKTONI
                 </AnimatedButton>

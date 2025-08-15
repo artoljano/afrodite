@@ -38,8 +38,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-black text-white hover:bg-black",
-        secondary: "bg-purple-600 text-white hover:bg-black border-black",
+        default: "bg-transparent text-white hover:bg-transparent",
+        secondary: "bg-purple-600 text-white hover:bg-transparent border-black",
         outline:
           "border border-input bg-transparent text-current hover:bg-purple-600/10",
         ghost: "hover:bg-accent hover:text-accent-foreground",
@@ -112,8 +112,8 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
 
     // 2. Determine fill color based on variant
     let fillColor = "bg-purple-600";
-    if (variant === "default") fillColor = "bg-purple-600";
-    if (variant === "secondary") fillColor = "bg-black";
+    if (variant === "default") fillColor = "bg-afrodite-darkPurple";
+    if (variant === "secondary") fillColor = "bg-afrodite-gold";
     if (variant === "outline") fillColor = "bg-purple-600/20";
     if (variant === "ghost") fillColor = "bg-accent";
 

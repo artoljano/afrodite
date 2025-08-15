@@ -21,6 +21,12 @@ const config = {
     },
     extend: {
       colors: {
+        afrodite: {
+          purple: "#7d2a80",
+          lightPurple: "#c97bcf",
+          gold: "#F7F0E6",
+          darkPurple:"#481D4A"
+        },
         navy: {
           50: "#f0f4f9",
           100: "#d9e2f0",

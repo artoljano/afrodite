@@ -100,12 +100,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full">
-      <section className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-400 overflow-hidden">
+      <section className="relative py-20 md:py-32 bg-gradient-to-r from-black to-afrodite-purple">
         {/* Hero Section with Video Background */}
         {/* <VideoBackground
           videoSrc="/videos/IntroNew.mp4"
           overlayOpacity={0.85}
-          className="min-h-[60vh] md:min-h-[70vh] py-20 md:py-32 bg-gradient-to-r from-black to-purple-900"
+          className="min-h-[60vh] md:min-h-[70vh] py-20 md:py-32 bg-gradient-to-r from-black to-afrodite-darkPurple"
         > */}
         <div className="container px-4 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -116,8 +116,8 @@ export default function Home() {
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="flex flex-col space-y-6"
             >
-              <div className="inline-flex items-center px-4 py-2 bg-purple-900/30 backdrop-blur-sm rounded-full text-white text-sm mb-4 border border-purple-500/20">
-                <Sparkles className="h-4 w-4 mr-2 text-purple-400" />
+              <div className="inline-flex items-center px-4 py-2 bg-afrodite-darkPurple/30 backdrop-blur-sm rounded-full text-white text-sm mb-4 border border-afrodite-purple/20">
+                <Sparkles className="h-4 w-4 mr-2 text-afrodite-purple" />
                 <span>Kurse të certifikuara ndërkombëtarisht</span>
               </div>
               <div className="relative">
@@ -125,11 +125,11 @@ export default function Home() {
                   initial={{ width: 0 }}
                   animate={heroInView ? { width: "100px" } : {}}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="h-1 bg-purple-500 mb-4"
+                  className="h-1 bg-afrodite-purple mb-4"
                 />
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-white leading-tight">
                   Kurse Profesionale{" "}
-                  <span className="text-purple-400">Ndërkombëtare</span>
+                  <span className="text-afrodite-purple">Ndërkombëtare</span>
                 </h1>
               </div>
               <p className="text-lg text-gray-300 max-w-lg">
@@ -143,7 +143,7 @@ export default function Home() {
                 <AnimatedButton
                   size="lg"
                   variant="default"
-                  className="bg-black hover:bg-black text-white border border-purple-500/30"
+                  className="bg-afrodite-gold text-afrodite-darkPurple hover:text-afrodite-gold"
                 >
                   KURSE FIZIKE
                   <ChevronRight className="ml-2 h-4 w-4" />
@@ -151,7 +151,7 @@ export default function Home() {
                 <AnimatedButton
                   size="lg"
                   variant="secondary"
-                  className="bg-purple-400 hover:bg-purple-700"
+                  className="bg-afrodite-darkPurple hover:text-afrodite-darkPurple"
                 >
                   KONTAKTO TANI
                 </AnimatedButton>
@@ -181,7 +181,6 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <div className="absolute inset-0 bg-[url('/videos/testimonials/diploma.mp4')] bg-cover bg-center opacity-5" />
             <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
               <Image
                 src="/wave-pattern.svg"
@@ -191,62 +190,6 @@ export default function Home() {
                 className="object-contain"
               />
             </div>
-            {/* <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={heroInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="relative"
-            >
-              <div className="relative z-10 rounded-2xl overflow-hidden border-8 border-white/10 shadow-2xl max-w-md mx-auto backdrop-blur-sm">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
-                <Image
-                  src="/placeholder.svg?height=600&width=600&text=Hero+Image"
-                  alt="Afrodite Academy Professional"
-                  width={600}
-                  height={600}
-                  className="object-cover"
-                />
-                <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-4 border border-white/10">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="font-medium">
-                        <Calendar className="h-4 w-4 mr-1 text-purple-400" />
-                      </p>
-                      <p className="text-purple-400 font-bold">
-                        E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)
-                      </p>
-                    </div>
-                    <AnimatedButton
-                      size="sm"
-                      variant="secondary"
-                      className="bg-purple-400 hover:bg-purple-700"
-                    >
-                      Regjistrohu
-                    </AnimatedButton>
-                  </div>
-                </div>
-              </div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={heroInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.7, delay: 0.6 }}
-                className="absolute -z-10 -bottom-10 -right-10 w-64 h-64"
-              >
-                <Image
-                  src="/wave-pattern.svg"
-                  alt="Decorative pattern"
-                  width={256}
-                  height={256}
-                  className="object-contain"
-                />
-              </motion.div>
-
-              
-              <div className="absolute -top-5 -right-5 md:top-5 md:right-0 bg-black text-white px-4 py-2 rounded-full shadow-lg z-20 flex items-center border border-purple-500/30">
-                <Star className="h-5 w-5 text-yellow-500 mr-2" />
-                <span className="font-medium">Certifikim OMC</span>
-              </div>
-            </motion.div> */}
           </div>
         </div>
         {/* </VideoBackground> */}
@@ -587,8 +530,8 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-gradient-to-r from-black to-purple-900 py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div>
+      <section className="bg-gradient-to-r from-black to-afrodite-darkPurple py-16 md:py-24 relative overflow-hidden">
+        {/* <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div> */}
 
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent"></div>
@@ -605,9 +548,10 @@ export default function Home() {
               <span>Statistikat tona</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-white mb-4">
-              Afrodite Academy në <span className="text-purple-400">Numra</span>
+              Afrodite Academy{" "}
+              <span className="text-afrodite-purple">në Numra</span>
             </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
+            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-6"></div>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               Rezultatet tona flasin vetë. Shikoni arritjet tona ndër vite dhe
               besoni në cilësinë e kurseve tona.
@@ -622,10 +566,10 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="relative bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-purple-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-afrodite-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="p-8 text-center">
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-purple-900/50 flex items-center justify-center border border-purple-500/30">
-                  <Award className="h-10 w-10 text-purple-400" />
+                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-darkPurple/50 flex items-center justify-center border border-afrodite-purple/30">
+                  <Award className="h-10 w-10 text-afrodite-purple" />
                 </div>
                 <CountUpAnimation
                   end={2500}
@@ -634,13 +578,13 @@ export default function Home() {
                   inView={statsInView}
                 />
                 <p className="text-gray-300">Studentë të Certifikuar</p>
-                <div className="mt-4 h-2 bg-purple-900/50 rounded-full overflow-hidden">
+                <div className="mt-4 h-2 bg-afrodite-darkPurple/50 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: "85%" }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className="h-full bg-purple-500"
+                    className="h-full bg-afrodite-purple"
                   ></motion.div>
                 </div>
               </div>
@@ -653,10 +597,10 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="relative bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-purple-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-afrodite-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="p-8 text-center">
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-purple-900/50 flex items-center justify-center border border-purple-500/30">
-                  <BookOpen className="h-10 w-10 text-purple-400" />
+                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-darkPurple/50 flex items-center justify-center border border-afrodite-purple/30">
+                  <BookOpen className="h-10 w-10 text-afrodite-purple" />
                 </div>
                 <CountUpAnimation
                   end={60}
@@ -665,13 +609,13 @@ export default function Home() {
                   inView={statsInView}
                 />
                 <p className="text-gray-300">Kurse Profesionale</p>
-                <div className="mt-4 h-2 bg-purple-900/50 rounded-full overflow-hidden">
+                <div className="mt-4 h-2 bg-afrodite-darkPurple/50 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: "65%" }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className="h-full bg-purple-500"
+                    className="h-full bg-afrodite-purple"
                   ></motion.div>
                 </div>
               </div>
@@ -684,10 +628,10 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="relative bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-purple-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-afrodite-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="p-8 text-center">
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-purple-900/50 flex items-center justify-center border border-purple-500/30">
-                  <Users className="h-10 w-10 text-purple-400" />
+                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-darkPurple/50 flex items-center justify-center border border-afrodite-purple/30">
+                  <Users className="h-10 w-10 text-afrodite-purple" />
                 </div>
                 <CountUpAnimation
                   end={15}
@@ -696,13 +640,13 @@ export default function Home() {
                   inView={statsInView}
                 />
                 <p className="text-gray-300">Instruktorë të Kualifikuar</p>
-                <div className="mt-4 h-2 bg-purple-900/50 rounded-full overflow-hidden">
+                <div className="mt-4 h-2 bg-afrodite-darkPurple/50 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: "75%" }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className="h-full bg-purple-500"
+                    className="h-full bg-afrodite-purple"
                   ></motion.div>
                 </div>
               </div>
@@ -715,10 +659,10 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="relative bg-black/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-purple-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-afrodite-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="p-8 text-center">
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-purple-900/50 flex items-center justify-center border border-purple-500/30">
-                  <Calendar className="h-10 w-10 text-purple-400" />
+                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-darkPurple/50 flex items-center justify-center border border-afrodite-purple/30">
+                  <Calendar className="h-10 w-10 text-afrodite-purple" />
                 </div>
                 <CountUpAnimation
                   end={20}
@@ -727,13 +671,13 @@ export default function Home() {
                   inView={statsInView}
                 />
                 <p className="text-gray-300">Vite Eksperiencë</p>
-                <div className="mt-4 h-2 bg-purple-900/50 rounded-full overflow-hidden">
+                <div className="mt-4 h-2 bg-afrodite-darkPurple/50 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: "55%" }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className="h-full bg-purple-500"
+                    className="h-full bg-afrodite-purple"
                   ></motion.div>
                 </div>
               </div>
@@ -752,7 +696,7 @@ export default function Home() {
               onClick={handleDownloadBrochure}
               size="lg"
               variant="secondary"
-              className="bg-purple-400 hover:bg-purple-700 "
+              className="bg-afrodite-darkPurple text-afrodite-gold hover:text-afrodite-darkPurple"
             >
               <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
               SHKARTO BROSHURËN E KURSEVE
@@ -850,7 +794,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-black via-purple-900 to-black relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-black via-afrodite-purple to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div>
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
           <Image
@@ -868,7 +812,7 @@ export default function Home() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-white mb-6">
               Gati për të Filluar{" "}
-              <span className="text-purple-400">Karrierën Tuaj të Re?</span>
+              <span className="text-afrodite-gold">Karrierën Tuaj të Re?</span>
             </h2>
             <p className="text-lg text-gray-300 mb-8">
               Regjistrohuni sot në kurset tona profesionale dhe bëhuni pjesë e
@@ -878,7 +822,7 @@ export default function Home() {
               <AnimatedButton
                 size="lg"
                 variant="default"
-                className="bg-black hover:bg-black text-white border border-purple-500/30"
+                className="bg-afrodite-gold text-afrodite-darkPurple hover:text-afrodite-gold"
               >
                 REGJISTROHU TANI
               </AnimatedButton>
@@ -886,7 +830,7 @@ export default function Home() {
                 <AnimatedButton
                   size="lg"
                   variant="secondary"
-                  className="bg-purple-400 hover:bg-purple-700"
+                  className="bg-afrodite-darkPurple text-afrodite-gold hover:text-afrodite-darkPurple"
                 >
                   NA KONTAKTONI
                 </AnimatedButton>
@@ -895,7 +839,7 @@ export default function Home() {
 
             {/* Added FAQ accordion */}
             <div className="mt-16 text-left bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-white/10">
-              <h3 className="text-xl font-bold text-white mb-6 text-center">
+              <h3 className="text-xl font-bold text-afrodite-gold mb-6 text-center">
                 Pyetje të Shpeshta
               </h3>
 
@@ -910,7 +854,7 @@ export default function Home() {
                         {faq.question}
                       </span>
                       <ChevronRight
-                        className={`h-5 w-5 text-purple-400 transform transition-transform duration-200 ${
+                        className={`h-5 w-5 text-afrodite-purple transform transition-transform duration-200 ${
                           openIndex === idx ? "rotate-90" : ""
                         }`}
                       />

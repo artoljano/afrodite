@@ -23,9 +23,10 @@ const config = {
       colors: {
         afrodite: {
           purple: "#7d2a80",
-          lightPurple: "#c97bcf",
+          lightPurple: "#965c9c",
           gold: "#F7F0E6",
-          darkPurple:"#481D4A"
+          creme:"#f6f0e7",
+          white: "#ffffff",
         },
         navy: {
           50: "#f0f4f9",

@@ -112,8 +112,8 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
 
     // 2. Determine fill color based on variant
     let fillColor = "bg-purple-600";
-    if (variant === "default") fillColor = "bg-afrodite-darkPurple";
-    if (variant === "secondary") fillColor = "bg-afrodite-gold";
+    if (variant === "default") fillColor = "bg-afrodite-purple";
+    if (variant === "secondary") fillColor = "bg-afrodite-purple";
     if (variant === "outline") fillColor = "bg-purple-600/20";
     if (variant === "ghost") fillColor = "bg-accent";
 

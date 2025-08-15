@@ -219,8 +219,8 @@ export default function AboutPage() {
             </h1>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-8" />
             <p className="text-lg text-gray-300 mb-8">
-              Akademia kryesore për kurse profesionale në Shqipëri, me një
-              histori të pasur dhe një vizion për të ardhmen.
+              Lider në arsimin profesional në Shqipëri, me traditë të
+              konsoliduar dhe synim të qartë për të ardhmen.
             </p>
           </motion.div>
         </div>
@@ -321,8 +321,8 @@ export default function AboutPage() {
                   profesionale. Përmes moduleve tona praktike, teknikat më të
                   avancuara, produktet inovative dhe strategjitë më të fundit të
                   industrisë ju pajisin për të përmbushur kërkesat e tregut dhe
-                  për të qëndruar përpara në zhvillimet globale të bukurisë dhe
-                  mirëqenies.
+                  për të qëndruar përpara në zhvillimet globale të industrive
+                  përkatëse.
                 </p>
               </div>
 
@@ -334,10 +334,10 @@ export default function AboutPage() {
                 <p className="text-gray-700">
                   Në Afrodite Academy synojmë që çdo kursant të realizojë
                   potencialin e tij dhe të fitojë aftësitë e nevojshme për t’u
-                  bërë profesionist i vlerësuar në industrinë e bukurisë. Përmes
-                  programeve tona të specializuara—kurse intensive, masterklasa
-                  me ekspertë italianë, seminare praktike dhe aktivitete të
-                  përvitshme—ne përgatitim çdo student për trajnime të avancuara
+                  bërë profesionist i vlerësuar në industri. Përmes programeve
+                  tona të specializuara—kurse intensive, masterklasa me ekspertë
+                  ndërkombëtar, seminare praktike dhe aktivitete të
+                  përvitshme—ne përgatisim çdo student për trajnime të avancuara
                   dhe për mundësi të vazhdueshme zhvillimi profesional.
                 </p>
               </div>
@@ -369,7 +369,7 @@ export default function AboutPage() {
               <div className="rounded-lg overflow-hidden shadow-xl">
                 <div className="relative">
                   <Image
-                    src="/images/aferdita.jpeg"
+                    src="/images/aferdita-1.jpeg"
                     alt="Aferdita Ferracaku - Founder"
                     width={800}
                     height={600}
@@ -428,9 +428,8 @@ export default function AboutPage() {
                 <p className="text-gray-700">
                   E rikthyer në Shqipëri, themeloi Afrodite Italian Wellness
                   Academy, një institucion model për trajnimin dhe certifikimin
-                  profesional në estetike, parukeri, make-up, masazh dhe kujdes
-                  shëndetësor, duke sjellë standardet europiane në formimin
-                  shqiptar.
+                  profesional, duke ndërthurur standardet europiane me nevojat e
+                  tregut vendas.
                 </p>
               </div>
 
@@ -498,13 +497,13 @@ export default function AboutPage() {
               <span>Vlerat tona</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
-              Çfarë na <span className="text-purple-600">Udhëheq</span>
+              Çfarë <span className="text-purple-600">Përfaqësojmë</span>
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
             <p className="text-lg text-gray-700">
-              Në Afrodite Academy, ne udhëhiqemi nga një set vlerash që formojnë
-              çdo aspekt të punës sonë dhe na ndihmojnë të ofrojmë përvojën më
-              të mirë për studentët tanë.
+              Afrodite Academy ndërton identitetin dhe cilësinë e saj mbi një
+              sistem të fortë vlerash, që orientojnë të gjithë aktivitetin tonë
+              arsimor.
             </p>
           </div>
 
@@ -559,9 +558,9 @@ export default function AboutPage() {
                 Inovacion
               </h3>
               <p className="text-gray-700">
-                Ne jemi gjithmonë në kërkim të teknikave dhe trendeve të reja
-                për t'u siguruar që studentët tanë janë në pararojë të
-                industrisë.
+                Kërkojmë vazhdimisht risi për t’i ofruar studentëve tanë
+                përgatitjen që i vendos një hap përpara në çdo fushë
+                profesionale.
               </p>
             </motion.div>
 
@@ -758,8 +757,8 @@ export default function AboutPage() {
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
             <p className="text-lg text-gray-700">
-              Bashkëpunojmë me institucione dhe kompani prestigjioze për të
-              ofruar mundësi të shkëlqyera për studentët tanë.
+              Rrjeti ynë i bashkëpunimeve me kompani dhe organizata prestigjioze
+              krijon mundësi reale për zhvillimin profesional të studentëve.
             </p>
           </div>
 
@@ -790,9 +789,9 @@ export default function AboutPage() {
                 Partneritete Industriale
               </h3>
               <p className="text-gray-700 mb-4">
-                Kemi krijuar lidhje të forta me biznese në industrinë e bukurisë
-                për të siguruar mundësi praktike dhe punësimi për studentët
-                tanë.
+                Kemi ndërtuar marrëdhënie të forta me biznese dhe organizata të
+                ndryshme për të siguruar mundësi praktike dhe punësimi për
+                studentët tanë.
               </p>
               <Link
                 href="/about"
@@ -808,8 +807,8 @@ export default function AboutPage() {
                 Partneritete Ndërkombëtare
               </h3>
               <p className="text-gray-700 mb-4">
-                Jemi anëtarë të organizatave ndërkombëtare që na mundësojnë të
-                ofrojmë certifikime të njohura globalisht.
+                Programet tona janë të mbështetura nga organizata ndërkombëtare,
+                duke garantuar njohje të gjerë dhe cilësi të lartë.
               </p>
               <Link
                 href="/about"
@@ -845,10 +844,6 @@ export default function AboutPage() {
             <span className="text-purple-600">Certifikimet Tona</span>
           </h2>
           <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-700">
-            Certifikimet dhe çmimet tona janë të njohura ndërkombëtarisht dhe
-            dëshmojnë cilësinë e lartë të shërbimeve tona arsimore.
-          </p>
         </div>
 
         {/* central line */}
@@ -1080,9 +1075,9 @@ export default function AboutPage() {
               <span className="text-purple-400">Akademisë Sonë</span>
             </h2>
             <p className="text-lg text-gray-300 mb-8">
-              Qëllimi ynë është që çdo student të arrijë suksesin e dëshiruar
-              dhe të rrithëhet në Akademinë Italiane të Mirëqenies Afrodite për
-              trajnime të vazhdueshme profesionale.
+              Synimi ynë është që çdo student të realizojë potencialin e tij dhe
+              të kthehet te Afrodite Academy për zhvillim të vazhdueshëm
+              profesional.
             </p>
             <AnimatedButton
               size="lg"

@@ -989,10 +989,10 @@ export const courses: Course[] = [
 },
 {
   id: 17,
-  title: "Kurs Estetike (1500 ore)",
+  title: "Kurs Estetike (1800 ore)",
   category: "esthetics",
-  duration: "1500 orë",
-  durationCategory: "1500 orë",
+  duration: "1800 orë",
+  durationCategory: "1800 orë",
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
@@ -1488,6 +1488,82 @@ export const courses: Course[] = [
   videoSrc: "/videos/parukeri-video.mp4",
   description:
     "Trajnim i plotë 2100-orësh në parukeri, nga higjiena bazë deri te teknikat e avancuara të prerjes, stilimit dhe ngjyrosjes.",
+  longDescription:
+    "Kjo program intensiv mbulon etikat dhe higjienën profesionale, komunikimin dhe këshillimin psikologjik të klientit, njohjen e produkteve kozmetike, teknikën e makeup-it për flokët, teknikat bazë dhe të avancuara të prerjes për meshkuj e femra, metodologjitë e ngjyrosjes (kolorimetri), teknikat e hair extension dhe trendet më të fundit në stilim, si dhe praktikën laboratorike me pajisje profesionale.",
+  instructors: [
+    {
+      name: "Arjan Bregu",
+      role: "Instruktor Kryesor Parukeri",
+      image: "/placeholder.svg?height=200&width=200&text=Instructor",
+      bio: "Më +12 vite eksperiencë në parukeri dhe trajnime profesionale."
+    }
+  ],
+  curriculum: [
+    {
+      title: "Moduli 1: Etika & Higjiena",
+      lessons: ["Higjiena profesionale", "Sterilizimi i veglave"]
+    },
+    {
+      title: "Moduli 2: Psikologjia & Komunikimi",
+      lessons: ["Këshillimi klientit", "Mirëpritja në shqip, italisht, anglisht"]
+    },
+    {
+      title: "Moduli 3: Produkte & Nutricion",
+      lessons: ["Roli i vitaminave A, E, C, D", "Komponentët biologjikë"]
+    },
+    {
+      title: "Moduli 4: Bazat e Hairstyling",
+      lessons: ["Larje & krehje", "Tendencat moderne"]
+    },
+    {
+      title: "Moduli 5: Permanent & Extension",
+      lessons: ["Teknikat klasike, spirale, volum", "Hair extension & gërsheta"]
+    },
+    {
+      title: "Moduli 6: Kolorimetri & Kimikatet",
+      lessons: ["Ngjyrat primare, sekondare, tretësore", "Formulat e çeljes dhe neutralizimit"]
+    },
+    {
+      title: "Moduli 7: Prerje Meshkuj & Femra",
+      lessons: ["Teknikat bazë (drejt, shaggy, pixie)", "Graduime, layering, teksturim"]
+    },
+    {
+      title: "Moduli 8: Praktikë & Laborator",
+      lessons: ["Simulime me modele", "Stilime finale"]
+    }
+  ],
+  benefits: [
+    "Certifikim ndërkombëtar",
+    "Portofol profesional",
+    "Stazhe në sallone partnerë"
+  ],
+  materials: [
+    "Set gërshërë profesionalë",
+    "Ngjyra premium dhe dekolorantë",
+    "Pajisje për permanent & extension"
+  ],
+  testimonials: [],
+  faqs: [],
+  featured: false,
+  students: 25,
+  media: [
+    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hair+2100", alt: "Parukeri 2100h" }
+  ]
+},
+{
+  id: 81,
+  title: "Kursi Parukeri (1500 ore)",
+  category: "hair",
+  duration: "1500 orë",
+  durationCategory: "1500 orë",
+  level: "Fillestar – Avancuar",
+  price: "",
+  startDate: "",
+  schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
+  image: "/courses/parukeri-2100.jpeg",
+  videoSrc: "/videos/parukeri-video.mp4",
+  description:
+    "Trajnim i plotë 1500-orësh në parukeri, nga higjiena bazë deri te teknikat e avancuara të prerjes, stilimit dhe ngjyrosjes.",
   longDescription:
     "Kjo program intensiv mbulon etikat dhe higjienën profesionale, komunikimin dhe këshillimin psikologjik të klientit, njohjen e produkteve kozmetike, teknikën e makeup-it për flokët, teknikat bazë dhe të avancuara të prerjes për meshkuj e femra, metodologjitë e ngjyrosjes (kolorimetri), teknikat e hair extension dhe trendet më të fundit në stilim, si dhe praktikën laboratorike me pajisje profesionale.",
   instructors: [
@@ -2337,7 +2413,7 @@ export const courses: Course[] = [
   image: "/courses/nails-500.png",
   videoSrc: "/videos/nails-video.mp4",
   description:
-    "Kurs 400-orësh për bazat e manikyrit, pedikyrit dhe Nail Art teknikë fillestare.",
+    "Kurs 400-orësh për bazat e manikyrit, pedikyrit dhe Nail Art teknikë bazë.",
   longDescription:
     "Mbulon historinë dhe etikat profesionale, anatomia dhe higjiena e thonjve, aspektet ligjore dhe biznesin e sallonit, konsultimin e klientit, njohjen e produkteve dhe veglave, përgatitjen e thonjve, teknikat bazë të Nail Art (francez, ombre), zgjatjet artificiale të thonjve dhe një laborator praktik me ndërtim portofoli.",
   instructors: [
@@ -2388,6 +2464,7 @@ export const courses: Course[] = [
     }
   ]
 },
+
 {
   id: 36,
   title: "Manikyr–Pedikyr & Nail Art (150 ore)",
@@ -2445,6 +2522,70 @@ export const courses: Course[] = [
       type: "image",
       src: "/placeholder.svg?height=600&width=800&text=Maniky+150h",
       alt: "Maniky 150h"
+    }
+  ]
+},
+{
+  id: 80,
+  title: "Manikyr–Pedikyr & Nail Art (50 ore)",
+  category: "nails",
+  duration: "50 orë",
+  durationCategory: "50 orë",
+  level: "Fillestar – Mesatar",
+  price: "",
+  startDate: "",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
+  image: "/courses/nails-500.png",
+  videoSrc: "/videos/nails-video.mp4",
+  description:
+    "Kurs 50-orësh për bazat e manikyrit, pedikyrit dhe Nail Art teknikë fillestare.",
+  longDescription:
+    "Mbulon historinë dhe etikat profesionale, anatomia dhe higjiena e thonjve, aspektet ligjore dhe biznesin e sallonit, konsultimin e klientit, njohjen e produkteve dhe veglave, përgatitjen e thonjve, teknikat bazë të Nail Art (francez, ombre), zgjatjet artificiale të thonjve dhe një laborator praktik me ndërtim portofoli.",
+  instructors: [
+    {
+      name: "Elira Shkodra",
+      role: "Teknike & Trainer",
+      image: "/placeholder.svg?height=200&width=200&text=Instructor",
+      bio: "8 vite në industrinë e thonjve dhe Nail Art."
+    }
+  ],
+  curriculum: [
+    {
+      title: "Moduli 1: Hyrje & Anatomia",
+      lessons: ["Historia e Nail Art", "Struktura e thonjve"]
+    },
+    {
+      title: "Moduli 2: Ligjore & Biznes",
+      lessons: ["Licencimi", "Marketingu dhe menaxhimi"]
+    },
+    {
+      title: "Moduli 3: Konsultim & Produkte",
+      lessons: ["Komunikimi me klientin", "Gel, akrilik & llakë"]
+    },
+    {
+      title: "Moduli 4: Përgatitja & Teknikat Bazë",
+      lessons: ["Trajtimi i kutikulave", "Nail Art francez & ombre"]
+    },
+    {
+      title: "Moduli 5: Zgjatjet & SPA",
+      lessons: ["Aplikimi artificial", "Trajtimet me parafinë"]
+    },
+    {
+      title: "Moduli 6: Praktika & Portfolio",
+      lessons: ["Ushtrime në laborator", "Fotografi portofoli"]
+    }
+  ],
+  benefits: ["Diplomë bazike", "Aftësi komerciale"],
+  materials: ["Set bazik manikyre", "Freza & llamba UV"],
+  testimonials: [],
+  faqs: [],
+  featured: false,
+  students: 0,
+  media: [
+    {
+      type: "image",
+      src: "/placeholder.svg?height=600&width=800&text=Maniky+400h",
+      alt: "Maniky 50h"
     }
   ]
 },
@@ -2743,10 +2884,10 @@ export const courses: Course[] = [
 },
 {
   id: 41,
-  title: "Kursi Makeup Permanent (600 ore)",
+  title: "Kursi Makeup Permanent (1200 ore)",
   category: "makeup",
-  duration: "600 orë",
-  durationCategory: "600 orë",
+  duration: "1200 orë",
+  durationCategory: "1200 orë",
   level: "Mesatar – Avancuar",
   price: "",
   startDate: "",
@@ -2754,7 +2895,7 @@ export const courses: Course[] = [
   image: "/courses/makeup-permanent.jpg",
   videoSrc: "/videos/permanent-video.mp4",
   description:
-    "Kurs i plotë 600-orësh në teknikat e makeup-it permanent për fytyrë, vetulla, sy dhe buzë, duke përfshirë edhe areolat dhe skalpin.",
+    "Kurs i plotë 1200-orësh në teknikat e makeup-it permanent për fytyrë, vetulla, sy dhe buzë, duke përfshirë edhe areolat dhe skalpin.",
   longDescription:
     "Mbulohet histori dhe parimet e PMU; anatomia dhe fiziologjia e lëkurës; etikat dhe higjiena; teoria e ngjyrave dhe pigmentëve; mjetet dhe pajisjet; konsultimi dhe projektimi i formave; teknikat e microblading, nano-brows, eyeliner klasik, full lip dhe rekonstruksion areola; mikropigmentimi skalpi dhe trajtime 3D; korrigjimet, heqja me laser; aspektet ligjore, etike dhe marketingu; dhe praktikë intensive me vlerësim final.",
   instructors: [

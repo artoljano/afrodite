@@ -100,7 +100,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full">
-      <section className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden">
+      <section className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-400 overflow-hidden">
         {/* Hero Section with Video Background */}
         {/* <VideoBackground
           videoSrc="/videos/IntroNew.mp4"
@@ -133,9 +133,10 @@ export default function Home() {
                 </h1>
               </div>
               <p className="text-lg text-gray-300 max-w-lg">
-                Zbuloní mundësitë për të avancuar karrierën tuaj me kurset tona
-                profesionale të njohura ndërkombëtarisht. Ne ofrojmë mësim
-                online dhe në zyrat tona fizike.
+                Ne jemi të përkushtuar për të ofruar rezultatet më të mira për
+                studentët tanë. Me një ekip të përkushtuar dhe metoda inovative,
+                ne sigurojmë që çdo student të arrijë potencialin e tij të
+                plotë.
               </p>
 
               <div className="flex flex-wrap gap-4 pt-4">
@@ -150,7 +151,7 @@ export default function Home() {
                 <AnimatedButton
                   size="lg"
                   variant="secondary"
-                  className="bg-purple-600 hover:bg-purple-700"
+                  className="bg-purple-400 hover:bg-purple-700"
                 >
                   KONTAKTO TANI
                 </AnimatedButton>
@@ -174,7 +175,7 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="text-sm text-gray-300">
-                  <span className="text-white font-semibold">500+</span>{" "}
+                  <span className="text-white font-semibold">2500+</span>{" "}
                   studentë të diplomuar
                 </div>
               </div>
@@ -209,7 +210,7 @@ export default function Home() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-medium">
-                        <Calendar className="h-4 w-4 mr-1 text-purple-600" />
+                        <Calendar className="h-4 w-4 mr-1 text-purple-400" />
                       </p>
                       <p className="text-purple-400 font-bold">
                         E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)
@@ -218,7 +219,7 @@ export default function Home() {
                     <AnimatedButton
                       size="sm"
                       variant="secondary"
-                      className="bg-purple-600 hover:bg-purple-700"
+                      className="bg-purple-400 hover:bg-purple-700"
                     >
                       Regjistrohu
                     </AnimatedButton>
@@ -256,18 +257,18 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-gray-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
               <div className="bg-purple-100 p-3 rounded-full mr-4">
-                <Calendar className="h-6 w-6 text-purple-600" />
+                <Calendar className="h-6 w-6 text-purple-400" />
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">Orare Fleksibël</h3>
                 <p className="text-sm text-gray-600">
-                  Kurse në mëngjes, pasdite dhe fundjavë
+                  Kurse paradite, pasdite dhe fundjavë
                 </p>
               </div>
             </div>
             <div className="bg-gray-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
               <div className="bg-purple-100 p-3 rounded-full mr-4">
-                <CheckCircle2 className="h-6 w-6 text-purple-600" />
+                <CheckCircle2 className="h-6 w-6 text-purple-400" />
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">
@@ -280,14 +281,14 @@ export default function Home() {
             </div>
             <div className="bg-gray-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
               <div className="bg-purple-100 p-3 rounded-full mr-4">
-                <Users className="h-6 w-6 text-purple-600" />
+                <Users className="h-6 w-6 text-purple-400" />
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900">
                   Instruktorë Profesionistë
                 </h3>
                 <p className="text-sm text-gray-600">
-                  Mësimdhënie nga ekspertë të industrisë
+                  Mësimdhënie nga ekspertë ndërkombëtare të industrisë
                 </p>
               </div>
             </div>
@@ -318,14 +319,10 @@ export default function Home() {
               <span>Pse të zgjidhni Afrodite Academy?</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
-              Eksperiencë Mësimore{" "}
-              <span className="text-purple-600">e Jashtëzakonshme</span>
+              Standarte të Larta{" "}
+              <span className="text-purple-400">në Mësimdhënie</span>
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              Ne ofrojmë një përvojë të plotë mësimore që kombinon teorinë me
-              praktikën, duke ju përgatitur për një karrierë të suksesshme.
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
@@ -402,7 +399,7 @@ export default function Home() {
                 className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500 mt-6 ml-6 relative"
               >
                 <div className="absolute -top-3 -left-3 bg-purple-100 p-2 rounded-full">
-                  <Quote className="h-5 w-5 text-purple-600" />
+                  <Quote className="h-5 w-5 text-purple-400" />
                 </div>
                 <p className="text-gray-800 font-medium italic">
                   "Afrodite Academy ndryshoi karrierën time. Tani punoj si
@@ -427,10 +424,10 @@ export default function Home() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="bg-purple-100 p-4 rounded-full flex-shrink-0 group-hover:bg-purple-200 transition-colors duration-300">
-                      <Award className="h-8 w-8 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" />
+                      <Award className="h-8 w-8 text-purple-400 group-hover:text-purple-700 transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-400 transition-colors duration-300">
                         Certifikime Ndërkombëtare
                       </h3>
                       <p className="text-gray-700">
@@ -448,10 +445,10 @@ export default function Home() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="bg-purple-100 p-4 rounded-full flex-shrink-0 group-hover:bg-purple-200 transition-colors duration-300">
-                      <Users className="h-8 w-8 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" />
+                      <Users className="h-8 w-8 text-purple-400 group-hover:text-purple-700 transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-400 transition-colors duration-300">
                         Instruktorë Profesionistë
                       </h3>
                       <p className="text-gray-700">
@@ -469,16 +466,15 @@ export default function Home() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="bg-purple-100 p-4 rounded-full flex-shrink-0 group-hover:bg-purple-200 transition-colors duration-300">
-                      <BookOpen className="h-8 w-8 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" />
+                      <BookOpen className="h-8 w-8 text-purple-400 group-hover:text-purple-700 transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-400 transition-colors duration-300">
                         Kurrikula Moderne
                       </h3>
                       <p className="text-gray-700">
-                        Kurset tona përditësohen vazhdimisht për të përfshirë
-                        teknikat dhe trendet më të fundit në industrinë e
-                        bukurisë.
+                        Çdo program është ndërtuar mbi baza aktuale dhe
+                        praktike, të përditësuara sipas tregut të punës.
                       </p>
                     </div>
                   </div>
@@ -490,16 +486,16 @@ export default function Home() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="bg-purple-100 p-4 rounded-full flex-shrink-0 group-hover:bg-purple-200 transition-colors duration-300">
-                      <HeartHandshake className="h-8 w-8 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" />
+                      <HeartHandshake className="h-8 w-8 text-purple-400 group-hover:text-purple-700 transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-600 transition-colors duration-300">
+                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-400 transition-colors duration-300">
                         Komunitet Mbështetës
                       </h3>
                       <p className="text-gray-700">
                         Bëhuni pjesë e një komuniteti mbështetës profesionistësh
-                        dhe studentësh që ndajnë pasionin për bukurinë dhe
-                        estetikën.
+                        dhe studentësh që ndajnë pasionin për zhvillim personal
+                        dhe profesional.
                       </p>
                     </div>
                   </div>
@@ -528,18 +524,18 @@ export default function Home() {
                 </div>
                 <div className="p-6 flex flex-col justify-center">
                   <div className="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                    <Clock className="h-6 w-6 text-purple-600" />
+                    <Clock className="h-6 w-6 text-purple-400" />
                   </div>
                   <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3">
                     Orare Fleksibël
                   </h3>
                   <p className="text-gray-700">
-                    Ofrojmë orare fleksibël për t'ju mundësuar të studioni
-                    ndërsa punoni ose keni angazhime të tjera.
+                    Ju mundësojmë të ndiqni formimin tuaj pa ndërprerë
+                    angazhimet personale apo profesionale.
                   </p>
                   <Link
                     href="/about"
-                    className="inline-flex items-center text-purple-600 mt-4 font-medium hover:text-purple-700 transition-colors"
+                    className="inline-flex items-center text-purple-400 mt-4 font-medium hover:text-purple-700 transition-colors"
                   >
                     Mëso më shumë
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -558,7 +554,7 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="order-2 md:order-1 p-6 flex flex-col justify-center">
                   <div className="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                    <Briefcase className="h-6 w-6 text-purple-600" />
+                    <Briefcase className="h-6 w-6 text-purple-400" />
                   </div>
                   <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3">
                     Mundësi Punësimi
@@ -569,7 +565,7 @@ export default function Home() {
                   </p>
                   <Link
                     href="/about"
-                    className="inline-flex items-center text-purple-600 mt-4 font-medium hover:text-purple-700 transition-colors"
+                    className="inline-flex items-center text-purple-400 mt-4 font-medium hover:text-purple-700 transition-colors"
                   >
                     Mëso më shumë
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -632,7 +628,7 @@ export default function Home() {
                   <Award className="h-10 w-10 text-purple-400" />
                 </div>
                 <CountUpAnimation
-                  end={500}
+                  end={2500}
                   suffix="+"
                   className="text-4xl font-bold font-poppins text-white mb-2"
                   inView={statsInView}
@@ -663,7 +659,7 @@ export default function Home() {
                   <BookOpen className="h-10 w-10 text-purple-400" />
                 </div>
                 <CountUpAnimation
-                  end={20}
+                  end={60}
                   suffix="+"
                   className="text-4xl font-bold font-poppins text-white mb-2"
                   inView={statsInView}
@@ -725,7 +721,7 @@ export default function Home() {
                   <Calendar className="h-10 w-10 text-purple-400" />
                 </div>
                 <CountUpAnimation
-                  end={5}
+                  end={20}
                   suffix="+"
                   className="text-4xl font-bold font-poppins text-white mb-2"
                   inView={statsInView}
@@ -756,7 +752,7 @@ export default function Home() {
               onClick={handleDownloadBrochure}
               size="lg"
               variant="secondary"
-              className="bg-purple-600 hover:bg-purple-700 "
+              className="bg-purple-400 hover:bg-purple-700 "
             >
               <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
               SHKARTO BROSHURËN E KURSEVE
@@ -766,7 +762,7 @@ export default function Home() {
       </section>
 
       {/* Partner Logos Section */}
-      <section className="bg-black py-12 overflow-hidden">
+      <section className="bg-white py-12 overflow-hidden">
         <div className="container mx-auto px-4 mb-8">
           <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-4">
@@ -794,7 +790,7 @@ export default function Home() {
               <span>Kurset tona</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
-              Kurset Tona <span className="text-purple-600">Profesionale</span>
+              Kurset Tona <span className="text-purple-400">Profesionale</span>
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
@@ -825,7 +821,7 @@ export default function Home() {
               <AnimatedButton
                 size="lg"
                 variant="secondary"
-                className="bg-purple-600 hover:bg-purple-700"
+                className="bg-purple-400 hover:bg-purple-700"
               >
                 SHIKO TË GJITHA KURSET
                 <ChevronRight className="ml-2 h-4 w-4" />
@@ -844,7 +840,7 @@ export default function Home() {
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
               Çfarë Thonë{" "}
-              <span className="text-purple-600">Studentët Tanë</span>
+              <span className="text-purple-400">Studentët Tanë</span>
             </h2>
             <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
           </div>
@@ -890,7 +886,7 @@ export default function Home() {
                 <AnimatedButton
                   size="lg"
                   variant="secondary"
-                  className="bg-purple-600 hover:bg-purple-700"
+                  className="bg-purple-400 hover:bg-purple-700"
                 >
                   NA KONTAKTONI
                 </AnimatedButton>

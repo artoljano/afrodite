@@ -545,8 +545,8 @@ export default function CoursesPage() {
                 <span>Pse të zgjidhni kurset tona</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-6">
-                Përfitimet e{" "}
-                <span className="text-purple-600">Kurseve Tona</span>
+                Ndërto me ne{" "}
+                <span className="text-purple-600">Të Ardhmen Tënde</span>
               </h2>
               <p className="text-gray-700 mb-8">
                 Në Afrodite Academy, çdo kurs është konceptuar për t’ju pajisur
@@ -565,8 +565,11 @@ export default function CoursesPage() {
                     </h3>
                     <p className="text-gray-700">
                       Të gjithë studentët marrin certifikata të akredituara
-                      ndërkombëtarisht nga Afrodite Academy, që ju mundësojnë të
-                      konkurroni dhe të punësoni kudo në botë.
+                      ndërkombëtarisht nga Afrodite Academy, si dhe të drejtën e
+                      provimit dhe diplomimit të vitit të tretë për direksion
+                      teknik, e drejta e hapjes së biznesit tuaj nga shkolla
+                      prestigjoze Italiane Apulia University, që ju mundëson të
+                      konkurroni dhe të punësoheni në Europë dhe kudo në botë.
                     </p>
                   </div>
                 </div>
@@ -577,7 +580,7 @@ export default function CoursesPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
-                      Mentorë me eksperiencë ndërkombëtare
+                      Profesionistë me eksperiencë ndërkombëtare
                     </h3>
                     <p className="text-gray-700">
                       Instruktorët tanë janë profesionistë të njohur
@@ -600,7 +603,7 @@ export default function CoursesPage() {
                       Në Afrodite Academy, pjesa praktike zë pjesën më të madhe
                       të programit: ju punoni me pajisje dhe produkte premium,
                       zhvilloni raste studimi reale dhe ndërtoni portofolin tuaj
-                      profesional nën mbikëqyrjen e mentorëve.
+                      profesional nën mbikëqyrjen e profesionistëve.
                     </p>
                   </div>
                 </div>
@@ -631,10 +634,13 @@ export default function CoursesPage() {
                       Mbështetje paskursore
                     </h3>
                     <p className="text-gray-700">
-                      Edhe pas përfundimit të kursit, Afrodite Academy ju ofron
-                      workshop-e shtesë, seminare dhe akses në grupin tonë
-                      profesional për t’ju ndihmuar të qëndroni gjithmonë në
-                      majë të trendeve.
+                      Profesionistët që studiojnë në Afrodite Academy, jo vetëm
+                      që hapin dyert për mundësi të shkëlqyera punësimi brënda
+                      dhe jashtë vendit, dhe karriere, por dallojnë si më të
+                      mirët në fushat e tyre. Kjo sepse programet tona janë
+                      ndërtuar sipas kurrikulave ndërkombëtare që garantojnë
+                      përgatitje të plotë si teorike ashtu dhe praktike në
+                      sallonet prestigjoze gjatë periudhës së studimeve.
                     </p>
                   </div>
                 </div>
@@ -711,9 +717,8 @@ export default function CoursesPage() {
               <span className="text-purple-400">është për ju?</span>
             </h2>
             <p className="text-lg text-gray-300 mb-8">
-              Na kontaktoni për një konsultim falas dhe do t'ju ndihmojmë të
-              zgjidhni kursin që përshtatet më mirë me qëllimet tuaja
-              profesionale.
+              Na kontaktoni për të diskutuar rrugët tuaja të zhvillimit
+              profesional dhe për të gjetur kursin më të përshtatshëm për ju.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">

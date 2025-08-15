@@ -27,9 +27,8 @@ export default function Footer() {
               />
             </div>
             <p className="text-navy-100 mb-6">
-              Afrodite Academy është një institucion i specializuar në ofrimin e
-              kurseve profesionale ndërkombëtare në fushën e bukurisë dhe
-              estetikës.
+              E angazhuar në ngritjen e standardeve të arsimit profesional,
+              Afrodite Academy ofron programe të certifikuara.
             </p>
             <div className="flex space-x-4">
               <Link

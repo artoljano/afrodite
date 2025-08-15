@@ -144,7 +144,7 @@ export default function PartnerLogosCarousel({
                 }
               }}
             >
-              <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center min-w-[180px] h-24 cursor-pointer overflow-hidden">
+              <div className="bg-transparent rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center min-w-[180px] h-24 cursor-pointer overflow-hidden">
                 {partner.logoImg ? (
                   <div className="relative w-full h-full p-4">
                     <Image

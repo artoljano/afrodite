@@ -45,21 +45,21 @@ export default function Header() {
   return (
     <header className="w-full fixed top-0 left-0 z-50">
       {/* Top Info Bar */}
-      <div className="bg-gray-100 py-2 border-b border-gray-200">
+      <div className="bg-afrodite-lightPurple py-2 border-b border-afrodite-creme">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             {/* Contact Info */}
             <div className="flex items-center space-x-4 text-xs">
               <a
                 href="tel:+35569204353"
-                className="flex items-center text-gray-600 hover:text-purple-600 transition-colors"
+                className="flex items-center text-afrodite-creme hover:text-afrodite-purple transition-colors"
               >
                 <Phone className="h-3 w-3 mr-1" />
                 <span>+355 69 204 3535</span>
               </a>
               <a
                 href="mailto:afroditeacademy@gmail.com"
-                className="flex items-center text-gray-600 hover:text-purple-600 transition-colors"
+                className="flex items-center text-afrodite-creme hover:text-afrodite-purple transition-colors"
               >
                 <Mail className="h-3 w-3 mr-1" />
                 <span>afroditeacademy@gmail.com</span>
@@ -67,30 +67,51 @@ export default function Header() {
             </div>
 
             {/* Social Media */}
-            <div className="hidden sm:flex items-center space-x-2">
+            <div className="hidden sm:flex items-center space-x-4">
               <Link
                 href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="group relative overflow-hidden rounded-full w-6 h-6 flex items-center justify-center bg-white"
               >
-                <span className="absolute inset-0 bg-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                <Facebook className="h-3 w-3 text-gray-600 group-hover:text-white relative z-10 transition-colors" />
+                <AnimatedButton
+                  // ← important to make the button render as <a>
+                  variant="socials"
+                  size="sm"
+                  showRipple={false}
+                  className="rounded-full h-6 w-6 p-1"
+                >
+                  <Facebook className="h-5 w-5" />
+                </AnimatedButton>
               </Link>
               <Link
                 href="https://instagram.com"
                 aria-label="Instagram"
-                className="group relative overflow-hidden rounded-full w-6 h-6 flex items-center justify-center bg-white"
+                target="_blank"
               >
-                <span className="absolute inset-0 bg-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                <Instagram className="h-3 w-3 text-gray-600 group-hover:text-white relative z-10 transition-colors" />
+                <AnimatedButton
+                  variant="socials"
+                  size="sm"
+                  className="rounded-full h-6 w-6 p-1"
+                  showRipple={false}
+                >
+                  <Instagram className="h-6 w-6" />
+                </AnimatedButton>
               </Link>
+
               <Link
                 href="https://linkedin.com"
                 aria-label="LinkedIn"
-                className="group relative overflow-hidden rounded-full w-6 h-6 flex items-center justify-center bg-white"
+                target="_blank"
               >
-                <span className="absolute inset-0 bg-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                <Linkedin className="h-3 w-3 text-gray-600 group-hover:text-white relative z-10 transition-colors" />
+                <AnimatedButton
+                  variant="socials"
+                  size="sm"
+                  className="rounded-full h-6 w-6 p-1"
+                  showRipple={false}
+                >
+                  <Linkedin className="h-5 w-5" />
+                </AnimatedButton>
               </Link>
             </div>
           </div>
@@ -100,7 +121,7 @@ export default function Header() {
       {/* Main Navigation */}
       <div
         className={cn(
-          "bg-white transition-all duration-300",
+          "bg-afrodite-creme transition-all duration-300 border-b border-afrodite-purple",
           isScrolled ? "shadow-md" : "shadow-sm"
         )}
       >
@@ -116,7 +137,7 @@ export default function Header() {
                 className="transition-all duration-300"
               />
               <div className="hidden sm:block">
-                <h1 className="text-base font-bold text-navy-900 leading-tight">
+                <h1 className="text-base font-bold text-afrodite-purple leading-tight">
                   Afrodite Academy
                 </h1>
               </div>
@@ -135,19 +156,25 @@ export default function Header() {
                   href={item.path}
                   className={cn(
                     "relative px-5 py-2 mx-1 text-sm font-medium group flex items-center",
-                    pathname === item.path
-                      ? "text-purple-600"
-                      : "text-gray-700 hover:text-purple-600"
+                    item.path === "/"
+                      ? pathname === "/"
+                        ? "text-afrodite-purple"
+                        : "text-afrodite-lightPurple hover:text-afrodite-purple"
+                      : pathname.startsWith(item.path)
+                      ? "text-afrodite-purple"
+                      : "text-afrodite-lightPurple hover:text-afrodite-purple"
                   )}
                 >
                   <span className="relative z-10">{item.name}</span>
-                  {item.hasDropdown && <ChevronDown className="ml-1 h-4 w-4" />}
+                  {/* {item.hasDropdown && <ChevronDown className="ml-1 h-4 w-4" />} */}
 
                   {/* Hover effect - line grows from left to right */}
                   <span
                     className={cn(
                       "absolute bottom-0 left-0 h-0.5 bg-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300",
-                      pathname === item.path && "scale-x-100"
+                      item.path === "/"
+                        ? pathname === "/" && "scale-x-100"
+                        : pathname.startsWith(item.path) && "scale-x-100"
                     )}
                   />
                 </Link>
@@ -190,7 +217,7 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-white border-t border-gray-200 shadow-lg"
+            className="lg:hidden bg-afrodite-creme border-t border-b border-afrodite-purple shadow-lg"
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-1">
@@ -204,37 +231,43 @@ export default function Header() {
                     key={item.path}
                     href={item.path}
                     className={cn(
-                      "font-medium transition-colors py-2 px-4 rounded-lg flex items-center justify-between text-sm",
-                      pathname === item.path
-                        ? "bg-purple-100 text-purple-700"
-                        : "text-black hover:bg-purple-50 hover:text-purple-700"
+                      "relative px-5 py-2 mx-1 text-sm font-medium group flex items-center",
+                      item.path === "/"
+                        ? pathname === "/"
+                          ? "text-afrodite-purple"
+                          : "text-afrodite-lightPurple hover:text-afrodite-purple"
+                        : pathname.startsWith(item.path)
+                        ? "text-afrodite-purple"
+                        : "text-afrodite-lightPurple hover:text-afrodite-purple"
                     )}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     <span>{item.name}</span>
-                    {pathname === item.path && (
+                    {(item.path === "/"
+                      ? pathname === "/"
+                      : pathname.startsWith(item.path)) && (
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="h-2 w-2 rounded-full bg-purple-500"
+                        className="h-2 w-2 rounded-full"
                       />
                     )}
                   </Link>
                 ))}
               </nav>
 
-              <div className="mt-4 pt-4 border-t border-gray-100">
+              <div className="mt-4 pt-4 border-t border-b border-afrodite-purple">
                 <div className="grid grid-cols-1 gap-2">
                   <a
                     href="tel:+35569204353"
-                    className="flex items-center text-navy-900 hover:text-purple-500 transition-colors text-sm"
+                    className="flex items-center text-afrodite-lightPurple hover:text-afrodite-purple transition-colors text-sm"
                   >
                     <Phone className="h-4 w-4 mr-2" />
                     <span>+355 69 204 3535</span>
                   </a>
                   <a
                     href="mailto:afroditeacademy@gmail.com"
-                    className="flex items-center text-navy-900 hover:text-purple-500 transition-colors text-sm"
+                    className="flex items-center text-afrodite-lightPurple hover:text-afrodite-purple transition-colors text-sm"
                   >
                     <Mail className="h-4 w-4 mr-2" />
                     <span>afroditeacademy@gmail.com</span>
@@ -244,27 +277,48 @@ export default function Header() {
                 <div className="flex space-x-4 mt-4">
                   <Link
                     href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="Facebook"
-                    className="group relative overflow-hidden rounded-full w-8 h-8 flex items-center justify-center bg-gray-100"
                   >
-                    <span className="absolute inset-0 bg-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                    <Facebook className="h-4 w-4 text-gray-600 group-hover:text-white relative z-10 transition-colors" />
+                    <AnimatedButton
+                      // ← important to make the button render as <a>
+                      variant="socials"
+                      size="sm"
+                      showRipple={false}
+                      className="rounded-full h-6 w-6 p-1"
+                    >
+                      <Facebook className="h-5 w-5" />
+                    </AnimatedButton>
                   </Link>
                   <Link
                     href="https://instagram.com"
                     aria-label="Instagram"
-                    className="group relative overflow-hidden rounded-full w-8 h-8 flex items-center justify-center bg-gray-100"
+                    target="_blank"
                   >
-                    <span className="absolute inset-0 bg-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                    <Instagram className="h-4 w-4 text-gray-600 group-hover:text-white relative z-10 transition-colors" />
+                    <AnimatedButton
+                      variant="socials"
+                      size="sm"
+                      className="rounded-full h-6 w-6 p-1"
+                      showRipple={false}
+                    >
+                      <Instagram className="h-6 w-6" />
+                    </AnimatedButton>
                   </Link>
+
                   <Link
                     href="https://linkedin.com"
                     aria-label="LinkedIn"
-                    className="group relative overflow-hidden rounded-full w-8 h-8 flex items-center justify-center bg-gray-100"
+                    target="_blank"
                   >
-                    <span className="absolute inset-0 bg-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                    <Linkedin className="h-4 w-4 text-gray-600 group-hover:text-white relative z-10 transition-colors" />
+                    <AnimatedButton
+                      variant="socials"
+                      size="sm"
+                      className="rounded-full h-6 w-6 p-1"
+                      showRipple={false}
+                    >
+                      <Linkedin className="h-5 w-5" />
+                    </AnimatedButton>
                   </Link>
                 </div>
               </div>

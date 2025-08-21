@@ -32,7 +32,7 @@ import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { QUESTIONS } from "@/data/questions";
-import { courses } from "@/data/courses";
+import { Course, courses } from "@/data/courses";
 
 export default function Home() {
   const [heroRef, heroInView] = useInView({
@@ -96,7 +96,11 @@ export default function Home() {
 
   const featured = courses.filter((c) => c.featured);
   const others = courses.filter((c) => !c.featured);
-  const selection = [...featured, ...others].slice(0, 3);
+  const selection = [
+    courses.find((c) => c.id === 16),
+    courses.find((c) => c.id === 24),
+    courses.find((c) => c.id === 5),
+  ].filter(Boolean) as Course[]; // filters out undefined in case any ID is wrong
 
   return (
     <div className="flex flex-col w-full">
@@ -143,15 +147,15 @@ export default function Home() {
                 <AnimatedButton
                   size="lg"
                   variant="default"
-                  className="bg-afrodite-lightPurple text-afrodite-gold hover:text-afrodite-gold"
+                  className="bg-afrodite-lightPurple text-afrodite-creme"
                 >
                   KURSE FIZIKE
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </AnimatedButton>
                 <AnimatedButton
                   size="lg"
-                  variant="secondary"
-                  className="bg-afrodite-lightPurple hover:text-afrodite-darkPurple"
+                  variant="default"
+                  className="bg-afrodite-lightPurple text-afrodite-creme"
                 >
                   KONTAKTO TANI
                 </AnimatedButton>
@@ -162,7 +166,7 @@ export default function Home() {
                   {[1, 2, 3].map((i) => (
                     <div
                       key={i}
-                      className="w-10 h-10 rounded-full border-2 border-white overflow-hidden"
+                      className="w-10 h-10 rounded-full border-2 border-afrodite-lightPurple overflow-hidden"
                     >
                       <Image
                         src={`/placeholder.svg?height=40&width=40&text=Student+${i}`}
@@ -200,23 +204,25 @@ export default function Home() {
       <section className="py-8 bg-white relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gray-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-              <div className="bg-purple-100 p-3 rounded-full mr-4">
-                <Calendar className="h-6 w-6 text-purple-400" />
+            <div className="bg-afrodite-creme rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+              <div className="bg-afrodite-purple p-3 rounded-full mr-4">
+                <Calendar className="h-6 w-6 text-afrodite-creme" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">Orare Fleksibël</h3>
+                <h3 className="font-semibold text-afrodite-purple">
+                  Orare Fleksibël
+                </h3>
                 <p className="text-sm text-gray-600">
                   Kurse paradite, pasdite dhe fundjavë
                 </p>
               </div>
             </div>
-            <div className="bg-gray-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-              <div className="bg-purple-100 p-3 rounded-full mr-4">
-                <CheckCircle2 className="h-6 w-6 text-purple-400" />
+            <div className="bg-afrodite-creme rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+              <div className="bg-afrodite-purple p-3 rounded-full mr-4">
+                <CheckCircle2 className="h-6 w-6 text-afrodite-creme" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-afrodite-purple">
                   Certifikim Ndërkombëtar
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -224,12 +230,12 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="bg-gray-50 rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-              <div className="bg-purple-100 p-3 rounded-full mr-4">
-                <Users className="h-6 w-6 text-purple-400" />
+            <div className="bg-afrodite-creme rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
+              <div className="bg-afrodite-purple p-3 rounded-full mr-4">
+                <Users className="h-6 w-6 text-afrodite-creme" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-afrodite-purple">
                   Instruktorë Profesionistë
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -260,14 +266,14 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
               <span>Pse të zgjidhni Afrodite Academy?</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple mb-4">
               Standarte të Larta{" "}
-              <span className="text-purple-400">në Mësimdhënie</span>
+              <span className="text-afrodite-purple">në Mësimdhënie</span>
             </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
+            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-6"></div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
@@ -318,7 +324,7 @@ export default function Home() {
                   </button> */}
                 </div>
                 <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-white font-medium">
+                  <p className="text-afrodite-purple font-medium">
                     Shiko videon tonë prezantuese
                   </p>
                   <p className="text-gray-300 text-sm">
@@ -341,10 +347,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500 mt-6 ml-6 relative"
+                className="bg-afrodite-creme p-6 rounded-xl shadow-lg border-l-4 border-purple-500 mt-6 ml-6 relative"
               >
-                <div className="absolute -top-3 -left-3 bg-purple-100 p-2 rounded-full">
-                  <Quote className="h-5 w-5 text-purple-400" />
+                <div className="absolute -top-3 -left-3 bg-afrodite-purple p-2 rounded-full">
+                  <Quote className="h-5 w-5 text-afrodite-creme" />
                 </div>
                 <p className="text-gray-800 font-medium italic">
                   "Afrodite Academy ndryshoi karrierën time. Tani punoj si
@@ -365,17 +371,17 @@ export default function Home() {
               >
                 <motion.div
                   variants={itemVariants}
-                  className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+                  className="bg-afrodite-creme rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="bg-purple-100 p-4 rounded-full flex-shrink-0 group-hover:bg-purple-200 transition-colors duration-300">
-                      <Award className="h-8 w-8 text-purple-400 group-hover:text-purple-700 transition-colors duration-300" />
+                    <div className="bg-afrodite-purple p-4 rounded-full flex-shrink-0 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
+                      <Award className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-400 transition-colors duration-300">
+                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors duration-300">
                         Certifikime Ndërkombëtare
                       </h3>
-                      <p className="text-gray-700">
+                      <p className="text-afrodite-lightPurple">
                         Kurset tona ofrojnë certifikime të njohura
                         ndërkombëtarisht që ju ndihmojnë të avanconi karrierën
                         tuaj kudo në botë.
@@ -386,17 +392,17 @@ export default function Home() {
 
                 <motion.div
                   variants={itemVariants}
-                  className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+                  className="bg-afrodite-creme rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="bg-purple-100 p-4 rounded-full flex-shrink-0 group-hover:bg-purple-200 transition-colors duration-300">
-                      <Users className="h-8 w-8 text-purple-400 group-hover:text-purple-700 transition-colors duration-300" />
+                    <div className="bg-afrodite-purple p-4 rounded-full flex-shrink-0 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
+                      <Users className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-400 transition-colors duration-300">
+                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors duration-300">
                         Instruktorë Profesionistë
                       </h3>
-                      <p className="text-gray-700">
+                      <p className="text-afrodite-lightPurple">
                         Mësoni nga instruktorë me përvojë ndërkombëtare që janë
                         ekspertë në fushat e tyre dhe të përkushtuar ndaj
                         suksesit tuaj.
@@ -407,17 +413,17 @@ export default function Home() {
 
                 <motion.div
                   variants={itemVariants}
-                  className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+                  className="bg-afrodite-creme rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="bg-purple-100 p-4 rounded-full flex-shrink-0 group-hover:bg-purple-200 transition-colors duration-300">
-                      <BookOpen className="h-8 w-8 text-purple-400 group-hover:text-purple-700 transition-colors duration-300" />
+                    <div className="bg-afrodite-purple p-4 rounded-full flex-shrink-0 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
+                      <BookOpen className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-400 transition-colors duration-300">
+                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors duration-300">
                         Kurrikula Moderne
                       </h3>
-                      <p className="text-gray-700">
+                      <p className="text-afrodite-lightPurple">
                         Çdo program është ndërtuar mbi baza aktuale dhe
                         praktike, të përditësuara sipas tregut të punës.
                       </p>
@@ -427,17 +433,17 @@ export default function Home() {
 
                 <motion.div
                   variants={itemVariants}
-                  className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+                  className="bg-afrodite-creme rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="bg-purple-100 p-4 rounded-full flex-shrink-0 group-hover:bg-purple-200 transition-colors duration-300">
-                      <HeartHandshake className="h-8 w-8 text-purple-400 group-hover:text-purple-700 transition-colors duration-300" />
+                    <div className="bg-afrodite-purple p-4 rounded-full flex-shrink-0 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
+                      <HeartHandshake className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-2 group-hover:text-purple-400 transition-colors duration-300">
+                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors duration-300">
                         Komunitet Mbështetës
                       </h3>
-                      <p className="text-gray-700">
+                      <p className="text-afrodite-lightPurple">
                         Bëhuni pjesë e një komuniteti mbështetës profesionistësh
                         dhe studentësh që ndajnë pasionin për zhvillim personal
                         dhe profesional.
@@ -455,7 +461,7 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+              className="bg-afrodite-creme rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
             >
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="h-full">
@@ -468,19 +474,19 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-6 flex flex-col justify-center">
-                  <div className="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                    <Clock className="h-6 w-6 text-purple-400" />
+                  <div className="bg-afrodite-purple p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                    <Clock className="h-6 w-6 text-afrodite-creme" />
                   </div>
-                  <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3">
+                  <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-3">
                     Orare Fleksibël
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-afrodite-lightPurple">
                     Ju mundësojmë të ndiqni formimin tuaj pa ndërprerë
                     angazhimet personale apo profesionale.
                   </p>
                   <Link
                     href="/about"
-                    className="inline-flex items-center text-purple-400 mt-4 font-medium hover:text-purple-700 transition-colors"
+                    className="inline-flex items-center text-afrodite-lightPurple mt-4 font-medium hover:text-afrodite-purple transition-colors"
                   >
                     Mëso më shumë
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -494,23 +500,23 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+              className="bg-afrodite-creme rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
             >
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="order-2 md:order-1 p-6 flex flex-col justify-center">
-                  <div className="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                    <Briefcase className="h-6 w-6 text-purple-400" />
+                  <div className="bg-afrodite-purple p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                    <Briefcase className="h-6 w-6 text-afrodite-creme" />
                   </div>
-                  <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3">
+                  <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-3">
                     Mundësi Punësimi
                   </h3>
-                  <p className="text-gray-700">
+                  <p className="text-afrodite-lightPurple">
                     Ndërtojmë partneritete me biznese në industri për t'ju
                     ndihmuar të gjeni mundësi punësimi pas diplomimit.
                   </p>
                   <Link
                     href="/about"
-                    className="inline-flex items-center text-purple-400 mt-4 font-medium hover:text-purple-700 transition-colors"
+                    className="inline-flex items-center text-afrodite-lightPurple mt-4 font-medium hover:text-afrodite-purple transition-colors"
                   >
                     Mëso më shumë
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -566,12 +572,12 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="relative bg-afrodite-white/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
+              className="relative bg-afrodite-creme backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-afrodite-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="p-8 text-center">
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-lightPurple/50 flex items-center justify-center border border-afrodite-purple/30">
-                  <Award className="h-10 w-10 text-afrodite-purple" />
+                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-purple flex items-center justify-center border border-afrodite-purple/30">
+                  <Award className="h-10 w-10 text-afrodite-creme" />
                 </div>
                 <CountUpAnimation
                   end={2500}
@@ -599,12 +605,12 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative bg-afrodite-white/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
+              className="relative bg-afrodite-creme backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-afrodite-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="p-8 text-center">
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-lightPurple/50 flex items-center justify-center border border-afrodite-purple/30">
-                  <BookOpen className="h-10 w-10 text-afrodite-purple" />
+                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-purple flex items-center justify-center border border-afrodite-purple/30">
+                  <BookOpen className="h-10 w-10 text-afrodite-creme" />
                 </div>
                 <CountUpAnimation
                   end={60}
@@ -630,12 +636,12 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="relative bg-afrodite-white/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
+              className="relative bg-afrodite-creme backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-afrodite-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="p-8 text-center">
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-lightPurple/50 flex items-center justify-center border border-afrodite-purple/30">
-                  <Users className="h-10 w-10 text-afrodite-purple" />
+                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-purple flex items-center justify-center border border-afrodite-purple/30">
+                  <Users className="h-10 w-10 text-afrodite-creme" />
                 </div>
                 <CountUpAnimation
                   end={15}
@@ -663,12 +669,12 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="relative bg-afrodite-white/40 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
+              className="relative bg-afrodite-creme backdrop-blur-sm rounded-xl overflow-hidden shadow-lg group border border-white/10"
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-afrodite-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="p-8 text-center">
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-lightPurple/50 flex items-center justify-center border border-afrodite-purple/30">
-                  <Calendar className="h-10 w-10 text-afrodite-purple" />
+                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-purple flex items-center justify-center border border-afrodite-purple/30">
+                  <Calendar className="h-10 w-10 text-afrodite-creme" />
                 </div>
                 <CountUpAnimation
                   end={20}
@@ -701,11 +707,11 @@ export default function Home() {
             <AnimatedButton
               onClick={handleDownloadBrochure}
               size="lg"
-              variant="secondary"
-              className="bg-afrodite-darkPurple text-afrodite-gold hover:text-afrodite-purple"
+              variant="default"
+              className="bg-afrodite-lightPurple text-afrodite-creme"
             >
               <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-              SHKARTO BROSHURËN E KURSEVE
+              SHKARKO BROSHURËN E KURSEVE
             </AnimatedButton>
           </motion.div>
         </div>
@@ -715,20 +721,22 @@ export default function Home() {
       <section className="bg-white py-12 overflow-hidden">
         <div className="container mx-auto px-4 mb-8">
           <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
               <span>Partnerët tanë</span>
             </div>
-            <h3 className="text-2xl font-bold font-poppins text-white mb-2">
+            <h3 className="text-2xl font-bold font-poppins text-afrodite-purple mb-2">
               Partnerët dhe Akreditimet Tona
             </h3>
-            <div className="h-1 w-16 bg-purple-500 mx-auto"></div>
+            <div className="h-1 w-16 bg-afrodite-purple mx-auto"></div>
           </div>
         </div>
         <PartnerLogosCarousel />
       </section>
 
       {/* Courses Section */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-afrodite-creme relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
         <div ref={coursesRef} className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -736,14 +744,15 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
               <span>Kurset tona</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
-              Kurset Tona <span className="text-purple-400">Profesionale</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple mb-4">
+              Kurset Tona{" "}
+              <span className="text-afrodite-purple">Profesionale</span>
             </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-6"></div>
+            <p className="text-lg text-afrodite-lightPurple max-w-2xl mx-auto">
               Zgjidhni nga kurset tona të shumta profesionale për të avancuar
               karrierën tuaj dhe për të fituar aftësi të reja të kërkuara në
               tregun e punës.
@@ -770,8 +779,8 @@ export default function Home() {
             <Link href="/courses">
               <AnimatedButton
                 size="lg"
-                variant="secondary"
-                className="bg-purple-400 hover:bg-purple-700"
+                variant="default"
+                className="bg-afrodite-lightPurple text-afrodite-creme"
               >
                 SHIKO TË GJITHA KURSET
                 <ChevronRight className="ml-2 h-4 w-4" />
@@ -782,17 +791,17 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-afrodite-white relative">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
               <span>Histori suksesi</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple mb-4">
               Çfarë Thonë{" "}
-              <span className="text-purple-400">Studentët Tanë</span>
+              <span className="text-afrodite-purple">Studentët Tanë</span>
             </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
+            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-6"></div>
           </div>
 
           <TestimonialSlider />
@@ -802,6 +811,8 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-afrodite-creme to-black relative overflow-hidden">
         {/* <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div> */}
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
           <Image
             src="/wave-pattern.svg"
@@ -837,7 +848,7 @@ export default function Home() {
               <Link href="/contact">
                 <AnimatedButton
                   size="lg"
-                  variant="secondary"
+                  variant="default"
                   className="bg-afrodite-lightPurple text-afrodite-creme"
                 >
                   NA KONTAKTONI

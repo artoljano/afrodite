@@ -39,11 +39,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-transparent text-white hover:bg-transparent",
-        secondary: "bg-purple-600 text-white hover:bg-transparent border-black",
+        secondary: "bg-afrodite-lightPurple text-afrodite-creme",
         outline:
           "border border-input bg-transparent text-current hover:bg-purple-600/10",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        custom: "",
+        socials:
+          "bg-afrodite-lightPurple text-afrodite-creme hover:bg-afrodite-creme hover:text-afrodite-purple",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -111,11 +114,12 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
     };
 
     // 2. Determine fill color based on variant
-    let fillColor = "bg-purple-600";
+    let fillColor = "bg-afrodite-purple";
     if (variant === "default") fillColor = "bg-afrodite-purple";
     if (variant === "secondary") fillColor = "bg-afrodite-purple";
-    if (variant === "outline") fillColor = "bg-purple-600/20";
+    if (variant === "outline") fillColor = "bg-afrodite-purple";
     if (variant === "ghost") fillColor = "bg-accent";
+    if (variant === "socials") fillColor = "bg-afrodite-creme";
 
     // 3. Hover/active scaling
     const scaleClass = showScale
@@ -149,7 +153,7 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
           <span
             className={cn(
               `absolute inset-0 w-full h-full ${fillColor} origin-left
-               scale-x-0 group-hover:scale-x-100 transition-transform duration-300`,
+               scale-x-0 group-hover:scale-x-100 transition-transform duration-200`,
               "rounded-xl"
             )}
             style={{ zIndex: 0 }}

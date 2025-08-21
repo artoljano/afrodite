@@ -45,13 +45,13 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
       >
         {/* FRONT SIDE */}
         <div
-          className="absolute inset-0 rounded-xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col"
+          className="absolute inset-0 rounded-xl overflow-hidden bg-afrodite-creme shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col"
           style={{
             backfaceVisibility: "hidden",
             pointerEvents: isFlipped ? "none" : "auto",
           }}
         >
-          <div className="absolute top-4 right-4 z-10 flex items-center space-x-1 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded">
+          <div className="absolute top-4 right-4 z-10 flex items-center space-x-1 bg-afrodite-creme text-afrodite-lightPurple text-xs font-medium px-2 py-1 rounded">
             <Info className="h-4 w-4" />
             <span className="cursor-pointer" onClick={() => setIsFlipped(true)}>
               Më shumë info
@@ -71,11 +71,11 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
             {course.featured && (
-              <div className="absolute top-4 left-4 bg-purple-600 text-white text-xs font-medium px-2 py-1 rounded-full">
+              <div className="absolute top-4 left-4 bg-afrodite-lightPurple text-afrodite-creme text-xs font-medium px-2 py-1 rounded-full">
                 Kurs i Certifikuar
               </div>
             )}
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-white text-sm">
+            <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center text-afrodite-creme text-sm">
               <div className="flex items-center space-x-1">
                 <Clock className="h-4 w-4" />
                 <span>{durationDisplay}</span>
@@ -88,17 +88,17 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
           </div>
 
           <div className="p-6 flex flex-col flex-grow items-stretch">
-            <h3 className="text-xl font-bold font-poppins text-gray-900 h-12 leading-6 overflow-hidden">
+            <h3 className="text-xl font-bold font-poppins text-afrodite-purple h-12 leading-6 overflow-hidden">
               {course.title}
             </h3>
-            <p className="text-gray-700 line-clamp-3 flex-grow">
+            <p className="text-afrodite-lightPurple line-clamp-3 flex-grow">
               {course.description}
             </p>
             <div className="mt-4">
               <AnimatedButton
                 size="default"
                 variant="default"
-                className="w-full block px-6 py-2 bg-black hover:bg-black text-white"
+                className="w-full block px-6 py-2 bg-afrodite-lightPurple text-afrodite-creme"
               >
                 Mëso më shumë
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
@@ -109,27 +109,27 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
 
         {/* BACK SIDE */}
         <div
-          className="absolute inset-0 rounded-xl overflow-hidden bg-gradient-to-br from-black to-purple-900 p-6 flex flex-col justify-center"
+          className="absolute inset-0 rounded-xl overflow-hidden bg-gradient-to-br from-black to-afrodite-purple p-6 flex flex-col justify-center"
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",
             pointerEvents: isFlipped ? "auto" : "none",
           }}
         >
-          <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm text-white text-xs font-medium px-2 py-1 rounded-full cursor-pointer">
+          <div className="absolute top-4 right-4 bg-afrodite-creme/10 backdrop-blur-sm text-afrodite-creme text-xs font-medium px-2 py-1 rounded-full cursor-pointer">
             Kthehu për më shumë
           </div>
 
-          <h3 className="text-xl font-bold font-poppins text-white mb-6 text-center">
+          <h3 className="text-xl font-bold font-poppins text-afrodite-creme mb-6 text-center">
             Çfarë do të përfitoni
           </h3>
           <ul className="space-y-4 flex-grow overflow-auto">
             {topBenefits.map((point, idx) => (
               <li key={idx} className="flex items-start">
-                <div className="bg-purple-500/20 p-1 rounded-full mr-3 mt-0.5">
-                  <Check className="h-4 w-4 text-purple-300" />
+                <div className="bg-afrodite-lightPurple p-1 rounded-full mr-3 mt-0.5">
+                  <Check className="h-4 w-4 text-afrodite-creme" />
                 </div>
-                <span className="text-white">{point}</span>
+                <span className="text-afrodite-creme">{point}</span>
               </li>
             ))}
           </ul>
@@ -138,7 +138,7 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
             <AnimatedButton
               size="default"
               variant="secondary"
-              className="w-full block px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white"
+              className="w-full block px-6 py-2 bg-afrodite-lightPurple  text-afrodite-creme"
             >
               Regjistrohu Tani
             </AnimatedButton>

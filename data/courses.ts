@@ -1551,7 +1551,7 @@ export const courses: Course[] = [
   ]
 },
 {
-  id: 81,
+  id: 79,
   title: "Kursi Parukeri (1500 ore)",
   category: "hair",
   duration: "1500 orë",
@@ -1782,6 +1782,72 @@ export const courses: Course[] = [
     { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hair+300", alt: "Parukeri 300h" }
   ]
 },
+{
+  id: 82,
+  title: "Parukeri Estetike (2100 ore)",
+  category: "hair",
+  duration: "2100 orë",
+  durationCategory: "2100 orë",
+  level: "Profesional",
+  price: "",
+  startDate: "",
+  schedule: "",
+  image: "/courses/parukeri-2100.jpg",
+  videoSrc: "",
+  description:
+    "Program i avancuar që përfshin parukerinë, estetiken dhe trajnim profesional për certifikim ndërkombëtar.",
+  longDescription:
+    "Kursi Parukeri Estetike i projektuar për të ofruar aftësi gjithëpërfshirëse në fushën e bukurisë dhe wellness-it, përfshin trajnim praktik dhe teorik në kujdesin ndaj lëkurës, flokëve, trupit dhe teknologjive moderne estetike.",
+  instructors: [],
+  curriculum: [
+    {
+      title: "Bazat & Etika",
+      lessons: [
+        "Ligje dhe rregullore kozmetologjie",
+        "Higjena, sterilizimi",
+        "Administrimi i punës në salon"
+      ]
+    },
+    {
+      title: "Estetikë & Trajtimet e Fytyrës",
+      lessons: [
+        "Masazh dhe pastrim fytyre",
+        "Make-up & make-up permanent",
+        "Peeling dhe trajtime me maska"
+      ]
+    },
+    {
+      title: "Trupi & Makineritë",
+      lessons: [
+        "Masazhe manuale dhe makineri",
+        "Depilim, qerpikë extension, harkim vetullash"
+      ]
+    },
+    {
+      title: "Manikyr-Pedikyr & Flokët",
+      lessons: [
+        "Shampim, larje, prerje, stilim",
+        "Ngjyrosje dhe trajtim kimik",
+        "Kolorimetria e flokëve"
+      ]
+    },
+    {
+      title: "Finale",
+      lessons: [
+        "Praktika & Vlerësimi teorik",
+        "Simulime dhe portofoli"
+      ]
+    }
+  ],
+  benefits: [],
+  materials: [],
+  testimonials: [],
+  faqs: [],
+  featured: false,
+  students: 0,
+  media: []
+},
+
 // Tattoo & Hixhama Courses
 {
   id: 28,
@@ -2282,6 +2348,196 @@ export const courses: Course[] = [
     }
   ]
 },
+{
+  id: 80,
+  title: "Kursi Make-up (300 ore)",
+  category: "makeup",
+  duration: "300 orë",
+  durationCategory: "300 orë",
+  level: "Fillestar",
+  price: "",
+  startDate: "",
+  schedule: "",
+  image: "/courses/makeup-300.jpg",
+  videoSrc: "",
+  description:
+    "Kurs përfshirës që mbulon bazat e make-up-it nga higjiena dhe produktet deri te teknikat e syve, buzëve dhe korrigjimi.",
+  longDescription:
+    "Ky kurs i make-up-it prej 300 orësh fokusohet në ndërtimin e aftësive themelore të aplikimit të grimit profesional për përdorim personal dhe të klientëve.",
+  instructors: [],
+  curriculum: [
+    {
+      title: "Hyrje në Make-up dhe Etika Profesionale",
+      lessons: [
+        "Historia dhe evolucioni i make-up-it",
+        "Etika profesionale dhe imazhi i vetes"
+      ]
+    },
+    {
+      title: "Higjiena, Siguria dhe Sterilizimi",
+      lessons: [
+        "Higjiena personale dhe profesionale",
+        "Pastrimi, dezinfektimi dhe sterilizimi i veglave"
+      ]
+    },
+    {
+      title: "Anatomia dhe Fiziologjia e Lëkurës",
+      lessons: [
+        "Strukturat e lëkurës dhe funksionet e saj",
+        "Llojet e lëkurës dhe identifikimi i tyre"
+      ]
+    },
+    {
+      title: "Produktet Kozmetike dhe Aplikimi",
+      lessons: [
+        "Llojet e produkteve",
+        "Zgjedhja sipas lëkurës"
+      ]
+    },
+    {
+      title: "Mjetet e Punës",
+      lessons: [
+        "Furça, sfungjerë, aplikues",
+        "Përdorimi korrekt"
+      ]
+    },
+    {
+      title: "Përgatitja e Lëkurës",
+      lessons: [
+        "Pastrimi dhe hidratimi",
+        "Aplikimi i primer-it"
+      ]
+    },
+    {
+      title: "Aplikimi i Bazës dhe Korrigjimi",
+      lessons: [
+        "Fondatina: likuide, kremoze, pudër",
+        "Korrigjimi i defekteve"
+      ]
+    },
+    {
+      title: "Make-up i Syve",
+      lessons: [
+        "Forma dhe korrigjim optic",
+        "Hije, eyeliner, maskara"
+      ]
+    },
+    {
+      title: "Vetulla dhe Qerpikë",
+      lessons: [
+        "Formësimi dhe mbushja",
+        "Zgjedhja sipas fytyrës"
+      ]
+    },
+    {
+      title: "Buzët",
+      lessons: [
+        "Formësimi dhe konturimi",
+        "Ngjyrat dhe teksturat"
+      ]
+    },
+    {
+      title: "Praktikë dhe Laborator",
+      lessons: []
+    }
+  ],
+  benefits: [],
+  materials: [],
+  testimonials: [],
+  faqs: [],
+  featured: false,
+  students: 0,
+  media: []
+},
+{
+  id: 81,
+  title: "Kursi Make-up (150 ore)",
+  category: "makeup",
+  duration: "150 orë",
+  durationCategory: "150 orë",
+  level: "Fillestar",
+  price: "",
+  startDate: "",
+  schedule: "",
+  image: "/courses/makeup-150.jpg",
+  videoSrc: "",
+  description:
+    "Kurs bazë 150 orësh për grimin profesional që përfshin njohuri themelore për make-up, higjienë dhe teknika grimi.",
+  longDescription:
+    "Ky kurs është i përshtatshëm për ata që duan të marrin njohuri të shpejta por të plota mbi grimin profesional. Ai mbulon të gjitha hapat kryesorë të përgatitjes dhe aplikimit të make-up-it.",
+  instructors: [],
+  curriculum: [
+    {
+      title: "Hyrje në Make-up dhe Etika Profesionale",
+      lessons: [
+        "Historia dhe evolucioni i make-up-it",
+        "Etika profesionale dhe imazhi i vetes"
+      ]
+    },
+    {
+      title: "Higjiena, Siguria dhe Sterilizimi",
+      lessons: [
+        "Higjiena personale dhe profesionale",
+        "Pastrimi, dezinfektimi dhe sterilizimi"
+      ]
+    },
+    {
+      title: "Anatomia dhe Fiziologjia e Lëkurës",
+      lessons: [
+        "Strukturat dhe funksionet",
+        "Llojet e lëkurës"
+      ]
+    },
+    {
+      title: "Produktet dhe Aplikimi i Tyre",
+      lessons: [
+        "Produktet sipas lëkurës",
+        "Zgjedhja dhe përzierja"
+      ]
+    },
+    {
+      title: "Mjetet dhe Aplikimi Teknik",
+      lessons: [
+        "Furça, sfungjerë, aplikues",
+        "Përdorimi korrekt"
+      ]
+    },
+    {
+      title: "Përgatitja e Lëkurës",
+      lessons: [
+        "Hidratimi dhe primer",
+        "Kontrolli i yndyrës"
+      ]
+    },
+    {
+      title: "Aplikimi i Bazës",
+      lessons: [
+        "Fondatina dhe korrigjim"
+      ]
+    },
+    {
+      title: "Sy, Qerpikë, Buzë",
+      lessons: [
+        "Teknika për sytë",
+        "Qerpikët dhe vetullat",
+        "Buzët"
+      ]
+    },
+    {
+      title: "Praktikë Profesionale",
+      lessons: []
+    }
+  ],
+  benefits: [],
+  materials: [],
+  testimonials: [],
+  faqs: [],
+  featured: false,
+  students: 0,
+  media: []
+},
+
+
 // Nail Art & Manikyr–Pedikyr Courses
 {
   id: 34,
@@ -2526,7 +2782,7 @@ export const courses: Course[] = [
   ]
 },
 {
-  id: 80,
+  id: 78,
   title: "Manikyr–Pedikyr & Nail Art (50 ore)",
   category: "nails",
   duration: "50 orë",
@@ -3694,6 +3950,72 @@ export const courses: Course[] = [
       }
     ]
   },
+  {
+  id: 83,
+  title: "Kursi Makeup Permanent i Aureolave & Zonave të Rëna të Flokëve (150 ore)",
+  category: "makeup",
+  duration: "150 orë",
+  durationCategory: "150 orë",
+  level: "Avancuar",
+  price: "",
+  startDate: "",
+  schedule: "",
+  image: "/courses/makeup-permanent-aureola.jpg",
+  videoSrc: "",
+  description:
+    "Specializim në micropigmentim për rikonstruksion të aureolës së gjirit dhe trajtim të zonave të rëna të flokëve.",
+  longDescription:
+    "Kurs i avancuar për artistë të PMU që duan të përfitojnë aftësi në mikropigmentimin realist të zonave të ndjeshme si aureolat pas mastektomisë dhe alopecia.",
+  instructors: [],
+  curriculum: [
+    {
+      title: "Hyrje & Anatomia",
+      lessons: [
+        "Hyrje në PMU",
+        "Strukturat e lëkurës",
+        "Roli i kolagjenit"
+      ]
+    },
+    {
+      title: "Etika & Higjiena",
+      lessons: [
+        "Sterilizimi dhe mbrojtja",
+        "Parandalimi i infeksioneve",
+        "Mbetjet mjekësore"
+      ]
+    },
+    {
+      title: "Teoria e Ngjyrave & Pajisjet",
+      lessons: [
+        "Pigmentet dhe përzierjet",
+        "Makineritë dhe kartridgët"
+      ]
+    },
+    {
+      title: "Aplikimi Realist",
+      lessons: [
+        "Projektimi i formës",
+        "Aureola post-mastektomie",
+        "Trajtimi i alopecisë me 3D teknikë"
+      ]
+    },
+    {
+      title: "Rregullime & Marketing",
+      lessons: [
+        "Korrigjime dhe heqje pigmentesh",
+        "Komplikacione dhe kujdes",
+        "Marketing dhe ndërtimi i portofolit"
+      ]
+    }
+  ],
+  benefits: [],
+  materials: [],
+  testimonials: [],
+  faqs: [],
+  featured: false,
+  students: 0,
+  media: []
+},
   {
     id: 77,
     title: "Kurs i Menaxhimit të Hotelit",

@@ -131,7 +131,9 @@ const config = {
   },
   plugins: [require("tailwindcss-animate"), 
     require('@tailwindcss/aspect-ratio'),
-     require('tailwind-scrollbar')
+     require('tailwind-scrollbar'),
+         require('@tailwindcss/line-clamp')
+
   ],
 } satisfies Config
 

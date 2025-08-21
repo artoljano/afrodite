@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import {
   Phone,
   Mail,
@@ -23,6 +24,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { AnimatedButton } from "@/components/animated-button";
 import VideoBackground from "@/components/video-background";
 import { CheckCircle, XCircle, Loader2 } from "lucide-react";
+import Link from "next/link";
 
 // Define the address data
 const addresses = [
@@ -42,21 +44,21 @@ const addresses = [
       "https://www.google.com/maps?ll=41.328786,19.782922&z=19&t=m&hl=en-US&gl=US&mapclient=embed&q=Afrodite+Academy&output=embed",
     buildingImage: "/contact/contact-tirane.jpg",
   },
-  {
-    id: 2,
-    city: "Durrës",
-    address: "Lagja Nr 5, Rruga Dëshmorët, Durrës, Shqipëri",
-    phone: "+355 69 123 4567",
-    email: "durres@afroditeacademy.al",
-    hours: {
-      weekdays: "9:00 - 18:00",
-      saturday: "9:00 - 14:00",
-      sunday: "Mbyllur",
-    },
-    embedUrl:
-      "https://maps.google.com/maps?q=41.3186617,19.4475765&z=19&output=embed",
-    buildingImage: "/contact/contact-durres.jpg",
-  },
+  // {
+  //   id: 2,
+  //   city: "Durrës",
+  //   address: "Lagja Nr 5, Rruga Dëshmorët, Durrës, Shqipëri",
+  //   phone: "+355 69 123 4567",
+  //   email: "durres@afroditeacademy.al",
+  //   hours: {
+  //     weekdays: "9:00 - 18:00",
+  //     saturday: "9:00 - 14:00",
+  //     sunday: "Mbyllur",
+  //   },
+  //   embedUrl:
+  //     "https://maps.google.com/maps?q=41.3186617,19.4475765&z=19&output=embed",
+  //   buildingImage: "/contact/contact-durres.jpg",
+  // },
   {
     id: 3,
     city: "Shkodër",
@@ -144,7 +146,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <section className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden">
+      <section className="relative py-20 md:py-32 bg-afrodite-creme">
         {/* Background pattern */}
         <div
           className="absolute inset-0 bg-[url('/placeholder.svg?height=800&width=1600&text=Academy+Building')] bg-cover bg-center opacity-5"
@@ -162,10 +164,10 @@ export default function ContactPage() {
         </div>
 
         {/* (Optional) Video background, controls only */}
-        <VideoBackground
+        {/* <VideoBackground
           showControls
           className="absolute inset-0 pointer-events-none"
-        />
+        /> */}
 
         {/* Dark overlay so text pops */}
         {/* <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" /> */}
@@ -178,15 +180,15 @@ export default function ContactPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-6">
-              <Sparkles className="h-4 w-4 mr-2 text-purple-400" />
+            <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
+              <Sparkles className="h-4 w-4 mr-2 text-afrodite-purple" />
               <span>Na Kontaktoni</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-afrodite-purple mb-6">
               Na Kontaktoni
             </h1>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-8" />
-            <p className="text-lg text-gray-300">
+            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-8" />
+            <p className="text-lg text-afrodite-lightPurple">
               Jemi këtu për t'ju ndihmuar me çdo pyetje që mund të keni në
               lidhje me kurset tona profesionale. Na kontaktoni dhe do t'ju
               përgjigjemi sa më shpejt të jetë e mundur.
@@ -200,9 +202,9 @@ export default function ContactPage() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
-          <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center pt-2">
+          <div className="w-8 h-12 border-2 border-afrodite-purple/30 rounded-full flex justify-center pt-2">
             <motion.div
-              className="w-1.5 h-1.5 bg-white rounded-full"
+              className="w-1.5 h-1.5 bg-afrodite-lightPurple rounded-full"
               animate={{ y: [0, 16, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
             />
@@ -213,19 +215,18 @@ export default function ContactPage() {
       {/* Location Selector */}
       <section className="py-6 bg-white border-b sticky top-[80px] z-30 shadow-sm">
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="text-lg font-semibold text-afrodite-purple">
             Zgjidhni lokacionin:
           </h2>
           <div className="flex flex-wrap gap-2">
             {addresses.map((addr) => (
               <AnimatedButton
                 key={addr.id}
-                variant={
-                  selectedAddress.id === addr.id ? "secondary" : "outline"
-                }
+                variant={selectedAddress.id === addr.id ? "default" : "custom"}
                 size="sm"
                 onClick={() => handleAddressSelect(addr)}
                 showScale={false}
+                className="!bg-afrodite-lightPurple !text-afrodite-creme flex items-center"
               >
                 <Building className="mr-2 h-4 w-4" />
                 {addr.city}
@@ -239,21 +240,21 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info & Form */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-16 md:py-24 bg-afrodite-white">
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left: Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white p-8 rounded-xl shadow-md"
+            className="bg-afrodite-creme p-8 rounded-xl shadow-md"
           >
             <div className="mb-8">
-              <div className="h-1 w-16 bg-purple-500 mb-4" />
-              <h2 className="text-3xl font-bold font-poppins text-gray-900 mb-4">
+              <div className="h-1 w-16 bg-afrodite-purple mb-4" />
+              <h2 className="text-3xl font-bold font-poppins text-afrodite-purple mb-4">
                 Informacione Kontakti
               </h2>
-              <p className="text-gray-700">
+              <p className="text-afrodite-lightPurple">
                 Na kontaktoni përmes një prej mënyrave të mëposhtme ose
                 plotësoni formularin dhe do t'ju kontaktojmë ne.
               </p>
@@ -261,22 +262,28 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div className="flex items-start group">
                 <div className="bg-purple-100 p-3 rounded-full mr-4 group-hover:bg-purple-200 transition-colors duration-300">
-                  <MapPin className="h-6 w-6 text-purple-700" />
+                  <MapPin className="h-6 w-6 text-afrodite-purple" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Adresa</h3>
-                  <p className="text-gray-700">{selectedAddress.address}</p>
+                  <h3 className="font-bold text-afrodite-purple mb-1">
+                    Adresa
+                  </h3>
+                  <p className="text-afrodite-lightPurple">
+                    {selectedAddress.address}
+                  </p>
                 </div>
               </div>
               <div className="flex items-start group">
                 <div className="bg-purple-100 p-3 rounded-full mr-4 group-hover:bg-purple-200 transition-colors duration-300">
-                  <Phone className="h-6 w-6 text-purple-700" />
+                  <Phone className="h-6 w-6 text-afrodite-purple" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Telefon</h3>
+                  <h3 className="font-bold text-afrodite-purple mb-1">
+                    Telefon
+                  </h3>
                   <a
                     href={`tel:${selectedAddress.phone}`}
-                    className="text-gray-700 hover:text-purple-600"
+                    className="text-afrodite-lightPurple hover:text-afrodite-purple"
                   >
                     {selectedAddress.phone}
                   </a>
@@ -284,13 +291,13 @@ export default function ContactPage() {
               </div>
               <div className="flex items-start group">
                 <div className="bg-purple-100 p-3 rounded-full mr-4 group-hover:bg-purple-200 transition-colors duration-300">
-                  <Mail className="h-6 w-6 text-purple-700" />
+                  <Mail className="h-6 w-6 text-afrodite-purple" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Email</h3>
+                  <h3 className="font-bold text-afrodite-purple mb-1">Email</h3>
                   <a
                     href={`mailto:${selectedAddress.email}`}
-                    className="text-gray-700 hover:text-purple-600"
+                    className="text-afrodite-lightPurple hover:text-afrodite-purple"
                   >
                     {selectedAddress.email}
                   </a>
@@ -298,51 +305,72 @@ export default function ContactPage() {
               </div>
               <div className="flex items-start group">
                 <div className="bg-purple-100 p-3 rounded-full mr-4 group-hover:bg-purple-200 transition-colors duration-300">
-                  <Clock className="h-6 w-6 text-purple-700" />
+                  <Clock className="h-6 w-6 text-afrodite-purple" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-1">Orari</h3>
-                  <p className="text-gray-700">
+                  <h3 className="font-bold text-afrodite-purple mb-1">Orari</h3>
+                  <p className="text-afrodite-lightPurple">
                     E Hënë - E Premte: {selectedAddress.hours.weekdays}
                   </p>
-                  <p className="text-gray-700">
+                  <p className="text-afrodite-lightPurple">
                     E Shtunë: {selectedAddress.hours.saturday}
                   </p>
-                  <p className="text-gray-700">
+                  <p className="text-afrodite-lightPurple">
                     E Diel: {selectedAddress.hours.sunday}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="mt-12 pt-8 border-t border-gray-100">
-              <h3 className="font-bold text-gray-900 mb-4">
+            <div className="mt-12 pt-8 border-t border-afrodite-purple">
+              <h3 className="font-bold text-afrodite-purple mb-4">
                 Na ndiqni në rrjetet sociale
               </h3>
               <div className="flex space-x-4">
-                <AnimatedButton
-                  variant="secondary"
-                  size="sm"
-                  className="p-3 rounded-full"
+                <Link
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Facebook"
                 >
-                  <Facebook className="h-5 w-5" />
-                </AnimatedButton>
-                <AnimatedButton
-                  variant="secondary"
-                  size="sm"
-                  className="p-3 rounded-full"
+                  <AnimatedButton
+                    // ← important to make the button render as <a>
+                    variant="socials"
+                    size="sm"
+                    showRipple={false}
+                    className="rounded-full p-3"
+                  >
+                    <Facebook className="h-5 w-5" />
+                  </AnimatedButton>
+                </Link>
+                <Link
+                  href="https://instagram.com"
                   aria-label="Instagram"
+                  target="_blank"
                 >
-                  <Instagram className="h-5 w-5" />
-                </AnimatedButton>
-                <AnimatedButton
-                  variant="secondary"
-                  size="sm"
-                  className="p-3 rounded-full"
+                  <AnimatedButton
+                    variant="socials"
+                    size="sm"
+                    className="rounded-full p-3"
+                    showRipple={false}
+                  >
+                    <Instagram className="h-5 w-5" />
+                  </AnimatedButton>
+                </Link>
+
+                <Link
+                  href="https://linkedin.com"
                   aria-label="LinkedIn"
+                  target="_blank"
                 >
-                  <Linkedin className="h-5 w-5" />
-                </AnimatedButton>
+                  <AnimatedButton
+                    variant="socials"
+                    size="sm"
+                    className="rounded-full p-3"
+                    showRipple={false}
+                  >
+                    <Linkedin className="h-5 w-5" />
+                  </AnimatedButton>
+                </Link>
               </div>
             </div>
           </motion.div>
@@ -353,14 +381,14 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="bg-white rounded-xl shadow-md p-8">
-              <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-6">
+            <div className="bg-afrodite-creme rounded-xl shadow-md p-8">
+              <h3 className="text-2xl font-bold font-poppins text-afrodite-purple mb-6">
                 Na dërgoni një mesazh
               </h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="name" className="text-gray-700">
+                    <Label htmlFor="name" className="text-afrodite-lightPurple">
                       Emri i plotë
                     </Label>
                     <Input
@@ -370,11 +398,14 @@ export default function ContactPage() {
                       onChange={handleChange}
                       placeholder="Emri juaj i plotë"
                       required
-                      className="border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+                      className="border-afrodite-lightPurple/20 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="email" className="text-gray-700">
+                    <Label
+                      htmlFor="email"
+                      className="text-afrodite-lightPurple"
+                    >
                       Email
                     </Label>
                     <Input
@@ -385,14 +416,17 @@ export default function ContactPage() {
                       onChange={handleChange}
                       placeholder="adresa@juaj.com"
                       required
-                      className="border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+                      className="border-afrodite-lightPurple/20 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="phone" className="text-gray-700">
+                    <Label
+                      htmlFor="phone"
+                      className="text-afrodite-lightPurple"
+                    >
                       Numri i telefonit
                     </Label>
                     <Input
@@ -401,11 +435,14 @@ export default function ContactPage() {
                       value={formState.phone}
                       onChange={handleChange}
                       placeholder="+355 6X XXX XXXX"
-                      className="border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+                      className="border-afrodite-lightPurple/20 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="subject" className="text-gray-700">
+                    <Label
+                      htmlFor="subject"
+                      className="text-afrodite-lightPurple"
+                    >
                       Subjekti
                     </Label>
                     <Input
@@ -415,13 +452,13 @@ export default function ContactPage() {
                       onChange={handleChange}
                       placeholder="Subjekti i mesazhit"
                       required
-                      className="border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+                      className="border-afrodite-lightPurple/20 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <Label className="text-gray-700">
+                  <Label className="text-afrodite-lightPurple">
                     Jam i/e interesuar për:
                   </Label>
                   <RadioGroup
@@ -437,12 +474,12 @@ export default function ContactPage() {
                     ].map((opt) => (
                       <div
                         key={opt.id}
-                        className="flex items-center space-x-2 bg-gray-50 p-3 rounded-lg hover:bg-purple-50 transition-colors"
+                        className="flex items-center space-x-2 bg-afrodite-creme p-3 rounded-lg hover:bg-afrodite-lightPurple/20 transition-colors"
                       >
                         <RadioGroupItem
                           value={opt.id}
                           id={opt.id}
-                          className="text-purple-600"
+                          className="text-afrodite-purple"
                         />
                         <Label
                           htmlFor={opt.id}
@@ -456,7 +493,10 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="message" className="text-gray-700">
+                  <Label
+                    htmlFor="message"
+                    className="text-afrodite-lightPurple"
+                  >
                     Mesazhi
                   </Label>
                   <Textarea
@@ -467,18 +507,20 @@ export default function ContactPage() {
                     placeholder="Shkruani mesazhin tuaj këtu..."
                     rows={5}
                     required
-                    className="border-gray-300 focus:border-purple-500 focus:ring-purple-500 resize-none"
+                    className="border-afrodite-lightPurple/20 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
                   />
                 </div>
 
                 <AnimatedButton
                   type="submit"
                   disabled={status === "sending"}
-                  className={`w-full flex justify-center items-center ${
-                    status === "sending"
-                      ? "opacity-70 cursor-not-allowed"
-                      : "hover:bg-purple-700"
-                  }`}
+                  variant="custom" // <- avoid built-in styles
+                  size="lg"
+                  className={cn(
+                    "w-full flex justify-center items-center bg-afrodite-lightPurple text-afrodite-creme",
+                    "hover:bg-afrodite-purple transition-colors duration-300",
+                    status === "sending" && "opacity-70 cursor-not-allowed"
+                  )}
                 >
                   <div className="flex items-center gap-x-3">
                     {status === "sending" && (
@@ -509,14 +551,17 @@ export default function ContactPage() {
       </section>
 
       {/* Map & Building */}
-      <section className="py-16 bg-white">
+      <section className="py-16 md:py-24 bg-afrodite-creme relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
+
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold font-poppins text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold font-poppins text-afrodite-purple mb-4">
               Na gjeni këtu
             </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6" />
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-6" />
+            <p className="text-lg text-afrodite-lightPurple max-w-2xl mx-auto">
               Vizitoni Akademinë Afrodite në {selectedAddress.city} për të
               mësuar më shumë rreth kurseve tona dhe për të takuar ekipin tonë
               profesional.
@@ -556,18 +601,18 @@ export default function ContactPage() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-afrodite-creme">
                 <h3 className="text-xl font-bold mb-2">
                   Akademia Afrodite {selectedAddress.city}
                 </h3>
                 <div className="flex items-center text-sm">
-                  <Clock className="h-4 w-4 mr-2 text-purple-400" />
+                  <Clock className="h-4 w-4 mr-2 text-afrodite-creme" />
                   <span>
                     E Hënë - E Premte: {selectedAddress.hours.weekdays}
                   </span>
                 </div>
                 <div className="flex items-center text-sm mt-1">
-                  <Phone className="h-4 w-4 mr-2 text-purple-400" />
+                  <Phone className="h-4 w-4 mr-2 text-afrodite-creme" />
                   <span>{selectedAddress.phone}</span>
                 </div>
               </div>

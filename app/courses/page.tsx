@@ -267,7 +267,7 @@ export default function CoursesPage() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative py-20 md:py-32 bg-gradient-to-r from-black to-purple-900 overflow-hidden"
+        className="relative py-20 md:py-32 bg-afrodite-creme"
       >
         {/* Background pattern */}
         <div className="absolute inset-0 bg-[url('/videos/testimonials/diploma.mp4')] bg-cover bg-center opacity-5" />
@@ -288,15 +288,15 @@ export default function CoursesPage() {
             transition={{ duration: 0.7 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-6">
-              <Sparkles className="h-4 w-4 mr-2 text-purple-400" />
+            <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
+              <Sparkles className="h-4 w-4 mr-2 text-afrodite-purple" />
               <span>Kurse të certifikuara ndërkombëtarisht</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-white mb-6">
-              Kurset Tona <span className="text-purple-400">Profesionale</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-afrodite-purple mb-6">
+              Kurset Tona Profesionale
             </h1>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-8" />
-            <p className="text-lg text-gray-300 mb-8">
+            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-8" />
+            <p className="text-lg text-afrodite-lightPurple mb-8">
               Zgjidhni nga kurset tona të shumta profesionale për të avancuar
               karrierën tuaj dhe për të fituar aftësi të reja të kërkuara në
               tregun e punës.
@@ -307,39 +307,39 @@ export default function CoursesPage() {
               <Input
                 type="text"
                 placeholder="Kërko kurse..."
-                className="pl-10 py-6 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-gray-300 rounded-full"
+                className="pl-10 py-6 bg-afrodite-creme backdrop-blur-sm border-afrodite-lightPurple text-afrodite-purple placeholder:text-afrodite-lightPurple rounded-full"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300 h-5 w-5" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-afrodite-lightPurple h-5 w-5" />
             </div>
           </motion.div>
         </div>
 
         {/* Scroll indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
           animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
         >
-          <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center pt-2">
+          <div className="w-8 h-12 border-2 border-afrodite-purple/30 rounded-full flex justify-center pt-2">
             <motion.div
-              className="w-1.5 h-1.5 bg-white rounded-full"
+              className="w-1.5 h-1.5 bg-afrodite-lightPurple rounded-full"
               animate={{ y: [0, 16, 0] }}
-              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+              transition={{ repeat: Infinity, duration: 1.5 }}
             />
           </div>
         </motion.div>
       </section>
 
       {/* Filters Section - Compact Version */}
-      <section className="sticky top-[96px] z-30 bg-white border-b shadow-sm">
+      <section className="sticky top-[96px] z-30 bg-afrodite-creme border-b border-t border-afrodite-purple shadow-sm">
         <div className="container mx-auto px-4">
           <div className="py-3">
             {/* headline + mobile toggle */}
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-medium text-gray-900 flex items-center">
-                <Filter className="h-4 w-4 mr-1 text-purple-600" />
+              <h3 className="text-sm font-medium text-afrodite-purple flex items-center">
+                <Filter className="h-4 w-4 mr-1 text-afrodite-purple" />
                 <span>Filtro</span>
               </h3>
               {/* only on small screens */}
@@ -367,26 +367,27 @@ export default function CoursesPage() {
             >
               {/* Category Filters */}
               <div className="flex flex-wrap items-center gap-1.5 mb-3 md:mb-0">
-                <span className="text-xs font-medium text-gray-500 mr-1">
+                <span className="text-xs font-medium text-afrodite-lightPurple mr-1">
                   Kategori:
                 </span>
                 {categories.map((cat) => (
                   <Button
                     key={cat.id}
                     size="sm"
-                    variant={
-                      selectedCategories.includes(cat.id)
-                        ? "default"
-                        : "outline"
-                    }
+                    variant="ghost"
                     className={`
-        h-7 px-2 py-0 text-xs
-        ${
-          cat.id === "UET Italia" && !selectedCategories.includes(cat.id)
-            ? "bg-[#FF7F00]"
-            : ""
-        }
-      `}
+    h-7 px-2 py-0 text-xs border
+    ${
+      selectedCategories.includes(cat.id)
+        ? "bg-afrodite-purple text-afrodite-creme border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
+        : "bg-afrodite-lightPurple/50 text-afrodite-purple border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
+    }
+    ${
+      cat.id === "UET Italia" && !selectedCategories.includes(cat.id)
+        ? "bg-[#FF7F00] text-white"
+        : ""
+    }
+  `}
                     onClick={() => toggleCategory(cat.id)}
                   >
                     {cat.icon}
@@ -397,7 +398,7 @@ export default function CoursesPage() {
 
               {/* Duration Filters */}
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-xs font-medium text-gray-500 mr-1">
+                <span className="text-xs font-medium text-afrodite-lightPurple mr-1">
                   Kohëzgjatje:
                 </span>
                 {durations.map((d) => (
@@ -433,11 +434,11 @@ export default function CoursesPage() {
                 <motion.div
                   key={course.id}
                   variants={itemVariants}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 relative flex flex-col h-full"
+                  className="bg-afrodite-creme rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 relative flex flex-col h-full"
                 >
                   {/* Featured badge */}
                   {course.featured && (
-                    <div className="absolute top-4 left-4 z-10 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    <div className="absolute top-4 left-4 z-10 bg-amber-500 text-afrodite-purple text-xs font-bold px-3 py-1 rounded-full">
                       Kurs i Rekomanduar
                     </div>
                   )}
@@ -459,41 +460,41 @@ export default function CoursesPage() {
 
                     {/* Course info overlay */}
                     <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between items-center">
-                      <div className="flex items-center space-x-2 text-white text-sm">
-                        <Clock className="h-4 w-4 text-purple-300" />
+                      <div className="flex items-center space-x-2 text-afrodite-creme text-sm">
+                        <Clock className="h-4 w-4 text-afrodite-creme" />
                         <span>{course.duration}</span>
                       </div>
-                      <div className="flex items-center space-x-2 text-white text-sm">
-                        <Users className="h-4 w-4 text-purple-300" />
+                      {/* <div className="flex items-center space-x-2 text-afrodite-creme text-sm">
+                        <Users className="h-4 w-4 text-afrodite-creme" />
                         <span>{course.students} studentë</span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="mb-4">
                       <div className="flex items-center mb-2 flex-wrap gap-2">
-                        <span className="text-xs font-medium bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
+                        <span className="text-xs font-medium bg-afrodite-purple text-afrodite-creme px-3 py-1 rounded-full">
                           {
                             categories.find((c) => c.id === course.category)
                               ?.name
                           }
                         </span>
-                        <span className="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                        <span className="text-xs font-medium bg-afrodite-purple text-afrodite-creme px-3 py-1 rounded-full">
                           {course.level}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3 line-clamp-2">
+                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-3 line-clamp-2">
                         {course.title}
                       </h3>
-                      <p className="text-gray-700 line-clamp-3 mb-4">
+                      <p className="text-afrodite-lightPurple line-clamp-3 mb-4">
                         {course.description}
                       </p>
                     </div>
 
-                    <div className="mt-auto pt-4 border-t border-gray-100">
-                      <div className="flex items-center text-sm text-gray-600 mb-4">
-                        <Calendar className="h-4 w-4 mr-1 text-purple-600" />
+                    <div className="mt-auto pt-4 border-t border-afrodite-purple">
+                      <div className="flex items-center text-sm text-afrodite-lightPurple mb-4">
+                        <Calendar className="h-4 w-4 mr-1 text-afrodite-purple" />
                         <span>{course.schedule}</span>
                       </div>
                       <Link
@@ -506,7 +507,7 @@ export default function CoursesPage() {
                         <AnimatedButton
                           size="default"
                           variant="default"
-                          className="w-full block px-6 py-2 bg-black hover:bg-black text-white"
+                          className="bg-afrodite-lightPurple text-afrodite-creme"
                         >
                           Mëso më shumë
                           <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
@@ -522,10 +523,10 @@ export default function CoursesPage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
                 <Search className="h-8 w-8 text-gray-400" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold text-afrodite-purple mb-2">
                 Nuk u gjet asnjë kurs
               </h3>
-              <p className="text-gray-700 mb-6">
+              <p className="text-afrodite-lightPurple mb-6">
                 Provoni të ndryshoni filtrat ose të kërkoni diçka tjetër.
               </p>
               <Button variant="outline" onClick={clearFilters}>
@@ -537,18 +538,17 @@ export default function CoursesPage() {
       </section>
 
       {/* Why Choose Our Courses Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-afrodite-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center px-4 py-2 bg-purple-100 rounded-full text-purple-800 text-sm mb-4">
+              <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4">
                 <span>Pse të zgjidhni kurset tona</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold font-poppins text-gray-900 mb-6">
-                Ndërto me ne{" "}
-                <span className="text-purple-600">Të Ardhmen Tënde</span>
+              <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple mb-6">
+                Ndërto me ne Të Ardhmen Tënde
               </h2>
-              <p className="text-gray-700 mb-8">
+              <p className="text-afrodite-lightPurple mb-8">
                 Në Afrodite Academy, çdo kurs është konceptuar për t’ju pajisur
                 me njohuritë dhe aftësitë më të përparuara në industrinë e
                 bukurisë, duke hapur rrugën drejt suksesit tuaj profesional.
@@ -556,14 +556,14 @@ export default function CoursesPage() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
-                    <Award className="h-5 w-5 text-purple-600" />
+                  <div className="bg-afrodite-creme p-3 rounded-full flex-shrink-0">
+                    <Award className="h-5 w-5 text-afrodite-purple" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    <h3 className="text-lg font-bold text-afrodite-purple mb-2">
                       Certifikim Ndërkombëtar
                     </h3>
-                    <p className="text-gray-700">
+                    <p className="text-afrodite-lightPurple">
                       Të gjithë studentët marrin certifikata të akredituara
                       ndërkombëtarisht nga Afrodite Academy, si dhe të drejtën e
                       provimit dhe diplomimit të vitit të tretë për direksion
@@ -575,14 +575,14 @@ export default function CoursesPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
-                    <Users className="h-5 w-5 text-purple-600" />
+                  <div className="bg-afrodite-creme p-3 rounded-full flex-shrink-0">
+                    <Users className="h-5 w-5 text-afrodite-purple" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    <h3 className="text-lg font-bold text-afrodite-purple mb-2">
                       Profesionistë me eksperiencë ndërkombëtare
                     </h3>
-                    <p className="text-gray-700">
+                    <p className="text-afrodite-lightPurple">
                       Instruktorët tanë janë profesionistë të njohur
                       ndërkombëtarisht, që sjellin përvojën e tyre praktike në
                       çdo seancë dhe ju udhëheqin hap pas hapi drejt
@@ -592,14 +592,14 @@ export default function CoursesPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
-                    <BookOpen className="h-5 w-5 text-purple-600" />
+                  <div className="bg-afrodite-creme p-3 rounded-full flex-shrink-0">
+                    <BookOpen className="h-5 w-5 text-afrodite-purple" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    <h3 className="text-lg font-bold text-afrodite-purple mb-2">
                       Praktikë e fokusuar në rezultate
                     </h3>
-                    <p className="text-gray-700">
+                    <p className="text-afrodite-lightPurple">
                       Në Afrodite Academy, pjesa praktike zë pjesën më të madhe
                       të programit: ju punoni me pajisje dhe produkte premium,
                       zhvilloni raste studimi reale dhe ndërtoni portofolin tuaj
@@ -609,14 +609,14 @@ export default function CoursesPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
-                    <Calendar className="h-5 w-5 text-purple-600" />
+                  <div className="bg-afrodite-creme p-3 rounded-full flex-shrink-0">
+                    <Calendar className="h-5 w-5 text-afrodite-purple" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    <h3 className="text-lg font-bold text-afrodite-purple mb-2">
                       Networking dhe mundësi karriere
                     </h3>
-                    <p className="text-gray-700">
+                    <p className="text-afrodite-lightPurple">
                       Si pjesë e komunitetit Afrodite Academy, keni akses në
                       evente ekskluzive rrjetëzimi, bashkëpunime me qendra
                       estetike dhe mundësi praktike drejtëpërdrejt nga partnerët
@@ -626,14 +626,14 @@ export default function CoursesPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
-                    <GraduationCap className="h-5 w-5 text-purple-600" />
+                  <div className="bg-afrodite-creme p-3 rounded-full flex-shrink-0">
+                    <GraduationCap className="h-5 w-5 text-afrodite-purple" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    <h3 className="text-lg font-bold text-afrodite-purple mb-2">
                       Mbështetje paskursore
                     </h3>
-                    <p className="text-gray-700">
+                    <p className="text-afrodite-lightPurple">
                       Profesionistët që studiojnë në Afrodite Academy, jo vetëm
                       që hapin dyert për mundësi të shkëlqyera punësimi brënda
                       dhe jashtë vendit, dhe karriere, por dallojnë si më të
@@ -675,18 +675,30 @@ export default function CoursesPage() {
               </div>
 
               {/* Stats box stays the same */}
-              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500 max-w-xs">
+              <div className="absolute -bottom-6 -right-6 bg-afrodite-creme p-6 rounded-xl shadow-lg border-l-4 border-purple-500 max-w-xs">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-gray-700">Studentë të diplomuar</div>
-                  <div className="text-2xl font-bold text-gray-900">500+</div>
+                  <div className="text-afrodite-lightPurple">
+                    Studentë të diplomuar
+                  </div>
+                  <div className="text-2xl font-bold text-afrodite-purple">
+                    500+
+                  </div>
                 </div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="text-gray-700">Kurse profesionale</div>
-                  <div className="text-2xl font-bold text-gray-900">20+</div>
+                  <div className="text-afrodite-lightPurple">
+                    Kurse profesionale
+                  </div>
+                  <div className="text-2xl font-bold text-afrodite-purple">
+                    20+
+                  </div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <div className="text-gray-700">Vite eksperiencë</div>
-                  <div className="text-2xl font-bold text-gray-900">10+</div>
+                  <div className="text-afrodite-lightPurple">
+                    Vite eksperiencë
+                  </div>
+                  <div className="text-2xl font-bold text-afrodite-purple">
+                    10+
+                  </div>
                 </div>
               </div>
             </div>
@@ -695,8 +707,10 @@ export default function CoursesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-black via-purple-900 to-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div>
+      <section className="bg-afrodite-creme py-16 md:py-24 relative overflow-hidden">
+        {/* <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div> */}
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>{" "}
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
           <Image
             src="/wave-pattern.svg"
@@ -708,15 +722,15 @@ export default function CoursesPage() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-4">
-              <Sparkles className="h-4 w-4 mr-2 text-purple-400" />
+            <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
+              <Sparkles className="h-4 w-4 mr-2 text-afrodite-purple" />
               <span>Bëhu pjesë e suksesit</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple mb-6">
               Nuk jeni të sigurt cili kurs{" "}
-              <span className="text-purple-400">është për ju?</span>
+              <span className="text-afrodite-purple">është për ju?</span>
             </h2>
-            <p className="text-lg text-gray-300 mb-8">
+            <p className="text-lg text-afrodite-lightPurple mb-8">
               Na kontaktoni për të diskutuar rrugët tuaja të zhvillimit
               profesional dhe për të gjetur kursin më të përshtatshëm për ju.
             </p>
@@ -724,8 +738,8 @@ export default function CoursesPage() {
               <Link href="/contact">
                 <AnimatedButton
                   size="lg"
-                  variant="secondary"
-                  className="bg-purple-600 hover:bg-black text-white border border-purple-500/30"
+                  variant="default"
+                  className="bg-afrodite-lightPurple text-afrodite-creme"
                 >
                   NA KONTAKTONI
                 </AnimatedButton>
@@ -734,7 +748,7 @@ export default function CoursesPage() {
                 <AnimatedButton
                   size="lg"
                   variant="default"
-                  className="bg-black hover:bg-black text-white border border-purple-500/30"
+                  className="bg-afrodite-lightPurple text-afrodite-creme"
                 >
                   RRETH AKADEMISË
                 </AnimatedButton>

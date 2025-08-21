@@ -675,7 +675,7 @@ export default function CoursesPage() {
               </div>
 
               {/* Stats box stays the same */}
-              <div className="absolute -bottom-6 -right-6 bg-afrodite-creme p-6 rounded-xl shadow-lg border-l-4 border-purple-500 max-w-xs">
+              <div className="absolute -bottom-6 -right-6 bg-afrodite-creme p-6 rounded-xl shadow-lg border-l-4 border-afrodite-purple max-w-xs">
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-afrodite-lightPurple">
                     Studentë të diplomuar

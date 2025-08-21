@@ -261,8 +261,8 @@ export default function ContactPage() {
             </div>
             <div className="space-y-8">
               <div className="flex items-start group">
-                <div className="bg-purple-100 p-3 rounded-full mr-4 group-hover:bg-purple-200 transition-colors duration-300">
-                  <MapPin className="h-6 w-6 text-afrodite-purple" />
+                <div className="bg-afrodite-purple p-3 rounded-full mr-4 group-hover:bg-afrodite-lightPurple transition-colors duration-300">
+                  <MapPin className="h-6 w-6 text-afrodite-creme" />
                 </div>
                 <div>
                   <h3 className="font-bold text-afrodite-purple mb-1">
@@ -274,8 +274,8 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start group">
-                <div className="bg-purple-100 p-3 rounded-full mr-4 group-hover:bg-purple-200 transition-colors duration-300">
-                  <Phone className="h-6 w-6 text-afrodite-purple" />
+                <div className="bg-afrodite-purple p-3 rounded-full mr-4 group-hover:bg-afrodite-lightPurple transition-colors duration-300">
+                  <Phone className="h-6 w-6 text-afrodite-creme" />
                 </div>
                 <div>
                   <h3 className="font-bold text-afrodite-purple mb-1">
@@ -290,8 +290,8 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start group">
-                <div className="bg-purple-100 p-3 rounded-full mr-4 group-hover:bg-purple-200 transition-colors duration-300">
-                  <Mail className="h-6 w-6 text-afrodite-purple" />
+                <div className="bg-afrodite-purple p-3 rounded-full mr-4 group-hover:bg-afrodite-lightPurple transition-colors duration-300">
+                  <Mail className="h-6 w-6 text-afrodite-creme" />
                 </div>
                 <div>
                   <h3 className="font-bold text-afrodite-purple mb-1">Email</h3>
@@ -304,8 +304,8 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start group">
-                <div className="bg-purple-100 p-3 rounded-full mr-4 group-hover:bg-purple-200 transition-colors duration-300">
-                  <Clock className="h-6 w-6 text-afrodite-purple" />
+                <div className="bg-afrodite-purple p-3 rounded-full mr-4 group-hover:bg-afrodite-lightPurple transition-colors duration-300">
+                  <Clock className="h-6 w-6 text-afrodite-creme" />
                 </div>
                 <div>
                   <h3 className="font-bold text-afrodite-purple mb-1">Orari</h3>

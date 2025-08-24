@@ -200,7 +200,8 @@ export default function Footer() {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 text-afrodite-lightPurple mt-1 flex-shrink-0" />
                 <span className="text-afrodite-purple">
-                  Rruga "Tom Plezha", Ura e Re, Tiranë, Shqipëri
+                  Rruga "Tom Plezha", Kompleksi I pallateve "Milo 2000",
+                  Rrethrrotullimi Astir, Unaza e Re, Tirane
                 </span>
               </li>
               <li className="flex items-center">
@@ -215,10 +216,10 @@ export default function Footer() {
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-afrodite-lightPurple flex-shrink-0" />
                 <Link
-                  href="mailto:afroditeacademy@gmail.com"
+                  href="mailto:info@afroditeacademy.al"
                   className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors"
                 >
-                  afroditeacademy@gmail.com
+                  info@afroditeacademy.al
                 </Link>
               </li>
             </ul>

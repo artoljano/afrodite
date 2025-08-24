@@ -30,7 +30,7 @@ const TabsTrigger = React.forwardRef<
       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
       "disabled:pointer-events-none disabled:opacity-50",
       "rounded-lg", // default shape (matches buttons)
-      "data-[state=active]:bg-purple-100 data-[state=active]:text-purple-700 data-[state=active]:shadow-sm data-[state=active]:border data-[state=active]:border-purple-300 data-[state=active]:rounded-md",
+      "data-[state=active]:bg-afrodite-purple data-[state=active]:text-afrodite-creme data-[state=active]:shadow-sm data-[state=active]:border data-[state=active]:border-afrodite-lightPurple data-[state=active]:rounded-md",
       "data-[state=inactive]:text-muted-foreground",
       className
     )}

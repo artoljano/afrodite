@@ -58,11 +58,11 @@ export default function Header() {
                 <span>+355 69 204 3535</span>
               </a>
               <a
-                href="mailto:afroditeacademy@gmail.com"
+                href="mailto:info@afroditeacademy.al"
                 className="flex items-center text-afrodite-creme hover:text-afrodite-purple transition-colors"
               >
                 <Mail className="h-3 w-3 mr-1" />
-                <span>afroditeacademy@gmail.com</span>
+                <span>info@afroditeacademy.al</span>
               </a>
             </div>
 
@@ -266,11 +266,11 @@ export default function Header() {
                     <span>+355 69 204 3535</span>
                   </a>
                   <a
-                    href="mailto:afroditeacademy@gmail.com"
+                    href="mailto:info@afroditeacademy.al"
                     className="flex items-center text-afrodite-lightPurple hover:text-afrodite-purple transition-colors text-sm"
                   >
                     <Mail className="h-4 w-4 mr-2" />
-                    <span>afroditeacademy@gmail.com</span>
+                    <span>info@afroditeacademy.al</span>
                   </a>
                 </div>
 

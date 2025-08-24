@@ -47,84 +47,72 @@ import { useEffect } from "react";
 import { courses } from "@/data/courses";
 import VideoModal from "@/components/video-modal";
 
-const categories = [
-  { id: "makeup", name: "Makeup", icon: <Feather className="h-4 w-4" /> },
+export const categories = [
+  { id: "estetike", name: "Estetikë", icon: <Sparkles className="h-4 w-4" /> },
+  { id: "parukeri", name: "Parukeri", icon: <Users className="h-4 w-4" /> },
   {
-    id: "nails",
-    name: "Manikyr & Pedikyr",
-    icon: <Award className="h-4 w-4" />,
+    id: "parukeri-estetike",
+    name: "Parukeri–Estetikë",
+    icon: <Sparkles className="h-4 w-4" />,
   },
-  { id: "esthetics", name: "Estetikë", icon: <Sparkles className="h-4 w-4" /> },
   {
-    id: "facials",
+    id: "trajtimet-e-fytyres",
     name: "Trajtimet e Fytyrës",
     icon: <User className="h-4 w-4" />,
   },
-  // { id: "brows", name: "Vetulla", icon: <Eye className="h-4 w-4" /> },
+  { id: "berber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
   {
-    id: "lashes",
+    id: "zgjatimi-i-qerpikeve",
     name: "Zgjatimi i Qerpikëve",
     icon: <CheckCircle className="h-4 w-4" />,
   },
-  { id: "hair", name: "Parukeri", icon: <Users className="h-4 w-4" /> },
-  // { id: "barber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
-  { id: "massage", name: "Masazh", icon: <BookOpen className="h-4 w-4" /> },
   {
-    id: "therapy",
-    name: "Terapitë Estetike",
-    icon: <Heart className="h-4 w-4" />,
+    id: "kujdestar-per-te-moshuar-dhe-femije",
+    name: "Kujdestar për të Moshuar dhe Fëmijë",
+    icon: <HeartHandshake className="h-4 w-4" />,
   },
-  // {
-  //   id: "reception",
-  //   name: "Recepsion",
-  //   icon: <Headphones className="h-4 w-4" />,
-  // },
-  // {
-  //   id: "tour-guide",
-  //   name: "Udhërrëfyes Turistik",
-  //   icon: <MapPin className="h-4 w-4" />,
-  // },
+  { id: "makeup", name: "Makeup", icon: <Feather className="h-4 w-4" /> },
   {
-    id: "tourism",
-    name: "Shërbime Turistike",
+    id: "makeup-permanent-pmu",
+    name: "Makeup Permanent (PMU)",
+    icon: <Sparkles className="h-4 w-4" />,
+  },
+  { id: "masazhet", name: "Masazhe", icon: <Heart className="h-4 w-4" /> },
+  {
+    id: "manikyr-pedikyr-nail-art",
+    name: "Manikyr & Pedikyr (Nail Art)",
+    icon: <Award className="h-4 w-4" />,
+  },
+  {
+    id: "operatoret-turistike",
+    name: "Operatorët Turistikë",
     icon: <Globe className="h-4 w-4" />,
   },
-  // {
-  //   id: "travel-agent",
-  //   name: "Agjent Udhëtimesh",
-  //   icon: <Briefcase className="h-4 w-4" />,
-  // },
-  // {
-  //   id: "craft",
-  //   name: "Veshje Artizanale",
-  //   icon: <Hammer className="h-4 w-4" />,
-  // },
-  // {
-  //   id: "industrial",
-  //   name: "Modeliste Industriale",
-  //   icon: <ShoppingBag className="h-4 w-4" />,
-  // },
   {
-    id: "fashion",
+    id: "pajisjet-e-estetikes",
+    name: "Pajisjet e Estetikës",
+    icon: <Sparkles className="h-4 w-4" />,
+  },
+  {
+    id: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
+    name: "Shërbim Pastrimi në Njësi Banimi dhe Institucione",
+    icon: <Droplet className="h-4 w-4" />,
+  },
+  { id: "recepsion", name: "Recepsion", icon: <User className="h-4 w-4" /> },
+  {
+    id: "tattoo-art",
+    name: "Tattoo Art",
+    icon: <PenTool className="h-4 w-4" />,
+  },
+  {
+    id: "fashion-design",
     name: "Fashion Design",
     icon: <ShoppingBag className="h-4 w-4" />,
   },
   {
-    id: "cleaning",
-    name: "Pastrim Profesional",
-    icon: <Droplet className="h-4 w-4" />,
-  },
-  {
-    id: "caregiver",
-    name: "Kujdestar",
-    icon: <HeartHandshake className="h-4 w-4" />,
-  },
-
-  { id: "tattoo", name: "Tattoo Art", icon: <PenTool className="h-4 w-4" /> },
-  {
-    id: "UET Italia",
-    name: "UET Italia",
-    icon: <GraduationCap className="h-4 w-4" />,
+    id: "terapia-hixhama",
+    name: "Terapia Hixhama",
+    icon: <Heart className="h-4 w-4" />,
   },
 ];
 
@@ -405,10 +393,15 @@ export default function CoursesPage() {
                   <Button
                     key={d.id}
                     size="sm"
-                    variant={
-                      selectedDurations.includes(d.id) ? "default" : "outline"
-                    }
-                    className="h-7 px-2 py-0 text-xs"
+                    variant="ghost"
+                    className={`
+      h-7 px-2 py-0 text-xs border
+      ${
+        selectedDurations.includes(d.id)
+          ? "bg-afrodite-purple text-afrodite-creme border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
+          : "bg-afrodite-lightPurple/50 text-afrodite-purple border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
+      }
+    `}
                     onClick={() => toggleDuration(d.id)}
                   >
                     {d.name}

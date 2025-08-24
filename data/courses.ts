@@ -65,7 +65,7 @@ export const courses: Course[] = [
 {
   id: 1,
   title: "Kurs Kujdestar për Fëmijë",
-  category: "caregiver",
+  category: "kujdestar-per-te-moshuar-dhe-femije",
   duration: "560 orë",
   durationCategory: "560 orë",
   level: "Fillestar",
@@ -89,6 +89,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në profesionin e kujdestarit për fëmijë",
+    category: "kujdestar-per-te-moshuar-dhe-femije",
       lessons: [
         "Përkufizimi dhe rëndësia e profesionit",
         "Etika dhe përgjegjësitë e punës"
@@ -151,7 +152,7 @@ export const courses: Course[] = [
 {
   id: 2,
   title: "Kurs Kujdestar për të Moshuar",
-  category: "caregiver",
+  category: "kujdestar-per-te-moshuar-dhe-femije",
   duration: "1000 orë",
   durationCategory: "1000 orë",
   level: "Mesatar",
@@ -175,6 +176,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në profesionin e kujdestarit për të moshuar",
+    category: "kujdestar-per-te-moshuar-dhe-femije",
       lessons: [
         "Roli i kujdestarit",
         "Etika dhe siguria në punë"
@@ -230,7 +232,7 @@ export const courses: Course[] = [
 {
   id: 4,
   title: "Kurs Operator Turistik",
-  category: "tourism",
+  category: "operatoret-turistike",
   duration: "360 orë",
   durationCategory: "360 orë",
   level: "Mesatar",
@@ -254,6 +256,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Operimin Turistik",
+    category: "operatoret-turistike",
       lessons: [
         "Roli i operatorit turistik",
         "Etika dhe standardet e shërbimit"
@@ -268,6 +271,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 3: Konceptimi i Produktit Turistik",
+    category: "operatoret-turistike",
       lessons: [
         "Hartimi i paketave dhe itinerareve",
         "Analiza e kostove dhe çmimeve"
@@ -313,7 +317,7 @@ export const courses: Course[] = [
 {
   id: 5,
   title: "Kurs Kujdestar për të Moshuar dhe Fëmijë",
-  category: "caregiver",
+  category: "kujdestar-per-te-moshuar-dhe-femije",
   duration: "1500 orë",
   durationCategory: "1500 orë",
   level: "Mesatar",
@@ -336,6 +340,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Kujdestarinë e të Moshuarve dhe Fëmijëve",
+    category: "kujdestar-per-te-moshuar-dhe-femije",
       lessons: [
         "Kujdestari për të moshuar",
         "Kujdestari për fëmijë"
@@ -406,7 +411,7 @@ export const courses: Course[] = [
 {
   id: 7,
   title: "Kurs Udhërrëfyes Turistik",
-  category: "tourism",
+  category: "operatoret-turistike",
   duration: "600 orë",
   durationCategory: "600 orë",
   level: "Mesatar",
@@ -430,6 +435,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Udhërrëfimin Turistik",
+    category: "operatoret-turistike",
       lessons: ["Roli dhe përgjegjësitë e guidës"]
     },
     {
@@ -474,7 +480,7 @@ export const courses: Course[] = [
 {
   id: 8,
   title: "Kurs Shërbim Pastrimi në Njësi Banimi dhe Institucione",
-  category: "cleaning",
+  category: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Bazik",
@@ -498,6 +504,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Profesionin e Pastrimit",
+    category: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
       lessons: ["Standardet e higjienës", "Llojet e kimikateve"]
     },
     {
@@ -506,10 +513,12 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 3: Pastrimi i Brendshëm",
+    category: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
       lessons: ["Pastrimi i apartamenteve", "Menaxhimi i mbetjeve"]
     },
     {
       title: "Moduli 4: Pastrimi i Jashtëm",
+    category: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
       lessons: ["Pastrimi i hapësirave gjelbëruese", "Makineritë profesionale"]
     }
   ],
@@ -538,7 +547,7 @@ export const courses: Course[] = [
 {
   id: 11,
   title: "Kurs Recepsion",
-  category: "tourism",
+  category: "recepsion",
   duration: "200 orë",
   durationCategory: "200 orë",
   level: "Fillestar",
@@ -562,6 +571,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Profesionin e Recepsionistit",
+    category: "recepsion",
       lessons: [
         "Roli dhe përgjegjësitë e recepsionistit",
         "Standardet e komunikimit profesional"
@@ -614,7 +624,7 @@ export const courses: Course[] = [
 {
   id: 12,
   title: "Kurs Berber (1800 ore)",
-  category: "hair",
+  category: "berber",
   duration: "1800 orë",
   durationCategory: "1800 orë",
   level: "Mesatar",
@@ -638,6 +648,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje dhe Historia e Berberit",
+    category: "berber",
       lessons: ["Origjina e profesionit", "Evolucioni i teknikave"]
     },
     {
@@ -666,6 +677,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 7: Masazh & Trajtime Fytyre",
+    category: "masazhet",
       lessons: ["Masazhet relaksuese", "Kujdesi për lëkurën"]
     },
     {
@@ -698,7 +710,7 @@ export const courses: Course[] = [
 {
   id: 13,
   title: "Kurs Berber (900 ore)",
-  category: "hair",
+  category: "berber",
   duration: "900 orë",
   durationCategory: "900 orë",
   level: "Mesatar",
@@ -766,7 +778,7 @@ export const courses: Course[] = [
 {
   id: 14,
   title: "Kurs Berber (600 ore)",
-  category: "hair",
+  category: "berber",
   duration: "600 orë",
   durationCategory: "600 orë",
   level: "Fillestar",
@@ -830,7 +842,7 @@ export const courses: Course[] = [
 {
   id: 15,
   title: "Kurs Berber (300 ore)",
-  category: "hair",
+  category: "berber",
   duration: "300 orë",
   durationCategory: "300 orë",
   level: "Fillestar",
@@ -906,7 +918,7 @@ export const courses: Course[] = [
 {
   id: 16,
   title: "Kurs Estetike (2100 ore)",
-  category: "esthetics",
+  category: "estetike",
   duration: "2100 orë",
   durationCategory: "2100 orë",
   level: "Avancuar",
@@ -946,10 +958,12 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 5: Masazhe & Drenazh Limfatik",
+    category: "masazhet",
       lessons: ["Masazh relaksues", "Limfodrenazh fytyrë & trup"]
     },
     {
       title: "Moduli 6: Makeup Permanent",
+    category: "makeup-permanent-pmu",
       lessons: ["Lash line enhancement", "Microblading & powder brows"]
     },
     {
@@ -958,6 +972,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 8: Manikyr & Pedikyr",
+    category: "manikyr-pedikyr-nail-art",
       lessons: ["Manikyr bazik & xhel", "SPA këmbe me parafine"]
     },
     {
@@ -990,7 +1005,7 @@ export const courses: Course[] = [
 {
   id: 17,
   title: "Kurs Estetike (1800 ore)",
-  category: "esthetics",
+  category: "estetike",
   duration: "1800 orë",
   durationCategory: "1800 orë",
   level: "Mesatar – Avancuar",
@@ -1026,14 +1041,17 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 4: Masazhet Relaksuese",
+    category: "masazhet",
       lessons: ["Masazh fytyre", "Limfodrenazh"]
     },
     {
       title: "Moduli 5: Makeup Permanent & Epilim",
+    category: "makeup-permanent-pmu",
       lessons: ["Microblading", "Teknika epilimi"]
     },
     {
       title: "Moduli 6: Manikyr & Pedikyr",
+    category: "manikyr-pedikyr-nail-art",
       lessons: ["Manikyr xhel", "SPA këmbe"]
     },
     {
@@ -1066,7 +1084,7 @@ export const courses: Course[] = [
 {
   id: 18,
   title: "Kurs Estetike (900 ore)",
-  category: "esthetics",
+  category: "estetike",
   duration: "900 orë",
   durationCategory: "900 orë",
   level: "Mesatar",
@@ -1098,10 +1116,12 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 3: Masazhe Relaksuese",
+    category: "masazhet",
       lessons: ["Masazh fytyre", "Limfodrenazh trupor"]
     },
     {
       title: "Moduli 4: Makeup & Epilim",
+    category: "makeup",
       lessons: [
         "Extension qerpikësh",
         "Makeup permanent sysh/buzësh/vetullash"
@@ -1109,6 +1129,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 5: Manikyr & Pedikyr",
+    category: "manikyr-pedikyr-nail-art",
       lessons: ["Manikyr xhel bazik", "Pedikyr SPA me parafine"]
     },
     {
@@ -1141,7 +1162,7 @@ export const courses: Course[] = [
 {
   id: 19,
   title: "Kurs Estetike (600 ore)",
-  category: "esthetics",
+  category: "estetike",
   duration: "600 orë",
   durationCategory: "600 orë",
   level: "Fillestar – Mesatar",
@@ -1177,6 +1198,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 4: Masazhe & Spa",
+    category: "masazhet",
       lessons: ["Masazh relaksues", "SPA duar dhe këmbe"]
     },
     {
@@ -1209,7 +1231,7 @@ export const courses: Course[] = [
 {
   id: 20,
   title: "Kurs Estetike (300 ore)",
-  category: "esthetics",
+  category: "estetike",
   duration: "300 orë",
   durationCategory: "300 orë",
   level: "Fillestar",
@@ -1245,6 +1267,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 4: Manikyr & Spa",
+    category: "manikyr-pedikyr-nail-art",
       lessons: ["Manikyr bazik", "SPA këmbe me parafine"]
     },
     {
@@ -1277,7 +1300,7 @@ export const courses: Course[] = [
 {
   id: 21,
   title: "Kurs Zgjatimi i Qerpikëve (150 ore)",
-  category: "lashes",
+  category: "zgjatimi-i-qerpikeve",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Mesatar – Avancuar",
@@ -1349,7 +1372,7 @@ export const courses: Course[] = [
 {
   id: 22,
   title: "Kurs Zgjatimi i Qerpikëve (50 ore)",
-  category: "lashes",
+  category: "zgjatimi-i-qerpikeve",
   duration: "50 orë",
   durationCategory: "50 orë",
   level: "Fillestar – Mesatar",
@@ -1401,7 +1424,7 @@ export const courses: Course[] = [
 {
   id: 23,
   title: "Kurs Hydrofacial 15-in-1 (150 ore)",
-  category: "facials",
+  category: "pajisjet-e-estetikes",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Avancuar",
@@ -1432,6 +1455,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 3: Protokollet e Pastrimit",
+    category: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
       lessons: ["Deep cleansing", "Mikrodermabrazion me acid"]
     },
     {
@@ -1477,7 +1501,7 @@ export const courses: Course[] = [
 {
   id: 24,
   title: "Kursi Parukeri (2100 ore)",
-  category: "hair",
+  category: "parukeri",
   duration: "2100 orë",
   durationCategory: "2100 orë",
   level: "Fillestar – Avancuar",
@@ -1553,7 +1577,7 @@ export const courses: Course[] = [
 {
   id: 79,
   title: "Kursi Parukeri (1500 ore)",
-  category: "hair",
+  category: "parukeri",
   duration: "1500 orë",
   durationCategory: "1500 orë",
   level: "Fillestar – Avancuar",
@@ -1629,7 +1653,7 @@ export const courses: Course[] = [
 {
   id: 25,
   title: "Kursi Parukeri (900 ore)",
-  category: "hair",
+  category: "parukeri",
   duration: "900 orë",
   durationCategory: "900 orë",
   level: "Mesatar – Avancuar",
@@ -1661,6 +1685,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 3: Permanent & Makeup Flokësh",
+    category: "makeup-permanent-pmu",
       lessons: ["Teknikat e permanentit", "Makeup për flokët"]
     },
     {
@@ -1685,7 +1710,7 @@ export const courses: Course[] = [
 {
   id: 26,
   title: "Kursi Parukeri (600 ore)",
-  category: "hair",
+  category: "parukeri",
   duration: "600 orë",
   durationCategory: "600 orë",
   level: "Mesatar",
@@ -1713,6 +1738,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 2: Makeup & Ngjyrosje",
+    category: "makeup",
       lessons: ["Makeup flokësh", "Teknikat e bojës"]
     },
     {
@@ -1733,7 +1759,7 @@ export const courses: Course[] = [
 {
   id: 27,
   title: "Kursi Parukeri (300 ore)",
-  category: "hair",
+  category: "parukeri",
   duration: "300 orë",
   durationCategory: "300 orë",
   level: "Fillestar",
@@ -1785,7 +1811,7 @@ export const courses: Course[] = [
 {
   id: 82,
   title: "Parukeri Estetike (2100 ore)",
-  category: "hair",
+  category: "parukeri-estetike",
   duration: "2100 orë",
   durationCategory: "2100 orë",
   level: "Profesional",
@@ -1810,6 +1836,7 @@ export const courses: Course[] = [
     },
     {
       title: "Estetikë & Trajtimet e Fytyrës",
+    category: "trajtimet-e-fytyres",
       lessons: [
         "Masazh dhe pastrim fytyre",
         "Make-up & make-up permanent",
@@ -1825,6 +1852,7 @@ export const courses: Course[] = [
     },
     {
       title: "Manikyr-Pedikyr & Flokët",
+    category: "manikyr-pedikyr-nail-art",
       lessons: [
         "Shampim, larje, prerje, stilim",
         "Ngjyrosje dhe trajtim kimik",
@@ -1852,7 +1880,7 @@ export const courses: Course[] = [
 {
   id: 28,
   title: "Kursi Tattoo Art (2100 ore)",
-  category: "tattoo",
+  category: "tattoo-art",
   duration: "2100 orë",
   durationCategory: "2100 orë",
   level: "Mesatar – Avancuar",
@@ -1888,6 +1916,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 4: Materialet & Pajisjet",
+    category: "pajisjet-e-estetikes",
       lessons: ["Llojet e makinerive", "Pigmentet"]
     },
     {
@@ -1936,7 +1965,7 @@ export const courses: Course[] = [
 {
   id: 29,
   title: "Terapia Hixhama (600 ore)",
-  category: "therapy",
+  category: "terapia-hixhama",
   duration: "600 orë",
   durationCategory: "600 orë",
   level: "Fillestar – Mesatar",
@@ -2002,7 +2031,7 @@ export const courses: Course[] = [
 {
   id: 30,
   title: "Terapia Hixhama (300 ore)",
-  category: "therapy",
+  category: "terapia-hixhama",
   duration: "300 orë",
   durationCategory: "300 orë",
   level: "Fillestar",
@@ -2058,7 +2087,7 @@ export const courses: Course[] = [
 {
   id: 31,
   title: "Terapia Hixhama (150 ore)",
-  category: "therapy",
+  category: "terapia-hixhama",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Fillestar",
@@ -2106,10 +2135,10 @@ export const courses: Course[] = [
 // Makeup Courses
 {
   id: 32,
-  title: "Kursi Make-up (1200 ore)",
+  title: "Kursi Make-up (1500 ore)",
   category: "makeup",
-  duration: "1200 orë",
-  durationCategory: "1200 orë",
+  duration: "1500 orë",
+  durationCategory: "1500 orë",
   level: "Fillestar – Avancuar",
   price: "",
   startDate: "",
@@ -2117,7 +2146,7 @@ export const courses: Course[] = [
   image: "/courses/makeup-1200.jpg",
   videoSrc: "/videos/makeup-video.mp4",
   description:
-    "Program 1200-orësh që mbulon nga etika dhe historia e make-up-it, tek teknikat profesionale, grimi special e portofoli online.",
+    "Program 1500-orësh që mbulon nga etika dhe historia e make-up-it, tek teknikat profesionale, grimi special e portofoli online.",
   longDescription:
     "Ky kurs i plotë përfshin: etikën dhe historinë e make-up-it; higjienën, sterilizimin dhe sigurinë në studio; anatominë dhe fiziologjinë e lëkurës; njohjen e produkteve kozmetike dhe veglave profesionale; teknikat bazë dhe të avancuara të aplikimit të bazës, konturimit, hijeve, eyeliner-it, maskarës, vetullave, qerpikëve dhe buzëve; grimin për ditë, mbrëmje, nuse dhe evente speciale; grimin editorial e fantazi; si dhe fotografimin dhe promovimin në rrjetet sociale. Në fund, realizohet një portofol i plotë dhe vlerësim praktik e teorik.",
   instructors: [
@@ -2183,6 +2212,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 8: Make-up i Syve",
+    category: "makeup",
       lessons: [
         "Aplikimi i hijeve, eyeliner-it, maskarës",
         "Teknikat blending dhe smokey"
@@ -2190,6 +2220,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 9: Vetulla & Qerpikë",
+    category: "zgjatimi-i-qerpikeve",
       lessons: [
         "Formësimi dhe mbushja e vetullave",
         "Aplikimi i qerpikëve artificialë"
@@ -2197,6 +2228,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 10: Make-up i Buzëve",
+    category: "makeup",
       lessons: [
         "Konturimi dhe zgjedhja e ngjyrave",
         "Gloss, mat & ombre"
@@ -2318,6 +2350,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 9: Vetullat & Qerpikët",
+    category: "zgjatimi-i-qerpikeve",
       lessons: ["Mbushja e vetullave", "Qerpikët artificialë"]
     },
     {
@@ -2368,6 +2401,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Hyrje në Make-up dhe Etika Profesionale",
+    category: "makeup",
       lessons: [
         "Historia dhe evolucioni i make-up-it",
         "Etika profesionale dhe imazhi i vetes"
@@ -2417,6 +2451,7 @@ export const courses: Course[] = [
     },
     {
       title: "Make-up i Syve",
+    category: "makeup",
       lessons: [
         "Forma dhe korrigjim optic",
         "Hije, eyeliner, maskara"
@@ -2424,6 +2459,7 @@ export const courses: Course[] = [
     },
     {
       title: "Vetulla dhe Qerpikë",
+    category: "zgjatimi-i-qerpikeve",
       lessons: [
         "Formësimi dhe mbushja",
         "Zgjedhja sipas fytyrës"
@@ -2517,6 +2553,7 @@ export const courses: Course[] = [
     },
     {
       title: "Sy, Qerpikë, Buzë",
+    category: "zgjatimi-i-qerpikeve",
       lessons: [
         "Teknika për sytë",
         "Qerpikët dhe vetullat",
@@ -2542,7 +2579,7 @@ export const courses: Course[] = [
 {
   id: 34,
   title: "Manikyr–Pedikyr & Nail Art (1500 ore)",
-  category: "nails",
+  category: "manikyr-pedikyr-nail-art",
   duration: "1500 orë",
   durationCategory: "1500 orë",
   level: "Mesatar – Avancuar",
@@ -2594,6 +2631,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 5: Produkte, Vegla & Pajisje",
+    category: "pajisjet-e-estetikes",
       lessons: [
         "Gel, akrilik, pigmente, llakë",
         "Freza elektrike & llampa UV/LED"
@@ -2608,6 +2646,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 7: Teknikat Bazë të Nail Art",
+    category: "manikyr-pedikyr-nail-art",
       lessons: [
         "Manikyr francez & ombre",
         "Efekti mermer, stampim & pikturim dorazi"
@@ -2659,7 +2698,7 @@ export const courses: Course[] = [
 {
   id: 35,
   title: "Manikyr–Pedikyr & Nail Art (400 ore)",
-  category: "nails",
+  category: "manikyr-pedikyr-nail-art",
   duration: "400 orë",
   durationCategory: "400 orë",
   level: "Fillestar – Mesatar",
@@ -2724,7 +2763,7 @@ export const courses: Course[] = [
 {
   id: 36,
   title: "Manikyr–Pedikyr & Nail Art (150 ore)",
-  category: "nails",
+  category: "manikyr-pedikyr-nail-art",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Fillestar",
@@ -2760,6 +2799,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 4: Përgatitja & Nail Art Bazë",
+    category: "manikyr-pedikyr-nail-art",
       lessons: ["Formësimi i thonjve", "Frances, ombre"]
     },
     {
@@ -2784,7 +2824,7 @@ export const courses: Course[] = [
 {
   id: 78,
   title: "Manikyr–Pedikyr & Nail Art (50 ore)",
-  category: "nails",
+  category: "manikyr-pedikyr-nail-art",
   duration: "50 orë",
   durationCategory: "50 orë",
   level: "Fillestar – Mesatar",
@@ -2849,7 +2889,7 @@ export const courses: Course[] = [
 {
   id: 37,
   title: "Kursi Masazhet (2500 ore)",
-  category: "massage",
+  category: "masazhet",
   duration: "2500 orë",
   durationCategory: "2500 orë",
   level: "Mesatar – Avancuar",
@@ -2966,7 +3006,7 @@ export const courses: Course[] = [
 {
   id: 38,
   title: "Masazh Klasik, Relaksues, Aromaterapi & Oriental (150 ore)",
-  category: "massage",
+  category: "masazhet",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Fillestar – Mesatar",
@@ -2994,10 +3034,12 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 2: Anatomia për Masazh",
+    category: "masazhet",
       lessons: ["Strukturat muskulore", "Ndikimi në trup"]
     },
     {
       title: "Moduli 3: Masazh Klasik & Relaksues",
+    category: "masazhet",
       lessons: ["Suedez", "Aromaterapi"]
     },
     {
@@ -3026,7 +3068,7 @@ export const courses: Course[] = [
 {
   id: 39,
   title: "Masazh Terapeutik, Kurativ, Anticelulit & Refleksologji Plantare (150 ore)",
-  category: "massage",
+  category: "masazhet",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Mesatar",
@@ -3054,6 +3096,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 2: Masazh Terapeutik & Kurativ",
+    category: "masazhet",
       lessons: ["Rehabilitimi pas lëndimeve", "Hidroterapi & balneoterapi"]
     },
     {
@@ -3087,7 +3130,7 @@ export const courses: Course[] = [
 {
   id: 40,
   title: "Kursi Trajtimet e Fytyrës (600 ore)",
-  category: "facial",
+  category: "trajtimet-e-fytyres",
   duration: "600 orë",
   durationCategory: "600 orë",
   level: "Mesatar – Avancuar",
@@ -3114,7 +3157,8 @@ export const courses: Course[] = [
     { title: "Moduli 4: Produkte & Përbërës Aktivë", lessons: ["Klasifikimi i produkteve", "Alergjitë"] },
     { title: "Moduli 5: Trajtimi Bazë", lessons: ["Pastrimi dhe tonifikimi", "Masazhi dhe maskat"] },
     { title: "Moduli 6: Trajtimet Avancuara", lessons: ["Peeling kimik & mekanik", "Microdermabrasion & serume"] },
-    { title: "Moduli 7: Pajisje Estetike", lessons: ["Vapozon & roller", "Lampa UV & rigjenerimi"] },
+    { title: "Moduli 7: Pajisje Estetike",
+    category: "pajisjet-e-estetikes", lessons: ["Vapozon & roller", "Lampa UV & rigjenerimi"] },
     { title: "Moduli 8: Lëkurë Problem", lessons: ["Akne & komedone", "Kuperozë & ndjeshmëri"] },
     { title: "Moduli 9: Anti-Aging & Lifting", lessons: ["Trajtimet rigjeneruese", "Drenazh limfatik fytyre"] },
     { title: "Moduli 10: Zona Speciale", lessons: ["Trajtimi i syve", "Buzët & dekolteja"] },
@@ -3141,7 +3185,7 @@ export const courses: Course[] = [
 {
   id: 41,
   title: "Kursi Makeup Permanent (1200 ore)",
-  category: "makeup",
+  category: "makeup-permanent-pmu",
   duration: "1200 orë",
   durationCategory: "1200 orë",
   level: "Mesatar – Avancuar",
@@ -3163,11 +3207,13 @@ export const courses: Course[] = [
     }
   ],
   curriculum: [
-    { title: "Moduli 1: Intro & Historia PMU", lessons: ["Evolucioni i PMU", "Parimet bazë"] },
+    { title: "Moduli 1: Intro & Historia PMU",
+    category: "makeup-permanent-pmu", lessons: ["Evolucioni i PMU", "Parimet bazë"] },
     { title: "Moduli 2: Anatomia & Lëkura", lessons: ["Shtresat e lëkurës", "Kolagjeni & elastina"] },
     { title: "Moduli 3: Etika & Higjiena", lessons: ["Sterilizimi", "Parandalimi infeksionesh"] },
     { title: "Moduli 4: Teoria e Ngjyrave", lessons: ["Pigmentët dhe nuancat", "Përzierja"] },
-    { title: "Moduli 5: Mjetet & Pajisjet", lessons: ["Makineritë & kartidgët", "Aksesoret"] },
+    { title: "Moduli 5: Mjetet & Pajisjet",
+    category: "pajisjet-e-estetikes", lessons: ["Makineritë & kartidgët", "Aksesoret"] },
     { title: "Moduli 6: Konsultim & Projektim", lessons: ["Skicimi i formave", "Analiza fytyre"] },
     { title: "Moduli 7: Teknikat e Vetullave", lessons: ["Microblading", "Nano-brows"] },
     { title: "Moduli 8: Teknikat e Syrit", lessons: ["Eyeliner klasik", "Eyeliner me hije"] },
@@ -3197,7 +3243,7 @@ export const courses: Course[] = [
 {
   id: 42,
   title: "Makeup Permanent i Vetullave (150 ore)",
-  category: "makeup",
+  category: "makeup-permanent-pmu",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Fillestar – Mesatar",
@@ -3222,7 +3268,8 @@ export const courses: Course[] = [
     { title: "Moduli 1: Intro & Anatomia", lessons: ["Historia PMU", "Shtresat e lëkurës"] },
     { title: "Moduli 2: Etika & Higjiena", lessons: ["Sterilizimi", "Siguria"] },
     { title: "Moduli 3: Teoria e Pigmentëve", lessons: ["Ngjyrat & nuancat"] },
-    { title: "Moduli 4: Mjetet PMU", lessons: ["Makineritë & kartridgët"] },
+    { title: "Moduli 4: Mjetet PMU",
+    category: "makeup-permanent-pmu", lessons: ["Makineritë & kartridgët"] },
     { title: "Moduli 5: Konsultim & Projektim", lessons: ["Skica vetullash"] },
     { title: "Moduli 6: Microblading & Nano", lessons: ["Teknika manuale & digjitale"] },
     { title: "Moduli 7: Korrektim & Heqje", lessons: ["Heqja me laser", "Neutralizim ngjyrash"] },
@@ -3242,7 +3289,7 @@ export const courses: Course[] = [
 {
   id: 43,
   title: "Makeup Permanent i Syve (150 ore)",
-  category: "makeup",
+  category: "makeup-permanent-pmu",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Fillestar – Mesatar",
@@ -3268,7 +3315,8 @@ export const courses: Course[] = [
     { title: "Moduli 1: Intro & Anatomia", lessons: ["Evolucioni PMU", "Shtresat e lëkurës"] },
     { title: "Moduli 2: Etika & Higjiena", lessons: ["Sterilizimi", "Siguria"] },
     { title: "Moduli 3: Teoria e Ngjyrave", lessons: ["Pigmentët & nuancat"] },
-    { title: "Moduli 4: Pajisjet PMU", lessons: ["Makineritë & kartridgët"] },
+    { title: "Moduli 4: Pajisjet PMU",
+    category: "pajisjet-e-estetikes", lessons: ["Makineritë & kartridgët"] },
     { title: "Moduli 5: Konsultim & Project", lessons: ["Skica syz"] },
     { title: "Moduli 6: Teknikat Eyeliner", lessons: ["Eyeliner klasik", "Eyeliner me hije"] },
     { title: "Moduli 7: Korrektim & Heqje", lessons: ["Heqja me laser"] },
@@ -3288,7 +3336,7 @@ export const courses: Course[] = [
 {
   id: 44,
   title: "Makeup Permanent i Buzëve (150 ore)",
-  category: "makeup",
+  category: "makeup-permanent-pmu",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Fillestar – Mesatar",
@@ -3398,7 +3446,7 @@ export const courses: Course[] = [
 {
   id: 46,
   title: "Fashion Design (1200 ore)",
-  category: "fashion",
+  category: "fashion-design",
   duration: "1200 orë",
   durationCategory: "1200 orë",
   level: "Mesatar – Avancuar",
@@ -3449,7 +3497,7 @@ export const courses: Course[] = [
 {
   id: 47,
   title: "Fashion Design (900 ore)",
-  category: "fashion",
+  category: "fashion-design",
   duration: "900 orë",
   durationCategory: "900 orë",
   level: "Mesatar",
@@ -3496,7 +3544,7 @@ export const courses: Course[] = [
 {
   id: 48,
   title: "Fashion Design (600 ore)",
-  category: "fashion",
+  category: "fashion-design",
   duration: "600 orë",
   durationCategory: "600 orë",
   level: "Fillestar – Mesatar",
@@ -3953,7 +4001,7 @@ export const courses: Course[] = [
   {
   id: 83,
   title: "Kursi Makeup Permanent i Aureolave & Zonave të Rëna të Flokëve (150 ore)",
-  category: "makeup",
+  category: "makeup-permanent-pmu",
   duration: "150 orë",
   durationCategory: "150 orë",
   level: "Avancuar",
@@ -3986,6 +4034,7 @@ export const courses: Course[] = [
     },
     {
       title: "Teoria e Ngjyrave & Pajisjet",
+    category: "pajisjet-e-estetikes",
       lessons: [
         "Pigmentet dhe përzierjet",
         "Makineritë dhe kartridgët"
@@ -4211,7 +4260,7 @@ export const courses: Course[] = [
     id: 62,
     title:
       "Kurs Përgatitor për Provimin e Udhërrëfyesit Turistik",
-    category: "UET Italia",
+    category: "operatoret-turistike",
     duration: "",
     durationCategory: "",
     level: "",
@@ -4232,7 +4281,7 @@ export const courses: Course[] = [
   {
     id: 63,
     title: "Kurs për Udhërrëfyes Turistik",
-    category: "UET Italia",
+    category: "operatoret-turistike",
     duration: "",
     durationCategory: "",
     level: "",

@@ -32,9 +32,9 @@ const addresses = [
     id: 1,
     city: "Tiranë",
     address:
-      "Rruga “Tom Plezha”, përballë me karburantin Kastrati, Unaza e Re, Tiranë, Shqipëri",
+      'Rruga "Tom Plezha", Kompleksi I pallateve "Milo 2000", Rrethrrotullimi Astir, Unaza e Re, Tirane',
     phone: "+355 69 204 3535",
-    email: "afroditeacademy@gmail.com",
+    email: "info@afroditeacademy.al",
     hours: {
       weekdays: "9:00 - 18:00",
       saturday: "9:00 - 14:00",

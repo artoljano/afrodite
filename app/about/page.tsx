@@ -97,6 +97,10 @@ export default function AboutPage() {
   const paused = useRef(false);
   const speed = useRef(1.5); // px per frame (fast initial)
 
+  //safe src
+  const safeSrc = (value?: string | null, fallback = "/placeholder.svg") =>
+    value && value.trim() ? value : fallback;
+
   // State holds current video modal info, or null
   const [modalVideo, setModalVideo] = useState<{
     videoSrc: string;
@@ -632,7 +636,11 @@ export default function AboutPage() {
                 {/* Photo */}
                 <div className="relative overflow-hidden rounded-t-xl h-[400px] md:h-80">
                   <Image
-                    src={member.photo || "/placeholder.svg"}
+                    src={
+                      member.photo && member.photo.trim() !== ""
+                        ? member.photo
+                        : "/placeholder.svg"
+                    }
                     alt={member.name}
                     fill
                     className="object-cover object-center transition-transform duration-500 md:group-hover:scale-105"
@@ -969,31 +977,32 @@ export default function AboutPage() {
                   >
                     {slide.type === "image" ? (
                       <Image
-                        src={slide.src}
+                        src={safeSrc(slide.src)}
                         alt={slide.alt || slide.title}
                         width={600}
                         height={400}
-                        className="
-            object-cover w-full
-            h-64              
-            md:h-80           
-            lg:h-96           
-          "
+                        className="object-cover w-full h-64 md:h-80 lg:h-96"
                       />
                     ) : (
                       <>
-                        <Image
-                          src={thumb || slide.thumbnail!}
-                          alt={slide.title}
-                          width={600}
-                          height={400}
-                          className="
-              object-cover w-full
-              h-64               
-              md:h-80           
-              lg:h-96            
-            "
-                        />
+                        {/* use hook thumbnail if available; otherwise fallback image */}
+                        {(() => {
+                          const rawThumb =
+                            thumbs[idx % slides.length] ??
+                            slide.thumbnail ??
+                            "";
+                          const thumbSrc = safeSrc(rawThumb); // never ""
+                          return (
+                            <Image
+                              src={thumbSrc}
+                              alt={slide.title}
+                              width={600}
+                              height={400}
+                              className="object-cover w-full h-64 md:h-80 lg:h-96"
+                            />
+                          );
+                        })()}
+
                         <button
                           className="absolute inset-0 flex items-center justify-center bg-black/50"
                           onClick={() =>

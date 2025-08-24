@@ -25,6 +25,7 @@ import {
   Sparkles,
   Feather,
   PenTool,
+  Scissors,
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -75,83 +76,76 @@ export default function ClientCourseDetail({ course }: Props) {
   const coursesRef = useRef<HTMLDivElement>(null);
 
   const categories = [
-    { id: "makeup", name: "Makeup", icon: <Feather className="h-4 w-4" /> },
     {
-      id: "nails",
-      name: "Manikyr & Pedikyr",
-      icon: <Award className="h-4 w-4" />,
-    },
-    {
-      id: "esthetics",
+      id: "estetike",
       name: "Estetikë",
       icon: <Sparkles className="h-4 w-4" />,
     },
+    { id: "parukeri", name: "Parukeri", icon: <Users className="h-4 w-4" /> },
     {
-      id: "facials",
+      id: "parukeri-estetike",
+      name: "Parukeri–Estetikë",
+      icon: <Sparkles className="h-4 w-4" />,
+    },
+    {
+      id: "trajtimet-e-fytyres",
       name: "Trajtimet e Fytyrës",
       icon: <User className="h-4 w-4" />,
     },
-    // { id: "brows", name: "Vetulla", icon: <Eye className="h-4 w-4" /> },
+    { id: "berber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
     {
-      id: "lashes",
+      id: "zgjatimi-i-qerpikeve",
       name: "Zgjatimi i Qerpikëve",
       icon: <CheckCircle className="h-4 w-4" />,
     },
-    { id: "hair", name: "Parukeri", icon: <Users className="h-4 w-4" /> },
-    // { id: "barber", name: "Berber", icon: <Scissors className="h-4 w-4" /> },
-    { id: "massage", name: "Masazh", icon: <BookOpen className="h-4 w-4" /> },
     {
-      id: "therapy",
-      name: "Terapitë Estetike",
-      icon: <Heart className="h-4 w-4" />,
+      id: "kujdestar-per-te-moshuar-dhe-femije",
+      name: "Kujdestar për të Moshuar dhe Fëmijë",
+      icon: <HeartHandshake className="h-4 w-4" />,
     },
-    // {
-    //   id: "reception",
-    //   name: "Recepsion",
-    //   icon: <Headphones className="h-4 w-4" />,
-    // },
-    // {
-    //   id: "tour-guide",
-    //   name: "Udhërrëfyes Turistik",
-    //   icon: <MapPin className="h-4 w-4" />,
-    // },
+    { id: "makeup", name: "Makeup", icon: <Feather className="h-4 w-4" /> },
     {
-      id: "tourism",
-      name: "Shërbime Turistike",
+      id: "makeup-permanent-pmu",
+      name: "Makeup Permanent (PMU)",
+      icon: <Sparkles className="h-4 w-4" />,
+    },
+    { id: "masazhet", name: "Masazhe", icon: <Heart className="h-4 w-4" /> },
+    {
+      id: "manikyr-pedikyr-nail-art",
+      name: "Manikyr & Pedikyr (Nail Art)",
+      icon: <Award className="h-4 w-4" />,
+    },
+    {
+      id: "operatoret-turistike",
+      name: "Operatorët Turistikë",
       icon: <Globe className="h-4 w-4" />,
     },
-    // {
-    //   id: "travel-agent",
-    //   name: "Agjent Udhëtimesh",
-    //   icon: <Briefcase className="h-4 w-4" />,
-    // },
-    // {
-    //   id: "craft",
-    //   name: "Veshje Artizanale",
-    //   icon: <Hammer className="h-4 w-4" />,
-    // },
-    // {
-    //   id: "industrial",
-    //   name: "Modeliste Industriale",
-    //   icon: <ShoppingBag className="h-4 w-4" />,
-    // },
     {
-      id: "fashion",
+      id: "pajisjet-e-estetikes",
+      name: "Pajisjet e Estetikës",
+      icon: <Sparkles className="h-4 w-4" />,
+    },
+    {
+      id: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
+      name: "Shërbim Pastrimi në Njësi Banimi dhe Institucione",
+      icon: <Droplet className="h-4 w-4" />,
+    },
+    { id: "recepsion", name: "Recepsion", icon: <User className="h-4 w-4" /> },
+    {
+      id: "tattoo-art",
+      name: "Tattoo Art",
+      icon: <PenTool className="h-4 w-4" />,
+    },
+    {
+      id: "fashion-design",
       name: "Fashion Design",
       icon: <ShoppingBag className="h-4 w-4" />,
     },
     {
-      id: "cleaning",
-      name: "Pastrim Profesional",
-      icon: <Droplet className="h-4 w-4" />,
+      id: "terapia-hixhama",
+      name: "Terapia Hixhama",
+      icon: <Heart className="h-4 w-4" />,
     },
-    {
-      id: "caregiver",
-      name: "Kujdestar",
-      icon: <HeartHandshake className="h-4 w-4" />,
-    },
-
-    { id: "tattoo", name: "Tattoo Art", icon: <PenTool className="h-4 w-4" /> },
   ];
 
   // inside ClientCourseDetail, before the JSX return
@@ -165,7 +159,7 @@ export default function ClientCourseDetail({ course }: Props) {
       <VideoBackground
         videoSrc={course.videoSrc || "/placeholder-video.mp4"}
         overlayOpacity={0.6}
-        className="min-h-[60vh] md:h-[75vh] py-20 md:py-32 bg-gradient-to-r from-black to-purple-900"
+        className="min-h-[60vh] md:h-[75vh] py-20 md:py-32 bg-afrodite-creme"
       >
         <motion.div
           style={{ opacity, scale }}
@@ -177,24 +171,26 @@ export default function ClientCourseDetail({ course }: Props) {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-4xl md:text-5xl font-bold font-poppins text-white mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold font-poppins text-afrodite-creme mb-6">
               {course.title}
             </h1>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-8" />
-            <p className="text-lg text-navy-100 mb-8">{course.description}</p>
+            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-8" />
+            <p className="text-lg text-afrodite-creme mb-8">
+              {course.description}
+            </p>
             <div className="flex flex-wrap justify-center gap-6 mb-8">
-              <div className="flex items-center text-white">
-                <Clock className="h-5 w-5 mr-2 text-purple-500" />
+              <div className="flex items-center text-afrodite-creme">
+                <Clock className="h-5 w-5 mr-2 text-afrodite-purple" />
                 <span>{course.duration}</span>
               </div>
-              <div className="flex items-center text-white">
-                <Award className="h-5 w-5 mr-2 text-purple-500" />
+              <div className="flex items-center text-afrodite-creme">
+                <Award className="h-5 w-5 mr-2 text-afrodite-purple" />
                 <span>{course.level}</span>
               </div>
-              <div className="flex items-center text-white">
-                <Calendar className="h-5 w-5 mr-2 text-purple-500" />
+              {/* <div className="flex items-center text-afrodite-creme">
+                <Calendar className="h-5 w-5 mr-2 text-afrodite-purple" />
                 <span>Fillon: {course.startDate}</span>
-              </div>
+              </div> */}
             </div>
             <Link href={`/register?courseId=${course.id}`} passHref>
               <AnimatedButton size="lg" variant="secondary">
@@ -235,7 +231,7 @@ export default function ClientCourseDetail({ course }: Props) {
     "
                     />
                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <Play className="h-12 w-12 text-purple-500" />
+                      <Play className="h-12 w-12 text-afrodite-purple" />
                     </div>
                   </div>
                   <VideoModal
@@ -266,40 +262,52 @@ export default function ClientCourseDetail({ course }: Props) {
               className="space-y-6"
             >
               <div>
-                <h2 className="text-3xl font-bold font-poppins text-navy-900 mb-4">
+                <h2 className="text-3xl font-bold font-poppins text-afrodite-purple mb-4">
                   Rreth Kursit
                 </h2>
-                <div className="h-1 w-16 bg-purple-500 mb-6" />
-                <p className="text-navy-700">{course.longDescription}</p>
+                <div className="h-1 w-16 bg-afrodite-purple mb-6" />
+                <p className="text-afrodite-lightPurple">
+                  {course.longDescription}
+                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                <div className="flex items-center p-4 bg-navy-50 rounded-lg">
-                  <Clock className="h-10 w-10 text-purple-500 mr-4" />
+                <div className="flex items-center p-4 bg-afrodite-creme rounded-lg">
+                  <Clock className="h-10 w-10 text-afrodite-purple mr-4" />
                   <div>
-                    <h3 className="font-bold text-navy-900">Kohëzgjatja</h3>
-                    <p className="text-navy-700">{course.duration}</p>
+                    <h3 className="font-bold text-afrodite-purple">
+                      Kohëzgjatja
+                    </h3>
+                    <p className="text-afrodite-lightPurple">
+                      {course.duration}
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-center p-4 bg-navy-50 rounded-lg">
-                  <Calendar className="h-10 w-10 text-purple-500 mr-4" />
+                <div className="flex items-center p-4 bg-afrodite-creme rounded-lg">
+                  <Calendar className="h-10 w-10 text-afrodite-purple mr-4" />
                   <div>
-                    <h3 className="font-bold text-navy-900">Orari</h3>
-                    <p className="text-navy-700">{course.schedule}</p>
+                    <h3 className="font-bold text-afrodite-purple">Orari</h3>
+                    <p className="text-afrodite-lightPurple">
+                      {course.schedule}
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-center p-4 bg-navy-50 rounded-lg">
-                  <Award className="h-10 w-10 text-purple-500 mr-4" />
+                <div className="flex items-center p-4 bg-afrodite-creme rounded-lg">
+                  <Award className="h-10 w-10 text-afrodite-purple mr-4" />
                   <div>
-                    <h3 className="font-bold text-navy-900">Niveli</h3>
-                    <p className="text-navy-700">{course.level}</p>
+                    <h3 className="font-bold text-afrodite-purple">Niveli</h3>
+                    <p className="text-afrodite-lightPurple">{course.level}</p>
                   </div>
                 </div>
-                <div className="flex items-center p-4 bg-navy-50 rounded-lg">
-                  <GraduationCap className="h-10 w-10 text-purple-500 mr-4" />
+                <div className="flex items-center p-4 bg-afrodite-creme rounded-lg">
+                  <GraduationCap className="h-10 w-10 text-afrodite-purple mr-4" />
                   <div>
-                    <h3 className="font-bold text-navy-900">Certifikim</h3>
-                    <p className="text-navy-700">Certifikatë Ndërkombëtare</p>
+                    <h3 className="font-bold text-afrodite-purple">
+                      Certifikim
+                    </h3>
+                    <p className="text-afrodite-lightPurple">
+                      Certifikatë Ndërkombëtare
+                    </p>
                   </div>
                 </div>
               </div>
@@ -317,7 +325,9 @@ export default function ClientCourseDetail({ course }: Props) {
       </section>
 
       {/* ── Content Tabs ── */}
-      <section className="py-16 bg-navy-50">
+      <section className="py-16 md:py-24 bg-afrodite-creme relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
+
         <div className="container mx-auto px-4">
           <Tabs defaultValue="curriculum" className="w-full">
             <div className="overflow-x-auto scrollbar-hide pt-1">
@@ -332,15 +342,15 @@ export default function ClientCourseDetail({ course }: Props) {
             {/* ── Curriculum ── */}
             <TabsContent
               value="curriculum"
-              className="bg-white p-6 rounded-xl shadow-md"
+              className="bg-afrodite-white p-6 rounded-xl shadow-md"
             >
-              <h3 className="text-2xl font-bold font-poppins text-navy-900 mb-6">
+              <h3 className="text-2xl font-bold font-poppins text-afrodite-purple mb-6">
                 Çfarë do të mësoni
               </h3>
               <Accordion type="single" collapsible className="w-full">
                 {course.curriculum?.map((mod, i) => (
                   <AccordionItem key={i} value={`mod-${i}`}>
-                    <AccordionTrigger className="text-lg font-medium">
+                    <AccordionTrigger className="text-lg font-medium text-afrodite-purple">
                       {mod.title}
                     </AccordionTrigger>
                     <AccordionContent>
@@ -353,8 +363,10 @@ export default function ClientCourseDetail({ course }: Props) {
                             transition={{ delay: j * 0.1 }}
                             className="flex items-start"
                           >
-                            <CheckCircle className="h-5 w-5 text-purple-500 mr-2 mt-0.5" />
-                            {les}
+                            <CheckCircle className="h-5 w-5 text-afrodite-purple mr-2 mt-0.5" />
+                            <span className="text-afrodite-lightPurple">
+                              {les}
+                            </span>
                           </motion.li>
                         ))}
                       </ul>
@@ -369,7 +381,9 @@ export default function ClientCourseDetail({ course }: Props) {
               value="instructors"
               className="bg-white p-6 rounded-xl shadow-md"
             >
-              <h3 className="text-2xl font-bold mb-6">Instruktorët Tanë</h3>
+              <h3 className="text-2xl font-bold mb-6 text-afrodite-purple">
+                Instruktorët Tanë
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {course.instructors?.map((instr, i) => (
                   <motion.div
@@ -377,21 +391,25 @@ export default function ClientCourseDetail({ course }: Props) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.2 }}
-                    className="flex flex-col md:flex-row items-center gap-6 p-6 bg-navy-50 rounded-xl"
+                    className="flex flex-col md:flex-row items-center gap-6 p-6 bg-afrodite-creme rounded-xl"
                   >
-                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md">
+                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-afrodite-lightPurple shadow-md">
                       <Image
                         src={instr.image}
                         alt={instr.name}
                         width={200}
                         height={200}
-                        className="object-cover w-full h-full"
+                        className="object-cover w-full h-full "
                       />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-1">{instr.name}</h4>
-                      <p className="text-purple-600 mb-2">{instr.role}</p>
-                      <p className="text-navy-700">{instr.bio}</p>
+                      <h4 className="text-xl font-bold mb-1 text-afrodite-purple">
+                        {instr.name}
+                      </h4>
+                      <p className="text-afrodite-lightPurple mb-2">
+                        {instr.role}
+                      </p>
+                      <p className="text-afrodite-lightPurple">{instr.bio}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -405,7 +423,7 @@ export default function ClientCourseDetail({ course }: Props) {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-2xl font-bold mb-6">
+                  <h3 className="text-2xl font-bold mb-6 text-afrodite-purple">
                     Përfitimet e Kursit
                   </h3>
                   <ul className="space-y-4">
@@ -417,14 +435,14 @@ export default function ClientCourseDetail({ course }: Props) {
                         transition={{ delay: i * 0.1 }}
                         className="flex items-start"
                       >
-                        <CheckCircle className="h-6 w-6 text-purple-500 mr-3 mt-0.5" />
-                        {b}
+                        <CheckCircle className="h-6 w-6 text-afrodite-purple mr-3 mt-0.5" />
+                        <span className="text-afrodite-lightPurple">{b}</span>
                       </motion.li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold mb-6">
+                  <h3 className="text-2xl font-bold mb-6 text-afrodite-purple">
                     Materialet e Përfshira
                   </h3>
                   <ul className="space-y-4">
@@ -436,8 +454,8 @@ export default function ClientCourseDetail({ course }: Props) {
                         transition={{ delay: i * 0.1 }}
                         className="flex items-start"
                       >
-                        <CheckCircle className="h-6 w-6 text-purple-500 mr-3 mt-0.5" />
-                        {m}
+                        <CheckCircle className="h-6 w-6 text-afrodite-purple mr-3 mt-0.5" />
+                        <span className=" text-afrodite-lightPurple">{m}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -488,7 +506,7 @@ export default function ClientCourseDetail({ course }: Props) {
                         className="object-cover w-full h-60"
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                        <Play className="h-12 w-12 text-white" />
+                        <Play className="h-12 w-12 text-afrodite-creme" />
                       </div>
                     </motion.div>
                   )
@@ -510,11 +528,11 @@ export default function ClientCourseDetail({ course }: Props) {
       )}
 
       {/* ── Testimonials Section ── */}
-      {course.testimonials?.length > 0 && (
+      {/* {course.testimonials?.length > 0 && (
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold font-poppins text-navy-900 mb-4">
+              <h2 className="text-3xl font-bold font-poppins text-afrodite-purple mb-4">
                 Çfarë Thonë Studentët Tanë
               </h2>
               <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
@@ -528,7 +546,7 @@ export default function ClientCourseDetail({ course }: Props) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
-                  className="bg-navy-50 p-6 rounded-xl shadow-md"
+                  className="bg-afrodite-creme p-6 rounded-xl shadow-md"
                 >
                   <div className="flex items-center mb-4">
                     <div className="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-purple-500">
@@ -541,22 +559,24 @@ export default function ClientCourseDetail({ course }: Props) {
                       />
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-navy-900">
+                      <h4 className="text-lg font-bold text-afrodite-purple">
                         {testimonial.name}
                       </h4>
                       <p className="text-navy-600">{testimonial.role}</p>
                     </div>
                   </div>
-                  <p className="text-navy-700 italic">"{testimonial.text}"</p>
+                  <p className="text-afrodite-lightPurple italic">
+                    "{testimonial.text}"
+                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* ── CTA Section ── */}
-      <section className="py-16 bg-gradient-to-br from-black via-purple-900 to-black relative overflow-hidden">
+      <section className="py-16 bg-afrodite-creme relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
           <Image
             src="/wave-pattern.svg"
@@ -568,10 +588,10 @@ export default function ClientCourseDetail({ course }: Props) {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple mb-6">
               Gati për të Filluar Karrierën Tuaj të Re?
             </h2>
-            <p className="text-lg text-navy-100 mb-8">
+            <p className="text-lg text-afrodite-lightPurple mb-8">
               Regjistrohuni sot në kursin tonë profesional dhe bëhuni pjesë e
               komunitetit tonë të suksesshëm.
             </p>
@@ -579,15 +599,15 @@ export default function ClientCourseDetail({ course }: Props) {
               <AnimatedButton
                 size="lg"
                 variant="default"
-                className="bg-black hover:bg-black text-white border border-purple-500/30"
+                className="bg-afrodite-lightPurple text-afrodite-creme"
               >
                 REGJISTROHU TANI
               </AnimatedButton>
               <Link href="/contact">
                 <AnimatedButton
                   size="lg"
-                  variant="secondary"
-                  className="bg-purple-600 hover:bg-purple-700"
+                  variant="default"
+                  className="bg-afrodite-lightPurple text-afrodite-creme"
                 >
                   NA KONTAKTONI
                 </AnimatedButton>
@@ -608,13 +628,9 @@ export default function ClientCourseDetail({ course }: Props) {
 
       {/* ── Related Courses Section ── */}
       {relatedCourses.length > 0 && (
-        <section className="py-16 bg-purple-50" ref={coursesRef}>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold font-poppins text-navy-900 mb-4">
-              Kurse të Ngjashme
-            </h2>
-            <div className="h-1 w-24 bg-purple-500 mx-auto mb-6" />
-          </div>
+        <section className="py-16 md:py-24 bg-afrodite-white relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-afrodite-creme to-transparent"></div>
+
           <div className="container mx-auto px-4">
             <motion.div
               variants={containerVariants}
@@ -622,20 +638,20 @@ export default function ClientCourseDetail({ course }: Props) {
               animate="visible"
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {relatedCourses?.map((rc, i) => (
+              {relatedCourses.map((rc) => (
                 <motion.div
                   key={rc.id}
                   variants={itemVariants}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 relative flex flex-col h-full"
+                  className="bg-afrodite-creme rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 relative flex flex-col h-full"
                 >
-                  {/* Featured badge */}
+                  {/* Featured badge (same style as courses page) */}
                   {rc.featured && (
-                    <div className="absolute top-4 left-4 z-10 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    <div className="absolute top-4 left-4 z-10 bg-amber-500 text-afrodite-purple text-xs font-bold px-3 py-1 rounded-full">
                       Kurs i Rekomanduar
                     </div>
                   )}
 
-                  {/* Image with optional custom-crop */}
+                  {/* Image + overlay (same sizing & overlay as courses page) */}
                   <div className="relative h-[14rem] overflow-hidden">
                     <Image
                       src={rc.image || "/placeholder.svg"}
@@ -644,56 +660,65 @@ export default function ClientCourseDetail({ course }: Props) {
                       height={400}
                       className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
                       style={
-                        rc.customcrop
-                          ? { objectPosition: rc.customcrop }
-                          : undefined
+                        rc.noCustomCrop
+                          ? undefined
+                          : { objectPosition: rc.noCustomCrop || "center 30%" }
                       }
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                    {/* Course info overlay (match courses page: only duration) */}
                     <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between items-center">
-                      <div className="flex items-center space-x-2 text-white text-sm">
-                        <Clock className="h-4 w-4 text-purple-300" />
+                      <div className="flex items-center space-x-2 text-afrodite-creme text-sm">
+                        <Clock className="h-4 w-4 text-afrodite-creme" />
                         <span>{rc.duration}</span>
                       </div>
-                      <div className="flex items-center space-x-2 text-white text-sm">
-                        <Users className="h-4 w-4 text-purple-300" />
-                        <span>{rc.students} studentë</span>
-                      </div>
+                      {/* If you want to keep students, uncomment:
+                <div className="flex items-center space-x-2 text-afrodite-creme text-sm">
+                  <Users className="h-4 w-4 text-afrodite-creme" />
+                  <span>{rc.students} studentë</span>
+                </div>
+                */}
                     </div>
                   </div>
 
-                  {/* Content */}
+                  {/* Content (chips, title, desc) */}
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="mb-4">
                       <div className="flex items-center mb-2 flex-wrap gap-2">
-                        <span className="text-xs font-medium bg-purple-100 text-purple-700 px-3 py-1 rounded-full">
-                          {
-                            categories.find((cat) => cat.id === rc.category)
-                              ?.name
-                          }
+                        <span className="text-xs font-medium bg-afrodite-purple text-afrodite-creme px-3 py-1 rounded-full">
+                          {categories.find((c) => c.id === rc.category)?.name}
                         </span>
-                        <span className="text-xs font-medium bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                        <span className="text-xs font-medium bg-afrodite-purple text-afrodite-creme px-3 py-1 rounded-full">
                           {rc.level}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold font-poppins text-gray-900 mb-3 line-clamp-2">
+                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-3 line-clamp-2">
                         {rc.title}
                       </h3>
-                      <p className="text-gray-700 line-clamp-3 mb-4">
+                      <p className="text-afrodite-lightPurple line-clamp-3 mb-4">
                         {rc.description}
                       </p>
                     </div>
 
-                    <div className="mt-auto pt-4 border-t border-gray-100">
-                      <div className="flex items-center text-sm text-gray-600 mb-4">
-                        <Calendar className="h-4 w-4 mr-1 text-purple-600" />
+                    {/* Footer (same border & colors as courses page) */}
+                    <div className="mt-auto pt-4 border-t border-afrodite-purple">
+                      <div className="flex items-center text-sm text-afrodite-lightPurple mb-4">
+                        <Calendar className="h-4 w-4 mr-1 text-afrodite-purple" />
                         <span>{rc.schedule}</span>
                       </div>
-                      <Link href={`/courses/${rc.id}`}>
+
+                      <Link
+                        href={
+                          rc.category === "UET Italia" && rc.link
+                            ? rc.link
+                            : `/courses/${rc.id}`
+                        }
+                      >
                         <AnimatedButton
                           size="default"
                           variant="default"
-                          className="w-full block px-6 py-2 bg-black hover:bg-black text-white"
+                          className="bg-afrodite-lightPurple text-afrodite-creme"
                         >
                           Mëso më shumë
                           <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />

@@ -1421,82 +1421,7 @@ export const courses: Course[] = [
     { type: "image", src: "/placeholder.svg?height=600&width=800&text=Eyelashes+50", alt: "Trajnim lash fillestar" }
   ]
 },
-{
-  id: 23,
-  title: "Kurs Hydrofacial 15-in-1 (150 ore)",
-  category: "pajisjet-e-estetikes",
-  duration: "150 orë",
-  durationCategory: "150 orë",
-  level: "Avancuar",
-  price: "",
-  startDate: "",
-   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
-  image: "/pajisje/hidrofacial.jpg", noCustomCrop: true,
-  description:
-    "Trajnim profesional në përdorimin e sistemit Hydrofacial 15-in-1 për trajtime të avancuara të lëkurës.",
-  longDescription:
-    "Ky kurs 150-orësh mbulon historinë dhe parimet e teknologjisë Hydrofacial, anatominë e lëkurës, standardet e higjienës, parametrat e trajtimit, protokollet e pastrimit të thellë, ekstraksionin me vakum, hidratimin intensiv, LED terapi, RF, ultratinguj e elektroporacion, menaxhimin e kontraindikacioneve dhe mirëmbajtjen e pajisjes.",
-  instructors: [
-    {
-      name: "Diana Kola",
-      role: "Instruktoreshë Hydrofacial",
-      image: "/placeholder.svg?height=200&width=200&text=Instructor",
-      bio: "Eksperte me 8 vite në trajtime Hydrofacial dhe teknologji anti-age."
-    }
-  ],
-  curriculum: [
-    {
-      title: "Moduli 1: Parimet & Higjiena",
-      lessons: ["Historia Hydrofacial", "Sterilizimi & dezinfektimi"]
-    },
-    {
-      title: "Moduli 2: Anatomia & Parametrat",
-      lessons: ["Strukturat e lëkurës", "Rregullimet bazë të pH-së"]
-    },
-    {
-      title: "Moduli 3: Protokollet e Pastrimit",
-    category: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
-      lessons: ["Deep cleansing", "Mikrodermabrazion me acid"]
-    },
-    {
-      title: "Moduli 4: Ekstraksion & Vakum",
-      lessons: ["Teknikat manuale", "Përdorimi i vakumit"]
-    },
-    {
-      title: "Moduli 5: Hidratim & Serume",
-      lessons: ["Elektroporacion", "Infuzioni serumi"]
-    },
-    {
-      title: "Moduli 6: LED & RF",
-      lessons: ["LED terapia", "Radiofrekuenca"]
-    },
-    {
-      title: "Moduli 7: Ultratinguj & Elektroporacion",
-      lessons: ["Parametrat ultratinguj", "Siguria termike"]
-    },
-    {
-      title: "Moduli 8: Praktikë & Mirëmbajtje",
-      lessons: ["Simulime trajtimesh", "Kalibrimi i pajisjes"]
-    }
-  ],
-  benefits: [
-    "Certifikim për Hydrofacial",
-    "Trajnim në teknologjitë më të fundit",
-    "Stazh praktik në klinikë"
-  ],
-  materials: [
-    "Set pajisjesh Hydrofacial",
-    "Serume profesionalë",
-    "Manuale trajnimi"
-  ],
-  testimonials: [],
-  faqs: [],
-  featured: false,
-  students: 18,
-  media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hydrofacial+150", alt: "Trajtim Hydrofacial" }
-  ]
-},
+
 // Parukeri Courses
 {
   id: 24,
@@ -3381,7 +3306,7 @@ export const courses: Course[] = [
 {
   id: 45,
   title: "Kursi Sarta Alta Moda (2100 ore)",
-  category: "fashion",
+  category: "fashion-design",
   duration: "2100 orë",
   durationCategory: "2100 orë",
   level: "Avancuar",
@@ -3589,7 +3514,7 @@ export const courses: Course[] = [
 {
   id: 49,
   title: "Modelist Industriale (600 ore)",
-  category: "fashion",
+ category: "fashion-design",
   duration: "600 orë",
   durationCategory: "600 orë",
   level: "Mesatar",
@@ -3634,7 +3559,7 @@ export const courses: Course[] = [
 {
   id: 50,
   title: "Veshje Artizanale (600 ore)",
-  category: "fashion",
+  category: "fashion-design",
   duration: "600 orë",
   durationCategory: "600 orë",
   level: "Mesatar",
@@ -3707,7 +3632,7 @@ export const courses: Course[] = [
   {
     "id": 51,
     "title": "Pajisje për Stimulimin e Kolagjenit (Dermapen) – 150 ore",
-    "category": "aesthetic",
+    category: "pajisjet-e-estetikes",
     "duration": "150 orë",
     "durationCategory": "150 orë",
     "level": "Mesatar",
@@ -3807,7 +3732,7 @@ export const courses: Course[] = [
   {
     "id": 52,
     "title": "Presoterapia – 150 ore",
-    "category": "aesthetic",
+    category: "pajisjet-e-estetikes",
     "duration": "150 orë",
     "durationCategory": "150 orë",
     "level": "Fillestar – Mesatar",
@@ -3907,7 +3832,7 @@ export const courses: Course[] = [
   {
     "id": 53,
     "title": "Termokoperta – 150 ore",
-    "category": "aesthetic",
+    category: "pajisjet-e-estetikes",
     "duration": "150 orë",
     "durationCategory": "150 orë",
     "level": "Fillestar – Mesatar",
@@ -3998,6 +3923,207 @@ export const courses: Course[] = [
       }
     ]
   },
+  {
+  id: 23,
+  title: "Kurs Hydrofacial 15-in-1 (150 ore)",
+  category: "pajisjet-e-estetikes",
+  duration: "150 orë",
+  durationCategory: "150 orë",
+  level: "Avancuar",
+  price: "",
+  startDate: "",
+   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
+  image: "/pajisje/hidrofacial.jpg", noCustomCrop: true,
+  description:
+    "Trajnim profesional në përdorimin e sistemit Hydrofacial 15-in-1 për trajtime të avancuara të lëkurës.",
+  longDescription:
+    "Ky kurs 150-orësh mbulon historinë dhe parimet e teknologjisë Hydrofacial, anatominë e lëkurës, standardet e higjienës, parametrat e trajtimit, protokollet e pastrimit të thellë, ekstraksionin me vakum, hidratimin intensiv, LED terapi, RF, ultratinguj e elektroporacion, menaxhimin e kontraindikacioneve dhe mirëmbajtjen e pajisjes.",
+  instructors: [
+    {
+      name: "Diana Kola",
+      role: "Instruktoreshë Hydrofacial",
+      image: "/placeholder.svg?height=200&width=200&text=Instructor",
+      bio: "Eksperte me 8 vite në trajtime Hydrofacial dhe teknologji anti-age."
+    }
+  ],
+  curriculum: [
+    {
+      title: "Moduli 1: Parimet & Higjiena",
+      lessons: ["Historia Hydrofacial", "Sterilizimi & dezinfektimi"]
+    },
+    {
+      title: "Moduli 2: Anatomia & Parametrat",
+      lessons: ["Strukturat e lëkurës", "Rregullimet bazë të pH-së"]
+    },
+    {
+      title: "Moduli 3: Protokollet e Pastrimit",
+    
+      lessons: ["Deep cleansing", "Mikrodermabrazion me acid"]
+    },
+    {
+      title: "Moduli 4: Ekstraksion & Vakum",
+      lessons: ["Teknikat manuale", "Përdorimi i vakumit"]
+    },
+    {
+      title: "Moduli 5: Hidratim & Serume",
+      lessons: ["Elektroporacion", "Infuzioni serumi"]
+    },
+    {
+      title: "Moduli 6: LED & RF",
+      lessons: ["LED terapia", "Radiofrekuenca"]
+    },
+    {
+      title: "Moduli 7: Ultratinguj & Elektroporacion",
+      lessons: ["Parametrat ultratinguj", "Siguria termike"]
+    },
+    {
+      title: "Moduli 8: Praktikë & Mirëmbajtje",
+      lessons: ["Simulime trajtimesh", "Kalibrimi i pajisjes"]
+    }
+  ],
+  benefits: [
+    "Certifikim për Hydrofacial",
+    "Trajnim në teknologjitë më të fundit",
+    "Stazh praktik në klinikë"
+  ],
+  materials: [
+    "Set pajisjesh Hydrofacial",
+    "Serume profesionalë",
+    "Manuale trajnimi"
+  ],
+  testimonials: [],
+  faqs: [],
+  featured: false,
+  students: 18,
+  media: [
+    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hydrofacial+150", alt: "Trajtim Hydrofacial" }
+  ]
+},
+{
+  id: 84,
+  title: "Kurs Epilimi me Lazer (150 orë)",
+  category: "pajisjet-e-estetikes",
+  duration: "150 orë",
+  durationCategory: "150 orë",
+  level: "Avancuar",
+  price: "",
+  startDate: "",
+  schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
+  image: "/pajisje/epilimi-me-lazer.jpg",
+  noCustomCrop: true,
+  description:
+    "Trajnim profesional në epilimin me lazer duke mbuluar llojet e lazerëve, parametrat e trajtimit dhe sigurinë klinike.",
+  longDescription:
+    "Ky kurs i avancuar prej 150 orësh ofron njohuri të thelluara mbi fizikën e lazerit, anatomisë së lëkurës dhe flokut, karakteristikat e pajisjeve të ndryshme si Diode, Alexandrite dhe Nd:YAG, si dhe praktika mbi konfigurimin, kalibrimin dhe protokollet e trajtimit. Kursi përfshin gjithashtu aspekte etike dhe ligjore, menaxhimin e rreziqeve, konsultimin me klientët, dhe përfundon me certifikim pas testimeve teorike dhe praktike.",
+  instructors: [
+    {
+      name: "Diana Kola",
+      role: "Instruktore për Epilim me Lazer",
+      image: "/placeholder.svg?height=200&width=200&text=Instructor",
+      bio: "Eksperte me përvojë 10+ vite në trajtime me lazer estetik dhe dermatologjik."
+    }
+  ],
+  curriculum: [
+    {
+      title: "Moduli 1: Hyrje në Epilimin me Lazer",
+      lessons: [
+        "Parimet e dritës lazer",
+        "Fizika e lazerit dhe transformimi i energjisë"
+      ]
+    },
+    {
+      title: "Moduli 2: Anatomia e Lëkurës dhe Flokut",
+      lessons: [
+        "Strukturat e epidermës, dermës dhe hipodermës",
+        "Tipet e flokut dhe folikulave"
+      ]
+    },
+    {
+      title: "Moduli 3: Llojet e Lazerëve",
+      lessons: [
+        "Diode vs Alexandrite",
+        "Nd:YAG dhe IPL: avantazhe dhe kufizime"
+      ]
+    },
+    {
+      title: "Moduli 4: Siguria dhe Higjiena",
+      lessons: [
+        "Mbrojtja e syve dhe mjedisit",
+        "Sterilizimi dhe pastrimi i pajisjeve"
+      ]
+    },
+    {
+      title: "Moduli 5: Pajisjet dhe Kalibrimi",
+      lessons: [
+        "Komponentët e lazerit (pumpues, rezonator)",
+        "Procedurat e mirëmbajtjes dhe kalibrimit"
+      ]
+    },
+    {
+      title: "Moduli 6: Konsultimi dhe Vlerësimi",
+      lessons: [
+        "Testi i patch-it",
+        "Vlerësimi i fototipit dhe historikut mjekësor"
+      ]
+    },
+    {
+      title: "Moduli 7: Protokollet e Trajtimit",
+      lessons: [
+        "Parametrat për fototipet I–III",
+        "Trajtimi për lëkura të errëta"
+      ]
+    },
+    {
+      title: "Moduli 8: Indikacionet & Kundërindikacionet",
+      lessons: [
+        "Raste për epilim me lazer",
+        "Kufizime absolute dhe relative"
+      ]
+    },
+    {
+      title: "Moduli 9: Kujdesi Para dhe Pas Trajtimit",
+      lessons: [
+        "Shmangia e diellit dhe produkteve fotosensibile",
+        "Menaxhimi i efekteve të përkohshme"
+      ]
+    },
+    {
+      title: "Moduli 10: Praktika Klinike & Vlerësimi",
+      lessons: [
+        "Simulime mbi modele",
+        "Seanca reale me klientë"
+      ]
+    },
+    {
+      title: "Moduli 11: Aspektet Ligjore & Etika",
+      lessons: [
+        "Rregulloret dhe standardet",
+        "Marrëdhënia me klientin"
+      ]
+    }
+  ],
+  benefits: [
+    "Certifikim profesional në epilim me lazer",
+    "Trajnim me pajisje të avancuara Diode, Alexandrite & Nd:YAG",
+    "Praktikë klinike dhe supervizim individual"
+  ],
+  materials: [
+    "Manual trajnimi",
+    "Mbrojtëse për sy dhe sete sterile",
+    "Pajisje trajtimi me lazer"
+  ],
+  testimonials: [],
+  faqs: [],
+  featured: false,
+  students: 0,
+  media: [
+    {
+      type: "image",
+      src: "/placeholder.svg?height=600&width=800&text=Epilim+me+Lazer",
+      alt: "Epilim me Lazer"
+    }
+  ]
+},
   {
   id: 83,
   title: "Kursi Makeup Permanent i Aureolave & Zonave të Rëna të Flokëve (150 ore)",

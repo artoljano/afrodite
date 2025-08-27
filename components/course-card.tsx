@@ -116,9 +116,12 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
             pointerEvents: isFlipped ? "auto" : "none",
           }}
         >
-          <div className="absolute top-4 right-4 bg-afrodite-creme/10 backdrop-blur-sm text-afrodite-creme text-xs font-medium px-2 py-1 rounded-full cursor-pointer">
+          <span
+            className="absolute top-4 right-4 bg-afrodite-creme/10 backdrop-blur-sm text-afrodite-creme text-xs font-medium px-2 py-1 rounded-full cursor-pointer"
+            onClick={() => setIsFlipped(false)}
+          >
             Kthehu për më shumë
-          </div>
+          </span>
 
           <h3 className="text-xl font-bold font-poppins text-afrodite-creme mb-6 text-center">
             Çfarë do të përfitoni

@@ -226,7 +226,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-purple-900/30 pt-8 text-center text-gray-300">
+        <div className="border-t border-afrodite-purple pt-8 text-center text-afrodite-lightPurple">
           <p>
             &copy; {new Date().getFullYear()} Afrodite Academy. Të gjitha të
             drejtat e rezervuara.

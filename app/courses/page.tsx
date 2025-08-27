@@ -668,29 +668,41 @@ export default function CoursesPage() {
               </div>
 
               {/* Stats box stays the same */}
-              <div className="absolute -bottom-6 -right-6 bg-afrodite-creme p-6 rounded-xl shadow-lg border-l-4 border-afrodite-purple max-w-xs">
-                <div className="flex items-center justify-between mb-4">
+              <div
+                className="
+    absolute -bottom-6 -right-6 
+    bg-afrodite-creme 
+    p-4 sm:p-6                /* smaller padding on mobile */
+    rounded-xl shadow-lg 
+    border-l-4 border-afrodite-purple 
+    w-60 sm:max-w-xs          /* narrower width on mobile */
+    text-sm sm:text-base      /* shrink text on mobile */
+  "
+              >
+                <div className="flex items-center justify-between mb-3">
                   <div className="text-afrodite-lightPurple">
                     Studentë të diplomuar
                   </div>
-                  <div className="text-2xl font-bold text-afrodite-purple">
-                    500+
+                  <div className="text-xl sm:text-2xl font-bold text-afrodite-purple">
+                    2500+
                   </div>
                 </div>
-                <div className="flex items-center justify-between mb-4">
+
+                <div className="flex items-center justify-between mb-3">
                   <div className="text-afrodite-lightPurple">
                     Kurse profesionale
                   </div>
-                  <div className="text-2xl font-bold text-afrodite-purple">
-                    20+
+                  <div className="text-xl sm:text-2xl font-bold text-afrodite-purple">
+                    60+
                   </div>
                 </div>
+
                 <div className="flex items-center justify-between">
                   <div className="text-afrodite-lightPurple">
                     Vite eksperiencë
                   </div>
-                  <div className="text-2xl font-bold text-afrodite-purple">
-                    10+
+                  <div className="text-xl sm:text-2xl font-bold text-afrodite-purple">
+                    20+
                   </div>
                 </div>
               </div>

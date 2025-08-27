@@ -174,10 +174,10 @@ export default function PartnerLogosCarousel({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-transparent px-4 py-6"
           >
             <div
-              className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden"
+              className="relative bg-afrodite-creme rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -185,7 +185,7 @@ export default function PartnerLogosCarousel({
                   setActivePartner(null);
                   setIsHoveringContainer(false);
                 }}
-                className="absolute top-4 right-4 text-black-500 hover:text-purple-500 z-10 text-2xl"
+                className="absolute top-4 right-4 text-afrodite-lightPurple hover:text-afrodite-purple z-10 text-2xl"
               >
                 &times;
               </button>
@@ -204,10 +204,10 @@ export default function PartnerLogosCarousel({
 
               {/* Text Content */}
               <div className="p-6 h-[200px] overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded">
-                <h3 className="text-2xl font-bold font-poppins text-gray-900 mb-1">
+                <h3 className="text-2xl font-bold font-poppins text-afrodite-purple mb-1">
                   {activePartner.emri}
                 </h3>
-                <p className="text-gray-600 text-sm">
+                <p className="text-afrodite-lightPurple text-sm">
                   {activePartner.pershkrimi}
                 </p>
               </div>

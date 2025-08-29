@@ -181,14 +181,11 @@ export default function AboutPage() {
   }, [modalVideo]);
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full ">
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 bg-afrodite-creme">
         {/* Background pattern */}
-        <div
-          className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"
-          aria-hidden="true"
-        />
+
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
           <Image
             src="/wave-pattern.svg"
@@ -199,14 +196,7 @@ export default function AboutPage() {
           />
         </div>
 
-        <VideoBackground
-          showControls
-          className="relative z-10 pointer-events-none"
-        >
-          {/* empty, we only need its background + controls */}
-        </VideoBackground>
-
-        <div className="container mx-auto px-4 relative z-20">
+        <div className="container mx-auto px-4 relative z-20 ">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

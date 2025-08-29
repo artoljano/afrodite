@@ -145,9 +145,13 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 12,
-  media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Kujdestar+Fëmijë+1", alt: "Pamje nga trajnimet për kujdestar fëmijësh" }
-  ]
+media: [
+  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
+  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+]
+
 },
 {
   id: 2,
@@ -225,9 +229,13 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 10,
-  media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Kujdestar+Moshuar+1", alt: "Pamje nga trajnimet për kujdestar të moshuarish" }
-  ]
+media: [
+  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
+  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+]
+
 },
 {
   id: 4,
@@ -307,12 +315,12 @@ export const courses: Course[] = [
   featured: false,
   students: 6,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Turizëm+1",
-      alt: "Sesione trajnimi në agjenci udhëtimesh"
-    }
-  ]
+  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
+  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+]
+
 },
 {
   id: 5,
@@ -400,12 +408,12 @@ export const courses: Course[] = [
   featured: false,
   students: 8,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Kujdestari+Practice",
-      alt: "Praktikë në kujdesin e të moshuarve dhe fëmijëve"
-    }
-  ]
+  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
+  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+]
+
 },
 
 {
@@ -470,12 +478,12 @@ export const courses: Course[] = [
   featured: false,
   students: 20,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Guide+Session",
-      alt: "Guidë në terren"
-    }
-  ]
+  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
+  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+]
+
 },
 {
   id: 8,
@@ -537,12 +545,13 @@ export const courses: Course[] = [
   featured: false,
   students: 12,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Pastrim+Site",
-      alt: "Pastrim profesional në institucion"
-    }
-  ]
+  {
+    type: "image",
+    src: "/courses/sherbim-pastrimi.jpg",
+    alt: "Pamje nga kursi për pastrim profesional"
+  }
+]
+
 },
 {
   id: 11,
@@ -614,12 +623,10 @@ export const courses: Course[] = [
   featured: false,
   students: 12,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Recepsion+Training",
-      alt: "Stazhe në recepsion"
-    }
-  ]
+  { type: "image", src: "/courses/receptionist.jpg", alt: "Pamje nga kursi për recepsionistë" },
+  { type: "video", src: "/videos/reception-video.mp4", alt: "Video e trajnimit për recepsionistë" }
+]
+
 },
 {
   id: 12,
@@ -648,7 +655,7 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje dhe Historia e Berberit",
-    category: "berber",
+   
       lessons: ["Origjina e profesionit", "Evolucioni i teknikave"]
     },
     {
@@ -677,7 +684,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 7: Masazh & Trajtime Fytyre",
-    category: "masazhet",
+    
       lessons: ["Masazhet relaksuese", "Kujdesi për lëkurën"]
     },
     {
@@ -699,13 +706,15 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 20,
-  media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Barber+Studio",
-      alt: "Praktikë në salon barberie"
-    }
-  ]
+ media: [
+  { type: "image", src: "/courses/berber-300.jpg", alt: "Pamje nga kursi Berber 300 orë" },
+  { type: "image", src: "/courses/berber-600.jpg", alt: "Pamje nga kursi Berber 600 orë" },
+  { type: "image", src: "/courses/berber-900.jpg", alt: "Pamje nga kursi Berber 900 orë" },
+  { type: "image", src: "/courses/berber-1800.jpg", alt: "Pamje nga kursi Berber 1800 orë" },
+  { type: "video", src: "/videos/Kurs-berber.mp4", alt: "Video nga kursi berber" },
+  { type: "video", src: "/videos/berber-media.mp4", alt: "Pamje të mediave nga kursi berber" }
+]
+
 },
 {
   id: 13,
@@ -768,12 +777,14 @@ export const courses: Course[] = [
   featured: false,
   students: 15,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Barber+Class",
-      alt: "Klasa barberie"
-    }
-  ]
+  { type: "image", src: "/courses/berber-300.jpg", alt: "Pamje nga kursi Berber 300 orë" },
+  { type: "image", src: "/courses/berber-600.jpg", alt: "Pamje nga kursi Berber 600 orë" },
+  { type: "image", src: "/courses/berber-900.jpg", alt: "Pamje nga kursi Berber 900 orë" },
+  { type: "image", src: "/courses/berber-1800.jpg", alt: "Pamje nga kursi Berber 1800 orë" },
+  { type: "video", src: "/videos/Kurs-berber.mp4", alt: "Video nga kursi berber" },
+  { type: "video", src: "/videos/berber-media.mp4", alt: "Pamje të mediave nga kursi berber" }
+]
+
 },
 {
   id: 14,
@@ -908,12 +919,14 @@ export const courses: Course[] = [
   featured: false,
   students: 8,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Berber+300",
-      alt: "Prerje bazike meshkuj/femra"
-    }
-  ]
+  { type: "image", src: "/courses/berber-300.jpg", alt: "Pamje nga kursi Berber 300 orë" },
+  { type: "image", src: "/courses/berber-600.jpg", alt: "Pamje nga kursi Berber 600 orë" },
+  { type: "image", src: "/courses/berber-900.jpg", alt: "Pamje nga kursi Berber 900 orë" },
+  { type: "image", src: "/courses/berber-1800.jpg", alt: "Pamje nga kursi Berber 1800 orë" },
+  { type: "video", src: "/videos/Kurs-berber.mp4", alt: "Video nga kursi berber" },
+  { type: "video", src: "/videos/berber-media.mp4", alt: "Pamje të mediave nga kursi berber" }
+]
+
 },
 {
   id: 16,
@@ -958,12 +971,12 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 5: Masazhe & Drenazh Limfatik",
-    category: "masazhet",
+    
       lessons: ["Masazh relaksues", "Limfodrenazh fytyrë & trup"]
     },
     {
       title: "Moduli 6: Makeup Permanent",
-    category: "makeup-permanent-pmu",
+   
       lessons: ["Lash line enhancement", "Microblading & powder brows"]
     },
     {
@@ -972,7 +985,7 @@ export const courses: Course[] = [
     },
     {
       title: "Moduli 8: Manikyr & Pedikyr",
-    category: "manikyr-pedikyr-nail-art",
+    
       lessons: ["Manikyr bazik & xhel", "SPA këmbe me parafine"]
     },
     {
@@ -995,12 +1008,14 @@ export const courses: Course[] = [
   featured: true,
   students: 24,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Estetike+2100",
-      alt: "Trajtim spa profesional"
-    }
-  ]
+  { type: "image", src: "/courses/estetike-300.jpg", alt: "Pamje nga kursi Estetikë 300 orë" },
+  { type: "image", src: "/courses/estetike-600.jpg", alt: "Pamje nga kursi Estetikë 600 orë" },
+  { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
+  { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
+  { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
+  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+]
+
 },
 {
   id: 17,
@@ -1074,12 +1089,14 @@ export const courses: Course[] = [
   featured: false,
   students: 18,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Estetike+1500",
-      alt: "Praktikë estetike"
-    }
-  ]
+  { type: "image", src: "/courses/estetike-300.jpg", alt: "Pamje nga kursi Estetikë 300 orë" },
+  { type: "image", src: "/courses/estetike-600.jpg", alt: "Pamje nga kursi Estetikë 600 orë" },
+  { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
+  { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
+  { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
+  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+]
+
 },
 {
   id: 18,
@@ -1151,13 +1168,15 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 12,
-  media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Estetike+900",
-      alt: "Trajtim facial bazik"
-    }
-  ]
+media: [
+  { type: "image", src: "/courses/estetike-300.jpg", alt: "Pamje nga kursi Estetikë 300 orë" },
+  { type: "image", src: "/courses/estetike-600.jpg", alt: "Pamje nga kursi Estetikë 600 orë" },
+  { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
+  { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
+  { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
+  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+]
+
 },
 {
   id: 19,
@@ -1220,13 +1239,15 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 10,
-  media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Estetike+600",
-      alt: "Trajtim spa duar"
-    }
-  ]
+media: [
+  { type: "image", src: "/courses/estetike-300.jpg", alt: "Pamje nga kursi Estetikë 300 orë" },
+  { type: "image", src: "/courses/estetike-600.jpg", alt: "Pamje nga kursi Estetikë 600 orë" },
+  { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
+  { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
+  { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
+  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+]
+
 },
 {
   id: 20,
@@ -1290,12 +1311,14 @@ export const courses: Course[] = [
   featured: false,
   students: 8,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Estetike+300",
-      alt: "Manikyr bazik"
-    }
-  ]
+  { type: "image", src: "/courses/estetike-300.jpg", alt: "Pamje nga kursi Estetikë 300 orë" },
+  { type: "image", src: "/courses/estetike-600.jpg", alt: "Pamje nga kursi Estetikë 600 orë" },
+  { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
+  { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
+  { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
+  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+]
+
 },
 {
   id: 21,
@@ -1365,9 +1388,15 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 20,
-  media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Eyelashes+150", alt: "Aplikim qerpikësh volume" }
-  ]
+media: [
+  { type: "image", src: "/courses/qerpik-klasik-kurs-baze.jpg", alt: "Pamje nga kursi bazë për qerpikë klasik" },
+  { type: "video", src: "/videos/lashes-video.mp4", alt: "Video e trajnimit për qerpikë klasik" },
+  { type: "image", src: "/courses/qerpik-volume-avancuar.jpg", alt: "Pamje nga kursi i avancuar për qerpikë volume" },
+  { type: "video", src: "/videos/lashes-video-1.mp4", alt: "Video e kursit për qerpikë volume" },
+  { type: "video", src: "/videos/lashes-video-2.mp4", alt: "Pamje shtesë nga trajnimet për qerpikë volume" }
+]
+
+
 },
 {
   id: 22,
@@ -1418,8 +1447,13 @@ export const courses: Course[] = [
   featured: false,
   students: 15,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Eyelashes+50", alt: "Trajnim lash fillestar" }
-  ]
+  { type: "image", src: "/courses/qerpik-klasik-kurs-baze.jpg", alt: "Pamje nga kursi bazë për qerpikë klasik" },
+  { type: "video", src: "/videos/lashes-video.mp4", alt: "Video e trajnimit për qerpikë klasik" },
+  { type: "image", src: "/courses/qerpik-volume-avancuar.jpg", alt: "Pamje nga kursi i avancuar për qerpikë volume" },
+  { type: "video", src: "/videos/lashes-video-1.mp4", alt: "Video e kursit për qerpikë volume" },
+  { type: "video", src: "/videos/lashes-video-2.mp4", alt: "Pamje shtesë nga trajnimet për qerpikë volume" }
+]
+
 },
 
 // Parukeri Courses
@@ -1496,8 +1530,14 @@ export const courses: Course[] = [
   featured: false,
   students: 25,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hair+2100", alt: "Parukeri 2100h" }
-  ]
+  { type: "image", src: "/courses/parukeri-300.jpg", alt: "Pamje nga kursi Parukeri 300 orë" },
+  { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
+  { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
+  { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
+  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
+  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+]
+
 },
 {
   id: 79,
@@ -1571,9 +1611,15 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 25,
-  media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hair+2100", alt: "Parukeri 2100h" }
-  ]
+media: [
+  { type: "image", src: "/courses/parukeri-300.jpg", alt: "Pamje nga kursi Parukeri 300 orë" },
+  { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
+  { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
+  { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
+  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
+  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+]
+
 },
 {
   id: 25,
@@ -1628,9 +1674,15 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 18,
-  media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hair+900", alt: "Parukeri 900h" }
-  ]
+media: [
+  { type: "image", src: "/courses/parukeri-300.jpg", alt: "Pamje nga kursi Parukeri 300 orë" },
+  { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
+  { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
+  { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
+  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
+  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+]
+
 },
 {
   id: 26,
@@ -1678,8 +1730,14 @@ export const courses: Course[] = [
   featured: false,
   students: 12,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hair+600", alt: "Parukeri 600h" }
-  ]
+  { type: "image", src: "/courses/parukeri-300.jpg", alt: "Pamje nga kursi Parukeri 300 orë" },
+  { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
+  { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
+  { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
+  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
+  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+]
+
 },
 {
   id: 27,
@@ -1730,8 +1788,14 @@ export const courses: Course[] = [
   featured: false,
   students: 10,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hair+300", alt: "Parukeri 300h" }
-  ]
+  { type: "image", src: "/courses/parukeri-300.jpg", alt: "Pamje nga kursi Parukeri 300 orë" },
+  { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
+  { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
+  { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
+  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
+  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+]
+
 },
 {
   id: 82,
@@ -1798,7 +1862,15 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 0,
-  media: []
+media: [
+  { type: "image", src: "/courses/parukeri-300.jpg", alt: "Pamje nga kursi Parukeri 300 orë" },
+  { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
+  { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
+  { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
+  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
+  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+]
+
 },
 
 // Tattoo & Hixhama Courses
@@ -1884,8 +1956,9 @@ export const courses: Course[] = [
   featured: false,
   students: 12,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Tattoo+2100", alt: "Tattoo Art 2100h" }
-  ]
+  { type: "image", src: "/courses/tatuator.jpg", alt: "Pamje nga kursi Tattoo" },
+  { type: "video", src: "/videos/tattoo-video.mp4", alt: "Video e kursit Tattoo" }
+]
 },
 {
   id: 29,
@@ -1950,8 +2023,11 @@ export const courses: Course[] = [
   featured: false,
   students: 20,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hixhama+600", alt: "Hixhama 600h" }
-  ]
+  { type: "image", src: "/courses/hixhama-1.jpg", alt: "Pamje nga kursi Hixhama 1" },
+  { type: "image", src: "/courses/hixhama-2.jpg", alt: "Pamje nga kursi Hixhama 2" },
+  { type: "image", src: "/courses/hixhama-3.jpg", alt: "Pamje nga kursi Hixhama 3" },
+  { type: "video", src: "/videos/hixhama-video.mp4", alt: "Video nga trajnimet Hixhama" }
+]
 },
 {
   id: 30,
@@ -2005,9 +2081,12 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 14,
-  media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hixhama+300", alt: "Hixhama 300h" }
-  ]
+media: [
+  { type: "image", src: "/courses/hixhama-1.jpg", alt: "Pamje nga kursi Hixhama 1" },
+  { type: "image", src: "/courses/hixhama-2.jpg", alt: "Pamje nga kursi Hixhama 2" },
+  { type: "image", src: "/courses/hixhama-3.jpg", alt: "Pamje nga kursi Hixhama 3" },
+  { type: "video", src: "/videos/hixhama-video.mp4", alt: "Video nga trajnimet Hixhama" }
+]
 },
 {
   id: 31,
@@ -2054,8 +2133,11 @@ export const courses: Course[] = [
   featured: false,
   students: 8,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Hixhama+150", alt: "Hixhama 150h" }
-  ]
+  { type: "image", src: "/courses/hixhama-1.jpg", alt: "Pamje nga kursi Hixhama 1" },
+  { type: "image", src: "/courses/hixhama-2.jpg", alt: "Pamje nga kursi Hixhama 2" },
+  { type: "image", src: "/courses/hixhama-3.jpg", alt: "Pamje nga kursi Hixhama 3" },
+  { type: "video", src: "/videos/hixhama-video.mp4", alt: "Video nga trajnimet Hixhama" }
+]
 },
 // Makeup Courses
 {
@@ -2209,12 +2291,12 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Makeup+1200h",
-      alt: "Makeup 1200h"
-    }
-  ]
+  { type: "image", src: "/courses/makeup-600.jpg", alt: "Pamje nga kursi Make-up 600 orë" },
+  { type: "image", src: "/courses/makeup-1200.jpg", alt: "Pamje nga kursi Make-up 1200 orë" },
+  { type: "video", src: "/videos/makeup-video.mp4", alt: "Video nga kursi Make-up" }
+]
+
+  
 },
 {
   id: 33,
@@ -2299,12 +2381,11 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Makeup+600h",
-      alt: "Makeup 600h"
-    }
-  ]
+  { type: "image", src: "/courses/makeup-600.jpg", alt: "Pamje nga kursi Make-up 600 orë" },
+  { type: "image", src: "/courses/makeup-1200.jpg", alt: "Pamje nga kursi Make-up 1200 orë" },
+  { type: "video", src: "/videos/makeup-video.mp4", alt: "Video nga kursi Make-up" }
+]
+
 },
 {
   id: 80,
@@ -2408,7 +2489,12 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 0,
-  media: []
+ media: [
+  { type: "image", src: "/courses/makeup-600.jpg", alt: "Pamje nga kursi Make-up 600 orë" },
+  { type: "image", src: "/courses/makeup-1200.jpg", alt: "Pamje nga kursi Make-up 1200 orë" },
+  { type: "video", src: "/videos/makeup-video.mp4", alt: "Video nga kursi Make-up" }
+]
+
 },
 {
   id: 81,
@@ -2496,7 +2582,12 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 0,
-  media: []
+  media: [
+  { type: "image", src: "/courses/makeup-600.jpg", alt: "Pamje nga kursi Make-up 600 orë" },
+  { type: "image", src: "/courses/makeup-1200.jpg", alt: "Pamje nga kursi Make-up 1200 orë" },
+  { type: "video", src: "/videos/makeup-video.mp4", alt: "Video nga kursi Make-up" }
+]
+
 },
 
 
@@ -2612,13 +2703,12 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 0,
-  media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Maniky+1500h",
-      alt: "Maniky 1500h"
-    }
-  ]
+ media: [
+  { type: "image", src: "/courses/nails-500.jpg", alt: "Pamje nga kursi Nail Art – 500 orë" },
+  { type: "image", src: "/courses/nails-2000.jpg", alt: "Pamje nga kursi Nail Art – 2000 orë" },
+  { type: "video", src: "/videos/nails-video-1.mp4", alt: "Video 1 nga trajnimet Nail Art" },
+  { type: "video", src: "/videos/nails-video.mp4", alt: "Video 2 nga trajnimet Nail Art" }
+]
 },
 {
   id: 35,
@@ -2677,12 +2767,11 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Maniky+400h",
-      alt: "Maniky 400h"
-    }
-  ]
+  { type: "image", src: "/courses/nails-500.jpg", alt: "Pamje nga kursi Nail Art – 500 orë" },
+  { type: "image", src: "/courses/nails-2000.jpg", alt: "Pamje nga kursi Nail Art – 2000 orë" },
+  { type: "video", src: "/videos/nails-video-1.mp4", alt: "Video 1 nga trajnimet Nail Art" },
+  { type: "video", src: "/videos/nails-video.mp4", alt: "Video 2 nga trajnimet Nail Art" }
+]
 },
 
 {
@@ -2739,12 +2828,11 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Maniky+150h",
-      alt: "Maniky 150h"
-    }
-  ]
+  { type: "image", src: "/courses/nails-500.jpg", alt: "Pamje nga kursi Nail Art – 500 orë" },
+  { type: "image", src: "/courses/nails-2000.jpg", alt: "Pamje nga kursi Nail Art – 2000 orë" },
+  { type: "video", src: "/videos/nails-video-1.mp4", alt: "Video 1 nga trajnimet Nail Art" },
+  { type: "video", src: "/videos/nails-video.mp4", alt: "Video 2 nga trajnimet Nail Art" }
+]
 },
 {
   id: 78,
@@ -2802,13 +2890,12 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 0,
-  media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Maniky+400h",
-      alt: "Maniky 50h"
-    }
-  ]
+media: [
+  { type: "image", src: "/courses/nails-500.jpg", alt: "Pamje nga kursi Nail Art – 500 orë" },
+  { type: "image", src: "/courses/nails-2000.jpg", alt: "Pamje nga kursi Nail Art – 2000 orë" },
+  { type: "video", src: "/videos/nails-video-1.mp4", alt: "Video 1 nga trajnimet Nail Art" },
+  { type: "video", src: "/videos/nails-video.mp4", alt: "Video 2 nga trajnimet Nail Art" }
+]
 },
 // Massage Courses
 {
@@ -2921,12 +3008,13 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Masazhe+2500h",
-      alt: "Masazhe 2500h"
-    }
-  ]
+  { type: "image", src: "/courses/masazh-klasik.jpg", alt: "Pamje nga kursi Masazh Klasik" },
+  { type: "image", src: "/courses/masazh-anticelulit.jpg", alt: "Pamje nga trajnimet anticelulit" },
+  { type: "image", src: "/courses/kurs-masazh.jpg", alt: "Pamje nga kursi masazhi" },
+  { type: "video", src: "/videos/masazh-video.mp4", alt: "Video nga trajnimet masazh" },
+  { type: "video", src: "/videos/masazhe.mov", alt: "Pamje shtesë nga trajnimet masazh" }
+]
+
 },
 {
   id: 38,
@@ -2983,12 +3071,13 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Masazh+150h",
-      alt: "Masazh 150h"
-    }
-  ]
+  { type: "image", src: "/courses/masazh-klasik.jpg", alt: "Pamje nga kursi Masazh Klasik" },
+  { type: "image", src: "/courses/masazh-anticelulit.jpg", alt: "Pamje nga trajnimet anticelulit" },
+  { type: "image", src: "/courses/kurs-masazh.jpg", alt: "Pamje nga kursi masazhi" },
+  { type: "video", src: "/videos/masazh-video.mp4", alt: "Video nga trajnimet masazh" },
+  { type: "video", src: "/videos/masazhe.mov", alt: "Pamje shtesë nga trajnimet masazh" }
+]
+
 },
 {
   id: 39,
@@ -3044,12 +3133,13 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Masazh+Terapeutik+150h",
-      alt: "Masazh Terapeutik 150h"
-    }
-  ]
+  { type: "image", src: "/courses/masazh-klasik.jpg", alt: "Pamje nga kursi Masazh Klasik" },
+  { type: "image", src: "/courses/masazh-anticelulit.jpg", alt: "Pamje nga trajnimet anticelulit" },
+  { type: "image", src: "/courses/kurs-masazh.jpg", alt: "Pamje nga kursi masazhi" },
+  { type: "video", src: "/videos/masazh-video.mp4", alt: "Video nga trajnimet masazh" },
+  { type: "video", src: "/videos/masazhe.mov", alt: "Pamje shtesë nga trajnimet masazh" }
+]
+
 },
 // Facial & Permanent Makeup Courses
 {
@@ -3103,9 +3193,15 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 0,
-  media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Facial+600h", alt: "Facial 600h" }
-  ]
+ media: [
+  { type: "image", src: "/courses/estetike-300.jpg", alt: "Pamje nga kursi Estetikë 300 orë" },
+  { type: "image", src: "/courses/estetike-600.jpg", alt: "Pamje nga kursi Estetikë 600 orë" },
+  { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
+  { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
+  { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
+  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+]
+
 },
 {
   id: 41,
@@ -3162,8 +3258,11 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=PMU+600h", alt: "PMU 600h" }
-  ]
+  { type: "image", src: "/courses/makeup-permanent.jpg", alt: "Pamje nga kursi Make-up Permanent" },
+  { type: "video", src: "/videos/permanent-video.mp4", alt: "Video nga kursi Make-up Permanent" },
+  { type: "video", src: "/videos/permanent-video.mov", alt: "Pamje shtesë nga trajnimet permanente" }
+]
+
 },
 {
   id: 42,
@@ -3208,8 +3307,11 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Brows+150h", alt: "PMU Brows 150h" }
-  ]
+  { type: "image", src: "/courses/pmu-vetullat.jpg", alt: "Pamje nga trajnimet për vetulla PMU" },
+  { type: "video", src: "/videos/permanent-video.mp4", alt: "Video nga kursi Make-up Permanent" },
+
+]
+
 },
 {
   id: 43,
@@ -3255,8 +3357,11 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Eyeliner+150h", alt: "PMU Eyeliner 150h" }
-  ]
+  { type: "image", src: "/courses/pmu-eyeliner.jpg", alt: "Pamje nga trajnimet për eyeliner PMU" },
+    { type: "video", src: "/videos/permanent-video.mp4", alt: "Video nga kursi Make-up Permanent" },
+
+]
+
 },
 {
   id: 44,
@@ -3300,8 +3405,10 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    { type: "image", src: "/placeholder.svg?height=600&width=800&text=Lip+Blush+150h", alt: "PMU Lip Blush 150h" }
-  ]
+   { type: "image", src: "/courses/pmu-buza.jpg", alt: "Pamje nga trajnimet për buzë PMU" },
+    { type: "video", src: "/videos/permanent-video.mp4", alt: "Video nga kursi Make-up Permanent" },
+
+]
 },
 {
   id: 45,
@@ -3361,12 +3468,12 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Alta+Moda+2100h",
-      alt: "Alta Moda 2100h"
-    }
-  ]
+  { type: "image", src: "/courses/fashon-design.jpg", alt: "Pamje nga kursi Fashion Design" },
+  { type: "image", src: "/courses/fashon-design-2.jpg", alt: "Pamje shtesë nga kursi Fashion Design" },
+  { type: "image", src: "/courses/fashon-design-3.jpg", alt: "Më shumë pamje nga Fashion Design" },
+  { type: "video", src: "/videos/fashion-video.mp4", alt: "Video e kursit Fashion Design" }
+]
+
 },
 {
   id: 46,
@@ -3412,12 +3519,12 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Fashion+1200h",
-      alt: "Fashion Design 1200h"
-    }
-  ]
+  { type: "image", src: "/courses/fashon-design.jpg", alt: "Pamje nga kursi Fashion Design" },
+  { type: "image", src: "/courses/fashon-design-2.jpg", alt: "Pamje shtesë nga kursi Fashion Design" },
+  { type: "image", src: "/courses/fashon-design-3.jpg", alt: "Më shumë pamje nga Fashion Design" },
+  { type: "video", src: "/videos/fashion-video.mp4", alt: "Video e kursit Fashion Design" }
+]
+
 },
 {
   id: 47,
@@ -3458,13 +3565,13 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 0,
-  media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Fashion+900h",
-      alt: "Fashion Design 900h"
-    }
-  ]
+media: [
+  { type: "image", src: "/courses/fashon-design.jpg", alt: "Pamje nga kursi Fashion Design" },
+  { type: "image", src: "/courses/fashon-design-2.jpg", alt: "Pamje shtesë nga kursi Fashion Design" },
+  { type: "image", src: "/courses/fashon-design-3.jpg", alt: "Më shumë pamje nga Fashion Design" },
+  { type: "video", src: "/videos/fashion-video.mp4", alt: "Video e kursit Fashion Design" }
+]
+
 },
 {
   id: 48,
@@ -3504,12 +3611,12 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Fashion+600h",
-      alt: "Fashion Design 600h"
-    }
-  ]
+  { type: "image", src: "/courses/fashon-design.jpg", alt: "Pamje nga kursi Fashion Design" },
+  { type: "image", src: "/courses/fashon-design-2.jpg", alt: "Pamje shtesë nga kursi Fashion Design" },
+  { type: "image", src: "/courses/fashon-design-3.jpg", alt: "Më shumë pamje nga Fashion Design" },
+  { type: "video", src: "/videos/fashion-video.mp4", alt: "Video e kursit Fashion Design" }
+]
+
 },
 {
   id: 49,
@@ -3549,12 +3656,10 @@ export const courses: Course[] = [
   featured: false,
   students: 0,
   media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Modelist+600h",
-      alt: "Modelist Industriale 600h"
-    }
-  ]
+  { type: "image", src: "/courses/fashion-industriale.jpg", alt: "Pamje nga kursi Fashion Industriale" },
+  { type: "video", src: "/videos/fashion-industrial-video.mp4", alt: "Video e kursit Fashion Industriale" }
+]
+
 },
 {
   id: 50,
@@ -3621,13 +3726,10 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 0,
-  media: [
-    {
-      type: "image",
-      src: "/placeholder.svg?height=600&width=800&text=Artizanale+600h",
-      alt: "Veshje Artizanale 600h"
-    }
-  ]
+media: [
+  { type: "image", src: "/courses/fashion-tradicionale.jpg", alt: "Pamje nga kursi Fashion Tradicionale" }
+]
+
 },
   {
     "id": 51,

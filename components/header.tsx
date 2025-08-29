@@ -43,9 +43,9 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50">
+    <header className="w-full fixed top-0 left-0 z-50 ">
       {/* Top Info Bar */}
-      <div className="bg-afrodite-lightPurple py-2 border-b border-afrodite-creme">
+      <div className="bg-afrodite-lightPurple py-2 border-b border-afrodite-creme ">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             {/* Contact Info */}
@@ -121,7 +121,7 @@ export default function Header() {
       {/* Main Navigation */}
       <div
         className={cn(
-          "bg-afrodite-creme transition-all duration-300 border-b border-afrodite-purple",
+          "bg-afrodite-creme transition-all duration-300 border-b border-afrodite-purple ",
           isScrolled ? "shadow-md" : "shadow-sm"
         )}
       >
@@ -194,7 +194,7 @@ export default function Header() {
 
               {/* Mobile Menu Button */}
               <button
-                className="lg:hidden p-2 text-gray-700 hover:text-purple-600 transition-colors"
+                className="lg:hidden p-2  text-afrodite-lightPurple hover:text-afrodite-purple transition-colors bg-afrodite-creme"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               >

@@ -104,101 +104,101 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full">
-      <section className="relative py-20 md:py-32 bg-afrodite-creme">
+      <section className="relative bg-afrodite-creme">
         {/* Hero Section with Video Background */}
-        {/* <VideoBackground
-          videoSrc="/videos/IntroNew.mp4"
-          overlayOpacity={0.85}
-          className="min-h-[60vh] md:min-h-[70vh] py-20 md:py-32 bg-gradient-to-r from-black to-afrodite-darkPurple"
-        > */}
-        <div className="container px-4 mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              ref={heroRef}
-              initial={{ opacity: 0, x: -50 }}
-              animate={heroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="flex flex-col space-y-6"
-            >
-              <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
-                <Sparkles className="h-4 w-4 mr-2 text-afrodite-purple" />
-                <span>Kurse të certifikuara ndërkombëtarisht</span>
-              </div>
-              <div className="relative">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={heroInView ? { width: "100px" } : {}}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="h-1 bg-afrodite-purple mb-4"
+        <VideoBackground
+          videoSrc="/videos/hero-section-home.mp4"
+          overlayOpacity={0.8}
+          className="min-h-[60vh] md:min-h-[70vh] py-0 md:py-30 bg-afrodite-creme relative flex items-center"
+        >
+          <div className="container px-4 mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div
+                ref={heroRef}
+                initial={{ opacity: 0, x: -50 }}
+                animate={heroInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                className="flex flex-col space-y-6"
+              >
+                <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
+                  <Sparkles className="h-4 w-4 mr-2 text-afrodite-purple" />
+                  <span>Kurse të certifikuara ndërkombëtarisht</span>
+                </div>
+                <div className="relative">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={heroInView ? { width: "100px" } : {}}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="h-1 bg-afrodite-purple mb-4"
+                  />
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-afrodite-purple leading-tight">
+                    Kurse Profesionale{" "}
+                    <span className="text-afrodite-purple">Ndërkombëtare</span>
+                  </h1>
+                </div>
+                <p className="text-lg text-afrodite-lightPurple max-w-lg">
+                  Ne jemi të përkushtuar për të ofruar rezultatet më të mira për
+                  studentët tanë. Me një ekip të përkushtuar dhe metoda
+                  inovative, ne sigurojmë që çdo student të arrijë potencialin e
+                  tij të plotë.
+                </p>
+
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <AnimatedButton
+                    size="lg"
+                    variant="default"
+                    className="bg-afrodite-lightPurple text-afrodite-creme"
+                  >
+                    KURSE FIZIKE
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </AnimatedButton>
+                  <AnimatedButton
+                    size="lg"
+                    variant="default"
+                    className="bg-afrodite-lightPurple text-afrodite-creme"
+                  >
+                    KONTAKTO TANI
+                  </AnimatedButton>
+                </div>
+
+                <div className="flex items-center space-x-4 mt-8">
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3].map((i) => (
+                      <div
+                        key={i}
+                        className="w-10 h-10 rounded-full border-2 border-afrodite-lightPurple overflow-hidden"
+                      >
+                        <Image
+                          src={`/placeholder.svg?height=40&width=40&text=Student+${i}`}
+                          alt={`Student ${i}`}
+                          width={40}
+                          height={40}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="text-sm text-afrodite-lightPurple">
+                    <span className="text-afrodite-purple font-semibold">
+                      2500+
+                    </span>{" "}
+                    studentë të diplomuar
+                  </div>
+                </div>
+              </motion.div>
+
+              <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+                <Image
+                  src="/wave-pattern.svg"
+                  alt="Decorative pattern"
+                  width={256}
+                  height={256}
+                  className="object-contain"
                 />
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-afrodite-purple leading-tight">
-                  Kurse Profesionale{" "}
-                  <span className="text-afrodite-purple">Ndërkombëtare</span>
-                </h1>
               </div>
-              <p className="text-lg text-afrodite-lightPurple max-w-lg">
-                Ne jemi të përkushtuar për të ofruar rezultatet më të mira për
-                studentët tanë. Me një ekip të përkushtuar dhe metoda inovative,
-                ne sigurojmë që çdo student të arrijë potencialin e tij të
-                plotë.
-              </p>
-
-              <div className="flex flex-wrap gap-4 pt-4">
-                <AnimatedButton
-                  size="lg"
-                  variant="default"
-                  className="bg-afrodite-lightPurple text-afrodite-creme"
-                >
-                  KURSE FIZIKE
-                  <ChevronRight className="ml-2 h-4 w-4" />
-                </AnimatedButton>
-                <AnimatedButton
-                  size="lg"
-                  variant="default"
-                  className="bg-afrodite-lightPurple text-afrodite-creme"
-                >
-                  KONTAKTO TANI
-                </AnimatedButton>
-              </div>
-
-              <div className="flex items-center space-x-4 mt-8">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="w-10 h-10 rounded-full border-2 border-afrodite-lightPurple overflow-hidden"
-                    >
-                      <Image
-                        src={`/placeholder.svg?height=40&width=40&text=Student+${i}`}
-                        alt={`Student ${i}`}
-                        width={40}
-                        height={40}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div className="text-sm text-afrodite-lightPurple">
-                  <span className="text-afrodite-purple font-semibold">
-                    2500+
-                  </span>{" "}
-                  studentë të diplomuar
-                </div>
-              </div>
-            </motion.div>
-
-            <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-              <Image
-                src="/wave-pattern.svg"
-                alt="Decorative pattern"
-                width={256}
-                height={256}
-                className="object-contain"
-              />
             </div>
           </div>
-        </div>
-        {/* </VideoBackground> */}
+        </VideoBackground>
       </section>
       {/* Quick Info Section - NEW */}
       <section className="py-8 bg-white relative z-10">

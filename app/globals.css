@@ -41,6 +41,7 @@ body {
   font-family: var(--font-roboto), sans-serif;
   color: #000000;
   padding-top: 104px; /* 40px (top bar) + 64px (main nav) */
+  background-color: var(--afrodite-creme);
 }
 
 h1,

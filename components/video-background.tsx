@@ -105,7 +105,8 @@ export default function VideoBackground({
         loop
         muted={isMuted}
         playsInline
-        className="absolute top-0 left-0 min-w-full min-h-full object-cover w-full h-full"
+        style={{ backgroundColor: "bg-afrodite-creme" }}
+        className="absolute top-0 left-0 min-w-full min-h-full object-cover w-full h-full bg-afrodite-creme"
       >
         <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.

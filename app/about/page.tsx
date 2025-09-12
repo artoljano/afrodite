@@ -36,6 +36,7 @@ import Autoplay from "embla-carousel-autoplay";
 import VideoModal from "@/components/video-modal";
 import { useVideoThumbnail } from "@/components/useVideoThumbnail";
 import TestimonialSlider from "@/components/testimonial-slider";
+import WhatsAppButton from "@/components/whatsapp-button";
 
 export default function AboutPage() {
   const [modalId, setModalId] = useState<string | null>(null);
@@ -209,13 +210,14 @@ export default function AboutPage() {
               <span>Njihuni me historinë tonë</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-afrodite-purple mb-6">
-              Rreth{" "}
-              <span className="text-afrodite-purple">Afrodite Academy</span>
+              Akademia Kryesore në Arsimin Profesional me Standarte Europiane
             </h1>
             <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-8" />
             <p className="text-lg text-afrodite-lightPurple mb-8">
-              Lider në arsimin profesional në Shqipëri, me traditë të
-              konsoliduar dhe synim të qartë për të ardhmen.
+              Programet tona ofrojnë diploma dhe certifikata të njohura
+              ndërkombëtarisht, të vlefshme për punë në Itali, BE, SHBA, Kanada
+              dhe Australi, apo hapjen e bizneseve në Itali dhe në Bashkimin
+              Europian
             </p>
           </motion.div>
         </div>
@@ -244,9 +246,7 @@ export default function AboutPage() {
               <span>Kush jemi ne</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple text-center">
-              Akademia Kryesore për{" "}
-              <span className="text-afrodite-purple">Kurset Profesionale</span>{" "}
-              në Shqipëri
+              Afrodite Academy - Akademia që e kthen pasionin në profesion
             </h2>
             <div className="h-1 w-24 bg-afrodite-purple mx-auto mt-6"></div>
           </div>
@@ -264,24 +264,20 @@ export default function AboutPage() {
             >
               <div className="bg-afrodite-lightPurple p-6 rounded-lg border-l-4 border-afrodite-purple">
                 <p className="text-afrodite-creme italic">
-                  "Akademia Afrodite, akademia më e madhe në Shqipëri e krijuar
-                  nga profesionistja Aferdita Ferracaku, sjell metoda mësimore
-                  të avancuara dhe bashkëkohore në fusha të ndryshme
-                  profesionale."
+                  "Akademia Afrodite përgatit profesionistë të rinj në fusha të
+                  ndryshme, duke ofruar metoda mësimore të avancuara, të
+                  mbështetura në një traditë të konsoliduar dhe një vizion të
+                  qartë për të ardhmen."
                 </p>
               </div>
               <p className="text-afrodite-purple">
-                Akademia Afrodite sot është 11 vjeç dhe ka një ekip të
-                përkushtuar që punon ngushtë me studentët për të arritur
-                objektivat e vendosura. Emri Akademia Afrodite njihet për
-                cilësinë dhe përkushtimin ndaj arsimit profesional.
+                <strong>Afrodite Academy</strong> është një institucion lider në
+                arsim, i licencuar dhe aktiv prej më shumë se një dekade.
               </p>
               <p className="text-afrodite-purple">
-                E frymëzuar nga pasioni për përmirësimin profesional, Aferdita
-                vendosi të krijojë akademinë "Afrodite." E diplomuar në Itali
-                dhe me 22 vjet përvojë profesionale në një akademi prestigjioze
-                Italiane, ajo vendosi të kontribuojë në vendin e saj të lindjes
-                pas një eksperience të pasur ndërkombëtare.
+                Partneritetet ndërkombëtare, praktika me pajisje moderne dhe
+                mentorimi nga ekspertë të fushës u japin kursantëve tanë aftësi
+                që i bëjnë të suksesshëm kudo në botë.
               </p>
             </motion.div>
 
@@ -295,45 +291,45 @@ export default function AboutPage() {
               <div className="bg-afrodite-creme p-6 rounded-lg shadow-sm">
                 <h3 className="text-xl font-bold text-afrodite-purple mb-4 flex items-center">
                   <Globe className="h-5 w-5 text-afrodite-purple mr-2" />
-                  Shkëmbime Ndërkombëtare
+                  Misioni ynë
                 </h3>
                 <p className="text-afrodite-purple">
-                  Gjatë trajnimeve, ne organizojmë shkëmbime eksperience me
-                  shkolla partnere në Itali, ku studentët marrin njohuri për të
-                  hapur dhe menaxhuar institute të ndryshme profesionale me
-                  cilësinë më të lartë.
+                  Misioni ynë është të ofrojmë arsim profesional praktik dhe të
+                  përditësuar, ku teoria integrohet me praktikën në çdo modul.
+                  Përmes programeve të strukturuara, punës në studio dhe
+                  projekteve reale, ne i pajisim kursantët me aftësi konkrete
+                  për tregun e punës dhe me portfolio profesionale. Ne
+                  angazhojmë instruktorë me eksperiencë të gjerë, përdorim
+                  pajisje bashkëkohore dhe i lidhim studentët me rrjete punësimi
+                  dhe partnerë të industrisë, duke siguruar që hapi i tyre i
+                  radhës të jetë i qëndrueshëm dhe i suksesshëm.
                 </p>
               </div>
 
               <div className="bg-afrodite-creme p-6 rounded-lg shadow-sm">
                 <h3 className="text-xl font-bold text-afrodite-purple mb-4 flex items-center">
                   <BookOpen className="h-5 w-5 text-afrodite-purple mr-2" />
-                  Njohuri të Reja
+                  Vizioni ynë
                 </h3>
                 <p className="text-afrodite-purple">
-                  Në Afrodite Academy (A.I.W.A), ne përkushtohemi t’ju ofrojmë
-                  dije të përditësuara në çdo stad të karrierës suaj
-                  profesionale. Përmes moduleve tona praktike, teknikat më të
-                  avancuara, produktet inovative dhe strategjitë më të fundit të
-                  industrisë ju pajisin për të përmbushur kërkesat e tregut dhe
-                  për të qëndruar përpara në zhvillimet globale të industrive
-                  përkatëse.
+                  Vizioni ynë është të ngremë standardin e edukimit profesional
+                  në Shqipëri dhe rajon, duke promovuar etikë, cilësi dhe
+                  inovacion të vazhdueshëm. Ne formojmë profesionistë që mësojnë
+                  gjatë gjithë jetës dhe që kontribuojnë në zhvillimin dhe
+                  përparimin e industrisë.
                 </p>
               </div>
 
               <div className="bg-afrodite-creme p-6 rounded-lg shadow-sm">
                 <h3 className="text-xl font-bold text-afrodite-purple mb-4 flex items-center">
                   <Award className="h-5 w-5 text-afrodite-purple mr-2" />
-                  Qëllimi Ynë
+                  Njohja institucionale & organizimi
                 </h3>
                 <p className="text-afrodite-purple">
-                  Në Afrodite Academy synojmë që çdo kursant të realizojë
-                  potencialin e tij dhe të fitojë aftësitë e nevojshme për t’u
-                  bërë profesionist i vlerësuar në industri. Përmes programeve
-                  tona të specializuara—kurse intensive, masterklasa me ekspertë
-                  ndërkombëtar, seminare praktike dhe aktivitete të
-                  përvitshme—ne përgatisim çdo student për trajnime të avancuara
-                  dhe për mundësi të vazhdueshme zhvillimi profesional.
+                  Procesin e cilësisë e garantojnë Bordi i Sigurimit të Cilësisë
+                  dhe Këshilli Akademik, me rishikim periodik të kurrikulave.
+                  Kursantët marrin gjithashtu këshillim akademik dhe karriere,
+                  që i udhëheq nga regjistrimi deri në punësim.
                 </p>
               </div>
             </motion.div>
@@ -520,7 +516,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={valuesInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-afrodite-creme p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
+              className="bg-afrodite-creme p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
             >
               <div className="bg-afrodite-purple p-3 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
                 <Star className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
@@ -529,8 +525,10 @@ export default function AboutPage() {
                 Cilësi
               </h3>
               <p className="text-afrodite-purple">
-                Ne jemi të përkushtuar ndaj cilësisë në çdo aspekt të punës
-                sonë, nga kurrikula deri te pajisjet dhe materialet që përdorim.
+                Kurrikulat tona rinovohen rregullisht për të siguruar që
+                studentët të jenë gjithmonë një hap përpara, duke përfituar nga
+                programet më bashkëkohore dhe standardet më të larta të arsimit
+                profesional.
               </p>
             </motion.div>
 
@@ -538,7 +536,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={valuesInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-afrodite-creme p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
+              className="bg-afrodite-creme p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
             >
               <div className="bg-afrodite-purple p-3 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
                 <Users className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
@@ -547,9 +545,10 @@ export default function AboutPage() {
                 Komunitet
               </h3>
               <p className="text-afrodite-purple">
-                Ne krijojmë një mjedis mbështetës ku studentët mund të mësojnë,
-                të rriten dhe të ndërtojnë lidhje që zgjasin përtej kohës së
-                kursit.
+                Ne krijojmë një mjedis mbështetës ku studentët jo vetëm mësojnë,
+                por edhe marrin pjesë në evente, panaire dhe konkurse, duke
+                ndërtuar lidhje të forta që zgjasin përtej kohës së kursit dhe
+                që i lidhin me industrinë globale.
               </p>
             </motion.div>
 
@@ -557,7 +556,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={valuesInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-afrodite-creme p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
+              className="bg-afrodite-creme p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
             >
               <div className="bg-afrodite-purple p-3 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
                 <Clock className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
@@ -566,9 +565,11 @@ export default function AboutPage() {
                 Inovacion
               </h3>
               <p className="text-afrodite-purple">
-                Kërkojmë vazhdimisht risi për t’i ofruar studentëve tanë
-                përgatitjen që i vendos një hap përpara në çdo fushë
-                profesionale.
+                Ne sjellim vazhdimisht risi përmes programeve tona dhe
+                bashkëpunimeve të jashtme, duke i dhënë studentëve mundësinë të
+                krijojnë rrjete profesionale, të punojnë me partnerë
+                ndërkombëtarë dhe të përballen me sfida të reja në kampionate e
+                veprimtari profesionale.
               </p>
             </motion.div>
 
@@ -576,7 +577,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={valuesInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-afrodite-creme p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
+              className="bg-afrodite-creme p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 hover:-translate-y-1 group"
             >
               <div className="bg-afrodite-purple p-3 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
                 <BookOpen className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
@@ -585,9 +586,10 @@ export default function AboutPage() {
                 Ekspertizë
               </h3>
               <p className="text-afrodite-purple">
-                Instruktorët tanë janë profesionistë me përvojë ndërkombëtare që
-                ofrojnë njohuritë dhe aftësitë më të fundit në industrinë e
-                bukurisë.
+                Instruktorët tanë janë profesionistë me eksperiencë
+                ndërkombëtare, të cilët jo vetëm japin njohuri brenda klasës,
+                por edhe udhëheqin studentët në gara, demonstrime dhe evente
+                profesionale që pasurojnë përvojën e tyre.
               </p>
             </motion.div>
           </div>
@@ -595,9 +597,9 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section - Redesigned */}
-      <section className="py-16 md:py-24 bg-afrodite-white">
+      {/* <section className="py-16 md:py-24 bg-afrodite-white">
         <div className="container mx-auto px-4">
-          {/* Header */}
+          {/* Header 
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
               <span>Ekipi ynë</span>
@@ -613,7 +615,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Grid of team cards */}
+          {/* Grid of team cards 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, idx) => (
               <motion.div
@@ -623,7 +625,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="group flex flex-col h-full"
               >
-                {/* Photo */}
+                {/* Photo 
                 <div className="relative overflow-hidden rounded-t-xl h-[400px] md:h-80">
                   <Image
                     src={
@@ -637,7 +639,7 @@ export default function AboutPage() {
                   />
                 </div>
 
-                {/* Card body */}
+                {/* Card body 
                 <div className="bg-afrodite-creme p-6 rounded-b-xl shadow-sm border border-t-0 border-gray-100 flex flex-col flex-grow">
                   <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-1 line-clamp-3 min-h-[4.5rem]">
                     {member.name}
@@ -655,7 +657,7 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  {/* Bio clamped to 2 lines */}
+                  {/* Bio clamped to 2 lines
                   <p
                     className="
               text-afrodite-purple text-sm mb-4
@@ -678,7 +680,7 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Join our team CTA */}
+          {/* Join our team CTA 
           <div className="text-center mt-12">
             <Link href="/contact">
               <AnimatedButton
@@ -693,7 +695,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Modals */}
+        {/* Modals 
         {team.map((member) =>
           modalId === member.id ? (
             <div
@@ -703,7 +705,7 @@ export default function AboutPage() {
               <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden">
                 {/* Close */}
 
-                {/* —————— IMAGE (fixed taller height) —————— */}
+      {/* —————— IMAGE (fixed taller height) —————— 
                 <div className="w-full relative h-[50vh] overflow-hidden">
                   <Image
                     src={member.photo || "/placeholder.svg"}
@@ -718,7 +720,7 @@ export default function AboutPage() {
                 >
                   ✕
                 </button>
-                {/* —————— BODY —————— */}
+                {/* —————— BODY —————— 
                 <div className="p-6">
                   <h3 className="text-2xl font-bold font-poppins text-afrodite-purple mb-1">
                     {member.name}
@@ -737,13 +739,13 @@ export default function AboutPage() {
                   {/* <div className="flex items-center text-sm text-afrodite-purple">
                     <Mail className="h-4 w-4 mr-1 text-afrodite-purple" />
                     <span>{member.email}</span>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>
           ) : null
         )}
-      </section>
+      </section> */}
 
       {/* Partners Section */}
       <section className="py-16 md:py-24 bg-afrodite-white">
@@ -1106,6 +1108,9 @@ export default function AboutPage() {
           />
         </div>
       </section>
+      {/* Request Info Button */}
+      {/* <RequestInfoButton /> */}
+      <WhatsAppButton />
     </div>
   );
 }

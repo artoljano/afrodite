@@ -80,6 +80,7 @@ const AnimatedButton = React.forwardRef<HTMLButtonElement, AnimatedButtonProps>(
       showFill = true,
       children,
       onClick,
+
       ...props
     },
     ref

@@ -9,6 +9,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle, XCircle, Loader2 } from "lucide-react";
 import { QUESTIONS } from "@/data/questions";
+import WhatsAppButton from "@/components/whatsapp-button";
 
 export default function ClientRegisterForm() {
   // Grab ?courseId= from the URL
@@ -341,6 +342,9 @@ export default function ClientRegisterForm() {
           </div>
         </motion.div>
       </AnimatePresence>
+      {/* Request Info Button */}
+      {/* <RequestInfoButton /> */}
+      <WhatsAppButton />
     </>
   );
 }

@@ -41,6 +41,7 @@ import { AnimatedButton } from "@/components/animated-button";
 
 import type { Course } from "@/data/courses";
 import { courses } from "@/data/courses";
+import WhatsAppButton from "@/components/whatsapp-button";
 
 interface Props {
   course: Course;
@@ -734,7 +735,7 @@ export default function ClientCourseDetail({ course }: Props) {
       )}
 
       {/* ── CTA, Related, RequestInfo … rest unchanged … */}
-      <RequestInfoButton />
+      <WhatsAppButton />
     </div>
   );
 }

@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { MessageCircle, X } from "lucide-react"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle, X } from "lucide-react";
 
 export default function WhatsAppButton() {
-  const [isVisible, setIsVisible] = useState(false)
-  const [showTooltip, setShowTooltip] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsVisible(true)
+      setIsVisible(true);
 
       // Show tooltip after button appears
       const tooltipTimer = setTimeout(() => {
-        setShowTooltip(true)
+        setShowTooltip(true);
 
         // Hide tooltip after 5 seconds
         const hideTooltipTimer = setTimeout(() => {
-          setShowTooltip(false)
-        }, 5000)
+          setShowTooltip(false);
+        }, 5000);
 
-        return () => clearTimeout(hideTooltipTimer)
-      }, 1000)
+        return () => clearTimeout(hideTooltipTimer);
+      }, 1000);
 
-      return () => clearTimeout(tooltipTimer)
-    }, 2000)
+      return () => clearTimeout(tooltipTimer);
+    }, 2000);
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -40,7 +40,7 @@ export default function WhatsAppButton() {
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
           className="fixed bottom-6 right-6 z-50"
         >
-          <AnimatePresence>
+          {/* <AnimatePresence>
             {showTooltip && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, x: -10 }}
@@ -51,14 +51,18 @@ export default function WhatsAppButton() {
               >
                 <div className="flex items-start">
                   <div className="flex-1">
-                    <p className="text-gray-800 font-medium">Keni nevojë për ndihmë?</p>
-                    <p className="text-gray-600 text-sm">Na kontaktoni në WhatsApp për informacione të mëtejshme.</p>
+                    <p className="text-gray-800 font-medium">
+                      Keni nevojë për ndihmë?
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      Na kontaktoni në WhatsApp për informacione të mëtejshme.
+                    </p>
                   </div>
                   <button
                     onClick={(e) => {
-                      e.preventDefault()
-                      e.stopPropagation()
-                      setShowTooltip(false)
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setShowTooltip(false);
                     }}
                     className="ml-2 text-gray-400 hover:text-gray-600"
                   >
@@ -68,7 +72,7 @@ export default function WhatsAppButton() {
                 <div className="absolute right-0 top-1/2 -mr-2 transform translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-white"></div>
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
 
           <a
             href="https://wa.me/35569204353"
@@ -82,12 +86,16 @@ export default function WhatsAppButton() {
             <MessageCircle className="h-8 w-8 text-white" />
             <motion.span
               animate={{ scale: [1, 1.2, 1] }}
-              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2, repeatDelay: 1 }}
+              transition={{
+                repeat: Number.POSITIVE_INFINITY,
+                duration: 2,
+                repeatDelay: 1,
+              }}
               className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full border-2 border-white"
             ></motion.span>
           </a>
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }

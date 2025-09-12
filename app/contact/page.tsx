@@ -25,6 +25,7 @@ import { AnimatedButton } from "@/components/animated-button";
 import VideoBackground from "@/components/video-background";
 import { CheckCircle, XCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
+import WhatsAppButton from "@/components/whatsapp-button";
 
 // Define the address data
 const addresses = [
@@ -620,6 +621,9 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      {/* Request Info Button */}
+      {/* <RequestInfoButton /> */}
+      <WhatsAppButton />
     </div>
   );
 }

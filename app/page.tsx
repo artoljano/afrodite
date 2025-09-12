@@ -19,6 +19,7 @@ import {
   Quote,
   Video,
   Play,
+  GraduationCap,
 } from "lucide-react";
 import CourseCard from "@/components/course-card";
 import TestimonialSlider from "@/components/testimonial-slider";
@@ -31,8 +32,9 @@ import { AnimatedButton } from "@/components/animated-button";
 import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { QUESTIONS } from "@/data/questions";
+import { FAQ_CATEGORIES } from "@/data/questions";
 import { Course, courses } from "@/data/courses";
+import WhatsAppButton from "@/components/whatsapp-button";
 
 export default function Home() {
   const [heroRef, heroInView] = useInView({
@@ -54,9 +56,24 @@ export default function Home() {
     triggerOnce: true,
     threshold: 0.1,
   });
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(
+    null
+  );
+  const [openQuestion, setOpenQuestion] = useState<
+    Record<string, number | null>
+  >({});
+  const toggleCategory = (category: string) => {
+    setOpenCategory((prev) => (prev === category ? null : category));
+    //setOpenQuestionIndex(null); // Reset question toggle when changing category
+  };
 
-  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
+  const toggleQuestion = (category: string, index: number) => {
+    setOpenQuestion((prev) => ({
+      ...prev,
+      [category]: prev[category] === index ? null : index,
+    }));
+  };
 
   // Animation variants for staggered animations
   const containerVariants = {
@@ -144,21 +161,29 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-wrap gap-4 pt-4">
-                  <AnimatedButton
-                    size="lg"
-                    variant="default"
-                    className="bg-afrodite-lightPurple text-afrodite-creme"
+                  <Link href="/courses">
+                    <AnimatedButton
+                      size="lg"
+                      variant="default"
+                      className="bg-afrodite-lightPurple text-afrodite-creme"
+                    >
+                      KURSE FIZIKE
+                      <ChevronRight className="ml-2 h-4 w-4" />
+                    </AnimatedButton>
+                  </Link>
+                  <Link
+                    href="https://wa.me/35569204353"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    KURSE FIZIKE
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </AnimatedButton>
-                  <AnimatedButton
-                    size="lg"
-                    variant="default"
-                    className="bg-afrodite-lightPurple text-afrodite-creme"
-                  >
-                    KONTAKTO TANI
-                  </AnimatedButton>
+                    <AnimatedButton
+                      size="lg"
+                      variant="default"
+                      className="bg-afrodite-lightPurple text-afrodite-creme"
+                    >
+                      KONTAKTO TANI
+                    </AnimatedButton>
+                  </Link>
                 </div>
 
                 <div className="flex items-center space-x-4 mt-8">
@@ -213,7 +238,7 @@ export default function Home() {
                   Orare Fleksibël
                 </h3>
                 <p className="text-sm text-gray-600">
-                  Kurse paradite, pasdite dhe fundjavë
+                  Kurse paradite, pasdite dhe fundjavë.
                 </p>
               </div>
             </div>
@@ -223,10 +248,10 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="font-semibold text-afrodite-purple">
-                  Certifikim Ndërkombëtar
+                  Çertifikim Ndërkombëtar
                 </h3>
                 <p className="text-sm text-gray-600">
-                  Diploma të njohura në të gjithë botën
+                  Diploma të njohura në të gjithë botën.
                 </p>
               </div>
             </div>
@@ -236,10 +261,12 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="font-semibold text-afrodite-purple">
-                  Instruktorë Profesionistë
+                  Mundësi Punësimi
                 </h3>
                 <p className="text-sm text-gray-600">
-                  Mësimdhënie nga ekspertë ndërkombëtare të industrisë
+                  Partneritete me biznese në çdo industri.
+                  {/* Ndërtojmë partneritete me biznese në industri për t'ju
+                  ndihmuar të gjeni mundësi punësimi pas diplomimit. */}
                 </p>
               </div>
             </div>
@@ -347,7 +374,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="bg-afrodite-creme p-6 rounded-xl shadow-lg border-l-4 border-purple-500 mt-6 ml-6 relative"
+                className="bg-afrodite-creme p-6 rounded-xl shadow-lg border-l-4 border-afrodite-lightPurple mt-6 ml-6 relative"
               >
                 <div className="absolute -top-3 -left-3 bg-afrodite-purple p-2 rounded-full">
                   <Quote className="h-5 w-5 text-afrodite-creme" />
@@ -379,12 +406,34 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors duration-300">
-                        Certifikime Ndërkombëtare
+                        Çertifikime Ndërkombëtare
                       </h3>
                       <p className="text-afrodite-lightPurple">
                         Kurset tona ofrojnë certifikime të njohura
                         ndërkombëtarisht që ju ndihmojnë të avanconi karrierën
                         tuaj kudo në botë.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={itemVariants}
+                  className="bg-afrodite-creme rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="bg-afrodite-purple p-4 rounded-full flex-shrink-0 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
+                      <GraduationCap className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors duration-300">
+                        Programe profesionale 2-3 vjecare
+                      </h3>
+                      <p className="text-afrodite-lightPurple">
+                        Diploma italiane që ofrojnë mundësinë për të hapur
+                        sallonin tuaj në Itali dhe në çdo vënd të Bashkimit
+                        Europian dhe të punoni ligjërisht në BE, USA, Kanada dhe
+                        Australi.
                       </p>
                     </div>
                   </div>
@@ -455,7 +504,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -533,7 +582,7 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -863,41 +912,69 @@ export default function Home() {
               </h3>
 
               <div className="space-y-4">
-                {QUESTIONS.map((faq, idx) => (
-                  <div key={idx} className="border-b border-white/10 pb-4">
+                {FAQ_CATEGORIES.map((cat) => (
+                  <div
+                    key={cat.category}
+                    className="border-b border-white/10 pb-4"
+                  >
                     <button
-                      onClick={() => toggle(idx)}
-                      className="flex justify-between items-center w-full text-left"
+                      onClick={() => toggleCategory(cat.category)}
+                      className="flex justify-between items-center w-full text-left mb-2"
                     >
-                      <span className="text-afrodite-purple font-medium">
-                        {faq.question}
+                      <span className="text-afrodite-purple font-semibold text-lg">
+                        {cat.category}
                       </span>
                       <ChevronRight
-                        className={`h-5 w-5 text-afrodite-purple transform transition-transform duration-200 ${
-                          openIndex === idx ? "rotate-90" : ""
+                        className={`h-6 w-6 text-afrodite-purple transform transition-transform duration-200 ${
+                          openCategory === cat.category ? "rotate-90" : ""
                         }`}
                       />
                     </button>
 
-                    {/* AnimatePresence will handle mounting/unmounting animation */}
-                    <AnimatePresence initial={false}>
-                      {openIndex === idx && (
-                        <motion.div
-                          key="content"
-                          initial="collapsed"
-                          animate="open"
-                          exit="collapsed"
-                          variants={{
-                            open: { height: "auto", opacity: 1, marginTop: 8 },
-                            collapsed: { height: 0, opacity: 0, marginTop: 0 },
-                          }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
-                          className="overflow-hidden text-afrodite-lightPurple text-sm"
-                        >
-                          <div className="py-2">{faq.answer}</div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        openCategory === cat.category
+                          ? "max-h-[1000px] opacity-100 mt-4"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="space-y-4">
+                        {cat.items.map((faq, idx) => (
+                          <div
+                            key={idx}
+                            className="border-b border-white/10 pb-2"
+                          >
+                            <button
+                              onClick={() => toggleQuestion(cat.category, idx)}
+                              className="flex justify-between items-center w-full text-left"
+                            >
+                              <span className="text-afrodite-purple font-medium">
+                                {faq.question}
+                              </span>
+                              <ChevronRight
+                                className={`h-5 w-5 text-afrodite-purple transform transition-transform duration-200 ${
+                                  openQuestion[cat.category] === idx
+                                    ? "rotate-90"
+                                    : ""
+                                }`}
+                              />
+                            </button>
+
+                            <div
+                              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                                openQuestion[cat.category] === idx
+                                  ? "max-h-[500px] opacity-100 mt-2"
+                                  : "max-h-0 opacity-0"
+                              }`}
+                            >
+                              <p className="text-afrodite-lightPurple text-sm py-2">
+                                {faq.answer}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -916,7 +993,8 @@ export default function Home() {
       </section>
 
       {/* Request Info Button */}
-      <RequestInfoButton />
+      {/* <RequestInfoButton /> */}
+      <WhatsAppButton />
     </div>
   );
 }

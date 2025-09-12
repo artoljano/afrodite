@@ -135,14 +135,14 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/courses?category=makeup"
+                  href="/courses?category=parukeri"
                   className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors flex items-center group"
                 >
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                  Makeup Artist
+                  Parukeri
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/courses?category=nails"
                   className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors flex items-center group"
@@ -150,17 +150,17 @@ export default function Footer() {
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
                   Manikyr & Pedikyr
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
-                  href="/courses?category=esthetics"
+                  href="/courses?category=estetike"
                   className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors flex items-center group"
                 >
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
                   Estetikë
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/courses?category=lashes&category=brows"
                   className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors flex items-center group"
@@ -168,17 +168,17 @@ export default function Footer() {
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
                   Qerpikë & Vetulla
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
-                  href="/courses?category=barber&category=hair"
+                  href="/courses?category=berber"
                   className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors flex items-center group"
                 >
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                  Stilim Flokësh
+                  Berber
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/courses?category=pajisje"
                   className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors flex items-center group"
@@ -186,7 +186,7 @@ export default function Footer() {
                   <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
                   Pajisje & Trajtimet
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -207,7 +207,9 @@ export default function Footer() {
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-afrodite-lightPurple flex-shrink-0" />
                 <Link
-                  href="tel:+35569204353"
+                  href="https://wa.me/35569204353"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors"
                 >
                   +355 69 204 3535

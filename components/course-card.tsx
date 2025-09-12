@@ -140,8 +140,8 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
           <div className="mt-6">
             <AnimatedButton
               size="default"
-              variant="secondary"
-              className="w-full block px-6 py-2 bg-afrodite-lightPurple  text-afrodite-creme"
+              variant="default"
+              className="w-full block px-6 py-2 bg-afrodite-lightPurple text-afrodite-creme"
             >
               Regjistrohu Tani
             </AnimatedButton>

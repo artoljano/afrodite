@@ -46,6 +46,7 @@ import { useEffect } from "react";
 // Import courses from data/courses.ts
 import { courses } from "@/data/courses";
 import VideoModal from "@/components/video-modal";
+import WhatsAppButton from "@/components/whatsapp-button";
 
 export const categories = [
   { id: "estetike", name: "Estetikë", icon: <Sparkles className="h-4 w-4" /> },
@@ -771,6 +772,9 @@ export default function CoursesPage() {
           />
         </div>
       </section>
+      {/* Request Info Button */}
+      {/* <RequestInfoButton /> */}
+      <WhatsAppButton />
     </div>
   );
 }

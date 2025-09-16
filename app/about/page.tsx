@@ -219,6 +219,37 @@ export default function AboutPage() {
               dhe Australi, apo hapjen e bizneseve në Itali dhe në Bashkimin
               Europian
             </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Link href="/courses">
+                <AnimatedButton
+                  size="lg"
+                  variant="default"
+                  className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme hover:brightness-95"
+                >
+                  Shiko programet
+                </AnimatedButton>
+              </Link>
+
+              <Link href="/apply">
+                <AnimatedButton
+                  size="lg"
+                  variant="default"
+                  className="rounded-xl px-8 border-2 border-afrodite-purple text-afrodite-purple hover:bg-afrodite-purple hover:text-afrodite-creme"
+                >
+                  Apliko tani
+                </AnimatedButton>
+              </Link>
+
+              <Link href="/contact">
+                <AnimatedButton
+                  size="lg"
+                  variant="default"
+                  className="rounded-xl px-8 border-2 border-afrodite-purple text-afrodite-purple hover:bg-afrodite-purple hover:text-afrodite-creme"
+                >
+                  Vizitë në kampus
+                </AnimatedButton>
+              </Link>
+            </div>
           </motion.div>
         </div>
 
@@ -262,6 +293,19 @@ export default function AboutPage() {
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="space-y-6"
             >
+              {/* Image on top */}
+              <div className="rounded-lg overflow-hidden shadow-md">
+                <Image
+                  src="/images/afrodite-about-history.jpg" // 👉 replace with your image
+                  alt="Afrodite Academy"
+                  width={800}
+                  height={600}
+                  className="object-cover w-full h-64 md:h-72 lg:h-80 rounded-xl relative"
+                  style={{ objectPosition: "center 20%" }}
+                />
+              </div>
+
+              {/* Quote box */}
               <div className="bg-afrodite-lightPurple p-6 rounded-lg border-l-4 border-afrodite-purple">
                 <p className="text-afrodite-creme italic">
                   "Akademia Afrodite përgatit profesionistë të rinj në fusha të
@@ -270,6 +314,8 @@ export default function AboutPage() {
                   qartë për të ardhmen."
                 </p>
               </div>
+
+              {/* Text paragraphs */}
               <p className="text-afrodite-purple">
                 <strong>Afrodite Academy</strong> është një institucion lider në
                 arsim, i licencuar dhe aktiv prej më shumë se një dekade.
@@ -337,19 +383,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* History Section with Horizontal Timeline */}
+      {/* Afrodite Text Section */}
       <section className="py-16 md:py-24 bg-afrodite-creme relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
+        {/* <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div> */}
 
         <div ref={historyRef} className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
-              <span>Historia jonë</span>
+              <span>Mesazh nga Themeluesja</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple text-center mb-4">
-              Udhëtimi Ynë{" "}
-              <span className="text-afrodite-purple">Ndër Vite</span>
+              Nga Ëndrra në{" "}
+              <span className="text-afrodite-purple">Realitet</span>
             </h2>
             <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-6"></div>
           </div>
@@ -394,6 +440,166 @@ export default function AboutPage() {
               </motion.div>
             </motion.div>
 
+            {/* Right Column - Founder Message */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={historyInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+              className="relative"
+            >
+              <div className="rounded-xl bg-afrodite-creme backdrop-blur-sm border border-afrodite-purple shadow-md p-6 md:p-8">
+                {/* Decorative quote mark */}
+                <div className="absolute -top-4 -left-4 bg-afrodite-purple text-afrodite-creme w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+                  <span className="text-lg leading-none">“</span>
+                </div>
+
+                <h3 className="text-2xl font-bold font-poppins text-afrodite-purple mb-4">
+                  Një mesazh nga themeluesja jonë
+                </h3>
+
+                <div className="space-y-4 text-afrodite-purple/90 leading-relaxed">
+                  <p>
+                    Kur themelova Afrodite Academy më shumë se një dekadë më
+                    parë, ëndrra ime ishte të krijoja një hapësirë ku pasioni
+                    për bukurinë dhe shërbimet profesionale të kthehej në
+                    karrierë të qëndrueshme. Besoj fort se edukimi cilësor hap
+                    dyer, jo vetëm në Shqipëri por kudo në botë.
+                  </p>
+                  <p>
+                    Si një profesioniste e formuar në një shkollë prestigjioze
+                    italiane dhe me mbi 20 vite eksperiencë në industrinë e
+                    wellness dhe estetikës, e di nga afër se çfarë kërkon tregu
+                    dhe si mund të përgatiten profesionistë që të shkëlqejnë.
+                  </p>
+                  <p>
+                    Sot jam krenare që mijëra kursantë tanë punojnë si
+                    profesionistë të suksesshëm në BE, SHBA, Kanada dhe
+                    Australi. Çdo histori suksesi e tyre është dëshmia më e
+                    bukur e punës sonë.
+                  </p>
+                  <p>
+                    Në Afrodite Academy, çdo kursant nuk mëson vetëm një zanat –
+                    ai fiton vetëbesim, përvojë reale dhe një rrjet ndërkombëtar
+                    mundësish. Ky ka qenë dhe mbetet misioni im: të ndërtojmë
+                    profesionistë që shkëlqejnë kudo.
+                  </p>
+                </div>
+
+                {/* Signature block */}
+                <div className="mt-6 pt-6 border-t border-afrodite-purple/15">
+                  <div className="flex items-center justify-between flex-wrap gap-4">
+                    <div>
+                      <p className="text-afrodite-purple font-semibold">
+                        Aferdita Ferracaku
+                      </p>
+                      <p className="text-afrodite-lightPurple text-sm">
+                        Themeluese & Drejtore e Afrodite Academy
+                      </p>
+                    </div>
+
+                    {/* Optional digital signature image; remove if you don’t have it yet */}
+                    {/* <Image
+                      src="/images/firma-aferdita.png"
+                      alt="Firmë digjitale"
+                      width={160}
+                      height={60}
+                      className="opacity-80"
+                    /> */}
+                    {/* <span className="text-afrodite-lightPurple text-xs italic">
+                      Firmë digjitale
+                    </span> */}
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="mt-6 flex flex-wrap justify-center gap-3">
+                  <Link href="/courses">
+                    <AnimatedButton
+                      size="lg"
+                      variant="default"
+                      className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme hover:brightness-95"
+                    >
+                      Shiko programet
+                    </AnimatedButton>
+                  </Link>
+
+                  <Link href="/apply">
+                    <AnimatedButton
+                      size="lg"
+                      variant="default"
+                      className="rounded-xl px-8 border-2 border-afrodite-purple text-afrodite-purple hover:bg-afrodite-purple hover:text-afrodite-creme"
+                    >
+                      Apliko tani
+                    </AnimatedButton>
+                  </Link>
+
+                  <Link href="/contact">
+                    <AnimatedButton
+                      size="lg"
+                      variant="default"
+                      className="rounded-xl px-8 border-2 border-afrodite-purple text-afrodite-purple hover:bg-afrodite-purple hover:text-afrodite-creme"
+                    >
+                      Vizitë në kampus
+                    </AnimatedButton>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Horizontal Timeline
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={historyInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="bg-white p-8 rounded-xl shadow-sm"
+          >
+            <h3 className="text-2xl font-bold text-afrodite-purple mb-8 text-center">
+              Momentet Kyçe
+            </h3>
+            <EnhancedTimeline events={timelineEvents} />
+          </motion.div> */}
+        </div>
+      </section>
+
+      {/* History Section with Horizontal Timeline */}
+      <section className="py-16 md:py-24 bg-afrodite-creme relative overflow-hidden">
+        {/* <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div> */}
+
+        <div ref={historyRef} className="container mx-auto px-4">
+          <div className="flex flex-col items-center justify-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
+              <span>Historia jonë</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple text-center mb-4">
+              Udhëtimi Ynë{" "}
+              <span className="text-afrodite-purple">Ndër Vite</span>
+            </h2>
+            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-6"></div>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            {/* Left Column - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={historyInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="relative"
+            >
+              <div className="rounded-xl overflow-hidden shadow-xl">
+                <div className="relative">
+                  <Image
+                    src="/images/afrodite-shkolla.jpg"
+                    alt="Aferdita Ferracaku - Founder"
+                    width={800}
+                    height={800}
+                    className="object-cover w-full max-h-[900px] rounded-xl"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Right Column - Text */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
@@ -407,11 +613,10 @@ export default function AboutPage() {
                   Eksperiencë
                 </h3>
                 <p className="text-afrodite-purple">
-                  Me një karrierë prej mbi 20 vitesh eksperiencë në Itali, në
-                  sektorin e bukurisë, estetikës dhe menaxhimit akademik,
-                  Aferdita Ferracaku ka ndërtuar një profil të fortë si
-                  drejtuese teknike dhe trajnere profesionale në qendra
-                  prestigjioze europiane.
+                  Me mbi 20 vite karrierë në Itali në industrinë e bukurisë,
+                  estetikës dhe menaxhimit akademik, Aferdita Ferracaku fitoi
+                  ekspertizë që u bë bazë për krijimin e një institucioni unik
+                  në Shqipëri.
                 </p>
               </div>
 
@@ -421,10 +626,9 @@ export default function AboutPage() {
                   Zhvillim
                 </h3>
                 <p className="text-afrodite-purple">
-                  E rikthyer në Shqipëri, themeloi Afrodite Italian Wellness
-                  Academy, një institucion model për trajnimin dhe certifikimin
-                  profesional, duke ndërthurur standardet europiane me nevojat e
-                  tregut vendas.
+                  Pas rikthimit në Shqipëri, ajo themeloi Afrodite Academy, duke
+                  sjellë standardet europiane të arsimit profesional dhe duke i
+                  përshtatur me nevojat e tregut vendas.
                 </p>
               </div>
 
@@ -434,10 +638,10 @@ export default function AboutPage() {
                   Sot
                 </h3>
                 <p className="text-afrodite-purple">
-                  Në rolin e saj si administratore dhe pedagoge, ajo drejton
-                  akademinë me vizion modern, duke krijuar mundësi reale për
-                  punësim dhe zhvillim për brezin e ri të profesionistëve në
-                  Shqipëri dhe jashtë saj.
+                  Akademia është rritur në një institucion lider, ku mijëra
+                  kursantë kanë ndërtuar karriera të suksesshme brenda dhe
+                  jashtë vendit, duke dëshmuar cilësinë dhe ndikimin e saj
+                  ndërkombëtar.
                 </p>
               </div>
 
@@ -446,9 +650,9 @@ export default function AboutPage() {
                   <AnimatedButton
                     size="lg"
                     variant="default"
-                    className="bg-afrodite-lightPurple text-afrodite-creme"
+                    className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
                   >
-                    Shiko kurset tona
+                    Shiko kurset
                     <ChevronRight className="ml-2 h-4 w-4" />
                   </AnimatedButton>
                 </Link>
@@ -1089,13 +1293,15 @@ export default function AboutPage() {
               të kthehet te Afrodite Academy për zhvillim të vazhdueshëm
               profesional.
             </p>
-            <AnimatedButton
-              size="lg"
-              variant="default"
-              className="bg-afrodite-lightPurple text-afrodite-creme"
-            >
-              REGJISTROHU TANI
-            </AnimatedButton>
+            <Link href="/register">
+              <AnimatedButton
+                size="lg"
+                variant="default"
+                className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
+              >
+                Regjistrohu Tani
+              </AnimatedButton>
+            </Link>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-64 h-64 opacity-10">

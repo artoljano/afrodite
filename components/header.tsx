@@ -51,7 +51,7 @@ export default function Header() {
             {/* Contact Info */}
             <div className="flex items-center space-x-4 text-xs">
               <a
-                href="tel:+35569204353"
+                href="tel:+355692043535"
                 className="flex items-center text-afrodite-creme hover:text-afrodite-purple transition-colors"
               >
                 <Phone className="h-3 w-3 mr-1" />
@@ -149,6 +149,7 @@ export default function Header() {
                 { name: "Kryefaqja", path: "/" },
                 { name: "Rreth Nesh", path: "/about" },
                 { name: "Kurset", path: "/courses" },
+                { name: "Cmimet", path: "/awards" },
                 { name: "Kontakt", path: "/contact" },
               ].map((item) => (
                 <Link
@@ -184,14 +185,15 @@ export default function Header() {
             {/* Right Section */}
             <div className="flex items-center space-x-3">
               {/* CTA Button */}
-              <AnimatedButton
-                size="sm"
-                variant="secondary"
-                className="hidden md:flex"
-              >
-                Regjistrohu Tani
-              </AnimatedButton>
-
+              <Link href="/register">
+                <AnimatedButton
+                  size="sm"
+                  variant="secondary"
+                  className="hidden md:flex"
+                >
+                  Regjistrohu Tani
+                </AnimatedButton>
+              </Link>
               {/* Mobile Menu Button */}
               <button
                 className="lg:hidden p-2  text-afrodite-lightPurple hover:text-afrodite-purple transition-colors bg-afrodite-creme"
@@ -259,7 +261,7 @@ export default function Header() {
               <div className="mt-4 pt-4 border-t border-b border-afrodite-purple">
                 <div className="grid grid-cols-1 gap-2">
                   <a
-                    href="tel:+35569204353"
+                    href="tel:+355692043535"
                     className="flex items-center text-afrodite-lightPurple hover:text-afrodite-purple transition-colors text-sm"
                   >
                     <Phone className="h-4 w-4 mr-2" />
@@ -324,13 +326,15 @@ export default function Header() {
               </div>
 
               <div className="mt-6">
-                <AnimatedButton
-                  variant="secondary"
-                  className="w-full"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Regjistrohu Tani
-                </AnimatedButton>
+                <Link href="/register">
+                  <AnimatedButton
+                    variant="secondary"
+                    className="w-full"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Regjistrohu Tani
+                  </AnimatedButton>
+                </Link>
               </div>
             </div>
           </motion.div>

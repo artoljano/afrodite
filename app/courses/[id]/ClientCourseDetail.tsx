@@ -194,8 +194,12 @@ export default function ClientCourseDetail({ course }: Props) {
               </div> */}
             </div>
             <Link href={`/register?courseId=${course.id}`} passHref>
-              <AnimatedButton size="lg" variant="secondary">
-                REGJISTROHU TANI
+              <AnimatedButton
+                size="lg"
+                variant="default"
+                className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
+              >
+                Regjistrohu Tani
               </AnimatedButton>
             </Link>
           </motion.div>
@@ -315,8 +319,12 @@ export default function ClientCourseDetail({ course }: Props) {
 
               <div className="pt-4">
                 <Link href={`/register?courseId=${course.id}`} passHref>
-                  <AnimatedButton size="lg" variant="default">
-                    REGJISTROHU TANI
+                  <AnimatedButton
+                    size="lg"
+                    variant="default"
+                    className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
+                  >
+                    Regjistrohu Tani
                   </AnimatedButton>
                 </Link>
               </div>
@@ -597,20 +605,22 @@ export default function ClientCourseDetail({ course }: Props) {
               komunitetit tonë të suksesshëm.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <AnimatedButton
-                size="lg"
-                variant="default"
-                className="bg-afrodite-lightPurple text-afrodite-creme"
-              >
-                REGJISTROHU TANI
-              </AnimatedButton>
+              <Link href={`/register?courseId=${course.id}`} passHref>
+                <AnimatedButton
+                  size="lg"
+                  variant="default"
+                  className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
+                >
+                  Regjistrohu Tani
+                </AnimatedButton>
+              </Link>
               <Link href="/contact">
                 <AnimatedButton
                   size="lg"
                   variant="default"
-                  className="bg-afrodite-lightPurple text-afrodite-creme"
+                  className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
                 >
-                  NA KONTAKTONI
+                  Na Kontaktoni
                 </AnimatedButton>
               </Link>
             </div>
@@ -717,9 +727,9 @@ export default function ClientCourseDetail({ course }: Props) {
                         }
                       >
                         <AnimatedButton
-                          size="default"
+                          size="lg"
                           variant="default"
-                          className="bg-afrodite-lightPurple text-afrodite-creme"
+                          className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
                         >
                           Mëso më shumë
                           <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />

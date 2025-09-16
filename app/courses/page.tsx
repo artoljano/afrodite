@@ -501,7 +501,7 @@ export default function CoursesPage() {
                         <AnimatedButton
                           size="default"
                           variant="default"
-                          className="bg-afrodite-lightPurple text-afrodite-creme"
+                          className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
                         >
                           Mëso më shumë
                           <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
@@ -745,18 +745,18 @@ export default function CoursesPage() {
                 <AnimatedButton
                   size="lg"
                   variant="default"
-                  className="bg-afrodite-lightPurple text-afrodite-creme"
+                  className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
                 >
-                  NA KONTAKTONI
+                  Na Kontaktoni
                 </AnimatedButton>
               </Link>
               <Link href="/about">
                 <AnimatedButton
                   size="lg"
                   variant="default"
-                  className="bg-afrodite-lightPurple text-afrodite-creme"
+                  className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
                 >
-                  RRETH AKADEMISË
+                  Rreth Akademisë
                 </AnimatedButton>
               </Link>
             </div>

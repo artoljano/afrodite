@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { MessageCircle } from "lucide-react"
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageCircle } from "lucide-react";
 
 export default function RequestInfoButton() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsVisible(true)
-    }, 2000)
+      setIsVisible(true);
+    }, 2000);
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -26,7 +26,7 @@ export default function RequestInfoButton() {
           className="fixed bottom-6 right-6 z-50"
         >
           <a
-            href="https://wa.me/35569204353"
+            href="https://wa.me/355692043535"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition-colors"
@@ -37,5 +37,5 @@ export default function RequestInfoButton() {
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }

@@ -193,7 +193,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3 className="text-xl font-bold font-poppins mb-6 relative">
-              <span className="relative z-10">Na Kontaktoni</span>
+              <span className="relative z-10">Na kontaktoni</span>
               <span className="absolute bottom-0 left-0 w-12 h-1 bg-afrodite-purple"></span>
             </h3>
             <ul className="space-y-4">
@@ -207,7 +207,7 @@ export default function Footer() {
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-afrodite-lightPurple flex-shrink-0" />
                 <Link
-                  href="https://wa.me/35569204353"
+                  href="https://wa.me/355692043535"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors"

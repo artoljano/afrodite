@@ -1,350 +1,393 @@
+// app/register/ClientRegisterForm.tsx
 "use client";
 
-import React, { useState, FormEvent, useEffect } from "react";
-import Link from "next/link";
+import { useEffect, useMemo, useState, FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
+import { Loader2, CheckCircle, XCircle, Send } from "lucide-react";
 import { courses } from "@/data/courses";
-import { AnimatedButton } from "@/components/animated-button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle, XCircle, Loader2 } from "lucide-react";
-import { QUESTIONS } from "@/data/questions";
-import WhatsAppButton from "@/components/whatsapp-button";
+
+type Status = "idle" | "sending" | "success" | "error";
 
 export default function ClientRegisterForm() {
-  // Grab ?courseId= from the URL
   const searchParams = useSearchParams();
   const courseIdParam = searchParams.get("courseId");
-  // Parse it or fall back to the first course
-  const initialCourseId = courseIdParam
-    ? parseInt(courseIdParam, 10) || courses[0]?.id
-    : courses[0]?.id;
 
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    selectedCourseId: initialCourseId,
-  });
-  const [submitted, setSubmitted] = useState(false);
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "success" | "error"
-  >("idle");
-
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
-
-  // If the URL param changes, update the select
-  useEffect(() => {
-    if (courseIdParam) {
-      const id = parseInt(courseIdParam, 10);
-      if (!isNaN(id)) {
-        setFormData((f) => ({ ...f, selectedCourseId: id }));
-      }
-    }
+  // initial preselect (from URL)
+  const preselectedCourse = useMemo(() => {
+    if (!courseIdParam) return null;
+    const idNum = Number(courseIdParam);
+    if (!Number.isFinite(idNum)) return null;
+    return courses.find((c) => c.id === idNum) ?? null;
   }, [courseIdParam]);
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: name === "selectedCourseId" ? parseInt(value, 10) : value,
-    }));
-  }
+  const [status, setStatus] = useState<Status>("idle");
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    birthDate: "",
+    gender: "",
+    city: "",
+    address: "",
+    email: "",
+    phone: "",
+    selectedCourseId: "", // will be set from query if valid
+    level: "",
+    education: "",
+    employed: "",
+    experience: "",
+    heardFrom: "",
+    paymentMethod: "",
+  });
+
+  // prefill once from URL param if valid
+  useEffect(() => {
+    if (preselectedCourse) {
+      setForm((f) =>
+        f.selectedCourseId
+          ? f
+          : { ...f, selectedCourseId: String(preselectedCourse.id) }
+      );
+    }
+  }, [preselectedCourse]);
+
+  // 👇 live selected course (updates when user changes dropdown)
+  const currentCourse = useMemo(() => {
+    if (form.selectedCourseId) {
+      const bySelect = courses.find(
+        (c) => String(c.id) === form.selectedCourseId
+      );
+      if (bySelect) return bySelect;
+    }
+    return preselectedCourse;
+  }, [form.selectedCourseId, preselectedCourse]);
+
+  const onChange =
+    (name: keyof typeof form) =>
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
+    ) => {
+      const val =
+        e.target instanceof HTMLInputElement && e.target.type === "checkbox"
+          ? (e.target as HTMLInputElement).checked
+          : e.target.value;
+      setForm((f) => ({ ...f, [name]: val as any }));
+    };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (
+      !form.selectedCourseId ||
+      !form.firstName ||
+      !form.lastName ||
+      !form.email ||
+      !form.phone
+    ) {
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
 
     try {
       const selectedCourse = courses.find(
-        (c) => c.id === formData.selectedCourseId
+        (c) => String(c.id) === form.selectedCourseId
       );
-
-      const formWithCourseTitle = {
-        ...formData,
-        selectedCourseTitle: selectedCourse ? selectedCourse.title : "Unknown",
+      const payload = {
+        ...form,
+        selectedCourseTitle: selectedCourse?.title ?? "",
       };
 
-      const res = await fetch("http://localhost:5000/api/register-course", {
+      const res = await fetch("http://localhost:5000/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formWithCourseTitle),
+        body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
-      if (data.success) {
-        setStatus("success");
-        setSubmitted(true);
-      } else {
-        setStatus("error");
-      }
-    } catch (err) {
-      console.error(err);
+      if (!res.ok) throw new Error("Bad response");
+      setStatus("success");
+    } catch {
       setStatus("error");
+    } finally {
+      setTimeout(() => setStatus("idle"), 4000);
     }
   };
 
-  useEffect(() => {
-    if (status === "success" || status === "error") {
-      const timeout = setTimeout(() => setStatus("idle"), 4000);
-      return () => clearTimeout(timeout);
-    }
-  }, [status]);
-
-  return submitted ? (
+  return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className="flex flex-col items-center justify-center bg-black/30 backdrop-blur-sm p-8 rounded-xl border border-white/10 w-full max-w-md mx-auto text-center"
+      transition={{ duration: 0.45 }}
+      className="bg-afrodite-creme rounded-xl shadow-md p-8"
     >
-      <h2 className="text-2xl font-bold text-white mb-4">
-        Faleminderit për regjistrimin!
-      </h2>
-      <p className="text-gray-300 mb-6">
-        Kemi marrë informacionin tuaj dhe do të kontaktojmë së shpejti për
-        konfirmimin e vendit në kurs.
-      </p>
-      <Link href="/courses">
-        <AnimatedButton className="bg-purple-600 hover:bg-purple-700 text-white">
-          Shiko Kurset
-        </AnimatedButton>
-      </Link>
-    </motion.div>
-  ) : (
-    <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-3xl mx-auto text-center mb-12"
-      >
-        <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white text-sm mb-4">
-          <span>Bëhu pjesë e suksesit</span>
+      <h3 className="text-2xl font-bold font-poppins text-afrodite-purple mb-2">
+        Plotësoni Formularin e Aplikimit
+      </h3>
+
+      {/* 👇 This updates automatically when the dropdown changes */}
+      {currentCourse && (
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-afrodite-purple/10 px-3 py-1 text-sm text-afrodite-purple">
+          <span className="opacity-80">Kurs i përzgjedhur:</span>
+          <span className="font-semibold">{currentCourse.title}</span>
         </div>
-        <h2 className="text-3xl md:text-4xl font-bold font-poppins text-white mb-6">
-          Gati për të Filluar{" "}
-          <span className="text-purple-400">Karrierën Tuaj të Re?</span>
-        </h2>
-        <p className="text-lg text-gray-300 mb-8">
-          Regjistrohuni sot në kurset tona profesionale dhe bëhuni pjesë e
-          komunitetit tonë të profesionistëve të suksesshëm.
-        </p>
-      </motion.div>
+      )}
 
-      <AnimatePresence>
-        <motion.div
-          key="form-container"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto bg-black/30 backdrop-blur-sm p-8 rounded-xl border border-white/10"
-        >
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Full Name */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
+      <form onSubmit={handleSubmit} className="space-y-8">
+        {/* PERSONAL */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Field label="Emri" required>
+            <input
+              className="w-full rounded-md border border-afrodite-lightPurple/20 px-4 py-2 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
+              value={form.firstName}
+              onChange={onChange("firstName")}
+              placeholder="Emri"
+              required
+            />
+          </Field>
+          <Field label="Mbiemri" required>
+            <input
+              className="w-full rounded-md border border-afrodite-lightPurple/20 px-4 py-2 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
+              value={form.lastName}
+              onChange={onChange("lastName")}
+              placeholder="Mbiemri"
+              required
+            />
+          </Field>
+
+          <Field label="Datëlindja">
+            <input
+              type="date"
+              className="w-full rounded-md border border-afrodite-lightPurple/20 px-4 py-2 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
+              value={form.birthDate}
+              onChange={onChange("birthDate")}
+            />
+          </Field>
+
+          <Field label="Gjinia">
+            <SelectField
+              value={form.gender}
+              onChange={onChange("gender")}
+              placeholder="Zgjidh gjininë"
+              allowUnspecified
             >
-              <label
-                htmlFor="fullName"
-                className="block text-sm font-medium text-gray-200 mb-1"
-              >
-                Emri i Plotë
-              </label>
-              <input
-                type="text"
-                name="fullName"
-                id="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-600 bg-black/50 text-white rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                placeholder="Shkruaj emrin tënd"
-              />
-            </motion.div>
+              <option value="F">F</option>
+              <option value="M">M</option>
+              <option value="Tjetër">Tjetër</option>
+            </SelectField>
+          </Field>
 
-            {/* Email */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.2 }}
+          <Field label="Qyteti">
+            <input
+              className="w-full rounded-md border border-afrodite-lightPurple/20 px-4 py-2 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
+              value={form.city}
+              onChange={onChange("city")}
+              placeholder="p.sh. Tiranë"
+            />
+          </Field>
+          <Field label="Adresa">
+            <input
+              className="w-full rounded-md border border-afrodite-lightPurple/20 px-4 py-2 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
+              value={form.address}
+              onChange={onChange("address")}
+              placeholder="Rruga, pallati, nr..."
+            />
+          </Field>
+        </div>
+
+        {/* CONTACT */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Field label="Email" required>
+            <input
+              type="email"
+              className="w-full rounded-md border border-afrodite-lightPurple/20 px-4 py-2 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
+              value={form.email}
+              onChange={onChange("email")}
+              placeholder="adresa@juaj.com"
+              required
+            />
+          </Field>
+          <Field label="Telefoni" required>
+            <input
+              className="w-full rounded-md border border-afrodite-lightPurple/20 px-4 py-2 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
+              value={form.phone}
+              onChange={onChange("phone")}
+              placeholder="+355 6X XXX XXXX"
+              required
+            />
+          </Field>
+        </div>
+
+        {/* PROGRAM */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Field label="Kursi" required>
+            <SelectField
+              value={form.selectedCourseId}
+              onChange={(e) =>
+                setForm((f) => ({ ...f, selectedCourseId: e.target.value }))
+              }
+              placeholder="Zgjidh kursin"
+              required
             >
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-200 mb-1"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-600 bg-black/50 text-white rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                placeholder="email@example.com"
-              />
-            </motion.div>
-
-            {/* Phone */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-            >
-              <label
-                htmlFor="phone"
-                className="block text-sm font-medium text-gray-200 mb-1"
-              >
-                Telefoni
-              </label>
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-600 bg-black/50 text-white rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-                placeholder="+355 6XX XXX XXX"
-              />
-            </motion.div>
-
-            {/* Select Course */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-            >
-              <label
-                htmlFor="selectedCourseId"
-                className="block text-sm font-medium text-gray-200 mb-1"
-              >
-                Zgjidh Kursin
-              </label>
-              <select
-                name="selectedCourseId"
-                id="selectedCourseId"
-                value={String(formData.selectedCourseId)}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-600 bg-black/50 text-white rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
-              >
-                {courses.map((course) => (
-                  <option
-                    key={course.id}
-                    value={String(course.id)}
-                    className="bg-black text-white"
-                  >
-                    {course.title}
-                  </option>
-                ))}
-              </select>
-            </motion.div>
-
-            {/* Submit */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.5 }}
-              className="pt-4 border-t border-gray-600"
-            >
-              <AnimatedButton
-                type="submit"
-                size="lg"
-                variant="default"
-                disabled={status === "sending"}
-                className="w-full bg-black hover:bg-black text-white border border-purple-500/30 transform hover:scale-[1.02] transition"
-              >
-                <div className="flex items-center justify-center gap-x-3">
-                  {status === "sending" && (
-                    <Loader2 className="animate-spin w-5 h-5" />
-                  )}
-                  {status === "success" && (
-                    <CheckCircle className="text-green-400 w-5 h-5" />
-                  )}
-                  {status === "error" && (
-                    <XCircle className="text-red-500 w-5 h-5" />
-                  )}
-                  {status === "idle"}
-                  <span>
-                    {status === "sending"
-                      ? "Duke dërguar..."
-                      : status === "success"
-                      ? "U dërgua me sukses"
-                      : status === "error"
-                      ? "Dështoi dërgimi"
-                      : "Dërgo Regjistrimin"}
-                  </span>
-                </div>
-              </AnimatedButton>
-            </motion.div>
-          </form>
-
-          {/* FAQ Accordion */}
-          <div className="mt-16 text-left bg-black/30 backdrop-blur-sm p-6 rounded-xl border border-white/10">
-            <h3 className="text-xl font-bold text-white mb-6 text-center">
-              Pyetje të Shpeshta
-            </h3>
-
-            <div className="space-y-4">
-              {QUESTIONS.map((faq, idx) => (
-                <div key={idx} className="border-b border-white/10 pb-4">
-                  <button
-                    onClick={() => toggle(idx)}
-                    className="flex justify-between items-center w-full text-left"
-                  >
-                    <span className="text-white font-medium">
-                      {faq.question}
-                    </span>
-                    <ChevronRight
-                      className={`h-5 w-5 text-purple-400 transform transition-transform duration-200 ${
-                        openIndex === idx ? "rotate-90" : ""
-                      }`}
-                    />
-                  </button>
-
-                  {/* AnimatePresence will handle mounting/unmounting animation */}
-                  <AnimatePresence initial={false}>
-                    {openIndex === idx && (
-                      <motion.div
-                        key="content"
-                        initial="collapsed"
-                        animate="open"
-                        exit="collapsed"
-                        variants={{
-                          open: { height: "auto", opacity: 1, marginTop: 8 },
-                          collapsed: { height: 0, opacity: 0, marginTop: 0 },
-                        }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="overflow-hidden text-gray-300 text-sm"
-                      >
-                        <div className="py-2">{faq.answer}</div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+              {courses.map((c) => (
+                <option key={c.id} value={String(c.id)}>
+                  {c.title}
+                </option>
               ))}
+            </SelectField>
+          </Field>
+
+          <Field label="Niveli">
+            <SelectField
+              value={form.level}
+              onChange={onChange("level")}
+              placeholder="Zgjidh nivelin"
+              allowUnspecified
+            >
+              <option value="Bazë">Bazë</option>
+              <option value="Avancuar">Avancuar</option>
+              <option value="Vjetor">Vjetor</option>
+            </SelectField>
+          </Field>
+        </div>
+
+        {/* EDUCATION / WORK */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Field label="Arsimi">
+            <SelectField
+              value={form.education}
+              onChange={onChange("education")}
+              placeholder="Zgjidh nivelin arsimor"
+              allowUnspecified
+            >
+              <option value="9-vjeçare">9-vjeçare</option>
+              <option value="Gjimnaz">Gjimnaz</option>
+              <option value="Bachelor">Bachelor</option>
+              <option value="Master">Master</option>
+              <option value="Tjetër">Tjetër</option>
+            </SelectField>
+          </Field>
+        </div>
+
+        <Field label="Përvoja / motivimi">
+          <textarea
+            rows={4}
+            className="w-full rounded-md border border-afrodite-lightPurple/20 px-4 py-2 text-afrodite-lightPurple focus:border-afrodite-purple focus:ring-afrodite-purple"
+            value={form.experience}
+            onChange={onChange("experience")}
+            placeholder="Na tregoni shkurtimisht për përvojën ose motivimin tuaj…"
+          />
+        </Field>
+
+        {/* RELATIONSHIP */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Field label="Si na gjetët?">
+            <SelectField
+              value={form.heardFrom}
+              onChange={onChange("heardFrom")}
+              placeholder="Zgjidh një opsion"
+              allowUnspecified
+            >
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Google">Google</option>
+              <option value="Mik/Familjar">Mik / Familjar</option>
+              <option value="Tjetër">Tjetër</option>
+            </SelectField>
+          </Field>
+        </div>
+
+        {/* SUBMIT */}
+        <div className="pt-2">
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className={`w-full flex justify-center items-center rounded-xl px-8 py-3 bg-afrodite-lightPurple text-afrodite-creme hover:bg-afrodite-purple transition-colors duration-300 ${
+              status === "sending" ? "opacity-70 cursor-not-allowed" : ""
+            }`}
+          >
+            <div className="flex items-center gap-x-3">
+              {status === "sending" && (
+                <Loader2 className="animate-spin w-5 h-5" />
+              )}
+              {status === "success" && (
+                <CheckCircle className="text-green-500 w-5 h-5" />
+              )}
+              {status === "error" && (
+                <XCircle className="text-red-500 w-5 h-5" />
+              )}
+              {status === "idle" && <Send className="w-5 h-5" />}
+              <span>
+                {status === "sending"
+                  ? "Duke dërguar…"
+                  : status === "success"
+                  ? "U dërgua me sukses"
+                  : status === "error"
+                  ? "Dështoi dërgimi"
+                  : "Dërgo aplikimin"}
+              </span>
             </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-      {/* Request Info Button */}
-      {/* <RequestInfoButton /> */}
-      <WhatsAppButton />
-    </>
+          </button>
+        </div>
+      </form>
+    </motion.div>
+  );
+}
+
+function Field({
+  label,
+  required,
+  children,
+}: {
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label className="block text-afrodite-lightPurple mb-1">
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+      {children}
+    </div>
+  );
+}
+
+function SelectField({
+  value,
+  onChange,
+  placeholder,
+  children,
+  allowUnspecified = false,
+  required = false,
+}: {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  placeholder: string;
+  children: React.ReactNode;
+  allowUnspecified?: boolean;
+  required?: boolean;
+}) {
+  const isPlaceholder = value === "";
+  return (
+    <select
+      value={value}
+      onChange={onChange}
+      required={required}
+      className={[
+        "w-full rounded-md border border-afrodite-lightPurple/20 px-4 py-2 bg-white focus:border-afrodite-purple focus:ring-afrodite-purple",
+        isPlaceholder ? "text-gray-400" : "text-afrodite-lightPurple",
+      ].join(" ")}
+    >
+      <option value="" disabled>
+        {placeholder}
+      </option>
+      {allowUnspecified && (
+        <option value="unspecified">— Preferoj të mos e specifikoj —</option>
+      )}
+      {children}
+    </select>
   );
 }

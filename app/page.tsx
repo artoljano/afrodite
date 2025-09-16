@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import testimonials from "@/data/testimonials";
 import {
   ChevronRight,
   Award,
@@ -74,6 +75,11 @@ export default function Home() {
       [category]: prev[category] === index ? null : index,
     }));
   };
+
+  // Pick the first 3 testimonials that actually have an avatar
+  const avatarPicks = testimonials
+    .filter((t) => t.avatar && t.avatar.trim() !== "")
+    .slice(0, 3);
 
   // Animation variants for staggered animations
   const containerVariants = {
@@ -165,44 +171,64 @@ export default function Home() {
                     <AnimatedButton
                       size="lg"
                       variant="default"
-                      className="bg-afrodite-lightPurple text-afrodite-creme"
+                      className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
                     >
-                      KURSE FIZIKE
+                      Kurse Fizike
                       <ChevronRight className="ml-2 h-4 w-4" />
                     </AnimatedButton>
                   </Link>
                   <Link
-                    href="https://wa.me/35569204353"
+                    href="https://wa.me/355692043535"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <AnimatedButton
                       size="lg"
                       variant="default"
-                      className="bg-afrodite-lightPurple text-afrodite-creme"
+                      className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
                     >
-                      KONTAKTO TANI
+                      Kontakto Tani
                     </AnimatedButton>
                   </Link>
                 </div>
 
                 <div className="flex items-center space-x-4 mt-8">
                   <div className="flex -space-x-2">
-                    {[1, 2, 3].map((i) => (
+                    {avatarPicks.map((t, i) => (
                       <div
-                        key={i}
+                        key={`${t.name}-${i}`}
                         className="w-10 h-10 rounded-full border-2 border-afrodite-lightPurple overflow-hidden"
+                        title={t.name}
                       >
-                        <Image
-                          src={`/placeholder.svg?height=40&width=40&text=Student+${i}`}
-                          alt={`Student ${i}`}
-                          width={40}
-                          height={40}
-                          className="w-full h-full object-cover"
-                        />
+                        {t.hasVideo && t.videoSrc ? (
+                          <video
+                            src={t.videoSrc}
+                            muted
+                            playsInline
+                            preload="metadata"
+                            className="w-full h-full object-cover bg-black"
+                            onLoadedMetadata={(e) => {
+                              // jump ~1 second in so we don't freeze on a black frame
+                              (
+                                e.currentTarget as HTMLVideoElement
+                              ).currentTime = 1;
+                            }}
+                            onSeeked={(e) => {
+                              (e.currentTarget as HTMLVideoElement).pause();
+                            }}
+                          />
+                        ) : (
+                          // fallback if one testimonial has an actual avatar
+                          <img
+                            src={t.avatar || "/placeholder.svg"}
+                            alt={t.name}
+                            className="w-full h-full object-cover"
+                          />
+                        )}
                       </div>
                     ))}
                   </div>
+
                   <div className="text-sm text-afrodite-lightPurple">
                     <span className="text-afrodite-purple font-semibold">
                       2500+
@@ -757,10 +783,10 @@ export default function Home() {
               onClick={handleDownloadBrochure}
               size="lg"
               variant="default"
-              className="bg-afrodite-lightPurple text-afrodite-creme"
+              className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
             >
               <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
-              SHKARKO BROSHURËN E KURSEVE
+              Shkarko Broshurën e Kurseve
             </AnimatedButton>
           </motion.div>
         </div>
@@ -829,9 +855,9 @@ export default function Home() {
               <AnimatedButton
                 size="lg"
                 variant="default"
-                className="bg-afrodite-lightPurple text-afrodite-creme"
+                className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
               >
-                SHIKO TË GJITHA KURSET
+                Shiko të gjitha kurset
                 <ChevronRight className="ml-2 h-4 w-4" />
               </AnimatedButton>
             </Link>
@@ -887,20 +913,22 @@ export default function Home() {
               komunitetit tonë të profesionistëve të suksesshëm.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <AnimatedButton
-                size="lg"
-                variant="default"
-                className="bg-afrodite-lightPurple text-afrodite-creme"
-              >
-                REGJISTROHU TANI
-              </AnimatedButton>
+              <Link href="/register">
+                <AnimatedButton
+                  size="lg"
+                  variant="default"
+                  className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
+                >
+                  Regjistrohu Tani
+                </AnimatedButton>
+              </Link>
               <Link href="/contact">
                 <AnimatedButton
                   size="lg"
                   variant="default"
-                  className="bg-afrodite-lightPurple text-afrodite-creme"
+                  className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
                 >
-                  NA KONTAKTONI
+                  Na Kontaktoni
                 </AnimatedButton>
               </Link>
             </div>

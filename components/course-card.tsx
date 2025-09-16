@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { ChevronRight, Check, Clock, Users, Info } from "lucide-react";
 import { AnimatedButton } from "@/components/animated-button";
 import type { Course } from "@/data/courses";
+import Link from "next/link";
 
 interface CourseCardProps {
   course: Course;
@@ -98,7 +99,7 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
               <AnimatedButton
                 size="default"
                 variant="default"
-                className="w-full block px-6 py-2 bg-afrodite-lightPurple text-afrodite-creme"
+                className="w-full block px-8  bg-afrodite-lightPurple text-afrodite-creme"
               >
                 Mëso më shumë
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
@@ -138,13 +139,15 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
           </ul>
 
           <div className="mt-6">
-            <AnimatedButton
-              size="default"
-              variant="default"
-              className="w-full block px-6 py-2 bg-afrodite-lightPurple text-afrodite-creme"
-            >
-              Regjistrohu Tani
-            </AnimatedButton>
+            <Link href={`/register?courseId=${course.id}`} passHref>
+              <AnimatedButton
+                size="default"
+                variant="default"
+                className="w-full block px-8  bg-afrodite-lightPurple text-afrodite-creme"
+              >
+                Regjistrohu Tani
+              </AnimatedButton>
+            </Link>
           </div>
         </div>
       </motion.div>

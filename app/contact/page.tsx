@@ -186,7 +186,7 @@ export default function ContactPage() {
               <span>Na Kontaktoni</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-afrodite-purple mb-6">
-              Na Kontaktoni
+              Na kontaktoni
             </h1>
             <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-8" />
             <p className="text-lg text-afrodite-lightPurple">
@@ -227,7 +227,7 @@ export default function ContactPage() {
                 size="sm"
                 onClick={() => handleAddressSelect(addr)}
                 showScale={false}
-                className="!bg-afrodite-lightPurple !text-afrodite-creme flex items-center"
+                className="px-8 !bg-afrodite-lightPurple !text-afrodite-creme flex items-center"
               >
                 <Building className="mr-2 h-4 w-4" />
                 {addr.city}
@@ -519,7 +519,7 @@ export default function ContactPage() {
                   size="lg"
                   className={cn(
                     "w-full flex justify-center items-center bg-afrodite-lightPurple text-afrodite-creme",
-                    "hover:bg-afrodite-purple transition-colors duration-300",
+                    "hover:bg-afrodite-purple transition-colors duration-300 px-8",
                     status === "sending" && "opacity-70 cursor-not-allowed"
                   )}
                 >

@@ -1,3 +1,4 @@
+// app/about/page.tsx
 "use client";
 
 import Image from "next/image";
@@ -51,9 +52,11 @@ export default function AboutPage() {
     threshold: 0.1,
   });
 
-  const [historyRef, historyInView] = useInView({
+  // 🔧 NEW: separate ref just for the "Mesazh nga Themeluesja" section
+  const [founderRef, founderInView] = useInView({
     triggerOnce: true,
-    threshold: 0.1,
+    // start a bit earlier so it doesn't feel late
+    rootMargin: "0px 0px -35% 0px",
   });
 
   const [valuesRef, valuesInView] = useInView({
@@ -76,33 +79,36 @@ export default function AboutPage() {
     threshold: 0.1,
   });
 
+  // Keep a distinct ref for the later "Historia jonë" section
+  const [historyRef, historyInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const AlumniCarousel = dynamic(() => import("@/components/alumni-carousel"), {
     ssr: false,
   });
   const autoplay = useMemo(
     () =>
       Autoplay({
-        delay: 1500, // fast initial speed: 1.5s
-        stopOnInteraction: true, // pause on drag/swipe
-        stopOnMouseEnter: false, // we’ll control pause on hover ourselves
+        delay: 1500,
+        stopOnInteraction: true,
+        stopOnMouseEnter: false,
       }),
     []
   );
 
-  // 2️⃣ Initialize Embla with loop + autoplay
   const [emblaRef] = useEmblaCarousel({ loop: true, skipSnaps: false }, [
     autoplay,
   ]);
 
   const sliderRef = useRef<HTMLDivElement>(null);
   const paused = useRef(false);
-  const speed = useRef(1.5); // px per frame (fast initial)
+  const speed = useRef(1.5);
 
-  //safe src
   const safeSrc = (value?: string | null, fallback = "/placeholder.svg") =>
     value && value.trim() ? value : fallback;
 
-  // State holds current video modal info, or null
   const [modalVideo, setModalVideo] = useState<{
     videoSrc: string;
     titlets: string;
@@ -126,7 +132,6 @@ export default function AboutPage() {
     {
       type: "video",
       src: "/facilities/ambient-1.mp4",
-      // thumbnail: "/facilities/ambient-1.mp4",
       title: "Tur Virtual Video",
       caption: "Pamje nga ambientet tona në video",
     },
@@ -157,7 +162,6 @@ export default function AboutPage() {
     s.type === "video" ? useVideoThumbnail(s.src, 1) : null
   );
 
-  // duplicate for seamless loop
   const loopSlides = [...slides, ...slides];
 
   useEffect(() => {
@@ -166,7 +170,6 @@ export default function AboutPage() {
     let rafId: number;
 
     const step = () => {
-      // only auto-scroll when not paused and no modal open
       if (!paused.current && !modalVideo) {
         el.scrollLeft += speed.current;
         const half = el.scrollWidth / 2;
@@ -185,8 +188,6 @@ export default function AboutPage() {
     <div className="flex flex-col w-full ">
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 bg-afrodite-creme">
-        {/* Background pattern */}
-
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
           <Image
             src="/wave-pattern.svg"
@@ -253,7 +254,6 @@ export default function AboutPage() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator fixed at bottom of this section */}
         <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
           animate={{ y: [0, 10, 0] }}
@@ -293,10 +293,9 @@ export default function AboutPage() {
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="space-y-6"
             >
-              {/* Image on top */}
               <div className="rounded-lg overflow-hidden shadow-md">
                 <Image
-                  src="/images/afrodite-about-history.jpg" // 👉 replace with your image
+                  src="/images/afrodite-about-history.jpg"
                   alt="Afrodite Academy"
                   width={800}
                   height={600}
@@ -305,7 +304,6 @@ export default function AboutPage() {
                 />
               </div>
 
-              {/* Quote box */}
               <div className="bg-afrodite-lightPurple p-6 rounded-lg border-l-4 border-afrodite-purple">
                 <p className="text-afrodite-creme italic">
                   "Akademia Afrodite përgatit profesionistë të rinj në fusha të
@@ -315,7 +313,6 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              {/* Text paragraphs */}
               <p className="text-afrodite-purple">
                 <strong>Afrodite Academy</strong> është një institucion lider në
                 arsim, i licencuar dhe aktiv prej më shumë se një dekade.
@@ -386,9 +383,9 @@ export default function AboutPage() {
       {/* Afrodite Text Section */}
       <section className="py-16 md:py-24 bg-afrodite-creme relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
-        {/* <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div> */}
 
-        <div ref={historyRef} className="container mx-auto px-4">
+        {/* ✅ Use the new founderRef here */}
+        <div ref={founderRef} className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
               <span>Mesazh nga Themeluesja</span>
@@ -403,7 +400,7 @@ export default function AboutPage() {
             {/* Left Column - Image */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
-              animate={historyInView ? { opacity: 1, x: 0 } : {}}
+              animate={founderInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="relative"
             >
@@ -426,7 +423,7 @@ export default function AboutPage() {
               </div>
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={historyInView ? { opacity: 1, scale: 1 } : {}}
+                animate={founderInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="absolute -bottom-6 -right-6 bg-afrodite-purple p-6 rounded-lg shadow-lg border-l-4 border-afrodite-creme"
               >
@@ -443,12 +440,11 @@ export default function AboutPage() {
             {/* Right Column - Founder Message */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              animate={historyInView ? { opacity: 1, x: 0 } : {}}
+              animate={founderInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
               className="relative"
             >
               <div className="rounded-xl bg-afrodite-creme backdrop-blur-sm border border-afrodite-purple shadow-md p-6 md:p-8">
-                {/* Decorative quote mark */}
                 <div className="absolute -top-4 -left-4 bg-afrodite-purple text-afrodite-creme w-10 h-10 rounded-full flex items-center justify-center shadow-md">
                   <span className="text-lg leading-none">“</span>
                 </div>
@@ -485,7 +481,6 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                {/* Signature block */}
                 <div className="mt-6 pt-6 border-t border-afrodite-purple/15">
                   <div className="flex items-center justify-between flex-wrap gap-4">
                     <div>
@@ -496,22 +491,9 @@ export default function AboutPage() {
                         Themeluese & Drejtore e Afrodite Academy
                       </p>
                     </div>
-
-                    {/* Optional digital signature image; remove if you don’t have it yet */}
-                    {/* <Image
-                      src="/images/firma-aferdita.png"
-                      alt="Firmë digjitale"
-                      width={160}
-                      height={60}
-                      className="opacity-80"
-                    /> */}
-                    {/* <span className="text-afrodite-lightPurple text-xs italic">
-                      Firmë digjitale
-                    </span> */}
                   </div>
                 </div>
 
-                {/* CTA */}
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
                   <Link href="/courses">
                     <AnimatedButton
@@ -546,27 +528,11 @@ export default function AboutPage() {
               </div>
             </motion.div>
           </div>
-
-          {/* Horizontal Timeline
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={historyInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="bg-white p-8 rounded-xl shadow-sm"
-          >
-            <h3 className="text-2xl font-bold text-afrodite-purple mb-8 text-center">
-              Momentet Kyçe
-            </h3>
-            <EnhancedTimeline events={timelineEvents} />
-          </motion.div> */}
         </div>
       </section>
 
       {/* History Section with Horizontal Timeline */}
       <section className="py-16 md:py-24 bg-afrodite-creme relative overflow-hidden">
-        {/* <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div> */}
-
         <div ref={historyRef} className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
@@ -659,23 +625,9 @@ export default function AboutPage() {
               </div>
             </motion.div>
           </div>
-
-          {/* Horizontal Timeline
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={historyInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="bg-white p-8 rounded-xl shadow-sm"
-          >
-            <h3 className="text-2xl font-bold text-afrodite-purple mb-8 text-center">
-              Momentet Kyçe
-            </h3>
-            <EnhancedTimeline events={timelineEvents} />
-          </motion.div> */}
         </div>
       </section>
 
-      {/* Team Section */}
       {/* Testimonials */}
       <section className="py-16 md:py-24 bg-afrodite-white">
         <div className="container mx-auto px-4">
@@ -800,157 +752,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section - Redesigned */}
-      {/* <section className="py-16 md:py-24 bg-afrodite-white">
-        <div className="container mx-auto px-4">
-          {/* Header 
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
-              <span>Ekipi ynë</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-afrodite-purple mb-4">
-              Ekipi Ynë{" "}
-              <span className="text-afrodite-purple">Profesional</span>
-            </h2>
-            <div className="h-1 w-24 bg-afrodite-purple mx-auto mb-6"></div>
-            <p className="text-lg text-afrodite-purple">
-              Njihuni me ekipin tonë të përkushtuar të profesionistëve që janë
-              të pasionuar për të ndarë njohuritë dhe ekspertizën e tyre.
-            </p>
-          </div>
-
-          {/* Grid of team cards 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, idx) => (
-              <motion.div
-                key={member.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group flex flex-col h-full"
-              >
-                {/* Photo 
-                <div className="relative overflow-hidden rounded-t-xl h-[400px] md:h-80">
-                  <Image
-                    src={
-                      member.photo && member.photo.trim() !== ""
-                        ? member.photo
-                        : "/placeholder.svg"
-                    }
-                    alt={member.name}
-                    fill
-                    className="object-cover object-center transition-transform duration-500 md:group-hover:scale-105"
-                  />
-                </div>
-
-                {/* Card body 
-                <div className="bg-afrodite-creme p-6 rounded-b-xl shadow-sm border border-t-0 border-gray-100 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-1 line-clamp-3 min-h-[4.5rem]">
-                    {member.name}
-                  </h3>
-
-                  <p className="text-afrodite-lightPurple mb-1 font-medium line-clamp-2 min-h-[3rem]">
-                    {member.role}
-                  </p>
-
-                  <div className="flex justify-between items-center text-sm text-afrodite-lightPurple mb-4">
-                    <span>{member.experience}</span>
-                    <div className="flex items-center text-afrodite-lightPurple">
-                      <MapPin className="h-4 w-4 mr-1 text-afrodite-lightPurple" />
-                      <span>{member.location}</span>
-                    </div>
-                  </div>
-
-                  {/* Bio clamped to 2 lines
-                  <p
-                    className="
-              text-afrodite-purple text-sm mb-4
-              line-clamp-2
-            "
-                  >
-                    {member.bio}
-                  </p>
-
-                  <div className="mt-auto">
-                    <button
-                      onClick={() => setModalId(member.id)}
-                      className="text-afrodite-lightPurple hover:text-purple-800 text-sm font-medium"
-                    >
-                      Shiko më shumë
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Join our team CTA 
-          <div className="text-center mt-12">
-            <Link href="/contact">
-              <AnimatedButton
-                size="lg"
-                variant="default"
-                className="bg-afrodite-lightPurple text-afrodite-creme"
-              >
-                Bëhu pjesë e ekipit tonë
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </AnimatedButton>
-            </Link>
-          </div>
-        </div>
-
-        {/* Modals 
-        {team.map((member) =>
-          modalId === member.id ? (
-            <div
-              key={member.id}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6"
-            >
-              <div className="relative bg-white rounded-xl shadow-xl w-full max-w-md mx-auto overflow-hidden">
-                {/* Close */}
-
-      {/* —————— IMAGE (fixed taller height) —————— 
-                <div className="w-full relative h-[50vh] overflow-hidden">
-                  <Image
-                    src={member.photo || "/placeholder.svg"}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <button
-                  onClick={() => setModalId(null)}
-                  className="absolute top-4 right-4 text-afrodite-purple hover:text-purple-500 z-10"
-                >
-                  ✕
-                </button>
-                {/* —————— BODY —————— 
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold font-poppins text-afrodite-purple mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-afrodite-purple mb-1 font-medium">
-                    {member.role}
-                  </p>
-                  <div className="flex justify-between items-center text-sm text-afrodite-purple mb-4">
-                    <span>{member.experience}</span>
-                    <div className="flex items-center text-afrodite-purple">
-                      <MapPin className="h-4 w-4 mr-1 text-afrodite-purple" />
-                      <span>{member.location}</span>
-                    </div>
-                  </div>
-                  <p className="text-afrodite-purple mb-4">{member.bio}</p>
-                  {/* <div className="flex items-center text-sm text-afrodite-purple">
-                    <Mail className="h-4 w-4 mr-1 text-afrodite-purple" />
-                    <span>{member.email}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ) : null
-        )}
-      </section> */}
-
       {/* Partners Section */}
       <section className="py-16 md:py-24 bg-afrodite-white">
         <div ref={partnersRef} className="container mx-auto px-4">
@@ -1032,7 +833,6 @@ export default function AboutPage() {
       <>
         <section className="py-16 md:py-24 bg-white">
           <div className="container mx-auto px-4">
-            {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-16">
               <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
                 <span>Ambientet tona</span>
@@ -1047,7 +847,6 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Continuous carousel */}
             <div
               className="overflow-x-auto whitespace-nowrap scrollbar-hide mb-12"
               ref={sliderRef}
@@ -1070,7 +869,6 @@ export default function AboutPage() {
               }}
             >
               {loopSlides.map((slide, idx) => {
-                // grab the thumbnail for this slide (loopSlides = slides.concat(slides))
                 const thumb = thumbs[idx % slides.length];
 
                 return (
@@ -1088,13 +886,12 @@ export default function AboutPage() {
                       />
                     ) : (
                       <>
-                        {/* use hook thumbnail if available; otherwise fallback image */}
                         {(() => {
                           const rawThumb =
                             thumbs[idx % slides.length] ??
                             slide.thumbnail ??
                             "";
-                          const thumbSrc = safeSrc(rawThumb); // never ""
+                          const thumbSrc = safeSrc(rawThumb);
                           return (
                             <Image
                               src={thumbSrc}
@@ -1138,18 +935,9 @@ export default function AboutPage() {
                 );
               })}
             </div>
-
-            {/* Virtual Tour Button */}
-            {/* <div className="text-center">
-              <AnimatedButton className="bg-black hover:bg-black text-afrodite-purple">
-                Bëj një tur virtual
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </AnimatedButton>
-            </div> */}
           </div>
         </section>
 
-        {/* Video Modal */}
         {modalVideo && (
           <VideoModal
             isOpen={true}
@@ -1159,7 +947,6 @@ export default function AboutPage() {
           />
         )}
 
-        {/* hide scrollbar */}
         <style jsx>{`
           .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -1173,7 +960,6 @@ export default function AboutPage() {
 
       {/* CTA Section */}
       <section className="bg-afrodite-creme py-16 md:py-24 relative overflow-hidden">
-        {/* <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div> */}
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>{" "}
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
@@ -1221,8 +1007,7 @@ export default function AboutPage() {
           />
         </div>
       </section>
-      {/* Request Info Button */}
-      {/* <RequestInfoButton /> */}
+
       <WhatsAppButton />
     </div>
   );

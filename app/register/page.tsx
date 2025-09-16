@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Sparkles, ChevronRight } from "lucide-react";
 import { AnimatedButton } from "@/components/animated-button";
 import ClientRegisterForm from "@/app/register/ClientRegisterForm";
+import { Suspense } from "react";
 
 export default function RegisterPage() {
   return (
@@ -71,7 +72,16 @@ export default function RegisterPage() {
       {/* Form */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
-          <ClientRegisterForm />
+          {/* ✅ Wrap in Suspense so useSearchParams works */}
+          <Suspense
+            fallback={
+              <div className="text-center text-afrodite-lightPurple">
+                Duke ngarkuar formularin…
+              </div>
+            }
+          >
+            <ClientRegisterForm />
+          </Suspense>
         </div>
       </section>
     </div>

@@ -32,7 +32,7 @@ import RequestInfoButton from "@/components/request-info-button";
 import { AnimatedButton } from "@/components/animated-button";
 import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRef, useState, useMemo } from "react";
 import { FAQ_CATEGORIES } from "@/data/questions";
 import { Course, courses } from "@/data/courses";
 import WhatsAppButton from "@/components/whatsapp-button";
@@ -77,9 +77,10 @@ export default function Home() {
   };
 
   // Pick the first 3 testimonials that actually have an avatar
-  const avatarPicks = testimonials
-    .filter((t) => t.avatar && t.avatar.trim() !== "")
-    .slice(0, 3);
+  const avatarPicks = useMemo(() => {
+    const shuffled = [...testimonials].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 3);
+  }, []);
 
   // Animation variants for staggered animations
   const containerVariants = {

@@ -227,6 +227,7 @@ export default function Header() {
                   { name: "Kryefaqja", path: "/" },
                   { name: "Rreth Nesh", path: "/about" },
                   { name: "Kurset", path: "/courses" },
+                  { name: "Cmimet", path: "/awards" },
                   { name: "Kontakt", path: "/contact" },
                 ].map((item) => (
                   <Link

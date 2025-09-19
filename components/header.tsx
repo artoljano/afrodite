@@ -51,7 +51,7 @@ export default function Header() {
             {/* Contact Info */}
             <div className="flex items-center space-x-4 text-xs">
               <a
-                href="tel:+355692043535"
+                href="tel:+355 69 204 3535"
                 className="flex items-center text-afrodite-creme hover:text-afrodite-purple transition-colors"
               >
                 <Phone className="h-3 w-3 mr-1" />

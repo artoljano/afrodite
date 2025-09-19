@@ -158,8 +158,9 @@ export const partners: Partner[] = [
   industria: "Berberi",
   pershkrimi:
     "Sallon berberi për burra dhe fëmijë, ku ofrohen shërbime të plota. Salloni frymëzohet nga stili i barber shop-eve që shpesh shihen në filmat e vjetër amerikanë dhe ka lindur nga ideja e Vincenzo De Santis, një profesionist me mbi njëzet vjet përvojë në sektorin e kujdesit për burrat dhe fëmijët. Lider në këtë sektor dhe në fushën e formimit, Vincenzo bashkëpunon me Afrodite Academy në trajnimin e studentëve, duke përdorur teknika universale dhe bashkëkohore.",
-  cardPicture: "",
+  cardPicture: "/partners/stilisti-italian.webp",
   logoImg: "/partners/stilisti-italian.webp",
+  
 },
 
 

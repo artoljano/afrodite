@@ -20,7 +20,7 @@ export default function AwardsPage() {
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold font-poppins text-afrodite-purple">
               Çmimet dhe{" "}
-              <span className="text-afrodite-purple">Certifikimet Tona</span>
+              <span className="text-afrodite-purple">Certifikimet</span>
             </h1>
             <div className="h-1 w-24 bg-afrodite-purple mx-auto mt-6"></div>
             <p className="text-afrodite-lightPurple mt-6">

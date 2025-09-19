@@ -555,7 +555,7 @@ export default function AboutPage() {
               <div className="rounded-xl overflow-hidden shadow-xl">
                 <div className="relative">
                   <Image
-                    src="/images/afrodite-shkolla.jpg"
+                    src="/images/afrodite-shkolla.webp"
                     alt="Aferdita Ferracaku - Founder"
                     width={800}
                     height={800}

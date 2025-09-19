@@ -253,6 +253,7 @@ export default function Home() {
         </VideoBackground>
       </section>
       {/* Quick Info Section - NEW */}
+      {/* Info cards (unchanged) */}
       <section className="py-8 bg-white relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -269,6 +270,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
+
             <div className="bg-afrodite-creme rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
               <div className="bg-afrodite-purple p-3 rounded-full mr-4">
                 <CheckCircle2 className="h-6 w-6 text-afrodite-creme" />
@@ -282,6 +284,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
+
             <div className="bg-afrodite-creme rounded-xl p-6 flex items-center shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
               <div className="bg-afrodite-purple p-3 rounded-full mr-4">
                 <Users className="h-6 w-6 text-afrodite-creme" />
@@ -293,7 +296,7 @@ export default function Home() {
                 <p className="text-sm text-gray-600">
                   Partneritete me biznese në çdo industri.
                   {/* Ndërtojmë partneritete me biznese në industri për t'ju
-                  ndihmuar të gjeni mundësi punësimi pas diplomimit. */}
+            ndihmuar të gjeni mundësi punësimi pas diplomimit. */}
                 </p>
               </div>
             </div>
@@ -312,6 +315,7 @@ export default function Home() {
             className="object-contain"
           />
         </div>
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -331,6 +335,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* LEFT: replaced the video area with an iframe (kept wrapper & styles) */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -338,64 +343,47 @@ export default function Home() {
               transition={{ duration: 0.7 }}
               className="relative"
             >
-              {/* Video player with play button */}
               <div
                 className="
-        relative 
-        rounded-2xl 
-        overflow-hidden 
-        shadow-xl 
-        group
-        cursor-pointer
-        /* heights: 200px on xs, 300px on sm, 400px on md+, 60vh on xl+ */
-        h-[400px] 
-        sm:h-[90vh] 
-        md:h-[90vh] 
-        xl:h-[90vh]
-        
-        w-full
-      "
+            relative 
+            rounded-2xl 
+            overflow-hidden 
+            shadow-xl 
+            group
+            /* keep same height rules as before */
+            h-[400px] 
+            sm:h-[90vh] 
+            md:h-[90vh] 
+            xl:h-[90vh]
+            w-full
+          "
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
-                <video
-                  src="/videos/IntroNew.mp4"
-                  width={800}
-                  height={600}
-                  className="object-fit group-hover:scale-105 transition-transform duration-700 mb-[10vh] cursor-pointer"
+                {/* optional soft overlay to keep the same look */}
+                <div className="absolute inset-0  z-10 pointer-events-none" />
+
+                {/* Heyzine flipbook iframe */}
+                <iframe
+                  allow="clipboard-write"
+                  allowFullScreen
+                  scrolling="no"
+                  className="fp-iframe absolute inset-0 w-full h-full"
+                  src="https://heyzine.com/flip-book/213676dc12.html"
+                  style={{ border: "1px solid lightgray" }}
+                  title="Afrodite Academy Flipbook"
                 />
 
-                <div className="absolute inset-0 flex items-center justify-center z-20 ">
-                  {/* <button
-                    onClick={() => setIsModalOpen(true)}
-                    className="w-16 h-16 flex items-center justify-center group-hover:scale-110"
-                  >
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center"> */}
-                  <Play
-                    onClick={() => setIsModalOpen(true)}
-                    className="h-12 w-12 text-purple-500"
-                  />
-                  {/* </div>
-                  </button> */}
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {/* Hover caption (kept from the video version) */}
+                {/* <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <p className="text-afrodite-purple font-medium">
-                    Shiko videon tonë prezantuese
+                    Shfleto broshurën tonë interaktive
                   </p>
                   <p className="text-gray-300 text-sm">
                     Mëso më shumë për kurset dhe ambientet tona
                   </p>
-                </div>
-
-                {/* Modal component */}
-                <VideoModal
-                  isOpen={isModalOpen}
-                  onClose={() => setIsModalOpen(false)}
-                  videoSrc="/videos/IntroNew.mp4"
-                  title="Video Prezantuese"
-                />
+                </div> */}
               </div>
 
-              {/* Quote moved below the image */}
+              {/* Quote block (unchanged) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -416,6 +404,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
+            {/* RIGHT column (unchanged) */}
             <div ref={whyUsRef} className="space-y-6">
               <motion.div
                 variants={containerVariants}
@@ -509,14 +498,14 @@ export default function Home() {
 
                 <motion.div
                   variants={itemVariants}
-                  className="bg-afrodite-creme rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+                  className="bg-afrodite-creme rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all durataion-300 hover:-translate-y-1 group"
                 >
                   <div className="flex items-start gap-4">
                     <div className="bg-afrodite-purple p-4 rounded-full flex-shrink-0 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
                       <HeartHandshake className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors duration-300">
+                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors durataion-300">
                         Komunitet Mbështetës
                       </h3>
                       <p className="text-afrodite-lightPurple">
@@ -530,86 +519,6 @@ export default function Home() {
               </motion.div>
             </div>
           </div>
-
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-afrodite-creme rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="h-full">
-                  <Image
-                    src="/images/orare-fleksibel.jpg"
-                    alt="Flexible Learning"
-                    width={400}
-                    height={400}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <div className="p-6 flex flex-col justify-center">
-                  <div className="bg-afrodite-purple p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                    <Clock className="h-6 w-6 text-afrodite-creme" />
-                  </div>
-                  <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-3">
-                    Orare Fleksibël
-                  </h3>
-                  <p className="text-afrodite-lightPurple">
-                    Ju mundësojmë të ndiqni formimin tuaj pa ndërprerë
-                    angazhimet personale apo profesionale.
-                  </p>
-                  <Link
-                    href="/about"
-                    className="inline-flex items-center text-afrodite-lightPurple mt-4 font-medium hover:text-afrodite-purple transition-colors"
-                  >
-                    Mëso më shumë
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-afrodite-creme rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2">
-                <div className="order-2 md:order-1 p-6 flex flex-col justify-center">
-                  <div className="bg-afrodite-purple p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                    <Briefcase className="h-6 w-6 text-afrodite-creme" />
-                  </div>
-                  <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-3">
-                    Mundësi Punësimi
-                  </h3>
-                  <p className="text-afrodite-lightPurple">
-                    Ndërtojmë partneritete me biznese në industri për t'ju
-                    ndihmuar të gjeni mundësi punësimi pas diplomimit.
-                  </p>
-                  <Link
-                    href="/about"
-                    className="inline-flex items-center text-afrodite-lightPurple mt-4 font-medium hover:text-afrodite-purple transition-colors"
-                  >
-                    Mëso më shumë
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </div>
-                <div className="order-1 md:order-2 h-full">
-                  <Image
-                    src="/images/mundesi-pune.jpg"
-                    alt="Career Opportunities"
-                    width={400}
-                    height={400}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </div> */}
         </div>
       </section>
 

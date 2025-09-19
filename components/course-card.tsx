@@ -96,14 +96,17 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
               {course.description}
             </p>
             <div className="mt-4">
-              <AnimatedButton
-                size="default"
-                variant="default"
-                className="w-full block px-8  bg-afrodite-lightPurple text-afrodite-creme"
-              >
-                Mëso më shumë
-                <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
-              </AnimatedButton>
+              {/* UPDATED: link to specific course page */}
+              <Link href={`/courses/${course.id}`}>
+                <AnimatedButton
+                  size="default"
+                  variant="default"
+                  className="w-full block px-8 bg-afrodite-lightPurple text-afrodite-creme"
+                >
+                  Mëso më shumë
+                  <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
+                </AnimatedButton>
+              </Link>
             </div>
           </div>
         </div>
@@ -139,11 +142,11 @@ export default function CourseCard({ course, delay, inView }: CourseCardProps) {
           </ul>
 
           <div className="mt-6">
-            <Link href={`/register?courseId=${course.id}`} passHref>
+            <Link href={`/register?courseId=${course.id}`}>
               <AnimatedButton
                 size="default"
                 variant="default"
-                className="w-full block px-8  bg-afrodite-lightPurple text-afrodite-creme"
+                className="w-full block px-8 bg-afrodite-lightPurple text-afrodite-creme"
               >
                 Regjistrohu Tani
               </AnimatedButton>

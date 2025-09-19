@@ -65,7 +65,7 @@ const addresses = [
     city: "Shkodër",
     address:
       "Rruga “Jeronim de Rada”, tek Biblioteka e Universitetit Juridik, Shkodër, Shqipëri",
-    phone: "+355 69 987 6543",
+    phone: "+355 69 204 3535",
     email: "shkoder@afroditeacademy.al",
     hours: {
       weekdays: "9:00 - 18:00",

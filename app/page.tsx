@@ -32,10 +32,11 @@ import RequestInfoButton from "@/components/request-info-button";
 import { AnimatedButton } from "@/components/animated-button";
 import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
-import { useRef, useState, useMemo } from "react";
+import { useRef, useState, useMemo, useEffect } from "react";
 import { FAQ_CATEGORIES } from "@/data/questions";
 import { Course, courses } from "@/data/courses";
 import WhatsAppButton from "@/components/whatsapp-button";
+import RotatingAvatars from "@/components/rotating-avatars";
 
 export default function Home() {
   const [heroRef, heroInView] = useInView({
@@ -101,6 +102,27 @@ export default function Home() {
       transition: { duration: 0.5 },
     },
   };
+  const ssrVisible = useMemo(() => avatarPicks.slice(0, 3), [avatarPicks]);
+  const [mounted, setMounted] = useState(false);
+  const [start, setStart] = useState(0);
+
+  useEffect(() => {
+    setMounted(true);
+    if (avatarPicks.length <= 3) return;
+    const id = setInterval(() => {
+      setStart((s) => (s + 1) % avatarPicks.length);
+    }, 4000); // rotate every 4s
+    return () => clearInterval(id);
+  }, [avatarPicks.length]);
+
+  const visible =
+    mounted && avatarPicks.length >= 3
+      ? [
+          avatarPicks[start],
+          avatarPicks[(start + 1) % avatarPicks.length],
+          avatarPicks[(start + 2) % avatarPicks.length],
+        ]
+      : ssrVisible;
 
   const handleDownloadBrochure = () => {
     // In a real app, you might want to track this download event
@@ -194,10 +216,10 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-center space-x-4 mt-8">
-                  <div className="flex -space-x-2">
-                    {avatarPicks.map((t, i) => (
+                  <div className="flex -space-x-2" suppressHydrationWarning>
+                    {visible.map((t, i) => (
                       <div
-                        key={`${t.name}-${i}`}
+                        key={`${mounted ? `${start}-` : "ssr-"}${i}-${t.name}`}
                         className="w-10 h-10 rounded-full border-2 border-afrodite-lightPurple overflow-hidden"
                         title={t.name}
                       >
@@ -209,7 +231,7 @@ export default function Home() {
                             preload="metadata"
                             className="w-full h-full object-cover bg-black"
                             onLoadedMetadata={(e) => {
-                              // jump ~1 second in so we don't freeze on a black frame
+                              // jump ~1s to avoid black first frame then pause on that frame
                               (
                                 e.currentTarget as HTMLVideoElement
                               ).currentTime = 1;
@@ -219,7 +241,6 @@ export default function Home() {
                             }}
                           />
                         ) : (
-                          // fallback if one testimonial has an actual avatar
                           <img
                             src={t.avatar || "/placeholder.svg"}
                             alt={t.name}

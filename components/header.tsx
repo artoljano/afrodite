@@ -1,3 +1,4 @@
+// components/header.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -11,8 +12,6 @@ import {
   Facebook,
   Instagram,
   Linkedin,
-  ChevronDown,
-  Search,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -26,13 +25,9 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      if (window.scrollY > 10) setIsScrolled(true);
+      else setIsScrolled(false);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -75,7 +70,6 @@ export default function Header() {
                 aria-label="Facebook"
               >
                 <AnimatedButton
-                  // ← important to make the button render as <a>
                   variant="socials"
                   size="sm"
                   showRipple={false}
@@ -167,9 +161,6 @@ export default function Header() {
                   )}
                 >
                   <span className="relative z-10">{item.name}</span>
-                  {/* {item.hasDropdown && <ChevronDown className="ml-1 h-4 w-4" />} */}
-
-                  {/* Hover effect - line grows from left to right */}
                   <span
                     className={cn(
                       "absolute bottom-0 left-0 h-0.5 bg-purple-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300",
@@ -184,16 +175,26 @@ export default function Header() {
 
             {/* Right Section */}
             <div className="flex items-center space-x-3">
-              {/* CTA Button */}
-              <Link href="/register">
+              {/* CTA Buttons (desktop) */}
+              <Link href="/contact" className="hidden md:flex">
                 <AnimatedButton
                   size="sm"
-                  variant="secondary"
-                  className="hidden md:flex"
+                  variant="default"
+                  className="rounded-xl px-6 border-2 border-afrodite-purple text-afrodite-purple hover:bg-afrodite-purple hover:text-afrodite-creme"
+                >
+                  Kontakto Tani
+                </AnimatedButton>
+              </Link>
+              <Link href="/register" className="hidden md:flex">
+                <AnimatedButton
+                  size="sm"
+                  variant="default"
+                  className="rounded-xl px-6 text-afrodite-creme bg-afrodite-lightPurple"
                 >
                   Regjistrohu Tani
                 </AnimatedButton>
               </Link>
+
               {/* Mobile Menu Button */}
               <button
                 className="lg:hidden p-2  text-afrodite-lightPurple hover:text-afrodite-purple transition-colors bg-afrodite-creme"
@@ -285,7 +286,6 @@ export default function Header() {
                     aria-label="Facebook"
                   >
                     <AnimatedButton
-                      // ← important to make the button render as <a>
                       variant="socials"
                       size="sm"
                       showRipple={false}
@@ -326,7 +326,17 @@ export default function Header() {
                 </div>
               </div>
 
-              <div className="mt-6">
+              {/* Mobile CTAs */}
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                <Link href="/contact">
+                  <AnimatedButton
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Kontakto Tani
+                  </AnimatedButton>
+                </Link>
                 <Link href="/register">
                   <AnimatedButton
                     variant="secondary"

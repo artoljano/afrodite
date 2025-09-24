@@ -178,6 +178,17 @@ export default function Footer() {
                   Berber
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/courses?category=manikyr-pedikyr-nail-art
+"
+                  className="text-afrodite-lightPurple hover:text-afrodite-purple transition-colors flex items-center group"
+                >
+                  <ChevronRight className="h-4 w-4 mr-2 group-hover:translate-x-1 transition-transform" />
+                  Nails
+                </Link>
+              </li>
+
               {/* <li>
                 <Link
                   href="/courses?category=pajisje"

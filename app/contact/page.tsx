@@ -22,7 +22,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { AnimatedButton } from "@/components/animated-button";
-import VideoBackground from "@/components/video-background";
 import { CheckCircle, XCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
 import WhatsAppButton from "@/components/whatsapp-button";
@@ -232,7 +231,7 @@ export default function ContactPage() {
                 <Building className="mr-2 h-4 w-4" />
                 {addr.city}
                 {selectedAddress.id === addr.id && (
-                  <Check className="ml-2 h-4 w-4" />
+                  <MapPin className="ml-2 h-4 w-4" />
                 )}
               </AnimatedButton>
             ))}

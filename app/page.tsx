@@ -157,7 +157,19 @@ export default function Home() {
           overlayOpacity={0.8}
           className="min-h-[60vh] md:min-h-[70vh] py-0 md:py-30 bg-afrodite-creme relative flex items-center"
         >
-          <div className="container px-4 mx-auto">
+          {/* ✅ wave pattern sits OUTSIDE the container, so right-0 really hits the edge */}
+          {/* <div className="absolute top-0 right-0 w-64 h-64 opacity-10 pointer-events-none z-0">
+            <Image
+              src="/wave-pattern.svg"
+              alt="Decorative pattern"
+              width={256}
+              height={256}
+              className="object-contain"
+            />
+          </div> */}
+
+          {/* content gets a higher z to sit above the pattern */}
+          <div className="container px-4 mx-auto relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
                 ref={heroRef}
@@ -170,6 +182,7 @@ export default function Home() {
                   <Sparkles className="h-4 w-4 mr-2 text-afrodite-purple" />
                   <span>Kurse të certifikuara ndërkombëtarisht</span>
                 </div>
+
                 <div className="relative">
                   <motion.div
                     initial={{ width: 0 }}
@@ -182,6 +195,7 @@ export default function Home() {
                     <span className="text-afrodite-purple">Ndërkombëtare</span>
                   </h1>
                 </div>
+
                 <p className="text-lg text-afrodite-lightPurple max-w-lg">
                   Ne jemi të përkushtuar për të ofruar rezultatet më të mira për
                   studentët tanë. Me një ekip të përkushtuar dhe metoda
@@ -231,7 +245,6 @@ export default function Home() {
                             preload="metadata"
                             className="w-full h-full object-cover bg-black"
                             onLoadedMetadata={(e) => {
-                              // jump ~1s to avoid black first frame then pause on that frame
                               (
                                 e.currentTarget as HTMLVideoElement
                               ).currentTime = 1;
@@ -260,19 +273,13 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-                <Image
-                  src="/wave-pattern.svg"
-                  alt="Decorative pattern"
-                  width={256}
-                  height={256}
-                  className="object-contain"
-                />
-              </div>
+              {/* right column of the grid (if any) */}
+              {/* ... */}
             </div>
           </div>
         </VideoBackground>
       </section>
+
       {/* Quick Info Section - NEW */}
       {/* Info cards (unchanged) */}
       <section className="py-8 bg-white relative z-10">

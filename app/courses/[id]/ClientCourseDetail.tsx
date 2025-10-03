@@ -11,7 +11,6 @@ import {
   Award,
   CheckCircle,
   GraduationCap,
-  ArrowRight,
   Play,
   ChevronRight,
   ShoppingBag,
@@ -19,7 +18,6 @@ import {
   HeartHandshake,
   Globe,
   Heart,
-  BookOpen,
   Users,
   User,
   Sparkles,
@@ -36,7 +34,6 @@ import {
 } from "@/components/ui/accordion";
 import VideoBackground from "@/components/video-background";
 import VideoModal from "@/components/video-modal";
-import RequestInfoButton from "@/components/request-info-button";
 import { AnimatedButton } from "@/components/animated-button";
 
 import type { Course } from "@/data/courses";
@@ -68,7 +65,6 @@ export default function ClientCourseDetail({ course }: Props) {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // we'll hold `null` or `{ src, alt }`
   const [videoModal, setVideoModal] = useState<{
     src: string;
     alt?: string;
@@ -149,7 +145,6 @@ export default function ClientCourseDetail({ course }: Props) {
     },
   ];
 
-  // inside ClientCourseDetail, before the JSX return
   const relatedCourses = courses
     .filter((c) => c.id !== course.id && c.category === course.category)
     .slice(0, 3);
@@ -188,10 +183,6 @@ export default function ClientCourseDetail({ course }: Props) {
                 <Award className="h-5 w-5 mr-2 text-afrodite-purple" />
                 <span>{course.level}</span>
               </div>
-              {/* <div className="flex items-center text-afrodite-creme">
-                <Calendar className="h-5 w-5 mr-2 text-afrodite-purple" />
-                <span>Fillon: {course.startDate}</span>
-              </div> */}
             </div>
             <Link href={`/register?courseId=${course.id}`} passHref>
               <AnimatedButton
@@ -217,36 +208,6 @@ export default function ClientCourseDetail({ course }: Props) {
               transition={{ duration: 0.7 }}
               className="relative"
             >
-              {/* {course.videoSrc ? (
-                <>
-                  <div
-                    onClick={() => setIsModalOpen(true)}
-                    className="group rounded-xl overflow-hidden shadow-xl cursor-pointer relative"
-                  >
-                    <video
-                      src={course.image || "/placeholder.svg"}
-                      width={800}
-                      height={600}
-                      className="
-      w-full h-full max-h-[700px]
-      object-cover
-      transform              
-      transition-transform duration-700
-      group-hover:scale-105  
-    "
-                    />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                      <Play className="h-12 w-12 text-afrodite-purple" />
-                    </div>
-                  </div>
-                  <VideoModal
-                    isOpen={isModalOpen}
-                    onClose={() => setIsModalOpen(false)}
-                    videoSrc={course.videoSrc}
-                    title={course.title}
-                  />
-                </>
-              ) : ( */}
               <div className="rounded-xl overflow-hidden shadow-xl">
                 <Image
                   src={course.image || "/placeholder.svg"}
@@ -256,7 +217,6 @@ export default function ClientCourseDetail({ course }: Props) {
                   className="object-cover w-full  h-[700px]"
                 />
               </div>
-              {/* )} */}
             </motion.div>
 
             <motion.div
@@ -340,9 +300,9 @@ export default function ClientCourseDetail({ course }: Props) {
         <div className="container mx-auto px-4">
           <Tabs defaultValue="curriculum" className="w-full">
             <div className="overflow-x-auto scrollbar-hide pt-1">
-              <TabsList className="inline-flex min-w-max gap-4 md:grid md:grid-cols-4 mb-8">
+              {/* 3 tabs now that 'instructors' is removed */}
+              <TabsList className="inline-flex min-w-max gap-4 md:grid md:grid-cols-3 mb-8">
                 <TabsTrigger value="curriculum">Kurrikula</TabsTrigger>
-                <TabsTrigger value="instructors">Instruktorët</TabsTrigger>
                 <TabsTrigger value="benefits">Përfitimet</TabsTrigger>
                 <TabsTrigger value="media">Media</TabsTrigger>
               </TabsList>
@@ -383,46 +343,6 @@ export default function ClientCourseDetail({ course }: Props) {
                   </AccordionItem>
                 ))}
               </Accordion>
-            </TabsContent>
-
-            {/* ── Instructors ── */}
-            <TabsContent
-              value="instructors"
-              className="bg-white p-6 rounded-xl shadow-md"
-            >
-              <h3 className="text-2xl font-bold mb-6 text-afrodite-purple">
-                Instruktorët Tanë
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {course.instructors?.map((instr, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.2 }}
-                    className="flex flex-col md:flex-row items-center gap-6 p-6 bg-afrodite-creme rounded-xl"
-                  >
-                    <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-afrodite-lightPurple shadow-md">
-                      <Image
-                        src={instr.image}
-                        alt={instr.name}
-                        width={200}
-                        height={200}
-                        className="object-cover w-full h-full "
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold mb-1 text-afrodite-purple">
-                        {instr.name}
-                      </h4>
-                      <p className="text-afrodite-lightPurple mb-2">
-                        {instr.role}
-                      </p>
-                      <p className="text-afrodite-lightPurple">{instr.bio}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
             </TabsContent>
 
             {/* ── Benefits & Materials ── */}
@@ -536,54 +456,6 @@ export default function ClientCourseDetail({ course }: Props) {
         />
       )}
 
-      {/* ── Testimonials Section ── */}
-      {/* {course.testimonials?.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold font-poppins text-afrodite-purple mb-4">
-                Çfarë Thonë Studentët Tanë
-              </h2>
-              <div className="h-1 w-24 bg-purple-500 mx-auto mb-6"></div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {course.testimonials?.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                  className="bg-afrodite-creme p-6 rounded-xl shadow-md"
-                >
-                  <div className="flex items-center mb-4">
-                    <div className="w-16 h-16 rounded-full overflow-hidden mr-4 border-2 border-purple-500">
-                      <Image
-                        src={testimonial.image || "/placeholder.svg"}
-                        alt={testimonial.name}
-                        width={100}
-                        height={100}
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-afrodite-purple">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-navy-600">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <p className="text-afrodite-lightPurple italic">
-                    "{testimonial.text}"
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )} */}
-
       {/* ── CTA Section ── */}
       <section className="py-16 bg-afrodite-creme relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
@@ -655,14 +527,12 @@ export default function ClientCourseDetail({ course }: Props) {
                   variants={itemVariants}
                   className="bg-afrodite-creme rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 relative flex flex-col h-full"
                 >
-                  {/* Featured badge (same style as courses page) */}
                   {rc.featured && (
                     <div className="absolute top-4 left-4 z-10 bg-amber-500 text-afrodite-purple text-xs font-bold px-3 py-1 rounded-full">
                       Kurs i Rekomanduar
                     </div>
                   )}
 
-                  {/* Image + overlay (same sizing & overlay as courses page) */}
                   <div className="relative h-[14rem] overflow-hidden">
                     <Image
                       src={rc.image || "/placeholder.svg"}
@@ -673,27 +543,19 @@ export default function ClientCourseDetail({ course }: Props) {
                       style={
                         rc.noCustomCrop
                           ? undefined
-                          : { objectPosition: rc.noCustomCrop || "center 30%" }
+                          : { objectPosition: "center 30%" }
                       }
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
 
-                    {/* Course info overlay (match courses page: only duration) */}
                     <div className="absolute bottom-0 left-0 right-0 p-4 flex justify-between items-center">
                       <div className="flex items-center space-x-2 text-afrodite-creme text-sm">
                         <Clock className="h-4 w-4 text-afrodite-creme" />
                         <span>{rc.duration}</span>
                       </div>
-                      {/* If you want to keep students, uncomment:
-                <div className="flex items-center space-x-2 text-afrodite-creme text-sm">
-                  <Users className="h-4 w-4 text-afrodite-creme" />
-                  <span>{rc.students} studentë</span>
-                </div>
-                */}
                     </div>
                   </div>
 
-                  {/* Content (chips, title, desc) */}
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="mb-4">
                       <div className="flex items-center mb-2 flex-wrap gap-2">
@@ -712,7 +574,6 @@ export default function ClientCourseDetail({ course }: Props) {
                       </p>
                     </div>
 
-                    {/* Footer (same border & colors as courses page) */}
                     <div className="mt-auto pt-4 border-t border-afrodite-purple">
                       <div className="flex items-center text-sm text-afrodite-lightPurple mb-4">
                         <Calendar className="h-4 w-4 mr-1 text-afrodite-purple" />
@@ -744,7 +605,6 @@ export default function ClientCourseDetail({ course }: Props) {
         </section>
       )}
 
-      {/* ── CTA, Related, RequestInfo … rest unchanged … */}
       <WhatsAppButton />
     </div>
   );

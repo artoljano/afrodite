@@ -9,6 +9,7 @@ import {
   Linkedin,
   ChevronRight,
 } from "lucide-react";
+import { SiTiktok } from "react-icons/si";
 import { AnimatedButton } from "./animated-button";
 
 export default function Footer() {
@@ -74,7 +75,7 @@ export default function Footer() {
                   className="rounded-full p-3"
                   showRipple={false}
                 >
-                  <Linkedin className="h-5 w-5" />
+                  <SiTiktok className="h-5 w-5" />
                 </AnimatedButton>
               </Link>
             </div>

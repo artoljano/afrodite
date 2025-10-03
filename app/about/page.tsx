@@ -22,6 +22,9 @@ import {
   Sparkles,
   MapPin,
 } from "lucide-react";
+
+import { SiTiktok } from "react-icons/si";
+
 import { AnimatedButton } from "@/components/animated-button";
 import VideoBackground from "@/components/video-background";
 import AlumniCarousel from "@/components/alumni-carousel";

@@ -13,6 +13,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import { SiTiktok } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -104,7 +105,7 @@ export default function Header() {
                   className="rounded-full h-6 w-6 p-1"
                   showRipple={false}
                 >
-                  <Linkedin className="h-5 w-5" />
+                  <SiTiktok className="h-5 w-5" />
                 </AnimatedButton>
               </Link>
             </div>
@@ -320,7 +321,7 @@ export default function Header() {
                       className="rounded-full h-6 w-6 p-1"
                       showRipple={false}
                     >
-                      <Linkedin className="h-5 w-5" />
+                      <SiTiktok className="h-5 w-5" />
                     </AnimatedButton>
                   </Link>
                 </div>

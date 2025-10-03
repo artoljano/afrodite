@@ -16,6 +16,7 @@ import {
   Linkedin,
   Sparkles,
 } from "lucide-react";
+import { SiTiktok } from "react-icons/si";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -368,7 +369,7 @@ export default function ContactPage() {
                     className="rounded-full p-3"
                     showRipple={false}
                   >
-                    <Linkedin className="h-5 w-5" />
+                    <SiTiktok className="h-5 w-5" />
                   </AnimatedButton>
                 </Link>
               </div>

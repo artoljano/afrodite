@@ -43,11 +43,26 @@ import { AnimatedButton } from "@/components/animated-button";
 import { useInView } from "react-intersection-observer";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-// Import courses from data/courses.ts
 import { courses } from "@/data/courses";
 import VideoModal from "@/components/video-modal";
 import WhatsAppButton from "@/components/whatsapp-button";
 
+/* -------------------- SEARCH HELPERS -------------------- */
+const normalize = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+
+// Split query into tokens (words); ignore tiny words
+const tokenize = (q: string) =>
+  normalize(q)
+    .split(/[\s,;]+/)
+    .filter(Boolean)
+    .filter((t) => t.length >= 2);
+
+/* -------------------- CATEGORY LIST -------------------- */
+// 1) Put this item back into your categories array (any position is fine)
 export const categories = [
   { id: "estetike", name: "Estetikë", icon: <Sparkles className="h-4 w-4" /> },
   { id: "parukeri", name: "Parukeri", icon: <Users className="h-4 w-4" /> },
@@ -115,29 +130,217 @@ export const categories = [
     name: "Terapia Hixhama",
     icon: <Heart className="h-4 w-4" />,
   },
+
+  // 🔶 UET Italia (orange by default when unselected thanks to your existing className rule)
+  { id: "UET Italia", name: "UET Italia", icon: <Globe className="h-4 w-4" /> },
 ];
 
-const durations = [
-  { id: "50 orë", name: "50 orë" },
-  { id: "150 orë", name: "150 orë" },
-  { id: "200 orë", name: "200 orë" },
-  { id: "300 orë", name: "300 orë" },
-  { id: "360 orë", name: "360 orë" },
-  { id: "400 orë", name: "400 orë" },
-  { id: "560 orë", name: "560 orë" },
-  { id: "600 orë", name: "600 orë" },
-  { id: "900 orë", name: "900 orë" },
-  { id: "1000 orë", name: "1000 orë" },
-  { id: "1200 orë", name: "1200 orë" },
-  { id: "1500 orë", name: "1500 orë" },
-  { id: "1800 orë", name: "1800 orë" },
-  { id: "2100 orë", name: "2100 orë" },
-  { id: "2500 orë", name: "2500 orë" },
+/* ------------- Optional: category search aliases ------------- */
+// 2) (Optional but recommended) add search aliases so hero search finds it too
+const categoryKeywords: Record<string, string[]> = {
+  estetike: ["estetike", "estetikë", "beauty", "esthetics", "skincare"],
+  parukeri: ["parukeri", "hair", "hairdresser", "kapshtare", "floktari"],
+  "parukeri-estetike": ["parukeri estetike", "beauty & hair", "salon"],
+  "trajtimet-e-fytyres": ["trajtimet e fytyrës", "fytyra", "facial", "face"],
+  berber: ["berber", "barber", "barbering"],
+  "zgjatimi-i-qerpikeve": ["qerpikë", "qerpike", "lash", "eyelash extension"],
+  "kujdestar-per-te-moshuar-dhe-femije": [
+    "caregiver",
+    "kujdestar",
+    "baby sitter",
+    "fëmijë",
+    "moshuar",
+  ],
+  makeup: ["makeup", "grim", "grimi"],
+  "makeup-permanent-pmu": [
+    "pmu",
+    "permanent makeup",
+    "microblading",
+    "dermapigmentation",
+  ],
+  masazhet: ["masazh", "massage", "masazhe"],
+  "manikyr-pedikyr-nail-art": [
+    "manikyr",
+    "pedikyr",
+    "manicure",
+    "pedicure",
+    "nail",
+    "gel",
+    "akrilik",
+  ],
+  "operatoret-turistike": [
+    "turizëm",
+    "turistik",
+    "operator turistik",
+    "tourism",
+  ],
+  "pajisjet-e-estetikes": [
+    "pajisje estetike",
+    "aparat",
+    "devices",
+    "laser",
+    "microneedling",
+  ],
+  "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione": [
+    "pastrim",
+    "cleaning",
+    "housekeeping",
+  ],
+  recepsion: ["recepsion", "reception", "front desk"],
+  "tattoo-art": ["tattoo", "tatuazh", "ink"],
+  "fashion-design": ["modë", "moda", "fashion", "design", "stilim"],
+  "terapia-hixhama": ["hixhama", "cupping", "terapi", "therapy"],
+
+  // 🔶 UET Italia keywords
+  "UET Italia": [
+    "uet",
+    "italia",
+    "uet italia",
+    "apulia",
+    "university",
+    "universitet",
+    "italy",
+  ],
+};
+
+/* -------------------- 4 TIME CATEGORIES -------------------- */
+type TimeBucketId = "short" | "6mo" | "1to2yr" | "2to3yr" | "review";
+
+const TIME_FILTERS: { id: TimeBucketId; label: string }[] = [
+  { id: "short", label: "Kurse te shkurtra" },
+  { id: "6mo", label: "Kurse 6 mujore" },
+  { id: "1to2yr", label: "Kurse 1-2 vjecare" },
+  { id: "2to3yr", label: "Kurse 2-3 vjecare" },
 ];
+
+/* ---- Duration parsing & bucketing (handles muaj/mujore/vite/vjet/vjeçare + orë) ---- */
+const normalizeDiacritics = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+
+// You can tweak these hour thresholds as you learn your dataset better:
+const HOUR_TO_BUCKET: { id: TimeBucketId; maxHours: number }[] = [
+  { id: "short", maxHours: 200 }, // <= 200 orë -> short
+  { id: "6mo", maxHours: 450 }, // 201–450 orë -> ~6 months
+  { id: "1to2yr", maxHours: 950 }, // 451–950 orë -> 1–2 yrs
+  { id: "2to3yr", maxHours: 2500 }, // 951–1600 orë -> 2–3 yrs
+];
+
+function hourStringToBucket(s: string): TimeBucketId | null {
+  const m = s.match(/(\d+(?:[\.,]\d+)?)\s*o?r[eë]\b/); // ore/orë
+  if (!m) return null;
+  const hours = parseFloat(m[1].replace(",", "."));
+  if (Number.isNaN(hours)) return null;
+  for (const row of HOUR_TO_BUCKET) {
+    if (hours <= row.maxHours) return row.id;
+  }
+  return "review";
+}
+
+// quick explicit label check (lets you set durationCategory: "Kurse 6 mujore" in data)
+function explicitBucketFromLabel(v?: string): TimeBucketId | null {
+  if (!v) return null;
+  const s = normalizeDiacritics(v);
+  if (s.includes("kurse 6 mujore")) return "6mo";
+  if (s.includes("kurse 2-3 vjecare") || s.includes("kurse 2-3 vjecare"))
+    return "2to3yr";
+  if (s.includes("kurse 1-2 vjecare") || s.includes("kurse 1-2 vjecare"))
+    return "1to2yr";
+  if (s.includes("kurse te shkurtra") || s.includes("kurse te shkurter"))
+    return "short";
+  return null;
+}
+
+function parseDurationToMonths(raw?: string): number | null {
+  if (!raw) return null;
+  const s = normalizeDiacritics(String(raw));
+
+  // Ranges like "1-2 vjecare/vjeçare", "2 – 3 vite"
+  if (/\b1\s*[-–]\s*2\b.*vj/.test(s) || /\b1\s*[-–]\s*2\b.*vit/.test(s))
+    return 18;
+  if (/\b2\s*[-–]\s*3\b.*vj/.test(s) || /\b2\s*[-–]\s*3\b.*vit/.test(s))
+    return 30;
+
+  // Exactly 6 months (muaj/mujore)
+  if (/\b6\b.*muaj/.test(s) || /\b6\b.*mujore/.test(s)) return 6;
+
+  // Years (vit/vite/vjet/vjecare/vjeçare)
+  const years =
+    s.match(
+      /(\d+(?:[\.,]\d+)?)\s*(?:vit|vite|vjet|vjecare|vjecar|vjec|vjecarë|vjecare)\b/
+    ) || s.match(/(\d+(?:[\.,]\d+)?)\s*vj(?:ec|eç)/);
+  if (years) {
+    const y = parseFloat((years[1] ?? years[0]).replace(",", "."));
+    if (!Number.isNaN(y)) return Math.round(y * 12);
+  }
+
+  // Months (muaj/mujore)
+  const months = s.match(/(\d+(?:[\.,]\d+)?)\s*(?:muaj|mujore)\b/);
+  if (months) {
+    const m = parseFloat(months[1].replace(",", "."));
+    if (!Number.isNaN(m)) return Math.round(m);
+  }
+
+  // Hours? handle via thresholds
+  const hourBucket = hourStringToBucket(s);
+  if (hourBucket) {
+    // map the hour-based bucket to an indicative month count for sorting (not critical)
+    if (hourBucket === "short") return 3;
+    if (hourBucket === "6mo") return 6;
+    if (hourBucket === "1to2yr") return 18;
+    if (hourBucket === "2to3yr") return 30;
+    return null;
+  }
+
+  // Plain small number -> assume months if <= 48
+  const plain = s.match(/\b(\d{1,2})\b/);
+  if (plain) {
+    const n = parseInt(plain[1], 10);
+    if (n >= 1 && n <= 48) return n;
+  }
+
+  return null;
+}
+
+function bucketFromMonths(m: number | null): TimeBucketId {
+  if (m === null) return "review";
+  if (m < 6) return "short";
+  if (m === 6) return "6mo";
+  if (m >= 12 && m <= 24) return "1to2yr";
+  if (m > 24 && m <= 36) return "2to3yr";
+  if (m > 6 && m < 12) return "review"; // change to "1to2yr" if you prefer
+  return "review"; // >36 or unclear
+}
+
+function getCourseTimeBucket(course: any): TimeBucketId {
+  // 1) If you already set a friendly label in the data, use it
+  const explicit =
+    explicitBucketFromLabel(course?.timeCategory) ||
+    explicitBucketFromLabel(course?.durationCategory);
+  if (explicit) return explicit;
+
+  // 2) Derive from duration string (handles muaj/mujore/vjeçare + orë)
+  const months =
+    parseDurationToMonths(course?.duration) ??
+    parseDurationToMonths(course?.durationCategory);
+  if (months !== null) return bucketFromMonths(months);
+
+  // 3) As last resort, try pure hours → bucket
+  const s =
+    normalizeDiacritics(String(course?.duration ?? "")) +
+    " " +
+    normalizeDiacritics(String(course?.durationCategory ?? ""));
+  const hb = hourStringToBucket(s);
+  if (hb) return hb;
+
+  return "review";
+}
 
 export default function CoursesPage() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedDurations, setSelectedDurations] = useState<string[]>([]);
+  const [selectedTimeCats, setSelectedTimeCats] = useState<TimeBucketId[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<
     "default" | "price-asc" | "price-desc" | "date"
@@ -166,7 +369,7 @@ export default function CoursesPage() {
   useEffect(() => {
     const categoriesFromUrl = searchParams.getAll("category");
     setSelectedCategories(categoriesFromUrl);
-  }, [searchParams]); // ✅ only runs when URL search params change
+  }, [searchParams]);
 
   const toggleCategory = (categoryId: string) => {
     setSelectedCategories((prev) =>
@@ -176,32 +379,54 @@ export default function CoursesPage() {
     );
   };
 
-  const toggleDuration = (durationId: string) => {
-    setSelectedDurations((prev) =>
-      prev.includes(durationId)
-        ? prev.filter((id) => id !== durationId)
-        : [...prev, durationId]
+  const toggleTimeCat = (id: TimeBucketId) => {
+    setSelectedTimeCats((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
     );
   };
 
   const clearFilters = () => {
     setSelectedCategories([]);
-    setSelectedDurations([]);
+    setSelectedTimeCats([]);
     setSearchQuery("");
     setSortBy("default");
   };
 
+  /* -------------------- FILTERING -------------------- */
   const filteredCourses = courses.filter((course) => {
+    const courseBucket = getCourseTimeBucket(course);
+
     const matchesCategory =
       selectedCategories.length === 0 ||
       selectedCategories.includes(course.category);
-    const matchesDuration =
-      selectedDurations.length === 0 ||
-      selectedDurations.includes(course.durationCategory);
+
+    const matchesTime =
+      selectedTimeCats.length === 0 || selectedTimeCats.includes(courseBucket);
+
+    // Smarter search: title + description + category + aliases + optional per-course keywords
+    const categoryName =
+      categories.find((c) => c.id === course.category)?.name ?? course.category;
+    const catAliases = categoryKeywords[course.category] ?? [];
+
+    const haystack = [
+      course.title,
+      course.description,
+      course.level,
+      course.schedule,
+      categoryName,
+      course.category,
+      ...(course.keywords ?? []),
+      ...catAliases,
+    ]
+      .filter(Boolean)
+      .map((x: string) => normalize(x))
+      .join(" • ");
+
+    const tokens = tokenize(searchQuery);
     const matchesSearch =
-      course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      course.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesDuration && matchesSearch;
+      tokens.length === 0 || tokens.every((tok) => haystack.includes(tok));
+
+    return matchesCategory && matchesTime && matchesSearch;
   });
 
   // Sort courses based on selected sort option
@@ -226,7 +451,7 @@ export default function CoursesPage() {
 
   const hasActiveFilters =
     selectedCategories.length > 0 ||
-    selectedDurations.length > 0 ||
+    selectedTimeCats.length > 0 ||
     searchQuery !== "";
 
   // Animation variants
@@ -385,27 +610,27 @@ export default function CoursesPage() {
                 ))}
               </div>
 
-              {/* Duration Filters */}
+              {/* Time Category Filters (4 chips) */}
               <div className="flex flex-wrap items-center gap-1.5">
                 <span className="text-xs font-medium text-afrodite-lightPurple mr-1">
                   Kohëzgjatje:
                 </span>
-                {durations.map((d) => (
+                {TIME_FILTERS.map((t) => (
                   <Button
-                    key={d.id}
+                    key={t.id}
                     size="sm"
                     variant="ghost"
                     className={`
       h-7 px-2 py-0 text-xs border
       ${
-        selectedDurations.includes(d.id)
+        selectedTimeCats.includes(t.id)
           ? "bg-afrodite-purple text-afrodite-creme border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
           : "bg-afrodite-lightPurple/50 text-afrodite-purple border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
       }
     `}
-                    onClick={() => toggleDuration(d.id)}
+                    onClick={() => toggleTimeCat(t.id)}
                   >
-                    {d.name}
+                    {t.label}
                   </Button>
                 ))}
               </div>
@@ -458,10 +683,6 @@ export default function CoursesPage() {
                         <Clock className="h-4 w-4 text-afrodite-creme" />
                         <span>{course.duration}</span>
                       </div>
-                      {/* <div className="flex items-center space-x-2 text-afrodite-creme text-sm">
-                        <Users className="h-4 w-4 text-afrodite-creme" />
-                        <span>{course.students} studentë</span>
-                      </div> */}
                     </div>
                   </div>
 
@@ -673,11 +894,11 @@ export default function CoursesPage() {
                 className="
     absolute -bottom-6 -right-6 
     bg-afrodite-creme 
-    p-4 sm:p-6                /* smaller padding on mobile */
+    p-4 sm:p-6
     rounded-xl shadow-lg 
     border-l-4 border-afrodite-purple 
-    w-60 sm:max-w-xs          /* narrower width on mobile */
-    text-sm sm:text-base      /* shrink text on mobile */
+    w-60 sm:max-w-xs
+    text-sm sm:text-base
   "
               >
                 <div className="flex items-center justify-between mb-3">
@@ -714,7 +935,6 @@ export default function CoursesPage() {
 
       {/* CTA Section */}
       <section className="bg-afrodite-creme py-16 md:py-24 relative overflow-hidden">
-        {/* <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div> */}
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>{" "}
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
@@ -772,8 +992,6 @@ export default function CoursesPage() {
           />
         </div>
       </section>
-      {/* Request Info Button */}
-      {/* <RequestInfoButton /> */}
       <WhatsAppButton />
     </div>
   );

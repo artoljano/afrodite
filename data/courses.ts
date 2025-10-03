@@ -48,7 +48,7 @@ export interface Course {
   videoSrc?: string;
   enrolled?: number;
   link?: string;
-
+  keywords?: string[];
   // ← NEW!
   media?: {
     type: "image" | "video";
@@ -89,7 +89,6 @@ export const courses: Course[] = [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në profesionin e kujdestarit për fëmijë",
-    category: "kujdestar-per-te-moshuar-dhe-femije",
       lessons: [
         "Përkufizimi dhe rëndësia e profesionit",
         "Etika dhe përgjegjësitë e punës"
@@ -148,8 +147,7 @@ export const courses: Course[] = [
 media: [
   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
-  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
-  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+
 ]
 
 },
@@ -180,7 +178,7 @@ media: [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në profesionin e kujdestarit për të moshuar",
-    category: "kujdestar-per-te-moshuar-dhe-femije",
+    
       lessons: [
         "Roli i kujdestarit",
         "Etika dhe siguria në punë"
@@ -232,8 +230,7 @@ media: [
 media: [
   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
-  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
-  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+  
 ]
 
 },
@@ -264,7 +261,6 @@ media: [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Operimin Turistik",
-    category: "operatoret-turistike",
       lessons: [
         "Roli i operatorit turistik",
         "Etika dhe standardet e shërbimit"
@@ -279,7 +275,6 @@ media: [
     },
     {
       title: "Moduli 3: Konceptimi i Produktit Turistik",
-    category: "operatoret-turistike",
       lessons: [
         "Hartimi i paketave dhe itinerareve",
         "Analiza e kostove dhe çmimeve"
@@ -317,8 +312,7 @@ media: [
   media: [
   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
-  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
-  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+
 ]
 
 },
@@ -348,7 +342,6 @@ media: [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Kujdestarinë e të Moshuarve dhe Fëmijëve",
-    category: "kujdestar-per-te-moshuar-dhe-femije",
       lessons: [
         "Kujdestari për të moshuar",
         "Kujdestari për fëmijë"
@@ -410,8 +403,8 @@ media: [
   media: [
   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
-  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
-  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+
+  
 ]
 
 },
@@ -443,7 +436,6 @@ media: [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Udhërrëfimin Turistik",
-    category: "operatoret-turistike",
       lessons: ["Roli dhe përgjegjësitë e guidës"]
     },
     {
@@ -480,8 +472,7 @@ media: [
   media: [
   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
-  { type: "video", src: "/videos/tour-guide.mp4", alt: "Video e kursit tour guide" },
-  { type: "video", src: "/videos/tourist-operator.mp4", alt: "Pamje nga trajnimi operator turistik" }
+
 ]
 
 },
@@ -512,7 +503,6 @@ media: [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Profesionin e Pastrimit",
-    category: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
       lessons: ["Standardet e higjienës", "Llojet e kimikateve"]
     },
     {
@@ -521,12 +511,10 @@ media: [
     },
     {
       title: "Moduli 3: Pastrimi i Brendshëm",
-    category: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
       lessons: ["Pastrimi i apartamenteve", "Menaxhimi i mbetjeve"]
     },
     {
       title: "Moduli 4: Pastrimi i Jashtëm",
-    category: "sherbim-pastrimi-ne-njesi-banimi-dhe-institucione",
       lessons: ["Pastrimi i hapësirave gjelbëruese", "Makineritë profesionale"]
     }
   ],
@@ -580,7 +568,6 @@ media: [
   curriculum: [
     {
       title: "Moduli 1: Hyrje në Profesionin e Recepsionistit",
-    category: "recepsion",
       lessons: [
         "Roli dhe përgjegjësitë e recepsionistit",
         "Standardet e komunikimit profesional"
@@ -624,7 +611,7 @@ media: [
   students: 12,
   media: [
   { type: "image", src: "/courses/receptionist.jpg", alt: "Pamje nga kursi për recepsionistë" },
-  { type: "video", src: "/videos/reception-video.mp4", alt: "Video e trajnimit për recepsionistë" }
+
 ]
 
 },
@@ -711,8 +698,7 @@ media: [
   { type: "image", src: "/courses/berber-600.jpg", alt: "Pamje nga kursi Berber 600 orë" },
   { type: "image", src: "/courses/berber-900.jpg", alt: "Pamje nga kursi Berber 900 orë" },
   { type: "image", src: "/courses/berber-1800.jpg", alt: "Pamje nga kursi Berber 1800 orë" },
-  { type: "video", src: "/videos/Kurs-berber.mp4", alt: "Video nga kursi berber" },
-  { type: "video", src: "/videos/berber-media.mp4", alt: "Pamje të mediave nga kursi berber" }
+
 ]
 
 },
@@ -781,8 +767,8 @@ media: [
   { type: "image", src: "/courses/berber-600.jpg", alt: "Pamje nga kursi Berber 600 orë" },
   { type: "image", src: "/courses/berber-900.jpg", alt: "Pamje nga kursi Berber 900 orë" },
   { type: "image", src: "/courses/berber-1800.jpg", alt: "Pamje nga kursi Berber 1800 orë" },
-  { type: "video", src: "/videos/Kurs-berber.mp4", alt: "Video nga kursi berber" },
-  { type: "video", src: "/videos/berber-media.mp4", alt: "Pamje të mediave nga kursi berber" }
+
+
 ]
 
 },
@@ -923,8 +909,8 @@ media: [
   { type: "image", src: "/courses/berber-600.jpg", alt: "Pamje nga kursi Berber 600 orë" },
   { type: "image", src: "/courses/berber-900.jpg", alt: "Pamje nga kursi Berber 900 orë" },
   { type: "image", src: "/courses/berber-1800.jpg", alt: "Pamje nga kursi Berber 1800 orë" },
-  { type: "video", src: "/videos/Kurs-berber.mp4", alt: "Video nga kursi berber" },
-  { type: "video", src: "/videos/berber-media.mp4", alt: "Pamje të mediave nga kursi berber" }
+
+
 ]
 
 },
@@ -1013,7 +999,7 @@ media: [
   { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
   { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
   { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
-  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+
 ]
 
 },
@@ -1056,17 +1042,14 @@ media: [
     },
     {
       title: "Moduli 4: Masazhet Relaksuese",
-    category: "masazhet",
       lessons: ["Masazh fytyre", "Limfodrenazh"]
     },
     {
       title: "Moduli 5: Makeup Permanent & Epilim",
-    category: "makeup-permanent-pmu",
       lessons: ["Microblading", "Teknika epilimi"]
     },
     {
       title: "Moduli 6: Manikyr & Pedikyr",
-    category: "manikyr-pedikyr-nail-art",
       lessons: ["Manikyr xhel", "SPA këmbe"]
     },
     {
@@ -1094,7 +1077,8 @@ media: [
   { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
   { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
   { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
-  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+ 
+  
 ]
 
 },
@@ -1133,12 +1117,10 @@ media: [
     },
     {
       title: "Moduli 3: Masazhe Relaksuese",
-    category: "masazhet",
       lessons: ["Masazh fytyre", "Limfodrenazh trupor"]
     },
     {
       title: "Moduli 4: Makeup & Epilim",
-    category: "makeup",
       lessons: [
         "Extension qerpikësh",
         "Makeup permanent sysh/buzësh/vetullash"
@@ -1146,7 +1128,6 @@ media: [
     },
     {
       title: "Moduli 5: Manikyr & Pedikyr",
-    category: "manikyr-pedikyr-nail-art",
       lessons: ["Manikyr xhel bazik", "Pedikyr SPA me parafine"]
     },
     {
@@ -1174,7 +1155,8 @@ media: [
   { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
   { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
   { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
-  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+
+  
 ]
 
 },
@@ -1217,7 +1199,6 @@ media: [
     },
     {
       title: "Moduli 4: Masazhe & Spa",
-    category: "masazhet",
       lessons: ["Masazh relaksues", "SPA duar dhe këmbe"]
     },
     {
@@ -1245,7 +1226,8 @@ media: [
   { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
   { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
   { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
-  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+
+  
 ]
 
 },
@@ -1288,7 +1270,6 @@ media: [
     },
     {
       title: "Moduli 4: Manikyr & Spa",
-    category: "manikyr-pedikyr-nail-art",
       lessons: ["Manikyr bazik", "SPA këmbe me parafine"]
     },
     {
@@ -1316,7 +1297,7 @@ media: [
   { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
   { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
   { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
-  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+
 ]
 
 },
@@ -1390,10 +1371,9 @@ media: [
   students: 20,
 media: [
   { type: "image", src: "/courses/qerpik-klasik-kurs-baze.jpg", alt: "Pamje nga kursi bazë për qerpikë klasik" },
-  { type: "video", src: "/videos/lashes-video.mp4", alt: "Video e trajnimit për qerpikë klasik" },
+
   { type: "image", src: "/courses/qerpik-volume-avancuar.jpg", alt: "Pamje nga kursi i avancuar për qerpikë volume" },
-  { type: "video", src: "/videos/lashes-video-1.mp4", alt: "Video e kursit për qerpikë volume" },
-  { type: "video", src: "/videos/lashes-video-2.mp4", alt: "Pamje shtesë nga trajnimet për qerpikë volume" }
+
 ]
 
 
@@ -1448,11 +1428,9 @@ media: [
   students: 15,
   media: [
   { type: "image", src: "/courses/qerpik-klasik-kurs-baze.jpg", alt: "Pamje nga kursi bazë për qerpikë klasik" },
-  { type: "video", src: "/videos/lashes-video.mp4", alt: "Video e trajnimit për qerpikë klasik" },
+ 
   { type: "image", src: "/courses/qerpik-volume-avancuar.jpg", alt: "Pamje nga kursi i avancuar për qerpikë volume" },
-  { type: "video", src: "/videos/lashes-video-1.mp4", alt: "Video e kursit për qerpikë volume" },
-  { type: "video", src: "/videos/lashes-video-2.mp4", alt: "Pamje shtesë nga trajnimet për qerpikë volume" }
-]
+  ]
 
 },
 
@@ -1534,8 +1512,7 @@ media: [
   { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
   { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
   { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
-  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
-  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+
 ]
 
 },
@@ -1616,8 +1593,7 @@ media: [
   { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
   { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
   { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
-  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
-  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+  
 ]
 
 },
@@ -1656,7 +1632,6 @@ media: [
     },
     {
       title: "Moduli 3: Permanent & Makeup Flokësh",
-    category: "makeup-permanent-pmu",
       lessons: ["Teknikat e permanentit", "Makeup për flokët"]
     },
     {
@@ -1679,8 +1654,7 @@ media: [
   { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
   { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
   { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
-  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
-  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+
 ]
 
 },
@@ -1715,7 +1689,6 @@ media: [
     },
     {
       title: "Moduli 2: Makeup & Ngjyrosje",
-    category: "makeup",
       lessons: ["Makeup flokësh", "Teknikat e bojës"]
     },
     {
@@ -1734,8 +1707,7 @@ media: [
   { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
   { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
   { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
-  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
-  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+
 ]
 
 },
@@ -1792,9 +1764,7 @@ media: [
   { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
   { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
   { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
-  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
-  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
-]
+  ]
 
 },
 {
@@ -1825,7 +1795,6 @@ media: [
     },
     {
       title: "Estetikë & Trajtimet e Fytyrës",
-    category: "trajtimet-e-fytyres",
       lessons: [
         "Masazh dhe pastrim fytyre",
         "Make-up & make-up permanent",
@@ -1841,7 +1810,6 @@ media: [
     },
     {
       title: "Manikyr-Pedikyr & Flokët",
-    category: "manikyr-pedikyr-nail-art",
       lessons: [
         "Shampim, larje, prerje, stilim",
         "Ngjyrosje dhe trajtim kimik",
@@ -1867,8 +1835,7 @@ media: [
   { type: "image", src: "/courses/parukeri-600.jpg", alt: "Pamje nga kursi Parukeri 600 orë" },
   { type: "image", src: "/courses/parukeri-900.jpg", alt: "Pamje nga kursi Parukeri 900 orë" },
   { type: "image", src: "/courses/parukeri-2100.jpg", alt: "Pamje nga kursi Parukeri 2100 orë" },
-  { type: "video", src: "/videos/parukeri-video.mp4", alt: "Video nga kursi Parukeri" },
-  { type: "video", src: "/videos/parukeri-video.mov", alt: "Pamje shtesë nga kursi Parukeri" }
+
 ]
 
 },
@@ -1913,7 +1880,6 @@ media: [
     },
     {
       title: "Moduli 4: Materialet & Pajisjet",
-    category: "pajisjet-e-estetikes",
       lessons: ["Llojet e makinerive", "Pigmentet"]
     },
     {
@@ -1957,7 +1923,7 @@ media: [
   students: 12,
   media: [
   { type: "image", src: "/courses/tatuator.jpg", alt: "Pamje nga kursi Tattoo" },
-  { type: "video", src: "/videos/tattoo-video.mp4", alt: "Video e kursit Tattoo" }
+
 ]
 },
 {
@@ -2026,7 +1992,7 @@ media: [
   { type: "image", src: "/courses/hixhama-1.jpg", alt: "Pamje nga kursi Hixhama 1" },
   { type: "image", src: "/courses/hixhama-2.jpg", alt: "Pamje nga kursi Hixhama 2" },
   { type: "image", src: "/courses/hixhama-3.jpg", alt: "Pamje nga kursi Hixhama 3" },
-  { type: "video", src: "/videos/hixhama-video.mp4", alt: "Video nga trajnimet Hixhama" }
+
 ]
 },
 {
@@ -2085,7 +2051,7 @@ media: [
   { type: "image", src: "/courses/hixhama-1.jpg", alt: "Pamje nga kursi Hixhama 1" },
   { type: "image", src: "/courses/hixhama-2.jpg", alt: "Pamje nga kursi Hixhama 2" },
   { type: "image", src: "/courses/hixhama-3.jpg", alt: "Pamje nga kursi Hixhama 3" },
-  { type: "video", src: "/videos/hixhama-video.mp4", alt: "Video nga trajnimet Hixhama" }
+
 ]
 },
 {
@@ -2136,7 +2102,7 @@ media: [
   { type: "image", src: "/courses/hixhama-1.jpg", alt: "Pamje nga kursi Hixhama 1" },
   { type: "image", src: "/courses/hixhama-2.jpg", alt: "Pamje nga kursi Hixhama 2" },
   { type: "image", src: "/courses/hixhama-3.jpg", alt: "Pamje nga kursi Hixhama 3" },
-  { type: "video", src: "/videos/hixhama-video.mp4", alt: "Video nga trajnimet Hixhama" }
+
 ]
 },
 // Makeup Courses
@@ -2219,7 +2185,6 @@ media: [
     },
     {
       title: "Moduli 8: Make-up i Syve",
-    category: "makeup",
       lessons: [
         "Aplikimi i hijeve, eyeliner-it, maskarës",
         "Teknikat blending dhe smokey"
@@ -2227,7 +2192,6 @@ media: [
     },
     {
       title: "Moduli 9: Vetulla & Qerpikë",
-    category: "zgjatimi-i-qerpikeve",
       lessons: [
         "Formësimi dhe mbushja e vetullave",
         "Aplikimi i qerpikëve artificialë"
@@ -2235,7 +2199,6 @@ media: [
     },
     {
       title: "Moduli 10: Make-up i Buzëve",
-    category: "makeup",
       lessons: [
         "Konturimi dhe zgjedhja e ngjyrave",
         "Gloss, mat & ombre"
@@ -2293,7 +2256,7 @@ media: [
   media: [
   { type: "image", src: "/courses/makeup-600.jpg", alt: "Pamje nga kursi Make-up 600 orë" },
   { type: "image", src: "/courses/makeup-1200.jpg", alt: "Pamje nga kursi Make-up 1200 orë" },
-  { type: "video", src: "/videos/makeup-video.mp4", alt: "Video nga kursi Make-up" }
+
 ]
 
   
@@ -2357,7 +2320,6 @@ media: [
     },
     {
       title: "Moduli 9: Vetullat & Qerpikët",
-    category: "zgjatimi-i-qerpikeve",
       lessons: ["Mbushja e vetullave", "Qerpikët artificialë"]
     },
     {
@@ -2383,7 +2345,7 @@ media: [
   media: [
   { type: "image", src: "/courses/makeup-600.jpg", alt: "Pamje nga kursi Make-up 600 orë" },
   { type: "image", src: "/courses/makeup-1200.jpg", alt: "Pamje nga kursi Make-up 1200 orë" },
-  { type: "video", src: "/videos/makeup-video.mp4", alt: "Video nga kursi Make-up" }
+
 ]
 
 },
@@ -2407,7 +2369,6 @@ media: [
   curriculum: [
     {
       title: "Hyrje në Make-up dhe Etika Profesionale",
-    category: "makeup",
       lessons: [
         "Historia dhe evolucioni i make-up-it",
         "Etika profesionale dhe imazhi i vetes"
@@ -2457,7 +2418,6 @@ media: [
     },
     {
       title: "Make-up i Syve",
-    category: "makeup",
       lessons: [
         "Forma dhe korrigjim optic",
         "Hije, eyeliner, maskara"
@@ -2465,7 +2425,6 @@ media: [
     },
     {
       title: "Vetulla dhe Qerpikë",
-    category: "zgjatimi-i-qerpikeve",
       lessons: [
         "Formësimi dhe mbushja",
         "Zgjedhja sipas fytyrës"
@@ -2492,7 +2451,7 @@ media: [
  media: [
   { type: "image", src: "/courses/makeup-600.jpg", alt: "Pamje nga kursi Make-up 600 orë" },
   { type: "image", src: "/courses/makeup-1200.jpg", alt: "Pamje nga kursi Make-up 1200 orë" },
-  { type: "video", src: "/videos/makeup-video.mp4", alt: "Video nga kursi Make-up" }
+
 ]
 
 },
@@ -2564,7 +2523,6 @@ media: [
     },
     {
       title: "Sy, Qerpikë, Buzë",
-    category: "zgjatimi-i-qerpikeve",
       lessons: [
         "Teknika për sytë",
         "Qerpikët dhe vetullat",
@@ -2585,7 +2543,7 @@ media: [
   media: [
   { type: "image", src: "/courses/makeup-600.jpg", alt: "Pamje nga kursi Make-up 600 orë" },
   { type: "image", src: "/courses/makeup-1200.jpg", alt: "Pamje nga kursi Make-up 1200 orë" },
-  { type: "video", src: "/videos/makeup-video.mp4", alt: "Video nga kursi Make-up" }
+
 ]
 
 },
@@ -2647,7 +2605,6 @@ media: [
     },
     {
       title: "Moduli 5: Produkte, Vegla & Pajisje",
-    category: "pajisjet-e-estetikes",
       lessons: [
         "Gel, akrilik, pigmente, llakë",
         "Freza elektrike & llampa UV/LED"
@@ -2662,7 +2619,6 @@ media: [
     },
     {
       title: "Moduli 7: Teknikat Bazë të Nail Art",
-    category: "manikyr-pedikyr-nail-art",
       lessons: [
         "Manikyr francez & ombre",
         "Efekti mermer, stampim & pikturim dorazi"
@@ -2706,8 +2662,7 @@ media: [
  media: [
   { type: "image", src: "/courses/nails-500.jpg", alt: "Pamje nga kursi Nail Art – 500 orë" },
   { type: "image", src: "/courses/nails-2000.jpg", alt: "Pamje nga kursi Nail Art – 2000 orë" },
-  { type: "video", src: "/videos/nails-video-1.mp4", alt: "Video 1 nga trajnimet Nail Art" },
-  { type: "video", src: "/videos/nails-video.mp4", alt: "Video 2 nga trajnimet Nail Art" }
+  
 ]
 },
 {
@@ -2769,8 +2724,7 @@ media: [
   media: [
   { type: "image", src: "/courses/nails-500.jpg", alt: "Pamje nga kursi Nail Art – 500 orë" },
   { type: "image", src: "/courses/nails-2000.jpg", alt: "Pamje nga kursi Nail Art – 2000 orë" },
-  { type: "video", src: "/videos/nails-video-1.mp4", alt: "Video 1 nga trajnimet Nail Art" },
-  { type: "video", src: "/videos/nails-video.mp4", alt: "Video 2 nga trajnimet Nail Art" }
+  
 ]
 },
 
@@ -2813,7 +2767,6 @@ media: [
     },
     {
       title: "Moduli 4: Përgatitja & Nail Art Bazë",
-    category: "manikyr-pedikyr-nail-art",
       lessons: ["Formësimi i thonjve", "Frances, ombre"]
     },
     {
@@ -2830,8 +2783,7 @@ media: [
   media: [
   { type: "image", src: "/courses/nails-500.jpg", alt: "Pamje nga kursi Nail Art – 500 orë" },
   { type: "image", src: "/courses/nails-2000.jpg", alt: "Pamje nga kursi Nail Art – 2000 orë" },
-  { type: "video", src: "/videos/nails-video-1.mp4", alt: "Video 1 nga trajnimet Nail Art" },
-  { type: "video", src: "/videos/nails-video.mp4", alt: "Video 2 nga trajnimet Nail Art" }
+ 
 ]
 },
 {
@@ -2893,8 +2845,7 @@ media: [
 media: [
   { type: "image", src: "/courses/nails-500.jpg", alt: "Pamje nga kursi Nail Art – 500 orë" },
   { type: "image", src: "/courses/nails-2000.jpg", alt: "Pamje nga kursi Nail Art – 2000 orë" },
-  { type: "video", src: "/videos/nails-video-1.mp4", alt: "Video 1 nga trajnimet Nail Art" },
-  { type: "video", src: "/videos/nails-video.mp4", alt: "Video 2 nga trajnimet Nail Art" }
+
 ]
 },
 // Massage Courses
@@ -3011,8 +2962,7 @@ media: [
   { type: "image", src: "/courses/masazh-klasik.jpg", alt: "Pamje nga kursi Masazh Klasik" },
   { type: "image", src: "/courses/masazh-anticelulit.jpg", alt: "Pamje nga trajnimet anticelulit" },
   { type: "image", src: "/courses/kurs-masazh.jpg", alt: "Pamje nga kursi masazhi" },
-  { type: "video", src: "/videos/masazh-video.mp4", alt: "Video nga trajnimet masazh" },
-  { type: "video", src: "/videos/masazhe.mov", alt: "Pamje shtesë nga trajnimet masazh" }
+
 ]
 
 },
@@ -3047,12 +2997,10 @@ media: [
     },
     {
       title: "Moduli 2: Anatomia për Masazh",
-    category: "masazhet",
       lessons: ["Strukturat muskulore", "Ndikimi në trup"]
     },
     {
       title: "Moduli 3: Masazh Klasik & Relaksues",
-    category: "masazhet",
       lessons: ["Suedez", "Aromaterapi"]
     },
     {
@@ -3074,8 +3022,7 @@ media: [
   { type: "image", src: "/courses/masazh-klasik.jpg", alt: "Pamje nga kursi Masazh Klasik" },
   { type: "image", src: "/courses/masazh-anticelulit.jpg", alt: "Pamje nga trajnimet anticelulit" },
   { type: "image", src: "/courses/kurs-masazh.jpg", alt: "Pamje nga kursi masazhi" },
-  { type: "video", src: "/videos/masazh-video.mp4", alt: "Video nga trajnimet masazh" },
-  { type: "video", src: "/videos/masazhe.mov", alt: "Pamje shtesë nga trajnimet masazh" }
+
 ]
 
 },
@@ -3110,7 +3057,6 @@ media: [
     },
     {
       title: "Moduli 2: Masazh Terapeutik & Kurativ",
-    category: "masazhet",
       lessons: ["Rehabilitimi pas lëndimeve", "Hidroterapi & balneoterapi"]
     },
     {
@@ -3136,8 +3082,7 @@ media: [
   { type: "image", src: "/courses/masazh-klasik.jpg", alt: "Pamje nga kursi Masazh Klasik" },
   { type: "image", src: "/courses/masazh-anticelulit.jpg", alt: "Pamje nga trajnimet anticelulit" },
   { type: "image", src: "/courses/kurs-masazh.jpg", alt: "Pamje nga kursi masazhi" },
-  { type: "video", src: "/videos/masazh-video.mp4", alt: "Video nga trajnimet masazh" },
-  { type: "video", src: "/videos/masazhe.mov", alt: "Pamje shtesë nga trajnimet masazh" }
+
 ]
 
 },
@@ -3173,7 +3118,7 @@ media: [
     { title: "Moduli 5: Trajtimi Bazë", lessons: ["Pastrimi dhe tonifikimi", "Masazhi dhe maskat"] },
     { title: "Moduli 6: Trajtimet Avancuara", lessons: ["Peeling kimik & mekanik", "Microdermabrasion & serume"] },
     { title: "Moduli 7: Pajisje Estetike",
-    category: "pajisjet-e-estetikes", lessons: ["Vapozon & roller", "Lampa UV & rigjenerimi"] },
+    lessons: ["Vapozon & roller", "Lampa UV & rigjenerimi"] },
     { title: "Moduli 8: Lëkurë Problem", lessons: ["Akne & komedone", "Kuperozë & ndjeshmëri"] },
     { title: "Moduli 9: Anti-Aging & Lifting", lessons: ["Trajtimet rigjeneruese", "Drenazh limfatik fytyre"] },
     { title: "Moduli 10: Zona Speciale", lessons: ["Trajtimi i syve", "Buzët & dekolteja"] },
@@ -3199,7 +3144,7 @@ media: [
   { type: "image", src: "/courses/estetike-900.jpg", alt: "Pamje nga kursi Estetikë 900 orë" },
   { type: "image", src: "/courses/estetike-1500.jpg", alt: "Pamje nga kursi Estetikë 1500 orë" },
   { type: "image", src: "/courses/estetike-2100.jpg", alt: "Pamje nga kursi Estetikë 2100 orë" },
-  { type: "video", src: "/videos/estetike-video.mp4", alt: "Video nga trajnimet estetike" }
+
 ]
 
 },
@@ -3229,12 +3174,12 @@ media: [
   ],
   curriculum: [
     { title: "Moduli 1: Intro & Historia PMU",
-    category: "makeup-permanent-pmu", lessons: ["Evolucioni i PMU", "Parimet bazë"] },
+     lessons: ["Evolucioni i PMU", "Parimet bazë"] },
     { title: "Moduli 2: Anatomia & Lëkura", lessons: ["Shtresat e lëkurës", "Kolagjeni & elastina"] },
     { title: "Moduli 3: Etika & Higjiena", lessons: ["Sterilizimi", "Parandalimi infeksionesh"] },
     { title: "Moduli 4: Teoria e Ngjyrave", lessons: ["Pigmentët dhe nuancat", "Përzierja"] },
     { title: "Moduli 5: Mjetet & Pajisjet",
-    category: "pajisjet-e-estetikes", lessons: ["Makineritë & kartidgët", "Aksesoret"] },
+     lessons: ["Makineritë & kartidgët", "Aksesoret"] },
     { title: "Moduli 6: Konsultim & Projektim", lessons: ["Skicimi i formave", "Analiza fytyre"] },
     { title: "Moduli 7: Teknikat e Vetullave", lessons: ["Microblading", "Nano-brows"] },
     { title: "Moduli 8: Teknikat e Syrit", lessons: ["Eyeliner klasik", "Eyeliner me hije"] },
@@ -3259,8 +3204,7 @@ media: [
   students: 0,
   media: [
   { type: "image", src: "/courses/makeup-permanent.jpg", alt: "Pamje nga kursi Make-up Permanent" },
-  { type: "video", src: "/videos/permanent-video.mp4", alt: "Video nga kursi Make-up Permanent" },
-  { type: "video", src: "/videos/permanent-video.mov", alt: "Pamje shtesë nga trajnimet permanente" }
+
 ]
 
 },
@@ -3293,7 +3237,7 @@ media: [
     { title: "Moduli 2: Etika & Higjiena", lessons: ["Sterilizimi", "Siguria"] },
     { title: "Moduli 3: Teoria e Pigmentëve", lessons: ["Ngjyrat & nuancat"] },
     { title: "Moduli 4: Mjetet PMU",
-    category: "makeup-permanent-pmu", lessons: ["Makineritë & kartridgët"] },
+     lessons: ["Makineritë & kartridgët"] },
     { title: "Moduli 5: Konsultim & Projektim", lessons: ["Skica vetullash"] },
     { title: "Moduli 6: Microblading & Nano", lessons: ["Teknika manuale & digjitale"] },
     { title: "Moduli 7: Korrektim & Heqje", lessons: ["Heqja me laser", "Neutralizim ngjyrash"] },
@@ -3308,7 +3252,7 @@ media: [
   students: 0,
   media: [
   { type: "image", src: "/courses/pmu-vetullat.jpg", alt: "Pamje nga trajnimet për vetulla PMU" },
-  { type: "video", src: "/videos/permanent-video.mp4", alt: "Video nga kursi Make-up Permanent" },
+
 
 ]
 
@@ -3343,7 +3287,7 @@ media: [
     { title: "Moduli 2: Etika & Higjiena", lessons: ["Sterilizimi", "Siguria"] },
     { title: "Moduli 3: Teoria e Ngjyrave", lessons: ["Pigmentët & nuancat"] },
     { title: "Moduli 4: Pajisjet PMU",
-    category: "pajisjet-e-estetikes", lessons: ["Makineritë & kartridgët"] },
+     lessons: ["Makineritë & kartridgët"] },
     { title: "Moduli 5: Konsultim & Project", lessons: ["Skica syz"] },
     { title: "Moduli 6: Teknikat Eyeliner", lessons: ["Eyeliner klasik", "Eyeliner me hije"] },
     { title: "Moduli 7: Korrektim & Heqje", lessons: ["Heqja me laser"] },
@@ -3358,7 +3302,7 @@ media: [
   students: 0,
   media: [
   { type: "image", src: "/courses/pmu-eyeliner.jpg", alt: "Pamje nga trajnimet për eyeliner PMU" },
-    { type: "video", src: "/videos/permanent-video.mp4", alt: "Video nga kursi Make-up Permanent" },
+
 
 ]
 
@@ -3406,7 +3350,7 @@ media: [
   students: 0,
   media: [
    { type: "image", src: "/courses/pmu-buza.jpg", alt: "Pamje nga trajnimet për buzë PMU" },
-    { type: "video", src: "/videos/permanent-video.mp4", alt: "Video nga kursi Make-up Permanent" },
+
 
 ]
 },
@@ -3471,7 +3415,7 @@ media: [
   { type: "image", src: "/courses/fashon-design.jpg", alt: "Pamje nga kursi Fashion Design" },
   { type: "image", src: "/courses/fashon-design-2.jpg", alt: "Pamje shtesë nga kursi Fashion Design" },
   { type: "image", src: "/courses/fashon-design-3.jpg", alt: "Më shumë pamje nga Fashion Design" },
-  { type: "video", src: "/videos/fashion-video.mp4", alt: "Video e kursit Fashion Design" }
+
 ]
 
 },
@@ -3522,7 +3466,7 @@ media: [
   { type: "image", src: "/courses/fashon-design.jpg", alt: "Pamje nga kursi Fashion Design" },
   { type: "image", src: "/courses/fashon-design-2.jpg", alt: "Pamje shtesë nga kursi Fashion Design" },
   { type: "image", src: "/courses/fashon-design-3.jpg", alt: "Më shumë pamje nga Fashion Design" },
-  { type: "video", src: "/videos/fashion-video.mp4", alt: "Video e kursit Fashion Design" }
+
 ]
 
 },
@@ -3569,7 +3513,7 @@ media: [
   { type: "image", src: "/courses/fashon-design.jpg", alt: "Pamje nga kursi Fashion Design" },
   { type: "image", src: "/courses/fashon-design-2.jpg", alt: "Pamje shtesë nga kursi Fashion Design" },
   { type: "image", src: "/courses/fashon-design-3.jpg", alt: "Më shumë pamje nga Fashion Design" },
-  { type: "video", src: "/videos/fashion-video.mp4", alt: "Video e kursit Fashion Design" }
+
 ]
 
 },
@@ -3614,7 +3558,7 @@ media: [
   { type: "image", src: "/courses/fashon-design.jpg", alt: "Pamje nga kursi Fashion Design" },
   { type: "image", src: "/courses/fashon-design-2.jpg", alt: "Pamje shtesë nga kursi Fashion Design" },
   { type: "image", src: "/courses/fashon-design-3.jpg", alt: "Më shumë pamje nga Fashion Design" },
-  { type: "video", src: "/videos/fashion-video.mp4", alt: "Video e kursit Fashion Design" }
+
 ]
 
 },
@@ -3657,7 +3601,7 @@ media: [
   students: 0,
   media: [
   { type: "image", src: "/courses/fashion-industriale.jpg", alt: "Pamje nga kursi Fashion Industriale" },
-  { type: "video", src: "/videos/fashion-industrial-video.mp4", alt: "Video e kursit Fashion Industriale" }
+
 ]
 
 },
@@ -4262,7 +4206,6 @@ media: [
     },
     {
       title: "Teoria e Ngjyrave & Pajisjet",
-    category: "pajisjet-e-estetikes",
       lessons: [
         "Pigmentet dhe përzierjet",
         "Makineritë dhe kartridgët"

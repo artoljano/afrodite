@@ -130,7 +130,7 @@ export default function Home() {
 
     // Create a link to the PDF and trigger the download
     const link = document.createElement("a");
-    link.href = "/course-brochure.pdf";
+    link.href = "/Brochure.pdf";
     link.download = "Afrodite-Academy-Brochure.pdf";
     document.body.appendChild(link);
     link.click();

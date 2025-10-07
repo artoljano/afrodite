@@ -2465,7 +2465,7 @@ media: [
   price: "",
   startDate: "",
   schedule: "",
-  image: "/courses/makeup-150.jpg",
+  image: "/courses/makeup-150.webp",
   videoSrc: "",
   description:
     "Kurs bazë 150 orësh për grimin profesional që përfshin njohuri themelore për make-up, higjienë dhe teknika grimi.",
@@ -4055,7 +4055,7 @@ media: [
   price: "",
   startDate: "",
   schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
-  image: "/pajisje/epilimi-me-lazer.jpg",
+  image: "/pajisje/epilim-me-lazer.jpg",
   noCustomCrop: true,
   description:
     "Trajnim profesional në epilimin me lazer duke mbuluar llojet e lazerëve, parametrat e trajtimit dhe sigurinë klinike.",
@@ -4452,7 +4452,7 @@ media: [
   {
     id: 63,
     title: "Kurs për Udhërrëfyes Turistik",
-    category: "operatoret-turistike",
+    category: "UET Italia",
     duration: "",
     durationCategory: "",
     level: "",

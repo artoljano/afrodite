@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useSearchParams } from "next/navigation";
+
 import {
   Search,
   ChevronRight,
@@ -38,11 +42,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import { AnimatedButton } from "@/components/animated-button";
-import { useInView } from "react-intersection-observer";
-import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 import { courses } from "@/data/courses";
 import VideoModal from "@/components/video-modal";
 import WhatsAppButton from "@/components/whatsapp-button";
@@ -62,7 +62,6 @@ const tokenize = (q: string) =>
     .filter((t) => t.length >= 2);
 
 /* -------------------- CATEGORY LIST -------------------- */
-// 1) Put this item back into your categories array (any position is fine)
 export const categories = [
   { id: "estetike", name: "Estetikë", icon: <Sparkles className="h-4 w-4" /> },
   { id: "parukeri", name: "Parukeri", icon: <Users className="h-4 w-4" /> },
@@ -131,12 +130,11 @@ export const categories = [
     icon: <Heart className="h-4 w-4" />,
   },
 
-  // 🔶 UET Italia (orange by default when unselected thanks to your existing className rule)
+  // 🔶 UET Italia
   { id: "UET Italia", name: "UET Italia", icon: <Globe className="h-4 w-4" /> },
 ];
 
 /* ------------- Optional: category search aliases ------------- */
-// 2) (Optional but recommended) add search aliases so hero search finds it too
 const categoryKeywords: Record<string, string[]> = {
   estetike: ["estetike", "estetikë", "beauty", "esthetics", "skincare"],
   parukeri: ["parukeri", "hair", "hairdresser", "kapshtare", "floktari"],
@@ -190,8 +188,6 @@ const categoryKeywords: Record<string, string[]> = {
   "tattoo-art": ["tattoo", "tatuazh", "ink"],
   "fashion-design": ["modë", "moda", "fashion", "design", "stilim"],
   "terapia-hixhama": ["hixhama", "cupping", "terapi", "therapy"],
-
-  // 🔶 UET Italia keywords
   "UET Italia": [
     "uet",
     "italia",
@@ -213,23 +209,22 @@ const TIME_FILTERS: { id: TimeBucketId; label: string }[] = [
   { id: "2to3yr", label: "Kurse 2-3 vjecare" },
 ];
 
-/* ---- Duration parsing & bucketing (handles muaj/mujore/vite/vjet/vjeçare + orë) ---- */
+/* ---- Duration parsing & bucketing ---- */
 const normalizeDiacritics = (s: string) =>
   s
     .toLowerCase()
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "");
 
-// You can tweak these hour thresholds as you learn your dataset better:
 const HOUR_TO_BUCKET: { id: TimeBucketId; maxHours: number }[] = [
-  { id: "short", maxHours: 200 }, // <= 200 orë -> short
-  { id: "6mo", maxHours: 450 }, // 201–450 orë -> ~6 months
-  { id: "1to2yr", maxHours: 950 }, // 451–950 orë -> 1–2 yrs
-  { id: "2to3yr", maxHours: 2500 }, // 951–1600 orë -> 2–3 yrs
+  { id: "short", maxHours: 200 },
+  { id: "6mo", maxHours: 450 },
+  { id: "1to2yr", maxHours: 950 },
+  { id: "2to3yr", maxHours: 2500 },
 ];
 
 function hourStringToBucket(s: string): TimeBucketId | null {
-  const m = s.match(/(\d+(?:[\.,]\d+)?)\s*o?r[eë]\b/); // ore/orë
+  const m = s.match(/(\d+(?:[\.,]\d+)?)\s*o?r[eë]\b/);
   if (!m) return null;
   const hours = parseFloat(m[1].replace(",", "."));
   if (Number.isNaN(hours)) return null;
@@ -239,16 +234,17 @@ function hourStringToBucket(s: string): TimeBucketId | null {
   return "review";
 }
 
-// quick explicit label check (lets you set durationCategory: "Kurse 6 mujore" in data)
 function explicitBucketFromLabel(v?: string): TimeBucketId | null {
   if (!v) return null;
   const s = normalizeDiacritics(v);
   if (s.includes("kurse 6 mujore")) return "6mo";
-  if (s.includes("kurse 2-3 vjecare") || s.includes("kurse 2-3 vjecare"))
-    return "2to3yr";
-  if (s.includes("kurse 1-2 vjecare") || s.includes("kurse 1-2 vjecare"))
-    return "1to2yr";
-  if (s.includes("kurse te shkurtra") || s.includes("kurse te shkurter"))
+  if (s.includes("kurse 2-3 vjecare")) return "2to3yr";
+  if (s.includes("kurse 1-2 vjecare")) return "1to2yr";
+  if (
+    s.includes("kurse te shkurta") ||
+    s.includes("kurse te shkurter") ||
+    s.includes("kurse te shkurtra")
+  )
     return "short";
   return null;
 }
@@ -257,16 +253,13 @@ function parseDurationToMonths(raw?: string): number | null {
   if (!raw) return null;
   const s = normalizeDiacritics(String(raw));
 
-  // Ranges like "1-2 vjecare/vjeçare", "2 – 3 vite"
   if (/\b1\s*[-–]\s*2\b.*vj/.test(s) || /\b1\s*[-–]\s*2\b.*vit/.test(s))
     return 18;
   if (/\b2\s*[-–]\s*3\b.*vj/.test(s) || /\b2\s*[-–]\s*3\b.*vit/.test(s))
     return 30;
 
-  // Exactly 6 months (muaj/mujore)
   if (/\b6\b.*muaj/.test(s) || /\b6\b.*mujore/.test(s)) return 6;
 
-  // Years (vit/vite/vjet/vjecare/vjeçare)
   const years =
     s.match(
       /(\d+(?:[\.,]\d+)?)\s*(?:vit|vite|vjet|vjecare|vjecar|vjec|vjecarë|vjecare)\b/
@@ -276,17 +269,14 @@ function parseDurationToMonths(raw?: string): number | null {
     if (!Number.isNaN(y)) return Math.round(y * 12);
   }
 
-  // Months (muaj/mujore)
   const months = s.match(/(\d+(?:[\.,]\d+)?)\s*(?:muaj|mujore)\b/);
   if (months) {
     const m = parseFloat(months[1].replace(",", "."));
     if (!Number.isNaN(m)) return Math.round(m);
   }
 
-  // Hours? handle via thresholds
   const hourBucket = hourStringToBucket(s);
   if (hourBucket) {
-    // map the hour-based bucket to an indicative month count for sorting (not critical)
     if (hourBucket === "short") return 3;
     if (hourBucket === "6mo") return 6;
     if (hourBucket === "1to2yr") return 18;
@@ -294,7 +284,6 @@ function parseDurationToMonths(raw?: string): number | null {
     return null;
   }
 
-  // Plain small number -> assume months if <= 48
   const plain = s.match(/\b(\d{1,2})\b/);
   if (plain) {
     const n = parseInt(plain[1], 10);
@@ -310,24 +299,21 @@ function bucketFromMonths(m: number | null): TimeBucketId {
   if (m === 6) return "6mo";
   if (m >= 12 && m <= 24) return "1to2yr";
   if (m > 24 && m <= 36) return "2to3yr";
-  if (m > 6 && m < 12) return "review"; // change to "1to2yr" if you prefer
-  return "review"; // >36 or unclear
+  if (m > 6 && m < 12) return "review";
+  return "review";
 }
 
 function getCourseTimeBucket(course: any): TimeBucketId {
-  // 1) If you already set a friendly label in the data, use it
   const explicit =
     explicitBucketFromLabel(course?.timeCategory) ||
     explicitBucketFromLabel(course?.durationCategory);
   if (explicit) return explicit;
 
-  // 2) Derive from duration string (handles muaj/mujore/vjeçare + orë)
   const months =
     parseDurationToMonths(course?.duration) ??
     parseDurationToMonths(course?.durationCategory);
   if (months !== null) return bucketFromMonths(months);
 
-  // 3) As last resort, try pure hours → bucket
   const s =
     normalizeDiacritics(String(course?.duration ?? "")) +
     " " +
@@ -347,14 +333,17 @@ export default function CoursesPage() {
   >("default");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
+  // Hero animation observer (unchanged)
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const [coursesRef, coursesInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
+  // 🔵 NEW: Catalog visibility observer (drives filters visibility)
+  const [catalogRef, catalogInView] = useInView({
+    triggerOnce: false, // keep tracking
+    threshold: 0, // any intersection counts
+    rootMargin: "-500px 0px 0px", // account for sticky header height
   });
 
   const searchParams = useSearchParams();
@@ -403,7 +392,6 @@ export default function CoursesPage() {
     const matchesTime =
       selectedTimeCats.length === 0 || selectedTimeCats.includes(courseBucket);
 
-    // Smarter search: title + description + category + aliases + optional per-course keywords
     const categoryName =
       categories.find((c) => c.id === course.category)?.name ?? course.category;
     const catAliases = categoryKeywords[course.category] ?? [];
@@ -444,7 +432,6 @@ export default function CoursesPage() {
     } else if (sortBy === "date") {
       return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
     } else {
-      // Default sorting - featured courses first
       return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
     }
   });
@@ -546,8 +533,16 @@ export default function CoursesPage() {
         </motion.div>
       </section>
 
-      {/* Filters Section - Compact Version */}
-      <section className="sticky top-[96px] z-30 bg-afrodite-creme border-b border-t border-afrodite-purple shadow-sm">
+      {/* 🔵 Filters Section (sticky + auto-hide when catalog not in view) */}
+      <section
+        aria-hidden={!catalogInView}
+        className={`sticky top-[96px] z-30 border-b border-t border-afrodite-purple shadow-sm transition-all duration-200
+          ${
+            catalogInView
+              ? "opacity-100 pointer-events-auto bg-afrodite-creme"
+              : "opacity-0 pointer-events-none h-0 overflow-hidden bg-transparent"
+          }`}
+      >
         <div className="container mx-auto px-4">
           <div className="py-3">
             {/* headline + mobile toggle */}
@@ -590,18 +585,19 @@ export default function CoursesPage() {
                     size="sm"
                     variant="ghost"
                     className={`
-    h-7 px-2 py-0 text-xs border
-    ${
-      selectedCategories.includes(cat.id)
-        ? "bg-afrodite-purple text-afrodite-creme border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
-        : "bg-afrodite-lightPurple/50 text-afrodite-purple border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
-    }
-    ${
-      cat.id === "UET Italia" && !selectedCategories.includes(cat.id)
-        ? "bg-[#FF7F00] text-white"
-        : ""
-    }
-  `}
+                      h-7 px-2 py-0 text-xs border
+                      ${
+                        selectedCategories.includes(cat.id)
+                          ? "bg-afrodite-purple text-afrodite-creme border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
+                          : "bg-afrodite-lightPurple/50 text-afrodite-purple border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
+                      }
+                      ${
+                        cat.id === "UET Italia" &&
+                        !selectedCategories.includes(cat.id)
+                          ? "bg-[#FF7F00] text-white"
+                          : ""
+                      }
+                    `}
                     onClick={() => toggleCategory(cat.id)}
                   >
                     {cat.icon}
@@ -621,13 +617,13 @@ export default function CoursesPage() {
                     size="sm"
                     variant="ghost"
                     className={`
-      h-7 px-2 py-0 text-xs border
-      ${
-        selectedTimeCats.includes(t.id)
-          ? "bg-afrodite-purple text-afrodite-creme border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
-          : "bg-afrodite-lightPurple/50 text-afrodite-purple border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
-      }
-    `}
+                      h-7 px-2 py-0 text-xs border
+                      ${
+                        selectedTimeCats.includes(t.id)
+                          ? "bg-afrodite-purple text-afrodite-creme border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
+                          : "bg-afrodite-lightPurple/50 text-afrodite-purple border-transparent hover:bg-afrodite-purple hover:text-afrodite-creme"
+                      }
+                    `}
                     onClick={() => toggleTimeCat(t.id)}
                   >
                     {t.label}
@@ -639,8 +635,8 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      {/* Courses Section */}
-      <section ref={coursesRef} className="py-16 bg-gray-50">
+      {/* Courses Section (tracked by catalogRef) */}
+      <section ref={catalogRef} className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           {sortedCourses.length > 0 ? (
             <motion.div
@@ -860,22 +856,22 @@ export default function CoursesPage() {
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Right column with video preview and modal */}
+              {/* Right column with video preview and modal */}
+            </div>
             <div className="relative">
               <div
                 className="
-      relative 
-      rounded-xl 
-      overflow-hidden 
-      shadow-lg 
-      group 
-      h-[300px] 
-      sm:h-[400px] 
-      md:h-[500px] 
-      xl:h-[60vh] 
-      w-full"
+                  relative 
+                  rounded-xl 
+                  overflow-hidden 
+                  shadow-lg 
+                  group 
+                  h-[300px] 
+                  sm:h-[400px] 
+                  md:h-[500px] 
+                  xl:h-[60vh] 
+                  w-full"
               >
                 <video
                   src="/videos/course-benefits.mp4"
@@ -889,17 +885,17 @@ export default function CoursesPage() {
                 />
               </div>
 
-              {/* Stats box stays the same */}
+              {/* Stats box */}
               <div
                 className="
-    absolute -bottom-6 -right-6 
-    bg-afrodite-creme 
-    p-4 sm:p-6
-    rounded-xl shadow-lg 
-    border-l-4 border-afrodite-purple 
-    w-60 sm:max-w-xs
-    text-sm sm:text-base
-  "
+                  absolute -bottom-6 -right-6 
+                  bg-afrodite-creme 
+                  p-4 sm:p-6
+                  rounded-xl shadow-lg 
+                  border-l-4 border-afrodite-purple 
+                  w-60 sm:max-w-xs
+                  text-sm sm:text-base
+                "
               >
                 <div className="flex items-center justify-between mb-3">
                   <div className="text-afrodite-lightPurple">
@@ -936,7 +932,7 @@ export default function CoursesPage() {
       {/* CTA Section */}
       <section className="bg-afrodite-creme py-16 md:py-24 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
-        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>{" "}
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
           <Image
             src="/wave-pattern.svg"
@@ -992,6 +988,7 @@ export default function CoursesPage() {
           />
         </div>
       </section>
+
       <WhatsAppButton />
     </div>
   );

@@ -6,24 +6,36 @@ type Params = {
   id: string;
 };
 
-// ✅ Pre-render all course pages statically
+// ✅ List of blocked course IDs (e.g., hidden, incomplete, or not for public view)
+const blockedCourseIds = [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76];
+const blockedCategories = ["UET Italia"];
+
+// ✅ Pre-render all course pages except blocked ones
 export async function generateStaticParams(): Promise<{ id: string }[]> {
-  return courses.map((course) => ({
-    id: course.id.toString(),
-  }));
+  return courses
+    .filter((course) => !blockedCourseIds.includes(course.id))
+    .map((course) => ({
+      id: course.id.toString(),
+    }));
 }
 
-// ✅ Fully static (no fallback at runtime)
 export const dynamicParams = false;
 
-// ✅ Fix: async + destructure inside the function to avoid Next.js console error
-export default async function CourseDetailPage(props: { params: Params }) {
-  const { params } = props;
+export default async function CourseDetailPage({ params }: { params: Params }) {
+  const id = Number(params.id);
 
-  const course = courses.find((c) => c.id.toString() === params.id);
+  // ❌ Block if it's in the blacklist
+  if (
+    blockedCourseIds.includes(id) ||
+    blockedCategories.includes(courses.find((c) => c.id === id)?.category || "")
+  ) {
+    notFound();
+  }
+
+  const course = courses.find((c) => c.id === id);
 
   if (!course) {
-    notFound(); // Triggers 404 or not-found.tsx
+    notFound();
   }
 
   return <ClientCourseDetail course={course as Course} />;

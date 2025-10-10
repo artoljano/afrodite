@@ -144,11 +144,11 @@ export const courses: Course[] = [
   faqs: [],
   featured: false,
   students: 12,
-media: [
-  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
-  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+// media: [
+//   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+//   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
 
-]
+// ]
 
 },
 {
@@ -227,11 +227,11 @@ media: [
   faqs: [],
   featured: false,
   students: 10,
-media: [
-  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
-  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+// media: [
+//   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+//   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
   
-]
+// ]
 
 },
 {
@@ -309,11 +309,11 @@ media: [
   faqs: [],
   featured: false,
   students: 6,
-  media: [
-  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
-  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+//   media: [F
+//   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+//   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
 
-]
+// ]
 
 },
 {
@@ -325,7 +325,8 @@ media: [
   level: "Mesatar",
   price: "",
   startDate: "",schedule: "E Hënë - E Shtunë (09:00 - 16:00)",
-  
+    videoSrc: "/videos/caregiver-video.mp4",
+
   image: "/courses/kujdestare-mosha-te-tret-dhe-femije.jpg",
   description:
     "Merrni aftësitë për kujdesin psiko-social dhe fizik të të moshuarve dhe fëmijëve në banesë dhe institucion.",
@@ -400,12 +401,12 @@ media: [
   faqs: [],
   featured: false,
   students: 8,
-  media: [
-  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
-  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+//   media: [
+//   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+//   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
 
   
-]
+// ]
 
 },
 
@@ -469,11 +470,11 @@ media: [
   faqs: [],
   featured: false,
   students: 20,
-  media: [
-  { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
-  { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
+//   media: [
+//   { type: "image", src: "/courses/tour-guide.jpg", alt: "Pamje nga guida turistike" },
+//   { type: "image", src: "/courses/operatore-turistik.jpg", alt: "Pamje nga kursi operator turistik" },
 
-]
+// ]
 
 },
 {
@@ -532,13 +533,13 @@ media: [
   faqs: [],
   featured: false,
   students: 12,
-  media: [
-  {
-    type: "image",
-    src: "/courses/sherbim-pastrimi.jpg",
-    alt: "Pamje nga kursi për pastrim profesional"
-  }
-]
+//   media: [
+//   {
+//     type: "image",
+//     src: "/courses/sherbim-pastrimi.jpg",
+//     alt: "Pamje nga kursi për pastrim profesional"
+//   }
+// ]
 
 },
 {
@@ -609,10 +610,10 @@ media: [
   faqs: [],
   featured: false,
   students: 12,
-  media: [
-  { type: "image", src: "/courses/receptionist.jpg", alt: "Pamje nga kursi për recepsionistë" },
+//   media: [
+//   { type: "image", src: "/courses/receptionist.jpg", alt: "Pamje nga kursi për recepsionistë" },
 
-]
+// ]
 
 },
 {
@@ -3098,6 +3099,7 @@ media: [
   startDate: "",
    schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/courses/estetike-600.jpg",
+  videoSrc: "/videos/estetike-video.mp4",
   description:
     "Kurs 600-orësh për trajtimet profesioniste estetike të fytyrës, nga diagnostikimi te teknikat bazë dhe të avancuara.",
   longDescription:
@@ -3980,6 +3982,7 @@ media: [
   startDate: "",
    schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
   image: "/pajisje/hidrofacial.jpg", noCustomCrop: true,
+ 
   description:
     "Trajnim profesional në përdorimin e sistemit Hydrofacial 15-in-1 për trajtime të avancuara të lëkurës.",
   longDescription:

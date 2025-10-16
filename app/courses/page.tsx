@@ -781,22 +781,37 @@ export default function CoursesPage() {
                         <Calendar className="h-4 w-4 mr-1 text-afrodite-purple" />
                         <span>{course.schedule}</span>
                       </div>
-                      <Link
-                        href={
-                          course.category === "UET Italia" && course.link
-                            ? course.link
-                            : `/courses/${course.id}`
-                        }
-                      >
-                        <AnimatedButton
-                          size="default"
-                          variant="default"
-                          className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
+
+                      {course.category === "UET Italia" && course.link ? (
+                        /* External: open in new tab */
+                        <a
+                          href={course.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Hap faqen e kursit UET: ${course.title}`}
                         >
-                          Mëso më shumë
-                          <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
-                        </AnimatedButton>
-                      </Link>
+                          <AnimatedButton
+                            size="default"
+                            variant="default"
+                            className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
+                          >
+                            Mëso më shumë
+                            <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
+                          </AnimatedButton>
+                        </a>
+                      ) : (
+                        /* Internal: Next.js client navigation */
+                        <Link href={`/courses/${course.id}`} prefetch>
+                          <AnimatedButton
+                            size="default"
+                            variant="default"
+                            className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
+                          >
+                            Mëso më shumë
+                            <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
+                          </AnimatedButton>
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </motion.div>

@@ -21,7 +21,7 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <Image
-                src="/images/afrodite-logo.png"
+                src="/images/afrodite-logo.webp"
                 alt="Afrodite Academy Logo"
                 width={80}
                 height={80}

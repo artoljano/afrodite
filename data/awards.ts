@@ -19,7 +19,7 @@ export const awards: Award[] = [
     description:
       "Titulli Mjeshtër për zotërimin e njohurive dhe aftësive të nevojshme për ushtrimin e pavarur të profesionit.",
     color: "purple",
-    imageSrc: "/awards/dhoma-zytarise.png",
+    imageSrc: "/awards/dhoma-zytarise.webp",
   },
   {
     id: "shen-tereza",
@@ -28,7 +28,7 @@ export const awards: Award[] = [
     organization: "Shqiptarja e gjithë botës",
     description: "",
     color: "purple",
-    imageSrc: "/awards/nene-tereza.png",
+    imageSrc: "/awards/nene-tereza.webp",
   },
   {
     id: "edel-mirenjohjeje",
@@ -37,7 +37,7 @@ export const awards: Award[] = [
     organization: "Qendra Sociale Edel",
     description: "",
     color: "amber",
-    imageSrc: "/awards/qendra-edel.png",
+    imageSrc: "/awards/qendra-edel.webp",
   },
   {
     id: "infinit-akademia",
@@ -46,7 +46,7 @@ export const awards: Award[] = [
     organization: "Infinit Academy, Kosove",
     description: "",
     color: "purple",
-    imageSrc: "/awards/infinit-kosove.png",
+    imageSrc: "/awards/infinit-kosove.webp",
   },
   {
     id: "ambassador-pea",
@@ -55,7 +55,7 @@ export const awards: Award[] = [
     organization: "Universal Peace Federation",
     description: "",
     color: "purple",
-    imageSrc: "/awards/pea-logo.png",
+    imageSrc: "/awards/pea-logo.webp",
   },
   {
     id: "stilist-italian",
@@ -64,7 +64,7 @@ export const awards: Award[] = [
     organization: "Stilist Italian",
     description: "",
     color: "amber",
-    imageSrc: "/awards/stilisti-italian.png",
+    imageSrc: "/awards/stilisti-italian.webp",
   },
   {
     id: "omc-life-2022",
@@ -73,7 +73,7 @@ export const awards: Award[] = [
     organization: "Global OMC",
     description: "Parukeri dhe Berber – Çmimi Global 2022",
     color: "purple",
-    imageSrc: "/awards/omc-logo.png",
+    imageSrc: "/awards/omc-logo.webp",
   },
   {
     id: "vmf-federata",
@@ -82,7 +82,7 @@ export const awards: Award[] = [
     organization: "VMF – Federata Botërore e Masazhit",
     description: "",
     color: "purple",
-    imageSrc: "/awards/vmf-logo.png",
+    imageSrc: "/awards/vmf-logo.webp",
   },
   {
     id: "royal-mua-judge",
@@ -91,7 +91,7 @@ export const awards: Award[] = [
     organization: "Royal MUA Competition",
     description: "Anëtar i jurisë në garën Royal MUA Competition.",
     color: "purple",
-    imageSrc: "/awards/fiam-awards.png",
+    imageSrc: "/awards/fiam-awards.webp",
   },
   {
     id: "grate-vleresojne",
@@ -100,6 +100,6 @@ export const awards: Award[] = [
     organization: "Lëvizja “Gratë frymëzojnë vlerë”",
     description: "",
     color: "purple",
-    imageSrc: "/awards/levizja-grate.png",
+    imageSrc: "/awards/levizja-grate.webp",
   },
 ];

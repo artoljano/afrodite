@@ -127,7 +127,7 @@ export default function AboutPage() {
   }> = [
     {
       type: "image",
-      src: "/facilities/ambient-1.jpeg",
+      src: "/facilities/ambient-1.webp",
       alt: "Klasë Mësimore",
       title: "Klasa Mësimore",
       caption: "Klasa moderne të pajisura me teknologjinë më të fundit",
@@ -140,21 +140,21 @@ export default function AboutPage() {
     },
     {
       type: "image",
-      src: "/facilities/ambient-2.jpeg",
+      src: "/facilities/ambient-2.webp",
       alt: "Laborator Estetike",
       title: "Laborator Estetike",
       caption: "Laborator i pajisur me aparatura moderne estetike",
     },
     {
       type: "image",
-      src: "/facilities/ambient-3.jpeg",
+      src: "/facilities/ambient-3.webp",
       alt: "Klasë Mësimore",
       title: "Klasa Mësimore",
       caption: "Klasa moderne të pajisura me teknologjinë më të fundit",
     },
     {
       type: "image",
-      src: "/facilities/ambient-4.jpeg",
+      src: "/facilities/ambient-4.webp",
       alt: "Klasë Mësimore",
       title: "Klasa Mësimore",
       caption: "Klasa moderne të pajisura me teknologjinë më të fundit",
@@ -298,7 +298,7 @@ export default function AboutPage() {
             >
               <div className="rounded-lg overflow-hidden shadow-md">
                 <Image
-                  src="/images/afrodite-about-history.jpg"
+                  src="/images/afrodite-about-history.webp"
                   alt="Afrodite Academy"
                   width={800}
                   height={600}
@@ -410,7 +410,7 @@ export default function AboutPage() {
               <div className="rounded-lg overflow-hidden shadow-xl">
                 <div className="relative">
                   <Image
-                    src="/images/aferdita-1.jpeg"
+                    src="/images/aferdita-1.webp"
                     alt="Aferdita Ferracaku - Founder"
                     width={800}
                     height={600}

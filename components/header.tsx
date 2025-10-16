@@ -125,7 +125,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
               <Image
-                src="/images/afrodite-logo.png"
+                src="/images/afrodite-logo.webp"
                 alt="Afrodite Academy Logo"
                 width={40}
                 height={40}

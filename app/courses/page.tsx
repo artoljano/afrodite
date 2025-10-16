@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -333,19 +333,105 @@ export default function CoursesPage() {
   >("default");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
-  // Hero animation observer (unchanged)
+  // Hero animation observer (kept)
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  // 🔵 NEW: Catalog visibility observer (drives filters visibility)
-  const [catalogRef, catalogInView] = useInView({
-    triggerOnce: false, // keep tracking
-    threshold: 0, // any intersection counts
-    rootMargin: "-500px 0px 0px", // account for sticky header height
+  /* ===== Stable, flicker-free filter visibility (direction-aware) ===== */
+  const catalogRef = useRef<HTMLElement | null>(null);
+  const [showFilters, setShowFilters] = useState(true);
+
+  // Sticky offset (your filters use top-[96px])
+  const STICKY_OFFSET = 96;
+  const HIDE_HYSTERESIS = 24; // debounce while hiding (downward)
+  const SHOW_EARLY = 140; // how many px BEFORE the bottom to re-show (upward)
+  const HIDE_EARLY = 140; // how many px BEFORE the bottom to hide (downward)
+
+  // cache bounds
+  const boundsRef = useRef<{ top: number; bottom: number }>({
+    top: 0,
+    bottom: 0,
   });
 
+  // measure catalog section
+  const measure = () => {
+    if (!catalogRef.current) return;
+    const rect = catalogRef.current.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset;
+    boundsRef.current = {
+      top: rect.top + scrollY,
+      bottom: rect.bottom + scrollY,
+    };
+  };
+
+  useLayoutEffect(() => {
+    measure();
+  }, []);
+
+  useEffect(() => {
+    const ro = new ResizeObserver(() => measure());
+    if (catalogRef.current) ro.observe(catalogRef.current);
+    window.addEventListener("resize", measure);
+    window.addEventListener("orientationchange", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+      window.removeEventListener("orientationchange", measure);
+    };
+  }, []);
+
+  // rAF scroll loop with small state machine (ABOVE / INSIDE / BELOW)
+  const scrollRaf = useRef<number | null>(null);
+  const lastState = useRef<"ABOVE" | "INSIDE" | "BELOW" | null>(null);
+  const lastYRef = useRef(0); // NEW: track previous scrollY to detect direction
+
+  const onScroll = () => {
+    if (scrollRaf.current != null) return;
+    scrollRaf.current = window.requestAnimationFrame(() => {
+      scrollRaf.current = null;
+
+      const currentY = window.scrollY || 0;
+      const goingDown = currentY >= lastYRef.current;
+      lastYRef.current = currentY;
+
+      const yTop = currentY + STICKY_OFFSET;
+      const { top, bottom } = boundsRef.current;
+
+      // lines we compare against
+      const hideLine = bottom - HIDE_EARLY; // go BELOW when moving down past this
+      const showLine = bottom - SHOW_EARLY; // re-enter INSIDE sooner when moving up
+
+      let state: "ABOVE" | "INSIDE" | "BELOW";
+
+      if (yTop < top - 16) {
+        state = "ABOVE";
+      } else if (goingDown) {
+        // while going DOWN, hide a bit before the bottom, with debounce
+        state = yTop > hideLine + HIDE_HYSTERESIS ? "BELOW" : "INSIDE";
+      } else {
+        // while going UP, re-show earlier (at showLine), no delay
+        state = yTop <= showLine ? "INSIDE" : "BELOW";
+      }
+
+      if (state !== lastState.current) {
+        lastState.current = state;
+        setShowFilters(state !== "BELOW");
+      }
+    });
+  };
+
+  useEffect(() => {
+    onScroll(); // initialize once
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (scrollRaf.current) cancelAnimationFrame(scrollRaf.current);
+    };
+  }, []);
+
+  /* -------------------- URL params & filter helpers -------------------- */
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category");
 
@@ -436,29 +522,15 @@ export default function CoursesPage() {
     }
   });
 
-  const hasActiveFilters =
-    selectedCategories.length > 0 ||
-    selectedTimeCats.length > 0 ||
-    searchQuery !== "";
-
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -533,15 +605,16 @@ export default function CoursesPage() {
         </motion.div>
       </section>
 
-      {/* 🔵 Filters Section (sticky + auto-hide when catalog not in view) */}
+      {/* 🔵 Sticky Filters — visibility controlled by scroll math */}
       <section
-        aria-hidden={!catalogInView}
-        className={`sticky top-[96px] z-30 border-b border-t border-afrodite-purple shadow-sm transition-all duration-200
+        aria-hidden={!showFilters}
+        className={`sticky top-[96px] z-30 border-b border-t border-afrodite-purple shadow-sm transition-opacity duration-200 bg-afrodite-creme
           ${
-            catalogInView
-              ? "opacity-100 pointer-events-auto bg-afrodite-creme"
-              : "opacity-0 pointer-events-none h-0 overflow-hidden bg-transparent"
-          }`}
+            showFilters
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }
+        `}
       >
         <div className="container mx-auto px-4">
           <div className="py-3">
@@ -562,7 +635,7 @@ export default function CoursesPage() {
               </Button>
             </div>
 
-            {/* actual filters: hidden on mobile unless toggled, always visible on md+ */}
+            {/* actual filters */}
             <div
               className={`
                 transition-all
@@ -635,8 +708,8 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      {/* Courses Section (tracked by catalogRef) */}
-      <section ref={catalogRef} className="py-16 bg-gray-50">
+      {/* Courses Section — used as our visibility bounds */}
+      <section ref={catalogRef as any} className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           {sortedCourses.length > 0 ? (
             <motion.div

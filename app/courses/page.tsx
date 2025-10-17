@@ -962,7 +962,7 @@ export default function CoursesPage() {
                   w-full"
               >
                 <video
-                  src="/videos/course-benefits.mp4"
+                  src="/videos/course-benefits.webm"
                   width={800}
                   height={600}
                   className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700"

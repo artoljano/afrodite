@@ -153,7 +153,7 @@ export default function Home() {
       <section className="relative bg-afrodite-creme">
         {/* Hero Section with Video Background */}
         <VideoBackground
-          videoSrc="/videos/hero-section-home.mp4"
+          videoSrc="/videos/hero-section-home.webm"
           overlayOpacity={0.8}
           className="min-h-[60vh] md:min-h-[70vh] py-0 md:py-30 bg-afrodite-creme relative flex items-center"
         >

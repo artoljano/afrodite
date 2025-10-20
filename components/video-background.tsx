@@ -27,69 +27,99 @@ export default function VideoBackground({
   const [showControlsState, setShowControlsState] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // ensure playbackRate & baseline flags once the element exists
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.8; // Slightly slower playback for a more elegant look
-    }
-  }, []);
+    const v = videoRef.current;
+    if (!v) return;
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    // iOS/Safari autoplay requirements
+    v.muted = true;
+    v.defaultMuted = true;
+    v.playbackRate = 0.8; // your elegant look
 
-    const updateProgress = () => {
-      const currentProgress = (video.currentTime / video.duration) * 100;
-      setProgress(currentProgress);
+    const tryPlay = () => {
+      v.play().catch(() => {
+        // Autoplay might be blocked until user gesture; ignore silently
+      });
     };
 
-    video.addEventListener("timeupdate", updateProgress);
+    const onTime = () => {
+      if (!Number.isFinite(v.duration) || v.duration <= 0) {
+        setProgress(0);
+        return;
+      }
+      setProgress((v.currentTime / v.duration) * 100);
+    };
+
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+
+    // Even with loop, some mobile Safari builds still fire "ended"
+    const onEnded = () => {
+      try {
+        v.currentTime = 0;
+      } catch {}
+      tryPlay();
+    };
+
+    const onCanPlay = () => tryPlay();
+
+    const onVisibility = () => {
+      if (!document.hidden) tryPlay();
+    };
+
+    v.addEventListener("timeupdate", onTime);
+    v.addEventListener("play", onPlay);
+    v.addEventListener("pause", onPause);
+    v.addEventListener("ended", onEnded);
+    v.addEventListener("canplay", onCanPlay);
+    document.addEventListener("visibilitychange", onVisibility);
+
+    // initial nudge
+    tryPlay();
+
     return () => {
-      video.removeEventListener("timeupdate", updateProgress);
+      v.removeEventListener("timeupdate", onTime);
+      v.removeEventListener("play", onPlay);
+      v.removeEventListener("pause", onPause);
+      v.removeEventListener("ended", onEnded);
+      v.removeEventListener("canplay", onCanPlay);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, []);
+  }, [videoSrc]);
 
   const togglePlay = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (isPlaying) {
-      video.pause();
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play().catch(() => {});
     } else {
-      video.play();
+      v.pause();
     }
-    setIsPlaying(!isPlaying);
   };
 
   const toggleMute = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.muted = !video.muted;
-    setIsMuted(!isMuted);
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setIsMuted(v.muted);
   };
 
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const progressBar = e.currentTarget;
-    const rect = progressBar.getBoundingClientRect();
-    const clickPosition = (e.clientX - rect.left) / rect.width;
-
-    video.currentTime = clickPosition * video.duration;
+    const v = videoRef.current;
+    if (!v || !Number.isFinite(v.duration) || v.duration <= 0) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    v.currentTime = Math.max(0, Math.min(1, pct)) * v.duration;
   };
 
   const handleMouseEnter = () => {
     setShowControlsState(true);
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setShowControlsState(false);
-    }, 2000);
+    timeoutRef.current = setTimeout(() => setShowControlsState(false), 2000);
   };
 
   return (
@@ -100,15 +130,19 @@ export default function VideoBackground({
     >
       {/* Video element */}
       <video
+        key={videoSrc} // reset element if source changes
         ref={videoRef}
-        autoPlay
-        loop
+        className="absolute top-0 left-0 min-w-full min-h-full object-cover w-full h-full bg-afrodite-creme"
+        src={videoSrc}
         muted={isMuted}
         playsInline
-        style={{ backgroundColor: "bg-afrodite-creme" }}
-        className="absolute top-0 left-0 min-w-full min-h-full object-cover w-full h-full bg-afrodite-creme"
+        autoPlay
+        loop
+        preload="auto"
+        controls={false}
       >
-        <source src={videoSrc} type="video/mp4" />
+        {/* If you prefer <source>, keep it—but avoid forcing a mismatched type */}
+        {/* <source src={videoSrc} /> */}
         Your browser does not support the video tag.
       </video>
 
@@ -116,10 +150,11 @@ export default function VideoBackground({
       <div
         className="absolute top-0 left-0 w-full h-full bg-navy-900"
         style={{ opacity: overlayOpacity }}
-      ></div>
+      />
 
-      {/* Video controls */}
-      {/* {showControls && (
+      {/* Video controls (kept commented, exactly as requested) */}
+      {/*
+      {showControls && (
         <div
           className={`absolute bottom-4 right-4 z-20 flex flex-col items-end space-y-2 transition-opacity duration-300 ${
             showControlsState ? "opacity-100" : "opacity-0"
@@ -156,10 +191,11 @@ export default function VideoBackground({
             <div
               className="h-full bg-purple-500 rounded-full"
               style={{ width: `${progress}%` }}
-            ></div>
+            />
           </div>
         </div>
-      )} */}
+      )}
+      */}
 
       {/* Content */}
       <div className="relative z-10">{children}</div>

@@ -1,7 +1,7 @@
 // File: /app/courses/[id]/ClientCourseDetail.tsx
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
@@ -40,10 +40,7 @@ import type { Course } from "@/data/courses";
 import { courses } from "@/data/courses";
 import WhatsAppButton from "@/components/whatsapp-button";
 
-interface Props {
-  course: Course;
-}
-
+/* ───────────────── Animation Variants ───────────────── */
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -60,14 +57,110 @@ const itemVariants: Variants = {
   visible: { opacity: 1, y: 0 },
 };
 
+/* ───────────────── Image Lightbox (inline component) ───────────────── */
+function ImageLightbox({
+  sources,
+  startIndex = 0,
+  onClose,
+}: {
+  sources: { src: string; alt?: string }[];
+  startIndex?: number;
+  onClose: () => void;
+}) {
+  const [idx, setIdx] = useState(startIndex);
+
+  // keyboard nav
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight") setIdx((i) => (i + 1) % sources.length);
+      if (e.key === "ArrowLeft")
+        setIdx((i) => (i - 1 + sources.length) % sources.length);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [sources.length, onClose]);
+
+  const curr = sources[idx];
+
+  return (
+    <div
+      className="fixed inset-0 z-[999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        className="relative max-w-6xl w-full"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute -top-10 right-0 text-white/80 hover:text-white text-sm"
+          aria-label="Mbyll"
+        >
+          Mbyll
+        </button>
+
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={curr.src}
+          alt={curr.alt ?? ""}
+          className="max-h-[80vh] w-auto mx-auto rounded-xl shadow-2xl"
+        />
+
+        {sources.length > 1 && (
+          <>
+            <button
+              className="absolute top-1/2 -left-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full w-10 h-10 grid place-items-center"
+              onClick={() =>
+                setIdx((i) => (i - 1 + sources.length) % sources.length)
+              }
+              aria-label="Previous"
+            >
+              ‹
+            </button>
+            <button
+              className="absolute top-1/2 -right-4 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full w-10 h-10 grid place-items-center"
+              onClick={() => setIdx((i) => (i + 1) % sources.length)}
+              aria-label="Next"
+            >
+              ›
+            </button>
+          </>
+        )}
+
+        {sources.length > 1 && (
+          <div className="mt-3 text-center text-white/80 text-sm">
+            <span className="opacity-90">
+              {idx + 1} / {sources.length}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ───────────────── Main Component ───────────────── */
+interface Props {
+  course: Course;
+}
+
 export default function ClientCourseDetail({ course }: Props) {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [videoModal, setVideoModal] = useState<{
     src: string;
     alt?: string;
+  } | null>(null);
+
+  // image lightbox state
+  const [lightbox, setLightbox] = useState<{
+    sources: { src: string; alt?: string }[];
+    startIndex: number;
   } | null>(null);
 
   const coursesRef = useRef<HTMLDivElement>(null);
@@ -149,6 +242,11 @@ export default function ClientCourseDetail({ course }: Props) {
     .filter((c) => c.id !== course.id && c.category === course.category)
     .slice(0, 3);
 
+  // image list from course.media
+  const courseImages: { src: string; alt?: string }[] = (course.media ?? [])
+    .filter((m) => m.type === "image")
+    .map((m) => ({ src: m.src, alt: m.alt }));
+
   return (
     <div className="flex flex-col w-full">
       {/* ── Hero Section with Video Background ── */}
@@ -208,13 +306,38 @@ export default function ClientCourseDetail({ course }: Props) {
               transition={{ duration: 0.7 }}
               className="relative"
             >
-              <div className="rounded-xl overflow-hidden shadow-xl">
+              <div
+                className="rounded-xl overflow-hidden shadow-xl cursor-zoom-in group"
+                onClick={() => {
+                  const idxInMedia = courseImages.findIndex(
+                    (s) => s.src === (course.image || "")
+                  );
+                  if (idxInMedia >= 0) {
+                    setLightbox({
+                      sources: courseImages,
+                      startIndex: idxInMedia,
+                    });
+                  } else {
+                    setLightbox({
+                      sources: [
+                        {
+                          src: course.image || "/placeholder.svg",
+                          alt: course.title,
+                        },
+                        ...courseImages,
+                      ],
+                      startIndex: 0,
+                    });
+                  }
+                }}
+                aria-label="Zmadho imazhin e kursit"
+              >
                 <Image
                   src={course.image || "/placeholder.svg"}
                   alt={course.title}
                   width={800}
                   height={600}
-                  className="object-cover w-full  h-[700px]"
+                  className="object-cover w-full  h-[700px] transition-transform duration-300 group-hover:scale-[1.02]"
                 />
               </div>
             </motion.div>
@@ -300,7 +423,6 @@ export default function ClientCourseDetail({ course }: Props) {
         <div className="container mx-auto px-4">
           <Tabs defaultValue="curriculum" className="w-full">
             <div className="overflow-x-auto scrollbar-hide pt-1">
-              {/* 3 tabs now that 'instructors' is removed */}
               <TabsList className="inline-flex min-w-max gap-4 md:grid md:grid-cols-3 mb-8">
                 <TabsTrigger value="curriculum">Kurrikula</TabsTrigger>
                 <TabsTrigger value="benefits">Përfitimet</TabsTrigger>
@@ -401,21 +523,39 @@ export default function ClientCourseDetail({ course }: Props) {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {course.media?.map((item, i) =>
                   item.type === "image" ? (
-                    <motion.div
+                    <motion.button
                       key={i}
+                      type="button"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.1 }}
-                      className="overflow-hidden rounded-lg shadow-lg"
+                      className="overflow-hidden rounded-lg shadow-lg cursor-zoom-in text-left"
+                      onClick={() => {
+                        const idx = courseImages.findIndex(
+                          (s) => s.src === item.src
+                        );
+                        setLightbox({
+                          sources: courseImages.length
+                            ? courseImages
+                            : [
+                                {
+                                  src: course.image || "/placeholder.svg",
+                                  alt: course.title,
+                                },
+                              ],
+                          startIndex: idx >= 0 ? idx : 0,
+                        });
+                      }}
+                      aria-label={item.alt ?? `Hap imazhin ${i + 1}`}
                     >
                       <Image
                         src={item.src}
                         alt={item.alt || `image-${i}`}
                         width={400}
                         height={300}
-                        className="object-cover w-full h-60"
+                        className="object-cover w-full h-60 transition-transform duration-300 hover:scale-[1.03]"
                       />
-                    </motion.div>
+                    </motion.button>
                   ) : (
                     <motion.div
                       key={i}
@@ -446,13 +586,21 @@ export default function ClientCourseDetail({ course }: Props) {
         </div>
       </section>
 
-      {/* ── Show VideoModal when set ── */}
+      {/* ── Modals ── */}
       {videoModal && (
         <VideoModal
           isOpen={true}
           onClose={() => setVideoModal(null)}
           videoSrc={videoModal.src}
           title={videoModal.alt ?? ""}
+        />
+      )}
+
+      {lightbox && (
+        <ImageLightbox
+          sources={lightbox.sources}
+          startIndex={lightbox.startIndex}
+          onClose={() => setLightbox(null)}
         />
       )}
 
@@ -539,11 +687,22 @@ export default function ClientCourseDetail({ course }: Props) {
                       alt={rc.title}
                       width={400}
                       height={400}
-                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
+                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-500 cursor-zoom-in"
                       style={
                         rc.noCustomCrop
                           ? undefined
                           : { objectPosition: "center 30%" }
+                      }
+                      onClick={() =>
+                        setLightbox({
+                          sources: [
+                            {
+                              src: rc.image || "/placeholder.svg",
+                              alt: rc.title,
+                            },
+                          ],
+                          startIndex: 0,
+                        })
                       }
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -580,22 +739,34 @@ export default function ClientCourseDetail({ course }: Props) {
                         <span>{rc.schedule}</span>
                       </div>
 
-                      <Link
-                        href={
-                          rc.category === "UET Italia" && rc.link
-                            ? rc.link
-                            : `/courses/${rc.id}`
-                        }
-                      >
-                        <AnimatedButton
-                          size="lg"
-                          variant="default"
-                          className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
+                      {rc.category === "UET Italia" && rc.link ? (
+                        <a
+                          href={rc.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Hap faqen e kursit UET: ${rc.title}`}
                         >
-                          Mëso më shumë
-                          <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
-                        </AnimatedButton>
-                      </Link>
+                          <AnimatedButton
+                            size="lg"
+                            variant="default"
+                            className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
+                          >
+                            Mëso më shumë
+                            <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
+                          </AnimatedButton>
+                        </a>
+                      ) : (
+                        <Link href={`/courses/${rc.id}`}>
+                          <AnimatedButton
+                            size="lg"
+                            variant="default"
+                            className="rounded-xl px-8 bg-afrodite-lightPurple text-afrodite-creme"
+                          >
+                            Mëso më shumë
+                            <ChevronRight className="ml-2 h-4 w-4 transition-transform hover:translate-x-1" />
+                          </AnimatedButton>
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </motion.div>

@@ -134,7 +134,10 @@ materials: [
 testimonials: [],
 faqs: [],
 featured: false,
-students: 12
+students: 12,
+ media: [
+ { type: "image", src: "/courses/babysitter.webp", alt: "Pamje nga guida turistike" },
+ ]
 },
 {
 id: 2,
@@ -206,7 +209,10 @@ materials: [
 testimonials: [],
 faqs: [],
 featured: false,
-students: 10
+students: 10,
+ media: [
+ { type: "image", src: "/courses/kujdestar-per-mosha-te-tret.webp", alt: "Pamje nga guida turistike" },
+ ]
 },
 {
 id: 5,
@@ -278,7 +284,10 @@ materials: [
 testimonials: [],
 faqs: [],
 featured: false,
-students: 8
+students: 8,
+ media: [
+ { type: "image", src:  "/courses/kujdestare-mosha-te-tret-dhe-femije.webp", alt: "Pamje nga guida turistike" },
+ ]
 },
 {
   id: 4,
@@ -355,11 +364,12 @@ students: 8
   faqs: [],
   featured: false,
   students: 6,
-//   media: [F
-//   { type: "image", src: "/courses/tour-guide.webp", alt: "Pamje nga guida turistike" },
-//   { type: "image", src: "/courses/operatore-turistik.webp", alt: "Pamje nga kursi operator turistik" },
+  media: [
+  { type: "image", src: "/courses/operatore-turistik.webp", alt: "Pamje nga kursi operator turistik" },
+    { type: "image", src: "/courses/udherrefim-turistik.webp", alt: "Pamje nga kursi operator turistik" },
 
-// ]
+
+]
 
 },
 
@@ -424,11 +434,11 @@ students: 8
   faqs: [],
   featured: false,
   students: 20,
-//   media: [
-//   { type: "image", src: "/courses/tour-guide.webp", alt: "Pamje nga guida turistike" },
-//   { type: "image", src: "/courses/operatore-turistik.webp", alt: "Pamje nga kursi operator turistik" },
+  media: [
+  { type: "image", src: "/courses/udherrefim-turistik.webp", alt: "Pamje nga guida turistike" },
+  { type: "image", src: "/courses/operatore-turistik.webp", alt: "Pamje nga kursi operator turistik" },
 
-// ]
+]
 
 },
 {
@@ -1709,7 +1719,7 @@ media: [
     price: "",
     startDate: "",
     schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
-    image: "/courses/parukeri-estetike-2100.webp",
+    image: "/courses/parukeri-estetike.webp",
     videoSrc: "/videos/parukeri-estetike-video.webm",
     description:
       "Program i plotë 2100-orësh që bashkon Parukerinë dhe Estetikën: nga higjiena dhe anatomia te prerja, ngjyrosja, trajtimet faciale/trupi dhe menaxhimi profesional.",
@@ -1805,9 +1815,9 @@ media: [
     featured: true,
     students: 0,
     media: [
-      { type: "image", src: "/courses/parukeri-estetike-2100.webp", alt: "Parukeri & Estetikë 2100 orë" },
-      { type: "image", src: "/courses/parukeri-2100.webp", alt: "Parukeri 2100" },
-      { type: "image", src: "/courses/estetike-2100.webp", alt: "Estetikë 2100" }
+      { type: "image", src: "/courses/parukeri-estetike.webp", alt: "Parukeri & Estetikë 2100 orë" },
+      { type: "image", src: "/courses/parukeri-estetike-1.webp", alt: "Parukeri 2100" },
+
     ]
   },
 // Tattoo & Hixhama Courses
@@ -3263,8 +3273,8 @@ durationCategory: "150 orë",
 level: "Avancuar",
 price: "",
 startDate: "",
-schedule: "",
-image: "/courses/makeup-permanent-aureola.webp",
+schedule: "E Hënë - E Shtune (8:30 - 13:30, 14:30 - 19:00)",
+image: "/courses/pmu-floket.webp",
 videoSrc: "",
 description: "Specializim 150-orësh në micropigmentim paramedikal: aureola 3D, kamuflim plagësh dhe scalp micropigmentation.",
 longDescription: "Higjiena & siguria mjekësore (sterilizim i pajisjeve dhe ambientit, protokollet për lëkurë të ndjeshme, komunikim me pacientë pas ndërhyrjes); teknikat paramedikale (rekonstruksion aureole, kamuflim plagësh, pigmentim i zonave me rënie flokësh); ngjyrat & mikropigmentet mjekësore (zgjedhja e toneve, efekt 3D, shërimi); etika & këshillimi profesional dhe udhëzimet pas terapisë.",
@@ -3309,7 +3319,13 @@ testimonials: [],
 faqs: [],
 featured: false,
 students: 0,
-media: []
+media: [
+{
+type: "image",
+src: "/courses/pmu-floket.webp",
+alt: "Pamje nga trajnimet për eyeliner PMU"
+}
+]
 },
 {
 id: 45,
@@ -3745,7 +3761,7 @@ students: 0,
 media: [
 {
 type: "image",
-src: "/placeholder.svg?height=600&width=800&text=Dermapen+150h",
+src: "/pajisje/dermapen.webp",
 alt: "Dermapen 150h"
 }
 ]
@@ -3846,7 +3862,7 @@ students: 0,
 media: [
 {
 type: "image",
-src: "/placeholder.svg?height=600&width=800&text=Presoterapia+150h",
+src: "/pajisje/presoterapi.webp",
 alt: "Presoterapia 150h"
 }
 ]
@@ -3940,7 +3956,7 @@ students: 0,
 media: [
 {
 type: "image",
-src: "/placeholder.svg?height=600&width=800&text=Termokoperta+150h",
+src: "/pajisje/termokoperte.webp",
 alt: "Termokoperta 150h"
 }
 ]
@@ -4043,7 +4059,7 @@ students: 18,
 media: [
 {
 type: "image",
-src: "/placeholder.svg?height=600&width=800&text=Hydrofacial+150",
+src: "/pajisje/hidrofacial.webp",
 alt: "Trajtim Hydrofacial"
 }
 ]
@@ -4166,7 +4182,7 @@ students: 0,
 media: [
 {
 type: "image",
-src: "/placeholder.svg?height=600&width=800&text=Epilim+me+Lazer",
+src: "/pajisje/epilim-me-lazer.webp",
 alt: "Epilim me Lazer"
 }
 ]

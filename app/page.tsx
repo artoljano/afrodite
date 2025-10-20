@@ -9,17 +9,10 @@ import {
   BookOpen,
   Users,
   Calendar,
-  Clock,
-  Briefcase,
-  HeartHandshake,
   Download,
-  ArrowRight,
-  Star,
   CheckCircle2,
   Sparkles,
   Quote,
-  Video,
-  Play,
   GraduationCap,
 } from "lucide-react";
 import CourseCard from "@/components/course-card";
@@ -27,49 +20,59 @@ import TestimonialSlider from "@/components/testimonial-slider";
 import { useInView } from "react-intersection-observer";
 import CountUpAnimation from "@/components/count-up-animation";
 import VideoBackground from "@/components/video-background";
-import VideoModal from "@/components/video-modal";
-import RequestInfoButton from "@/components/request-info-button";
 import { AnimatedButton } from "@/components/animated-button";
 import PartnerLogosCarousel from "@/components/partner-logos-carousel";
 import Link from "next/link";
-import { useRef, useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { FAQ_CATEGORIES } from "@/data/questions";
 import { Course, courses } from "@/data/courses";
 import WhatsAppButton from "@/components/whatsapp-button";
-import RotatingAvatars from "@/components/rotating-avatars";
+
+/* ───────────────── SSR-safe deterministic shuffle ───────────────── */
+function mulberry32(seed: number) {
+  return () => {
+    let t = (seed += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function shuffleDeterministic<T>(arr: T[], seed: number) {
+  const rand = mulberry32(seed);
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
 export default function Home() {
   const [heroRef, heroInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
   const [statsRef, statsInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
   const [coursesRef, coursesInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
   const [whyUsRef, whyUsInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
   const [openCategory, setOpenCategory] = useState<string | null>(null);
-  const [openQuestionIndex, setOpenQuestionIndex] = useState<number | null>(
-    null
-  );
   const [openQuestion, setOpenQuestion] = useState<
     Record<string, number | null>
   >({});
+
   const toggleCategory = (category: string) => {
     setOpenCategory((prev) => (prev === category ? null : category));
-    //setOpenQuestionIndex(null); // Reset question toggle when changing category
   };
-
   const toggleQuestion = (category: string, index: number) => {
     setOpenQuestion((prev) => ({
       ...prev,
@@ -77,58 +80,51 @@ export default function Home() {
     }));
   };
 
-  // Pick the first 3 testimonials that actually have an avatar
-  const avatarPicks = useMemo(() => {
-    const shuffled = [...testimonials].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 3);
-  }, []);
+  /* ───────────────── AVATARS: SSR-safe order + client rotation ───────────────── */
+  // Only items that have something to show (video preferred, else avatar)
+  const avatarPool = useMemo(
+    () => testimonials.filter((t) => (t.hasVideo && t.videoSrc) || t.avatar),
+    []
+  );
+  // Stable initial order both on the server and the client
+  const SEED = 42; // change if you want a different, still-stable initial order
+  const orderedPool = useMemo(
+    () => shuffleDeterministic(avatarPool, SEED),
+    [avatarPool]
+  );
 
-  // Animation variants for staggered animations
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-  const ssrVisible = useMemo(() => avatarPicks.slice(0, 3), [avatarPicks]);
   const [mounted, setMounted] = useState(false);
   const [start, setStart] = useState(0);
-
   useEffect(() => {
     setMounted(true);
-    if (avatarPicks.length <= 3) return;
-    const id = setInterval(() => {
-      setStart((s) => (s + 1) % avatarPicks.length);
-    }, 4000); // rotate every 4s
+    if (orderedPool.length <= 3) return;
+    const id = setInterval(
+      () => setStart((s) => (s + 1) % orderedPool.length),
+      4000
+    );
     return () => clearInterval(id);
-  }, [avatarPicks.length]);
+  }, [orderedPool.length]);
 
   const visible =
-    mounted && avatarPicks.length >= 3
+    mounted && orderedPool.length >= 3
       ? [
-          avatarPicks[start],
-          avatarPicks[(start + 1) % avatarPicks.length],
-          avatarPicks[(start + 2) % avatarPicks.length],
+          orderedPool[start],
+          orderedPool[(start + 1) % orderedPool.length],
+          orderedPool[(start + 2) % orderedPool.length],
         ]
-      : ssrVisible;
+      : orderedPool.slice(0, 3); // first paint = same as SSR
+
+  /* ───────────────── Animations ───────────────── */
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   const handleDownloadBrochure = () => {
-    // In a real app, you might want to track this download event
-    console.log("Brochure download initiated");
-
-    // Create a link to the PDF and trigger the download
     const link = document.createElement("a");
     link.href = "/Brochure.pdf";
     link.download = "Afrodite-Academy-Brochure.pdf";
@@ -137,16 +133,13 @@ export default function Home() {
     document.body.removeChild(link);
   };
 
-  //Video Handler Section
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const featured = courses.filter((c) => c.featured);
   const others = courses.filter((c) => !c.featured);
   const selection = [
     courses.find((c) => c.id === 16),
     courses.find((c) => c.id === 24),
     courses.find((c) => c.id === 5),
-  ].filter(Boolean) as Course[]; // filters out undefined in case any ID is wrong
+  ].filter(Boolean) as Course[];
 
   return (
     <div className="flex flex-col w-full">
@@ -154,21 +147,9 @@ export default function Home() {
         {/* Hero Section with Video Background */}
         <VideoBackground
           videoSrc="/videos/hero-section-home.webm"
-          overlayOpacity={0.8}
+          overlayOpacity={0.6}
           className="min-h-[60vh] md:min-h-[70vh] py-0 md:py-30 bg-afrodite-creme relative flex items-center"
         >
-          {/* ✅ wave pattern sits OUTSIDE the container, so right-0 really hits the edge */}
-          {/* <div className="absolute top-0 right-0 w-64 h-64 opacity-10 pointer-events-none z-0">
-            <Image
-              src="/wave-pattern.svg"
-              alt="Decorative pattern"
-              width={256}
-              height={256}
-              className="object-contain"
-            />
-          </div> */}
-
-          {/* content gets a higher z to sit above the pattern */}
           <div className="container px-4 mx-auto relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
@@ -229,11 +210,12 @@ export default function Home() {
                   </Link>
                 </div>
 
+                {/* Avatars (SSR-safe) */}
                 <div className="flex items-center space-x-4 mt-8">
-                  <div className="flex -space-x-2" suppressHydrationWarning>
+                  <div className="flex -space-x-2">
                     {visible.map((t, i) => (
                       <div
-                        key={`${mounted ? `${start}-` : "ssr-"}${i}-${t.name}`}
+                        key={t.id ?? `${t.name}-${i}`}
                         className="w-10 h-10 rounded-full border-2 border-afrodite-lightPurple overflow-hidden"
                         title={t.name}
                       >
@@ -254,6 +236,7 @@ export default function Home() {
                             }}
                           />
                         ) : (
+                          // eslint-disable-next-line @next/next/no-img-element
                           <img
                             src={t.avatar || "/placeholder.svg"}
                             alt={t.name}
@@ -273,15 +256,14 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              {/* right column of the grid (if any) */}
-              {/* ... */}
+              {/* right column placeholder if needed */}
+              <div />
             </div>
           </div>
         </VideoBackground>
       </section>
 
-      {/* Quick Info Section - NEW */}
-      {/* Info cards (unchanged) */}
+      {/* Quick Info Section */}
       <section className="py-8 bg-white relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -323,8 +305,6 @@ export default function Home() {
                 </h3>
                 <p className="text-sm text-gray-600">
                   Partneritete me biznese në çdo industri.
-                  {/* Ndërtojmë partneritete me biznese në industri për t'ju
-            ndihmuar të gjeni mundësi punësimi pas diplomimit. */}
                 </p>
               </div>
             </div>
@@ -363,7 +343,7 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            {/* LEFT: replaced the video area with an iframe (kept wrapper & styles) */}
+            {/* LEFT: flipbook iframe wrapper */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -371,25 +351,8 @@ export default function Home() {
               transition={{ duration: 0.7 }}
               className="relative"
             >
-              <div
-                className="
-            relative 
-            rounded-2xl 
-            overflow-hidden 
-            shadow-xl 
-            group
-            /* keep same height rules as before */
-            h-[400px] 
-            sm:h-[90vh] 
-            md:h-[90vh] 
-            xl:h-[90vh]
-            w-full
-          "
-              >
-                {/* optional soft overlay to keep the same look */}
-                <div className="absolute inset-0  z-10 pointer-events-none" />
-
-                {/* Heyzine flipbook iframe */}
+              <div className="relative rounded-2xl overflow-hidden shadow-xl group h-[400px] sm:h-[90vh] md:h-[90vh] xl:h-[90vh] w-full">
+                <div className="absolute inset-0 z-10 pointer-events-none" />
                 <iframe
                   allow="clipboard-write"
                   allowFullScreen
@@ -399,19 +362,8 @@ export default function Home() {
                   style={{ border: "1px solid lightgray" }}
                   title="Afrodite Academy Flipbook"
                 />
-
-                {/* Hover caption (kept from the video version) */}
-                {/* <div className="absolute bottom-4 left-4 right-4 z-20 bg-black/60 backdrop-blur-sm rounded-lg p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-afrodite-purple font-medium">
-                    Shfleto broshurën tonë interaktive
-                  </p>
-                  <p className="text-gray-300 text-sm">
-                    Mëso më shumë për kurset dhe ambientet tona
-                  </p>
-                </div> */}
               </div>
 
-              {/* Quote block (unchanged) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -432,7 +384,7 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT column (unchanged) */}
+            {/* RIGHT column */}
             <div ref={whyUsRef} className="space-y-6">
               <motion.div
                 variants={containerVariants}
@@ -475,9 +427,8 @@ export default function Home() {
                       </h3>
                       <p className="text-afrodite-lightPurple">
                         Diploma italiane që ofrojnë mundësinë për të hapur
-                        sallonin tuaj në Itali dhe në çdo vënd të Bashkimit
-                        Europian dhe të punoni ligjërisht në BE, USA, Kanada dhe
-                        Australi.
+                        sallonin tuaj në Itali dhe në çdo vënd të BE dhe të
+                        punoni ligjërisht në BE, USA, Kanada dhe Australi.
                       </p>
                     </div>
                   </div>
@@ -526,14 +477,14 @@ export default function Home() {
 
                 <motion.div
                   variants={itemVariants}
-                  className="bg-afrodite-creme rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all durataion-300 hover:-translate-y-1 group"
+                  className="bg-afrodite-creme rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
                 >
                   <div className="flex items-start gap-4">
                     <div className="bg-afrodite-purple p-4 rounded-full flex-shrink-0 group-hover:bg-afrodite-lightPurple/50 transition-colors duration-300">
-                      <HeartHandshake className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
+                      <Users className="h-8 w-8 text-afrodite-creme group-hover:text-afrodite-purple transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors durataion-300">
+                      <h3 className="text-xl font-bold font-poppins text-afrodite-purple mb-2 group-hover:text-afrodite-purple transition-colors duration-300">
                         Komunitet Mbështetës
                       </h3>
                       <p className="text-afrodite-lightPurple">
@@ -552,8 +503,6 @@ export default function Home() {
 
       {/* Stats Section */}
       <section className="bg-afrodite-creme py-16 md:py-24 relative overflow-hidden">
-        {/* <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div> */}
-
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
 
@@ -686,7 +635,7 @@ export default function Home() {
             >
               <div className="absolute top-0 left-0 w-full h-1 bg-afrodite-purple transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               <div className="p-8 text-center">
-                <div className="mb-4 mx-auto w-20 h-20 rounded-full bg-afrodite-purple flex items-center justify-center border border-afrodite-purple/30">
+                <div className="mb-4 mx-auto w-20 rounded-full h-20 bg-afrodite-purple flex items-center justify-center border border-afrodite-purple/30">
                   <Calendar className="h-10 w-10 text-afrodite-creme" />
                 </div>
                 <CountUpAnimation
@@ -723,7 +672,7 @@ export default function Home() {
               variant="default"
               className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
             >
-              <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+              <Download className="mr-2 h-5 w-5" />
               Shkarko Broshurën e Kurseve
             </AnimatedButton>
           </motion.div>
@@ -823,7 +772,6 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-afrodite-creme to-black relative overflow-hidden">
-        {/* <div className="absolute inset-0 bg-[url('/placeholder.svg?height=600&width=600&text=Pattern')] bg-cover bg-center opacity-5"></div> */}
         <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
         <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
@@ -871,12 +819,11 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Added FAQ accordion */}
+            {/* FAQ */}
             <div className="mt-16 text-left bg-white/30 backdrop-blur-sm p-6 rounded-xl border border-white/10">
               <h3 className="text-xl font-bold text-afrodite-purple mb-6 text-center">
                 Pyetje të Shpeshta
               </h3>
-
               <div className="space-y-4">
                 {FAQ_CATEGORIES.map((cat) => (
                   <div
@@ -958,8 +905,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Request Info Button */}
-      {/* <RequestInfoButton /> */}
       <WhatsAppButton />
     </div>
   );

@@ -85,7 +85,7 @@ export default function AwardsPage() {
 
                 {/* image/icon */}
                 <div className="md:w-1/2 flex justify-center p-6">
-                  <div className="w-32 h-32 rounded-full flex items-center justify-center bg-afrodite-lightPurple">
+                  <div className="w-32 h-32 rounded-full flex items-center justify-center bg-afrodite-creme">
                     <Image
                       src={award.imageSrc || "/placeholder.svg"}
                       alt={award.title}

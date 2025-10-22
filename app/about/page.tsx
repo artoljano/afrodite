@@ -132,12 +132,12 @@ export default function AboutPage() {
       title: "Klasa Mësimore",
       caption: "Klasa moderne të pajisura me teknologjinë më të fundit",
     },
-    {
-      type: "video",
-      src: "/facilities/ambient-1.mp4",
-      title: "Tur Virtual Video",
-      caption: "Pamje nga ambientet tona në video",
-    },
+    // {
+    //   type: "video",
+    //   src: "/facilities/ambient-1.mp4",
+    //   title: "Tur Virtual Video",
+    //   caption: "Pamje nga ambientet tona në video",
+    // },
     {
       type: "image",
       src: "/facilities/ambient-2.webp",

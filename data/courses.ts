@@ -4382,7 +4382,7 @@ alt: "Epilim me Lazer"
     id: 62,
     title:
       "Kurs Përgatitor për Provimin e Udhërrëfyesit Turistik",
-    category: "operatoret-turistike",
+    category: "UET Italia",
     duration: "",
     durationCategory: "",
     level: "",

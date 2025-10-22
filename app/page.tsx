@@ -269,7 +269,7 @@ export default function Home() {
                 <h3 className="font-semibold text-afrodite-purple">
                   Orare Fleksibël
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-afrodite-lightPurple">
                   Kurse paradite, pasdite dhe fundjavë.
                 </p>
               </div>
@@ -283,7 +283,7 @@ export default function Home() {
                 <h3 className="font-semibold text-afrodite-purple">
                   Çertifikim Ndërkombëtar
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-afrodite-lightPurple">
                   Diploma të njohura në të gjithë botën.
                 </p>
               </div>
@@ -297,7 +297,7 @@ export default function Home() {
                 <h3 className="font-semibold text-afrodite-purple">
                   Mundësi Punësimi
                 </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-afrodite-lightPurple">
                   Partneritete me biznese në çdo industri.
                 </p>
               </div>
@@ -368,11 +368,11 @@ export default function Home() {
                 <div className="absolute -top-3 -left-3 bg-afrodite-purple p-2 rounded-full">
                   <Quote className="h-5 w-5 text-afrodite-creme" />
                 </div>
-                <p className="text-gray-800 font-medium italic">
+                <p className="text-afrodite-purple font-medium italic">
                   "Afrodite Academy ndryshoi karrierën time. Tani punoj si
                   makeup artist profesionist!"
                 </p>
-                <p className="text-gray-600 text-sm mt-2">
+                <p className="text-afrodite-lightPurple text-sm mt-2">
                   - Elisa, Makeup Artist
                 </p>
               </motion.div>

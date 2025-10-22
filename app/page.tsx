@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import testimonials from "@/data/testimonials";
 import {
@@ -27,6 +27,7 @@ import { useState, useMemo, useEffect } from "react";
 import { FAQ_CATEGORIES } from "@/data/questions";
 import { Course, courses } from "@/data/courses";
 import WhatsAppButton from "@/components/whatsapp-button";
+import BrochureDownloadModal from "@/components/brochure-download-modal";
 
 /* ───────────────── SSR-safe deterministic shuffle ───────────────── */
 function mulberry32(seed: number) {
@@ -81,13 +82,11 @@ export default function Home() {
   };
 
   /* ───────────────── AVATARS: SSR-safe order + client rotation ───────────────── */
-  // Only items that have something to show (video preferred, else avatar)
   const avatarPool = useMemo(
     () => testimonials.filter((t) => (t.hasVideo && t.videoSrc) || t.avatar),
     []
   );
-  // Stable initial order both on the server and the client
-  const SEED = 42; // change if you want a different, still-stable initial order
+  const SEED = 42;
   const orderedPool = useMemo(
     () => shuffleDeterministic(avatarPool, SEED),
     [avatarPool]
@@ -112,7 +111,7 @@ export default function Home() {
           orderedPool[(start + 1) % orderedPool.length],
           orderedPool[(start + 2) % orderedPool.length],
         ]
-      : orderedPool.slice(0, 3); // first paint = same as SSR
+      : orderedPool.slice(0, 3);
 
   /* ───────────────── Animations ───────────────── */
   const containerVariants = {
@@ -124,14 +123,9 @@ export default function Home() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  const handleDownloadBrochure = () => {
-    const link = document.createElement("a");
-    link.href = "/Brochure.pdf";
-    link.download = "Afrodite-Academy-Brochure.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  /* ───────────────── Brochure Modal ───────────────── */
+  const [brochureOpen, setBrochureOpen] = useState(false);
+  const openBrochureModal = () => setBrochureOpen(true);
 
   const featured = courses.filter((c) => c.featured);
   const others = courses.filter((c) => !c.featured);
@@ -147,7 +141,7 @@ export default function Home() {
         {/* Hero Section with Video Background */}
         <VideoBackground
           videoSrc="/videos/hero-section-home.webm"
-          overlayOpacity={0.6}
+          overlayOpacity={0.4}
           className="min-h-[60vh] md:min-h-[70vh] py-0 md:py-30 bg-afrodite-creme relative flex items-center"
         >
           <div className="container px-4 mx-auto relative z-10">
@@ -159,8 +153,8 @@ export default function Home() {
                 transition={{ duration: 0.7, ease: "easeOut" }}
                 className="flex flex-col space-y-6"
               >
-                <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-purple text-sm mb-4 border border-afrodite-purple/20">
-                  <Sparkles className="h-4 w-4 mr-2 text-afrodite-purple" />
+                <div className="inline-flex items-center px-4 py-2 bg-afrodite-purple/10 backdrop-blur-sm rounded-full text-afrodite-creme text-sm mb-4 border border-afrodite-purple/20">
+                  <Sparkles className="h-4 w-4 mr-2 text-afrodite-creme" />
                   <span>Kurse të certifikuara ndërkombëtarisht</span>
                 </div>
 
@@ -171,13 +165,13 @@ export default function Home() {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="h-1 bg-afrodite-purple mb-4"
                   />
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-afrodite-purple leading-tight">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins text-afrodite-creme leading-tight">
                     Kurse Profesionale{" "}
-                    <span className="text-afrodite-purple">Ndërkombëtare</span>
+                    <span className="text-afrodite-creme">Ndërkombëtare</span>
                   </h1>
                 </div>
 
-                <p className="text-lg text-afrodite-lightPurple max-w-lg">
+                <p className="text-lg text-afrodite-creme max-w-lg">
                   Ne jemi të përkushtuar për të ofruar rezultatet më të mira për
                   studentët tanë. Me një ekip të përkushtuar dhe metoda
                   inovative, ne sigurojmë që çdo student të arrijë potencialin e
@@ -667,7 +661,7 @@ export default function Home() {
             className="flex justify-center mt-12"
           >
             <AnimatedButton
-              onClick={handleDownloadBrochure}
+              onClick={openBrochureModal}
               size="lg"
               variant="default"
               className="px-8 bg-afrodite-lightPurple text-afrodite-creme"
@@ -676,6 +670,12 @@ export default function Home() {
               Shkarko Broshurën e Kurseve
             </AnimatedButton>
           </motion.div>
+
+          {/* -------------------------------- API NOTE --------------------------------
+              Clicking the brochure button opens BrochureDownloadModal.
+              The modal POSTs to {NEXT_PUBLIC_API_BASE_URL}/api/brochure (server email),
+              and only on success triggers a client-side download of /Brochure.pdf.
+          --------------------------------------------------------------------------- */}
         </div>
       </section>
 
@@ -904,6 +904,14 @@ export default function Home() {
           />
         </div>
       </section>
+
+      {/* Brochure Modal (mounted once per page) */}
+      <BrochureDownloadModal
+        open={brochureOpen}
+        onOpenChange={setBrochureOpen}
+        pdfSrc="/Brochure.pdf"
+        fileName="Afrodite-Academy-Brochure.pdf"
+      />
 
       <WhatsAppButton />
     </div>

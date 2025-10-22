@@ -234,7 +234,7 @@ export default function AboutPage() {
                 </AnimatedButton>
               </Link>
 
-              <Link href="/apply">
+              <Link href="/register">
                 <AnimatedButton
                   size="lg"
                   variant="default"
@@ -508,7 +508,7 @@ export default function AboutPage() {
                     </AnimatedButton>
                   </Link>
 
-                  <Link href="/apply">
+                  <Link href="/register">
                     <AnimatedButton
                       size="lg"
                       variant="default"

@@ -1,0 +1,176 @@
+{
+  "branding_update": {
+    "logo_url": "https://afroditeacademy.al/images/afrodite-logo.webp",
+    "brand_colors": {
+      "primary_hex": "#7d2a80",
+      "secondary_hex": "#965c9c",
+      "accent_hex": "#f6f0e7"
+    },
+    "social_profiles": {
+      "facebook": "https://www.facebook.com/share/1CXyPNAHqP/?mibextid=wwXIfr",
+      "instagram": "https://www.instagram.com/afrodite.academy_shkoder?igsh=ZGUyZHJnc2ZteHJ0",
+      "tiktok": "https://www.tiktok.com/@afrodite_academy?_t=ZM-90vhH2Wr7Gu&_r=1",
+      "other": []
+    }
+  },
+
+  "media_assets": {
+    "favicon_url": "https://afroditeacademy.al/seo/favicon.ico",
+    "apple_touch_icon_url": "https://afroditeacademy.al/apple-touch-icon.webp",
+    "default_og_image_url": "https://afroditeacademy.al/opengraph-image",
+    "per_page_og_images": [
+      { "path": "/",        "image": "https://afroditeacademy.al/opengraph-image" },
+      { "path": "/about",   "image": "https://afroditeacademy.al/about/opengraph-image" },
+      { "path": "/awards",  "image": "https://afroditeacademy.al/awards/opengraph-image" },
+      { "path": "/contact", "image": "https://afroditeacademy.al/contact/opengraph-image" },
+      { "path": "/courses", "image": "https://afroditeacademy.al/courses/opengraph-image" }
+    ],
+    "social_banner_url": "https://afroditeacademy.al/seo/social-banner-1500x500.webp"
+  },
+
+  "page_metadata_overrides": [
+    {
+      "path": "/",
+      "title": "Afrodite Academy — Kurse Profesionale",
+      "description": "Kurse me standarde europiane në Tiranë & Shkodër.",
+      "og": {
+        "title": "Afrodite Academy",
+        "description": "Akademia kryesore në arsimin profesional.",
+        "image": "https://afroditeacademy.al/opengraph-image",
+        "image_alt": "Afrodite Academy"
+      },
+      "twitter_card": "summary_large_image",
+      "target_keywords": ["kurs", "estetikë", "parukeri"],
+      "goal_cta": "apply"
+    },
+    {
+      "path": "/about",
+      "title": "Rreth Afrodite Academy",
+      "description": "Misioni, partneritetet dhe laboratorët tanë modernë.",
+      "og": {
+        "title": "Rreth Nesh",
+        "description": "Afrodite Academy — partneritete ndërkombëtare.",
+        "image": "https://afroditeacademy.al/about/opengraph-image",
+        "image_alt": "Rreth Afrodite Academy"
+      },
+      "twitter_card": "summary_large_image",
+      "target_keywords": ["rreth nesh", "akademi", "partneritete"],
+      "goal_cta": ""
+    },
+    {
+      "path": "/awards",
+      "title": "Çmime & Certifikime | Afrodite Academy",
+      "description": "Njohje ndërkombëtare për cilësinë e programeve.",
+      "og": {
+        "title": "Çmime & Certifikime",
+        "description": "Standardet tona të verifikuara.",
+        "image": "https://afroditeacademy.al/awards/opengraph-image",
+        "image_alt": "Çmimet dhe certifikimet"
+      },
+      "twitter_card": "summary_large_image",
+      "target_keywords": ["çmime", "certifikime", "akreditim"],
+      "goal_cta": "apply"
+    },
+    {
+      "path": "/contact",
+      "title": "Kontakt | Afrodite Academy",
+      "description": "Tiranë & Shkodër • +355 69 204 3535 • info@afroditeacademy.al",
+      "og": {
+        "title": "Kontakto Afrodite Academy",
+        "description": "Na shkruani ose na telefononi.",
+        "image": "https://afroditeacademy.al/contact/opengraph-image",
+        "image_alt": "Kontakt Afrodite Academy"
+      },
+      "twitter_card": "summary_large_image",
+      "target_keywords": ["kontakt", "telefon", "email"],
+      "goal_cta": "contact"
+    },
+    {
+      "path": "/courses",
+      "title": "Kurset Profesionale | Afrodite Academy",
+      "description": "Estetikë, Parukeri, Berber, Nails — programe me praktikë reale.",
+      "og": {
+        "title": "Kurset Profesionale",
+        "description": "Zgjidh kursin tënd.",
+        "image": "https://afroditeacademy.al/courses/opengraph-image",
+        "image_alt": "Kurset profesionale"
+      },
+      "twitter_card": "summary_large_image",
+      "target_keywords": ["kurse", "estetikë", "parukeri", "berber"],
+      "goal_cta": "apply"
+    }
+  ],
+
+  "structured_data_updates": {
+    "courses": [
+      {
+        "name": "",
+        "description": "",
+        "url": "",
+        "image": "",
+        "price": { "value": null, "currency": "ALL" },
+        "availability": "InStock",
+        "aggregate_rating": { "ratingValue": null, "reviewCount": null }
+      }
+    ],
+    "faqs": [
+      {
+        "page_path": "/faq",
+        "items": [
+          { "q": "Çfarë përfshihet në programet e estetikës?", "a": "Programet tona mbulojnë kujdesin e lëkurës, trajtimet estetike, PMU (Permanent Make-Up), make-up profesional, qerpikë & vetulla, manikyr & pedikyr, si edhe përdorimin e pajisjeve estetike moderne." },
+          { "q": "A ofron akademia certifikata të njohura ndërkombëtarisht në estetikë?", "a": "Po. Diplomat dhe certifikatat tona njihen në Itali, BE, SHBA, Kanada dhe Australi, duke ju mundësuar të punoni ose të hapni biznesin tuaj jashtë vendit." },
+          { "q": "A ka praktikë reale gjatë kursit të estetikës?", "a": "Çdo kurs përshin praktikë në kushte reale me pajisje moderne dhe modele reale, nën udhëzimin e instruktorëve profesionistë." },
+          { "q": "Çfarë mësohet në kurset e parukerisë dhe berberërisë?", "a": "Kursantët mësojnë teknikat bazë dhe të avancuara të prerjes së flokëve, stilimit, ngjyrimit, dekolorimit, trajtimeve kimike, si edhe kujdesin estetik për mjekrën dhe fytyrën." },
+          { "q": "Sa zgjat një kurs parukerie ose berberërje?", "a": "Kohëzgjatja varet nga niveli i programit (bazë, i avancuar, i plotë). Zakonisht, programet tona zgjasin nga disa muaj deri në 2–3 vite akademike." },
+          { "q": "A ofrohet praktikë gjatë kursit?", "a": "Po, çdo kursant punon me modele reale dhe përgatitet për tregun e punës me standarde ndërkombëtare." },
+          { "q": "Kush mund të regjistrohet në programet e kujdestarisë?", "a": "Programet tona janë të hapura për të gjithë ata që dëshirojnë të punojnë në shërbime sociale, kujdes për fëmijë, ose kujdes për të moshuar." },
+          { "q": "Çfarë aftësish fiton një kursant në këtë fushë?", "a": "Kursantët mësojnë teknika kujdesi, komunikim me klientët, etikë profesionale dhe mënyra për të ofruar mbështetje praktike e emocionale." },
+          { "q": "A ka mundësi punësimi pas përfundimit të programit?", "a": "Po. Kualifikimet tona njihen ndërkombëtarisht, duke ju dhënë mundësi punësimi në institucione, qendra sociale dhe familje private, si në Shqipëri ashtu edhe jashtë vendit." },
+          { "q": "Çfarë programesh ofroni në turizëm dhe hoteleri?", "a": "Ne ofrojmë kurse për guidë turistike, menaxhim mikpritjeje dhe shër bime hoteliere, të kombinuara me praktikë reale." },
+          { "q": "A është i vlefshëm ky kualifikim jashtë Shqipërës?", "a": "Po. Certifikatat tona njihen ndërkombëtarisht dhe ofrojnë mundësi punësimi në sektorin e turizmit dhe hotelerisë në BE dhe më gjerë." },
+          { "q": "A ka trajnime praktike gjatë programit?", "a": "Po, kursantët bëjnë praktika në hotele, restorante dhe agjenci turistike partnere." },
+          { "q": "Çfarë mësohet në programet e modës dhe dizajnit?", "a": "Programet tona mbulojnë stilimin, zhvillimin e koleksioneve, dizajnin kreativ dhe trendet moderne në modë." },
+          { "q": "A ka mundësi që kursantët të prezantojnë punimet e tyre?", "a": "Po. Organizojmë projekte dhe evente ku kursantët ekspozojnë punimet e tyre, duke krijuar portofolio profesionale." },
+          { "q": "Cili është profili i punës pas përfundimit të kursit të modës dhe dizajnit?", "a": "Kursantët mund të punojnë si stilistë mode, dizajnerë, konsulentë të stilit ose të nisin markën e tyre personale." }
+        ]
+      }
+    ]
+  },
+
+  "analytics_consent": {
+    "cookie_consent_required": false,
+    "banner_text": "",
+    "categories": ["necessary", "analytics", "marketing"]
+  },
+
+  "search_console": {
+    "google": { "verification_method": "meta", "verification_token": "bEzXqoibF2gXjptQW3NIWVgOsJeIcgOkE_sSpOENmLY" }
+  },
+
+  "url_and_sitemap": {
+    "canonical_host_preference": "non-www",
+    "trailing_slash": false,
+    "extra_noindex_paths": [],
+    "extra_robots_disallow": [],
+    "sitemap_include": { "pages": true, "courses": true, "blog_posts": false, "categories": false },
+    "sitemap_changefreq": { "home": "weekly", "pages": "weekly", "courses": "weekly", "blog_posts": "weekly" },
+    "sitemap_priority": { "home": 1.0, "pages": 0.8, "courses": 0.8, "blog_posts": 0.7 },
+    "sitemap_exclude_paths": []
+  },
+
+  "redirects": {
+    "map": [ { "from": "/old-url", "to": "/new-url", "type": 301 } ],
+    "gone": ["/very-old-url"]
+  },
+
+  "legal": {
+    "privacy_policy_url": "",
+    "terms_url": "",
+    "cookies_policy_url": ""
+  },
+
+  "local_enhancements": {
+    "tirane": { "postal_code": "", "lat": 41.328786, "lng": 19.782922, "phone_override": "" },
+    "shkoder": { "postal_code": "", "lat": 42.070424, "lng": 19.516161, "phone_override": "", "email_override": "shkoder@afroditeacademy.al" }
+  }
+}
